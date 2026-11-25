@@ -32,10 +32,15 @@ const UI = {
 const u = () => UI[lang] || UI.en;
 const FMT = new Proxy({}, { get: (_, k) => u().fmt[k] });
 document.documentElement.lang = lang; document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
-$("mTitle").firstChild.textContent = u().title; $("back").innerHTML = `<span aria-hidden="true">${lang === "he" ? "→" : "←"}</span><span class="bl"> ${u().map.replace(/^[←→]\s*/, "")}</span>`; $("back").setAttribute("aria-label", u().map.replace(/^[←→]\s*/, ""));
+$("back").innerHTML = `<span aria-hidden="true">${lang === "he" ? "→" : "←"}</span><span class="bl"> ${u().map.replace(/^[←→]\s*/, "")}</span>`; $("back").setAttribute("aria-label", u().map.replace(/^[←→]\s*/, ""));
 const today = (() => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0") })();
 const sunday = s => { const d = new Date(s + "T12:00:00"); d.setDate(d.getDate() - 6); return d.toISOString().slice(0, 10) };
 const fmtDate = s => new Date(s + "T12:00:00").toLocaleDateString(lang === "he" ? "he-IL" : lang === "es" ? "es-MX" : "en-US", { day: "numeric", month: "short" });
+const MSG = {
+ en: { t: "Missions", sub: "Journey through the Torah · 3D missions", s1: "missions", s2: "scrolls", s3: "stars", week: "This week", mis: "mission", quiz: "Go to quiz", play: "Play", fresh: "New mission", need: n => `${n} more question${n === 1 ? "" : "s"} needed` },
+ es: { t: "Misiones", sub: "Viaje por la Torá · misiones en 3D", s1: "misiones", s2: "rollos", s3: "estrellas", week: "Esta semana", mis: "misión", quiz: "Ir al quiz", play: "Jugar", fresh: "Misión nueva", need: n => `Faltan ${n} pregunta${n === 1 ? "" : "s"}` },
+ he: { t: "משימות", sub: "מסע בתורה · משימות תלת־ממד", s1: "משימות", s2: "מגילות", s3: "כוכבים", week: "השבוע", mis: "משימה", quiz: "לחידון", play: "לשחק", fresh: "משימה חדשה", need: n => `חסרות ${n} שאלות` } };
+const setMute = () => { const m = FX.muted(); $("mute").innerHTML = `<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10H4z"/>${m ? '<path d="M17 9l5 6M22 9l-5 6"/>' : '<path d="M16.5 8.5a5 5 0 0 1 0 7"/>'}</svg>`; $("mute").setAttribute("aria-label", m ? "Sound off" : "Sound on") };
 const card = QuizCard($("card"));
 let INDEX = null;
 
@@ -50,26 +55,34 @@ async function showMap() {
   $("play").classList.remove("on"); $("map").style.display = "block"; mode = null; $("card").classList.remove("on");
   if (!INDEX) { try { INDEX = await (await fetch("missions/index.json", { cache: "no-cache" })).json() } catch (e) { INDEX = { nodes: [] } } } await quizWeeks();
   const nodes = INDEX.nodes; let cur = nodes.findIndex(n => n.shabbat >= today); if (cur < 0) cur = nodes.length - 1;
-  const done = Object.keys(prog.done).length;
-  $("mSub").textContent = (ADMIN ? "🔑 Admin · " : "") + u().sub(done, prog.scrolls || 0) + " · ⭐ " + (prog.pts || 0); $("mute").textContent = FX.muted() ? "🔇" : "🔊";
-  let h = "", book = "";
+  const done = Object.keys(prog.done).length, M = MSG[lang] || MSG.en;
+  $("mTitle").firstChild.textContent = M.t; $("mSub").textContent = (ADMIN ? "Admin · " : "") + M.sub; setMute();
+  const ico = { check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>', arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>' }, svg = k => `<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${ico[k]}</svg>`;
+  let h = `<div class="stt">${[[done + " / " + nodes.length, M.s1], [prog.scrolls || 0, M.s2], [prog.pts || 0, M.s3]].map(t => `<div><b>${t[0]}</b><span>${t[1]}</span></div>`).join("")}</div><!--WK-->`, book = "", rows = "";
+  const flush = () => { if (rows) h += `<div class="line">${rows}</div>`; rows = "" };
   nodes.forEach((n, i) => {
-    if (n.book !== book) { book = n.book; h += `<div class="book">${u().books[book] || book}</div>` }
+    if (n.book !== book) { flush(); book = n.book; h += `<h2 class="book">${u().books[book] || book}</h2>` }
     const open = ALL || n.preview || today >= sunday(n.shabbat), has = !!n.type, d = prog.done[n.id];
     const qc = quizCount(n), needQ = open && has && d == null && qc != null && qc < QNEED;
     const st = d != null ? "done" : !open ? "lock" : needQ ? "quiz" : has ? "open" : "soon";
-    const sub = st === "lock" ? u().opens + " " + fmtDate(sunday(n.shabbat)) : st === "quiz" ? `📝 ${SL().needQ(QNEED - qc)}` : st === "soon" ? u().soon : st === "done" ? u().again : u().play;
-    h += `<button class="node ${st}${i === cur ? " now" : ""}" data-id="${n.id}" ${st === "lock" || st === "soon" ? 'aria-disabled="true"' : ""}>${has && n.type !== "story" ? `<span class="fmt">${FMT[n.type]}</span>` : ""}<span class="dot">${st === "done" ? "✓" : st === "lock" ? "🔒" : st === "quiz" ? "📝" : i + 1}</span><span><b>${nm(n)}</b><span>${sub}</span>${prog.best && prog.best[n.id] ? `<span class="bst3">${"★".repeat(prog.best[n.id].stars)}<i>${"★".repeat(3 - prog.best[n.id].stars)}</i> · ⭐ ${prog.best[n.id].pts}</span>` : ""}</span></button>`
+    const sub = st === "lock" ? u().opens + " " + fmtDate(sunday(n.shabbat)) : st === "quiz" ? M.need(QNEED - qc) : st === "soon" ? u().soon : st === "done" ? u().again : M.fresh;
+    n._st = st; n._sub = sub;
+    const cls = st + (i === cur ? " now" : "");
+    rows += `<div class="rw ${cls}"><span class="dot">${st === "done" ? svg("check") : i + 1}</span><button class="node ${cls}" data-id="${n.id}" ${st === "lock" || st === "soon" ? 'aria-disabled="true"' : ""}><span class="tx"><b>${nm(n)}</b><span>${sub}</span>${has && n.type !== "story" ? `<span class="fmt">${FMT[n.type]}</span>` : ""}${prog.best && prog.best[n.id] ? `<span class="bst3">${"★".repeat(prog.best[n.id].stars)}<i>${"★".repeat(3 - prog.best[n.id].stars)}</i> · ${prog.best[n.id].pts}</span>` : ""}</span>${st === "open" || st === "done" ? `<span class="go">${M.play}</span>` : ""}</button></div>`
   });
-  if (ALL || APPLS === "parasha-demo-v1") h = `<button class="node open" data-id="demo"><span class="fmt">Demo</span><span class="dot">🎮</span><span><b>${lang === "he" ? "הדגמת סוגי משחק" : lang === "es" ? "Demo de modos de juego" : "Game modes demo"}</b><span>${lang === "he" ? "כל סוגי המשחקים במקום אחד" : lang === "es" ? "Todos los tipos de juego" : "Every kind of game in one place"}</span></span></button>` + h;
+  flush();
+  const cn = nodes[cur];
+  if (cn) h = h.replace("<!--WK-->", `<div class="wk"><span class="k">${M.week} · ${M.mis} ${cur + 1}</span><b>${nm(cn)}</b><p>${cn._sub}</p><div class="acts"><button class="gq" id="toQ">${M.quiz}${svg("arrow")}</button>${cn._st === "open" || cn._st === "done" ? `<button class="gq pl" data-id="${cn.id}">${M.play}</button>` : ""}</div></div>`);
+  if (ALL || APPLS === "parasha-demo-v1") h = `<div class="line"><div class="rw open"><span class="dot">D</span><button class="node open" data-id="demo"><span class="tx"><b>${lang === "he" ? "הדגמת סוגי משחק" : lang === "es" ? "Demo de modos de juego" : "Game modes demo"}</b><span>${lang === "he" ? "כל סוגי המשחקים במקום אחד" : lang === "es" ? "Todos los tipos de juego" : "Every kind of game in one place"}</span></span><span class="go">${M.play}</span></button></div></div>` + h;
   $("path").innerHTML = h;
-  $("path").querySelectorAll(".node").forEach(b => b.onclick = () => { if (b.getAttribute("aria-disabled")) return; if (b.classList.contains("quiz")) return card.show("📝 " + SL().quizT, SL().needQ(QNEED - (quizCount(INDEX.nodes.find(n => n.id === b.dataset.id)) || 0)), SL().toQuiz, toQuiz); start(b.dataset.id) });
-  const now = $("path").querySelector(".now"); if (now) now.scrollIntoView({ block: "center" });
+  if ($("toQ")) $("toQ").onclick = toQuiz; $("path").querySelectorAll(".gq.pl").forEach(b => b.onclick = () => start(b.dataset.id));
+  $("path").querySelectorAll(".node").forEach(b => b.onclick = () => { if (b.getAttribute("aria-disabled")) return; if (b.classList.contains("quiz")) return card.show(SL().quizT, SL().needQ(QNEED - (quizCount(INDEX.nodes.find(n => n.id === b.dataset.id)) || 0)), SL().toQuiz, toQuiz); start(b.dataset.id) });
+  const now = $("path").querySelector(".node.now"); if (now) now.scrollIntoView({ block: "center" });
 }
 { let n = 0, tm = 0; $("mTitle").addEventListener("click", () => { clearTimeout(tm); tm = setTimeout(() => n = 0, 1500); if (++n >= 7) { n = 0; const on = localStorage.getItem("parasha-admin") !== "1"; try { localStorage.setItem("parasha-admin", on ? "1" : "0") } catch (e) {} card.show(on ? "🔑 Admin" : "Admin off", on ? (lang === "he" ? "כל המשימות והסיפורים פתוחים, בלי תלות בתאריך או בחידון." : lang === "es" ? "Todas las misiones e historias están abiertas, sin depender de la fecha ni del quiz." : "Every mission and storyline is open — no dates, no quiz needed.") : "", "OK", () => location.reload()) } }) }
 $("close").onclick = () => { if (window.parent !== window) window.parent.postMessage({ type: "closeGame" }, "*"); else history.back() };
 $("back").onclick = () => showMap();
-$("mute").onclick = () => { FX.setMuted(!FX.muted()); $("mute").textContent = FX.muted() ? "🔇" : "🔊" };
+$("mute").onclick = () => { FX.setMuted(!FX.muted()); setMute() };
 
 /* ---------------- 3D ---------------- */
 const cv = $("c"); let E = null; let M = null;

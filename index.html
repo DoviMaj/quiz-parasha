@@ -1056,7 +1056,7 @@ function renderProfiles(){const el=$("oProf");if(!el)return;const t=PRF[oLang]||
   el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{const sn=PROF.list[b.dataset.del]||{};if(confirm(t.del(sn.first||sn.name||t.new)))deleteProfile(b.dataset.del)});
   const a=$("pAdd");if(a)a.onclick=addProfile}
 /* 3D missions game: loaded only when opened */
-function openGame(m){const f=$("gameif"),q=(DEMO?"demo&":"")+(m?"m="+encodeURIComponent(m):"");f.src="game/index.html?v=1795450640"+(q?"#"+q:"");$("gameov").hidden=false;document.body.style.overflow="hidden"}
+function openGame(m){const f=$("gameif"),q=(DEMO?"demo&":"")+(m?"m="+encodeURIComponent(m):"");f.src="game/index.html?v=1795450710"+(q?"#"+q:"");$("gameov").hidden=false;document.body.style.overflow="hidden"}
 function closeGame(){$("gameov").hidden=true;$("gameif").src="about:blank";document.body.style.overflow=""}
 addEventListener("message",e=>{if(e.data&&e.data.type==="closeGame")closeGame()});
 const weekMission=()=>W?String(W.id).replace(/-\d+$/,""):"";

@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Journey through the Torah</title><link rel="stylesheet" href="games.css?v=1795450640">
+<title>Journey through the Torah</title><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="games.css?v=1795450640">
 <style>
-#map{position:fixed;inset:0;overflow-y:auto;background:linear-gradient(#f3e6c8,#e9dcc4);z-index:10;-webkit-overflow-scrolling:touch}
-#map .top{position:sticky;top:0;z-index:2;background:rgba(243,230,200,.96);padding:max(12px,env(safe-area-inset-top)) 16px 10px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-#map h1{font-size:20px;margin:0;flex:1;line-height:1.2}#map h1 small{display:block;font-size:13px;color:#5a4e3c;font-weight:600}
-#map .x{all:unset;cursor:pointer;width:40px;height:40px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800}
-.path{position:relative;max-width:460px;margin:0 auto;padding:20px 16px 60px}
-.book{margin:26px 0 8px;text-align:center;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:#b5562f}
-.node{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:10px 14px;margin:8px 0;box-shadow:0 2px 8px rgba(60,40,10,.1);width:78%;position:relative}
-.node:nth-of-type(odd){margin-left:auto}
-.node .dot{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;background:#b5562f}
-.node.done .dot{background:#4f6b3a}.node.quiz .dot{background:#e0a000}.node.lock{opacity:.55;cursor:default}.node.lock .dot{background:#bfae8c}.node.soon .dot{background:#d9c39a}
-.node.now{outline:3px solid #b5562f;outline-offset:2px}
-.node b{display:block;font-size:16px}.node .bst3{display:block;color:#e0a000;font-weight:800;font-size:13px;margin-top:2px}.node .bst3 i{font-style:normal;color:#d9c9a8}.node span{font-size:13px;color:#5a4e3c}
-.node .fmt{position:absolute;top:-8px;right:10px;background:#2e2a24;color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:2px 8px}
-.stats{display:flex;gap:8px;justify-content:center;margin:6px 0 0}.stats span{background:#fff;border-radius:999px;padding:6px 12px;font-weight:800;font-size:14px}
+#map{position:fixed;inset:0;overflow-y:auto;background:#f4ecdc;z-index:10;-webkit-overflow-scrolling:touch;font-family:Rubik,system-ui,sans-serif}
+#map .top{position:sticky;top:0;z-index:2;background:#fdf6ea;border-bottom:1px solid #e2d1b1;padding:max(16px,env(safe-area-inset-top)) 16px 14px;display:flex;align-items:center;gap:8px}
+#map h1{font-family:"Baloo 2",sans-serif;font-size:28px;font-weight:800;margin:0;flex:1;line-height:1}#map h1 small{display:block;font:400 13px Rubik,system-ui,sans-serif;color:#5a4e3c;margin-top:2px}
+#map .x{all:unset;cursor:pointer;width:44px;height:44px;border-radius:14px;border:1px solid #e2d1b1;background:#fff;display:flex;align-items:center;justify-content:center;color:#2e2a24;box-sizing:border-box}
+.path{position:relative;max-width:460px;margin:0 auto;padding:16px 16px 60px;display:flex;flex-direction:column;gap:16px}
+.stt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.stt div{background:#efe2ca;border-radius:12px;padding:8px 10px;display:flex;flex-direction:column}.stt b{font:800 20px/1.2 "Baloo 2",sans-serif}.stt span{font-size:12px;color:#5a4e3c}
+.wk{background:#b5562f;color:#fff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:4px}.wk .k{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.92}.wk b{font:800 26px/1.1 "Baloo 2",sans-serif}.wk p{margin:0;font-size:14px;line-height:1.4}
+.wk .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.gq{all:unset;cursor:pointer;box-sizing:border-box;background:#fdf6ea;color:#2e2a24;border-radius:14px;min-height:44px;padding:0 16px;display:flex;align-items:center;gap:8px;font:600 15px Rubik,system-ui,sans-serif}.gq.pl{background:transparent;color:#fff;border:1.5px solid #fff}
+[dir=rtl] .gq svg{transform:scaleX(-1)}
+.book{margin:4px 4px 0;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#b5562f}
+.line{position:relative;display:flex;flex-direction:column;gap:10px}.line:before{content:"";position:absolute;inset-inline-start:21px;top:22px;bottom:22px;width:3px;background:#d4c09c;border-radius:2px}
+.rw{position:relative;display:flex;align-items:center;gap:12px}
+.dot{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:800 18px "Baloo 2",sans-serif;box-sizing:border-box;background:#b5562f;color:#fff}
+.rw.done .dot{background:#4f6b3a}.rw.quiz .dot{background:#fdf6ea;color:#b5562f;border:3px solid #b5562f}.rw.lock .dot,.rw.soon .dot{background:#e9dcc4;color:#5a4e3c}
+.rw.now .dot{box-shadow:0 0 0 4px #f4ecdc,0 0 0 6px #b5562f}
+.node{all:unset;box-sizing:border-box;cursor:pointer;flex:1;min-width:0;min-height:60px;border-radius:16px;padding:10px 14px;background:#fff;border:1px solid #e2d1b1;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.node.now{border:2px solid #b5562f}.node.lock,.node.soon{background:transparent;border:1.5px dashed #d4c09c;cursor:default}
+.node .tx{display:flex;flex-direction:column;gap:2px;min-width:0}.node b{font-size:16px;font-weight:600}.node .tx>span{font-size:13px;color:#5a4e3c}.node.quiz .tx>span:nth-of-type(1){color:#b5562f;font-weight:500}
+.node .go{background:#4f6b3a;color:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;flex:none}
+.node .fmt{align-self:flex-start;font-size:11px!important;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5a4e3c;background:#efe2ca;border-radius:999px;padding:1px 8px}
+.node .bst3{color:#e0a000!important;font-weight:800;font-size:13px}.node .bst3 i{font-style:normal;color:#d9c9a8}
 #play{display:none}#play.on{display:block}
 .tray{position:fixed;left:0;right:0;bottom:0;padding:10px 10px max(12px,env(safe-area-inset-bottom));display:flex;gap:8px;overflow-x:auto;background:linear-gradient(transparent,rgba(46,42,36,.55) 30%);z-index:6}
 .tray button{all:unset;cursor:pointer;flex:none;background:var(--surface);border:3px solid transparent;border-radius:16px;padding:8px 12px;font-weight:800;font-size:14px;text-align:center;min-width:86px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -25,7 +32,7 @@
 .hud .back{pointer-events:auto;cursor:pointer;border:none;font:inherit}
 </style></head>
 <body>
-<div id="map"><div class="top"><h1 id="mTitle">Journey through the Torah<small id="mSub"></small></h1><button class="x" id="mute" aria-label="Sound">🔊</button><button class="x" id="close" aria-label="Close">×</button></div><div class="path" id="path"></div></div>
+<div id="map"><div class="top"><h1 id="mTitle">Missions<small id="mSub"></small></h1><button class="x" id="mute" aria-label="Sound"></button><button class="x" id="close" aria-label="Close"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="path" id="path"></div></div>
 <div id="play">
 <canvas id="c" aria-label="3D mission"></canvas>
 <div class="tapz l" id="tl"></div><div class="tapz r" id="tr"></div>
@@ -40,5 +47,5 @@
 <div class="err" id="err">This device can’t show 3D (WebGL).</div>
 <script src="engine.js?v=1795450640"></script>
 <script src="minis.js?v=1795450640"></script>
-<script src="game.js?v=1795450640"></script>
+<script src="game.js?v=1795450710"></script>
 </body></html>
