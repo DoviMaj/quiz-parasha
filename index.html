@@ -287,6 +287,20 @@ body.kids .knav{display:flex}
 .knav button.on{color:var(--k-acc);font-weight:800}.knav button.on .ico{background:var(--k-acc);color:#fff}
 @media (max-width:400px){.knav button{font-size:13px}.knav button .ico{padding:5px 12px}}
 @media (max-width:340px){.knav{padding-left:2px;padding-right:2px}.knav button{font-size:11.5px}.knav button .ico{padding:4px 8px}.knav button .lb{padding:0}}
+/* kids redesign: header, star tiles, progress, quiz card */
+.kht{display:flex;flex-direction:column;align-items:flex-start;min-width:0}.kpn{font-size:14px;font-weight:600;color:var(--k-muted)}.khi{font-size:26px;line-height:1.05}
+.kstar{background:#fff;color:var(--k-ink);border:2px solid var(--k-line);padding:6px 14px 6px 10px;font-size:18px}
+.kdays button{gap:3px;min-height:52px;padding:6px 0;font-size:12px}.kdays button .dn{line-height:1}.kdays button.done:not(.on){border-color:var(--k-line);color:var(--k-ink)}.kdays button:disabled{opacity:1;border:2px dashed var(--k-line);background:transparent;color:var(--k-muted)}
+.kdays button.on{border-color:var(--k-acc)}
+.kprog{display:flex;align-items:center;gap:10px;margin:12px 0 6px}.kprog .kpath{flex:1;margin:0;display:block;height:12px;border-radius:6px;background:#f1e2c2;overflow:hidden}.kprog .kpath i{display:block;height:100%;border-radius:6px;background:var(--k-teal);transition:width .3s}
+.kprog .kqn{font-size:15px;white-space:nowrap}
+.kcard.kdraw{padding:0;overflow:hidden;border:3px solid var(--k-line);border-radius:22px;box-shadow:none;margin-top:4px}.kdraw .kscene{border-radius:0}
+.kqq{margin-top:14px}.kqq .kq{font-weight:700;font-size:24px;line-height:1.25}
+.kopts button{min-height:76px;border-radius:20px;color:#fff}.kopts button:nth-child(1){background:#0f766e;color:#fff}.kopts button:nth-child(2){background:#6d28d9;color:#fff}.kopts button:nth-child(3){background:#c2410c;color:#fff}.kopts button:nth-child(4){background:#4f6b3a;color:#fff}
+.kopts button .l{color:#2b1d0e}.kopts button:disabled:not(.right):not(.wrong){opacity:.55}.kopts button.right,.kopts button.wrong{outline:4px solid var(--k-ink);outline-offset:-4px}
+.ksh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.ksh h2{margin:0;font-size:20px;font-weight:800}.ksh span{font-weight:700;font-size:15px;color:var(--k-muted)}
+.kcard .kgrid{margin:10px 0;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 4px}.kcard .kgrid>div{font-size:11px;line-height:1.15;overflow-wrap:anywhere}.kcard .kgrid .kst{width:60px;height:60px;border-width:3px}.kcard .kgrid .kst svg{width:34px;height:34px}.kh2{margin:0 0 4px;font-size:20px;font-weight:800}.klr.dots{justify-content:center;padding:0;border:0;font-weight:800;color:var(--k-muted)}
+.klr.me{background:#fde7c7}
 .kin{animation:kin .25s ease-out}@keyframes kin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (max-width:360px){.kopts{grid-template-columns:1fr}.kq{font-size:21px}}
 @media (prefers-reduced-motion:reduce){.kin,.oages.need{animation:none}}
@@ -509,7 +523,7 @@ function dayDone(w,day){const ix=dayIdx(w,day),a=ansOf(w.id);return ix&&ix.lengt
 function renderDays(){const box=$("days");if(!box)return;if(!isKids()&&hasDays(W)){const dh=daysHTML(false);if(box.__h!==dh){box.innerHTML=dh;box.__h=dh}box.style.display="";box.querySelectorAll("button[data-day]").forEach(b=>b.onclick=()=>pickDay(+b.dataset.day))}else{box.innerHTML="";box.__h="";box.style.display="none"}}
 function daysHTML(kids){const o=openDay(W),c=curDay(W),N=DAYN[ST.lang]||DAYN.es;let h=`<div class="${kids?"kdays":"days"}" role="tablist">`;
   for(let d=1;d<=7;d++){const lock=d>o,on=d===c,done=kids?kDayDone(W,d):dayDone(W,d);
-    h+=`<button data-day="${d}" role="tab" aria-selected="${on}" class="${on?"on":""} ${done?"done":""}" ${lock?`disabled title="${esc(DL().opens(d))}"`:""}><span class="dn">${N[d-1]}</span><span class="dl">${lock?"🔒":done?"✓":d}</span></button>`}
+    h+=`<button data-day="${d}" role="tab" aria-selected="${on}" class="${on?"on":""} ${done?"done":""}" ${lock?`disabled title="${esc(DL().opens(d))}"`:""}><span class="dn">${N[d-1]}</span>${kids?`<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="${done?"#f5b82e":on?"#fff":"none"}" stroke="${done?"#c2410c":on?"#fff":"#c9b08a"}" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.8z"/></svg>`:`<span class="dl">${lock?"🔒":done?"✓":d}</span>`}</button>`}
   return h+`</div>`}
 function pickDay(d){if(!W||d>openDay(W))return;ST.dsel=ST.dsel||{};ST.dsel[W.id]=d;ST.front=true;ST.kshow=false;lsSet();if(isKids())renderKids(true);else{renderDays();renderQuiz("turn-in");stats()}}
 function weekStats(w,ans){ans=ans||{};const key=w.key||(w.Q||[]).map(q=>q.a),lv=lvOf(w);let c=0,a=0,pts=0;const by={1:{c:0,a:0,t:0},2:{c:0,a:0,t:0},3:{c:0,a:0,t:0}};
@@ -892,21 +906,21 @@ function sheepSVG(size,cheer){const mouth=cheer?'<ellipse cx="60" cy="73" rx="6"
   return `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 120 120">${arms}<g fill="#fff" stroke="#e8dccb" stroke-width="2"><circle cx="34" cy="62" r="20"/><circle cx="86" cy="62" r="20"/><circle cx="60" cy="44" r="24"/><circle cx="44" cy="86" r="20"/><circle cx="76" cy="86" r="20"/><circle cx="60" cy="72" r="26"/></g><rect x="44" y="100" width="8" height="16" rx="4" fill="#4a3b2e"/><rect x="68" y="100" width="8" height="16" rx="4" fill="#4a3b2e"/><ellipse cx="34" cy="54" rx="11" ry="6" fill="#4a3b2e" transform="rotate(-25 34 54)"/><ellipse cx="86" cy="54" rx="11" ry="6" fill="#4a3b2e" transform="rotate(25 86 54)"/><ellipse cx="60" cy="64" rx="20" ry="22" fill="#4a3b2e"/><circle cx="52" cy="60" r="5" fill="#fff"/><circle cx="68" cy="60" r="5" fill="#fff"/><circle cx="53" cy="61" r="2.6" fill="#1b1b1b"/><circle cx="69" cy="61" r="2.6" fill="#1b1b1b"/><circle cx="46" cy="70" r="3.5" fill="#ff9aa8" opacity=".8"/><circle cx="74" cy="70" r="3.5" fill="#ff9aa8" opacity=".8"/><g transform="translate(0,-2)">${mouth}</g></svg>`}
 function kIcon(w,k){return `<svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">${(w.icons&&w.icons[k])||""}</svg>`}
 function kScene(x){return `<svg aria-hidden="true" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">${x.img||""}</svg>`}
-const STAR='<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z" fill="#fff"/></svg>';
-function kTop(){const k=KT(),t=kTotals();
+const STAR='<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="#f5b82e" stroke="#c2410c" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.8z"/></svg>';
+function kTop(ttl){const k=KT(),t=kTotals();
   const opts=WEEKS.map(w=>`<option value="${esc(w.id)}">${esc(wName(w))}${w.id===currentId?" ★":""}</option>`).join("");
-  return `<div class="ktop"><button class="mbtn kmb" id="kMenu" aria-label="menu" aria-expanded="false" aria-haspopup="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><button class="kme" id="kMe" aria-label="${esc(U().settings)}"><span class="kav">${sheepSVG(46)}</span><span class="khi">${esc(k.hi(safeName(ST.first||(ST.name||"").split(" ")[0])))}</span></button><span class="kstar">${STAR}<span>${t.stars}</span></span></div>
+  return `<div class="ktop"><button class="mbtn kmb" id="kMenu" aria-label="menu" aria-expanded="false" aria-haspopup="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><button class="kme" id="kMe" aria-label="${esc(U().settings)}"><span class="kav">${sheepSVG(46)}</span><span class="kht">${W?`<span class="kpn">${esc(wName(W))}</span>`:""}<span class="khi">${ttl?esc(k.album):esc(k.hi(safeName(ST.first||(ST.name||"").split(" ")[0])))}</span></span></button><span class="kstar">${STAR}<span>${t.stars}</span></span></div>
   ${WEEKS.length>1?`<div class="kweek"><select id="kWeek" aria-label="week">${opts}</select></div>`:""}`}
 function kSeq(){if(!W||!W.K)return [];const kd=kdayArr(W);if(!kd||!hasDays(W))return W.K.map((_,i)=>i);if(openDay(W)<1)return [];const d=curDay();return kd.map((x,i)=>x===d?i:-1).filter(i=>i>=0)}
 function kDayDone(w,d){const kd=kdayArr(w),a=kansOf(w.id);if(!kd)return false;const ix=kd.map((x,i)=>x===d?i:-1).filter(i=>i>=0);return ix.length>0&&ix.every(i=>i in a)}
 function kkey2(){return W.id+(hasDays(W)&&kdayArr(W)?":d"+curDay():"")}
 function kSeqLen(){return kSeq().length}
 function kPos(){if(!W)return 0;const S=kSeq(),n=S.length,a=kansOf(W.id);let p=ST.kpos[kkey2()];if(p==null){p=0;while(p<n&&(S[p] in a))p++}return Math.max(0,Math.min(n,p))}
-function kPath(p){const a=kansOf(W.id),key=kkeyOf(W),S=kSeq();return `<div class="kpath" aria-hidden="true">${S.map((gi,i)=>`<i class="${gi in a?(a[gi]===key[gi]?"ok":"no"):(i===p?"cur":"")}"></i>`).join("")}</div>`}
+function kPath(p){const a=kansOf(W.id),S=kSeq(),n=S.length,c=S.filter(gi=>gi in a).length;return `<div class="kpath" aria-hidden="true"><i style="width:${n?Math.round(100*c/n):0}%"></i></div>`}
 function renderKids(anim){ttsStop();const k=KT(),box=$("kids");document.documentElement.lang=ST.lang;document.documentElement.dir=U().dir;
   document.querySelectorAll(".knav button[data-k]").forEach(b=>{b.querySelector(".lb").textContent=k.nav[b.dataset.k];b.classList.toggle("on",b.dataset.k===ST.kview)});document.querySelectorAll(".knav .gbtn .gl").forEach(x=>x.textContent=(GT[ST.lang]||GT.es).nav);
   document.title=W?`${U().app}: ${wName(W)}`:U().app;
-  const top=kTop();let h="";
+  const top=kTop(ST.kview==="stk");let h="";
   if(ST.kview==="stk")h+=kAlbum();else if(ST.kview==="lb")h+=kLb();else if(ST.kview==="print")h+=kPrint();else h+=kPlay();
   {const nh=`${top}<div class="${anim?"kin":""}">${h}</div>`;if(anim||box.__h!==nh){box.innerHTML=nh;box.__h=nh}}
   const on=(id,f)=>{const e=$(id);if(e)e.onclick=f};
@@ -934,7 +948,7 @@ function kPlay(){const k=KT(),L=ST.lang==="he"?"אבגד":"ABCD";
   if(p>=n){const c=S.filter(gi=>a[gi]===key[gi]).length;return `${dh}${kPath(-1)}<div class="kwin">${confetti()}${sheepSVG(110,true)}<h2>${days?DL().dayDone:k.done}</h2><span class="kplus">${k.doneSub(c,n)} · ${c*KSTAR} ⭐</span></div>
     ${more?`<button class="kbtn" id="kNextDay">${DL().next}</button>`:""}<button class="kbtn alt" id="kToSt">${k.seeSt}</button><button class="kbtn ghost" id="kAgain">${k.again}</button>`}
   const gi=S[p],x=W.K[gi],t=x.t[ST.lang]||x.t.es,done=gi in a;SAY={q:sayQ(t),e:(a[gi]===x.a?"":k.answerWas+" "+plain(t.o[x.a])+". ")+plain(t.e)};
-  const head=`${dh}${kPath(p)}<span class="kqn">${days?esc(DL().al(cd))+" · ":""}${k.qOf(p+1,n)} · ${esc(wName(W))}${prc?` · <b>${k.practice}</b>`:""}</span>`;
+  const head=`${dh}<div class="kprog">${kPath(p)}<span class="kqn">${days?esc(DL().al(cd))+" · ":""}${k.qOf(p+1,n)}${prc?` · <b>${k.practice}</b>`:""}</span></div>`;
   if(done&&ST.kshow){const ok=a[gi]===x.a,col=STK_COL[gi%3];
     return `${head}
     <div class="kwin">${ok?confetti():""}${sheepSVG(ok?100:84,ok)}<h2>${ok?k.great[gi%k.great.length]:k.almost}</h2>${ok?`<span class="kplus">${prc?k.practice:k.plus}</span>`:`<span class="kans">${k.answerWas} ${t.o[x.a]}</span>`}</div>
@@ -944,28 +958,31 @@ function kPlay(){const k=KT(),L=ST.lang==="he"?"אבגד":"ABCD";
   const opts=t.o.map((o,i)=>`<button data-q="${gi}" data-k="${i}" ${done?"disabled":""} class="${done&&i===x.a?"right":""} ${done&&i===a[gi]&&a[gi]!==x.a?"wrong":""}"><span class="l">${L[i]}</span><span>${o}</span></button>`).join("");
   const one=t.o.some(o=>o.replace(/<[^>]+>/g,"").length>18);
   return `${head}
-  <div class="kcard"><div class="kscene">${kScene(x)}</div><div class="kqrow"><p class="kq">${t.q}</p>${ttsBtn("q")}</div>${x.v?x.v.map(v=>`<p class="kv" lang="he" dir="rtl">${v.t}</p>`).join(""):""}</div>
+  <div class="kcard kdraw"><div class="kscene">${kScene(x)}</div></div><div class="kqrow kqq"><p class="kq">${t.q}</p>${ttsBtn("q")}</div>${x.v?x.v.map(v=>`<p class="kv" lang="he" dir="rtl">${v.t}</p>`).join(""):""}
   <div class="kopts ${one?"one":""}">${opts}</div>${done?`<button class="kbtn" id="kNext">${p===n-1?k.finish:k.next}</button>`:""}`}
 function confetti(){const C=["#c2410c","#0f766e","#6d28d9","#eab308","#db2777"];let s="";for(let i=0;i<12;i++){const x=12+i*29,y=8+(i*37)%50;s+=`<rect x="${x}" y="${y}" width="9" height="14" rx="2" fill="${C[i%5]}" transform="rotate(${(i*47)%90-45} ${x} ${y})"/>`}return `<svg class="kconf" aria-hidden="true" viewBox="0 0 360 70" preserveAspectRatio="none">${s}</svg>`}
 function kPick(p,k){if(!W)return;const w=ST.weeks[W.id]||(ST.weeks[W.id]={answers:{}});w.kans=w.kans||{};if(p in w.kans)return;w.kans[p]=k;w.kf=w.kf||{};w.kf[p]=qfp(W.K[p]);w.kmig=1;if(k===W.K[p].a&&!w.kprinted){w.kst=w.kst||{};w.kst[p]=1}if(Object.keys(w.kans).length>=W.K.length)w.kdone=true;ST.kpos[kkey2()]=kSeq().indexOf(p);persist();
   const x=W.K[p],ok=k===x.a;sfx("tap");setTimeout(()=>{sfx(ok?"right":"wrong");if(ok&&!w.kprinted)sfx("sticker")},90);if(kSeq().every(i=>i in w.kans))setTimeout(()=>sfx("done"),700);
   ST.kshow=true;renderKids(true);window.scrollTo({top:0})}
-function kAlbum(){const k=KT(),t=kTotals();let h=`<h2 class="kh1">${k.album}</h2>`;
+function kAlbum(){const k=KT(),t=kTotals();let h=W&&hasDays(W)&&kdayArr(W)?daysHTML(true):"";
   if(W&&W.K&&W.K.length){const E=kEarned(W),s={c:Object.keys(E).length,t:W.K.length};
-    h+=`<span class="ksub">${esc(wName(W))} · ${k.stOf(s.c,s.t)} · ${k.missing(s.t-s.c)}</span><div class="kcard"><div class="kgrid">`+W.K.map((x,i)=>{const got=!!E[i];
-      return `<div><span class="kst ${got?"":"off"}" style="${got?`color:${STK_COL[i%3]};--r:${[-6,4,-3,7,-5,3,-4,6,-2,5][i%10]}deg`:""}">${got?kIcon(W,x.i):'<svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 18a6 6 0 1 1 8 5.6c-1.4.6-2 1.6-2 3v1.4M24 34v.5"/></svg>'}</span><span>${got?esc(stName(x)):"???"}</span></div>`}).join("")+`</div></div>`}
+    h+=`<div class="kcard"><div class="ksh"><h2>${esc(wName(W))}</h2><span>${k.stOf(s.c,s.t)}</span></div><div class="kgrid">`+W.K.map((x,i)=>{const got=!!E[i];
+      return `<div><span class="kst ${got?"":"off"}" style="${got?`color:${STK_COL[i%3]};--r:${[-6,4,-3,7,-5,3,-4,6,-2,5][i%10]}deg`:""}">${got?kIcon(W,x.i):'<svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 18a6 6 0 1 1 8 5.6c-1.4.6-2 1.6-2 3v1.4M24 34v.5"/></svg>'}</span><span>${got?esc(stName(x)):"???"}</span></div>`}).join("")+`</div><span class="ksub">${k.missing(s.t-s.c)}</span></div>`}
   else h+=`<div class="kempty">${k.noK}</div>`;
   h+=`<div class="krow"><div class="kbox"><b>${t.stars}</b><span>⭐ ${k.stars}</span></div><div class="kbox"><b>${t.stk}</b><span>${k.stickersTot}</span></div></div>
   <div class="kcard" style="margin-top:12px"><div class="kstk"><span style="line-height:0">${sheepSVG(56)}</span><div><div class="kans">${t.done} ${k.weeksDone}</div><div class="ksrc">${t.stk?k.lana:k.lanaHi}</div></div></div></div>`;
+  const r=kRows();h+=`<div class="kcard klb"><h2 class="kh2">${k.lbT}</h2>${r.length?kRank(r,5):`<p class="ksub">${k.lbEmpty}</p>`}</div>`;
   return h}
 function kRows(){const out=[];for(const id in scores){const d=scores[id]||{};if(d.kids!==true)continue;const st=Number(d.stars)||0;if(st<=0&&id!==myId())continue;out.push({id,st,nm:typeof d.name==="string"?d.name:"",un:typeof d.username==="string"?d.username:""})}
   if(uid&&!out.some(r=>r.id===uid)&&isKids()){const t=kTotals();if(t.stars>0)out.push({id:uid,st:t.stars,nm:ST.name||""})}
   out.forEach(r=>{if(r.id===uid){r.st=kTotals().stars;r.nm=dispName(ST.first||ST.name,ST.last,true)||r.nm;r.un=ST.user||r.un}});out.sort((a,b)=>b.st-a.st);return out}
 function kLb(){const k=KT(),r=kRows();let h=`<h2 class="kh1">${k.lbT}</h2><span class="ksub">${k.lbSub}</span>`;
   if(!r.length)return h+`<div class="kempty">${sheepSVG(80)}<br>${k.lbEmpty}</div>`;
-  const M=["#eab308","#9ca3af","#c2410c"];
-  h+=`<div class="kcard klb">`+r.slice(0,50).map((x,i)=>`<div class="klr ${x.id===myId()?"me":""}"><span class="kmed" style="${i<3?`background:${M[i]};color:#fff`:""}">${i+1}</span><span class="knm">${esc(maskName(safeName(x.nm))||k.someone)}${x.id===myId()?` <small>${k.you}</small>`:""}${x.un&&safeName(x.un)?`<small class="un">@${esc(maskUser(x.un))}</small>`:""}</span><span class="kst2">⭐ ${x.st}</span></div>`).join("")+`</div>`;
+  h+=`<div class="kcard klb">`+kRank(r,50)+`</div>`;
   return h}
+function kRank(r,lim){const k=KT(),M=["#f5b82e","#cfd6dd","#e3a77a"],me=r.findIndex(x=>x.id===myId());
+  const row=(x,i)=>`<div class="klr ${x.id===myId()?"me":""}"><span class="kmed" style="${i<3?`background:${M[i]}`:""}">${i+1}</span><span class="knm">${esc(maskName(safeName(x.nm))||k.someone)}${x.id===myId()?` <small>${k.you}</small>`:""}${x.un&&safeName(x.un)?`<small class="un">@${esc(maskUser(x.un))}</small>`:""}</span><span class="kst2">⭐ ${x.st}</span></div>`;
+  return r.slice(0,lim).map(row).join("")+(me>=lim?`<div class="klr dots" aria-hidden="true">…</div>`+row(r[me],me):"")}
 function stName(x){const t=x.t[ST.lang]||x.t.es;return t.o[x.a].replace(/<[^>]+>/g,"")}
 let kprMode="q";
 function kPrint(){const k=KT(),L=ST.lang==="he"?"אבגד":"ABCD";if(!W||!W.K||!W.K.length)return `<div class="kempty">${k.noK}</div>`;
