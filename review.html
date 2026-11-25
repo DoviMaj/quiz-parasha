@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Revisión de contenido</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Rubik:wght@400;500;600&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4ecdc;--hd:#fdf6ea;--line:#e2d1b1;--ink:#2e2a24;--mut:#5a4e3c;--grn:#4f6b3a;--grnd:#3d5a2b;--grnb:#e3ecd9;--ter:#b5562f;--terd:#8f4022;--terb:#f6e0d5;--amb:#fde7c7;--ambd:#7a3a0c}
+*{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:Rubik,system-ui,sans-serif;font-size:15px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--ter)}
+.he{font-family:'Frank Ruhl Libre',serif}
+.hd{background:var(--hd);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.nw{flex-wrap:nowrap}
+.grow{flex:1 1 auto;min-width:0}
+.logo{width:36px;height:36px;border-radius:10px;background:var(--ter);display:flex;align-items:center;justify-content:center;flex:none}
+.ttl{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;line-height:1.1}
+.sub{font-size:13px;color:var(--mut)}
+.btn{border:1px solid var(--line);background:#fff;border-radius:12px;min-height:44px;padding:0 14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.grn{background:var(--grn);color:#fff;border-color:var(--grn)}
+.btn.ter{border:1.5px solid var(--ter);color:var(--terd)}
+.btn.ghost{border:0;background:transparent;padding:0 6px;color:var(--ter)}
+.btn[disabled]{background:var(--line);color:var(--mut);cursor:default;border-color:var(--line)}
+.ic{width:44px;height:44px;border:0;background:transparent;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;flex:none;padding:0}
+.ic .badge{position:absolute;top:2px;inset-inline-end:-2px;font-size:11px;padding:0 5px;line-height:16px}
+.badge{background:var(--ter);color:#fff;border-radius:999px;padding:1px 8px;font-size:12px}
+select.btn{padding:0 10px;max-width:100%}
+.seg{display:flex;gap:4px;background:#e9dcc4;border-radius:12px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:9px;min-height:40px;padding:0 12px;color:var(--mut);font-weight:500;flex:1}
+.seg button[aria-selected=true],.seg button[aria-checked=true]{background:var(--hd);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(46,42,36,.18)}
+.lt{display:flex;gap:2px;background:#efe2ca;border-radius:10px;padding:3px;margin-inline-start:auto}
+.lt button{border:0;background:transparent;border-radius:8px;min-width:40px;min-height:36px;font-size:13px;color:var(--mut);font-weight:500}
+.lt button[aria-selected=true]{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(46,42,36,.2)}
+.av{width:32px;height:32px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex:none}
+.av.s{width:26px;height:26px;font-size:11px}
+.prog{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px}
+.stat i{width:12px;height:12px;border-radius:50%;flex:none}
+.stat b{font-family:'Baloo 2',sans-serif;font-size:24px;font-weight:800;line-height:1.1;display:block}
+.stat span{font-size:12px;color:var(--mut)}
+.wrap{padding:14px 16px 110px;display:flex;flex-direction:column;gap:14px}
+.h2{margin:0 6px 2px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;min-height:40px;padding:0 14px;font-weight:500;display:inline-flex;align-items:center}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+.days{display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:0 16px 2px}
+.days .chip{flex:none;min-height:36px;font-size:13px}
+.days .chip.full{border-color:var(--grn);background:var(--grnb);color:var(--grnd)}
+.days .chip.on{background:var(--ink);color:#fff}
+.side{display:flex;flex-direction:column;gap:14px}
+.dlist{display:none}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.lrow{width:100%;text-align:start;border:0;background:transparent;padding:12px 14px;display:flex;align-items:center;gap:10px;min-height:56px}
+.lrow .n{font-size:13px;font-weight:600;color:var(--mut);flex:none;min-width:44px}
+.lrow .q{flex:1;min-width:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:500}
+.art{display:flex;flex-direction:column}
+.main{padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.pill{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;white-space:nowrap;flex:none;background:#efe2ca;color:var(--mut)}
+.pill.ok,.pill.easy{background:var(--grnb);color:var(--grnd)}
+.pill.change,.pill.hard{background:var(--terb);color:var(--terd)}
+.pill.wait,.pill.med{background:var(--amb);color:var(--ambd)}
+.pill.src{background:#f4ecdc;color:var(--ink);font-weight:500}
+.pill.st{margin-inline-start:auto}
+.q{margin:0;font-size:18px;font-weight:600;line-height:1.4}
+.q.he{font-size:20px}
+.alt{display:none;flex-direction:column;gap:4px;font-size:14px;color:var(--mut);line-height:1.45}
+.alt b{color:var(--ink)}
+.verse{border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:4px;background:#fffdf8}
+.verse small{font-size:12px;font-weight:600;color:var(--mut)}
+.verse p{margin:0;font-family:'Frank Ruhl Libre',serif;font-size:19px;line-height:1.7;text-align:right}
+.kimg{width:100%;aspect-ratio:2/1;border-radius:12px;border:1px solid var(--line);background:#fffdf8;display:block}
+ol.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:8px;min-height:48px;padding:6px 12px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.opt.c{background:var(--grnb);border:1.5px solid var(--grn)}
+.opt .l{width:20px;font-weight:600;color:var(--ter);flex:none}
+.opt .t{flex:1;min-width:0}
+.opt .ok{font-size:12px;font-weight:600;color:var(--grn)}
+.opt .len{font-size:12px;color:var(--mut);display:none}
+.expl{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.55}
+.expl em{display:block;margin-top:6px;color:var(--mut);font-style:normal}
+.srcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.hep{margin:0;font-family:'Frank Ruhl Libre',serif;font-size:19px;line-height:1.75;text-align:right;white-space:pre-line}
+.enp{margin:0;font-size:14px;line-height:1.5;color:var(--mut);white-space:pre-line}
+mark{background:var(--amb);color:var(--ink);border-radius:4px;padding:0 3px}
+.h5{margin:0;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.srcs{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:#fffdf8}
+.srcs h5{margin:0;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.srcs .chip{min-height:36px;font-size:13px;text-decoration:none;color:var(--ink)}
+.srcs .chip.est{border-style:dashed}
+.srcs .chip small{color:var(--mut);margin-inline-start:6px;font-size:11px}
+.sp{max-height:55vh;overflow:auto;border-top:1px solid var(--line);padding-top:8px;display:flex;flex-direction:column;gap:14px;overscroll-behavior:contain}
+.sp h6{margin:0 0 4px;font-size:13px;font-weight:600}
+.sp .he{font-size:18px;line-height:1.7;text-align:right;white-space:pre-line}
+.sp .en{font-size:14px;line-height:1.5;color:var(--mut);white-space:pre-line}
+.acts{display:none;gap:8px;flex-wrap:wrap}
+.mk{border-radius:12px;min-height:46px;padding:0 18px;font-weight:600;background:#fff}
+.mk.ok{border:1.5px solid var(--grn);color:var(--grnd)}.mk.ok.on{background:var(--grn);color:#fff}
+.mk.chg{border:1.5px solid var(--ter);color:var(--terd)}.mk.chg.on{background:var(--ter);color:#fff}
+.cm{background:var(--hd);border-top:1px solid var(--line);padding:14px;display:none;flex-direction:column;gap:12px}
+.cm h4{margin:0;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.msg{display:flex;gap:10px}
+.msg .b{display:flex;flex-direction:column;gap:3px;font-size:14px;line-height:1.45;min-width:0;overflow-wrap:anywhere}
+.msg .b>span:first-child span{color:var(--mut)}
+.tag{align-self:flex-start;background:var(--terb);color:var(--terd);border-radius:999px;padding:2px 8px;font-size:12px;font-weight:600}
+.diff{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+.diff div{padding:8px 10px}
+.diff .bf{background:#fbe9e3}.diff .bf b{color:var(--terd)}.diff .bf s{display:block}
+.diff .af{background:var(--grnb)}.diff .af b{color:var(--grnd)}.diff .af span{display:block}
+textarea.f{border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:10px 12px;width:100%;resize:vertical;min-height:64px}
+textarea.f.hot{border:2px solid var(--ter);border-radius:14px;padding:12px;font-size:16px}
+label.l{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--hd);border-top:1px solid var(--line);padding:10px 16px calc(14px + env(safe-area-inset-bottom));display:grid;grid-template-columns:56px repeat(2,minmax(0,1fr));gap:8px;z-index:5}
+.bar button{min-height:52px;border-radius:14px;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;position:relative}
+.bar button.mk{font-size:16px;padding:0 4px}
+.bar .cn{position:absolute;top:6px;inset-inline-end:6px;background:#6d28d9;color:#fff;border-radius:999px;padding:0 6px;font-size:11px;font-weight:600;line-height:17px}
+.ticks{display:grid;gap:2px}.ticks span{height:4px;border-radius:2px;background:var(--line)}
+.dash{padding:24px;text-align:center;background:#fff;border:1px dashed #d4c09c;border-radius:18px;color:var(--mut)}
+.center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.box{max-width:420px;width:100%;background:var(--hd);border:1px solid var(--line);border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center}
+.box h1{margin:0;font-family:'Baloo 2',sans-serif;font-size:26px;font-weight:800;line-height:1.1}
+.box p{margin:0;color:var(--mut);line-height:1.5}
+.ov{position:fixed;inset:0;background:rgba(46,42,36,.4);display:flex;align-items:flex-end;justify-content:center;z-index:20;overflow:auto}
+.dlg{width:100%;max-width:560px;background:var(--hd);border-radius:22px 22px 0 0;padding:10px 16px calc(20px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;max-height:92%;overflow:auto;box-shadow:0 -8px 30px rgba(46,42,36,.25)}
+.dlg.full{max-width:none;height:100%;max-height:none;border-radius:0}
+.dlg h2{margin:0;font-family:'Baloo 2',sans-serif;font-size:24px;font-weight:800;line-height:1.1}
+.grab{align-self:center;width:40px;height:5px;border-radius:3px;background:#d4c09c;flex:none}
+.chk{list-style:none;margin:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.chk li{display:flex;gap:12px;padding:12px 14px;align-items:flex-start}
+.chk li+li{border-top:1px solid #efe2ca}
+.chk .m{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;background:var(--terb);color:var(--terd)}
+.chk .m.g{background:var(--grn);color:#fff}
+.chk b{display:block;font-size:15px}.chk span.s{font-size:13px;color:var(--mut);line-height:1.4}
+.team{max-width:560px;margin:0 auto;width:100%}
+.tp{display:flex;align-items:center;gap:10px;padding:10px 14px;min-height:64px}
+.tp+.tp{border-top:1px solid #efe2ca}
+.rolebtn{border-radius:999px;min-height:36px;padding:0 12px;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--hd)}
+.dr{width:100%;border:1px solid transparent;border-radius:12px;background:transparent;min-height:48px;padding:4px 12px;display:flex;align-items:center;gap:10px;text-align:start}
+.dr.on{background:#fff;border-color:var(--line)}
+.dr i{display:block;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.dr i span{display:block;height:100%}
+@media (min-width:900px){
+ .hd{padding:14px 24px}
+ .wrap{padding:20px 24px 48px;flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:20px}
+ .stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .top{width:100%;display:flex;flex-direction:column;gap:10px}
+ .side{flex:1 1 240px;max-width:300px}
+ .dlist{display:flex;flex-wrap:wrap;gap:4px}
+ .days.m{display:none}
+ .mainc{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px}
+ .art{flex-direction:row;flex-wrap:wrap}
+ .art .main{flex:999 1 420px;padding:18px 20px}
+ .art .cm{display:flex;flex:1 1 300px;border-top:0;border-inline-start:1px solid var(--line);padding:18px}
+ .alt{display:flex}
+ .opt .len{display:block}
+ .acts{display:flex}
+ .bar,.mob{display:none!important}
+ .dlg{border-radius:22px;margin:auto;padding:24px}
+ .dlg.full{height:auto;max-width:560px;border-radius:22px}
+ .grab{display:none}
+ .ov{align-items:center;padding:24px}
+ .box h1{font-size:30px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="config.js"></script>
+<script type="module">
+import { deriveRefs, verseRefs, sefUrl, apiUrl, parseText } from "./review-refs.mjs";
+/* ---------- environment: ?mock=1 works ONLY on http://localhost ---------- */
+const MOCK = location.hostname === "localhost" && new URLSearchParams(location.search).get("mock") === "1";
+const P = new URLSearchParams(location.search);
+
+/* ---------- i18n ---------- */
+const TX = {
+es: {
+ rev:"Revisión", quiz:"Quiz de la Parashá", signT:"Revisión de contenido", signS:"Entra con tu cuenta de Google para revisar los borradores semanales.", signB:"Iniciar sesión con Google",
+ noroleT:"Pide acceso al dueño", noroleS:"Tu cuenta no tiene permiso para revisar. Pídele al dueño que te agregue con este correo:", out:"Cerrar sesión",
+ draft:"Borrador", deadline:"Fecha límite: jueves", approvalBtn:"Aprobación final", team:"Equipo", content:"Contenido", adults:"Adultos", kids:"Niños", days:"Días",
+ pend:"pendientes", good:"marcadas “Bien”", chg:"con cambios", applied:"aplicados", openc:"comentarios abiertos", revd:"{a} de {b} ítems revisados · {c} de adultos y {d} de niños",
+ all:"Todos", fOpen:"Pendientes", fChg:"Con cambios", fOk:"Bien", lvl:"Nivel", easy:"Fácil", med:"Media", hard:"Difícil",
+ stOpen:"Pendiente", stOk:"Bien", stChg:"Cambio pedido", stWait:"Cambio aplicado · confirmar", btnOk:"Bien", btnChg:"Pedir cambio", correct:"Correcta", chars:"car.",
+ expl:"Explicación", kexpl:"¿Sabías que…?", source:"Fuente", verse:"Pasuk", comments:"Comentarios", reply:"Responder", ph:"Escribe un comentario…", send:"Enviar", noc:"Sin comentarios todavía.", cmSend:"Comentar", cmPh:"Tu comentario para el equipo y Claude…",
+ before:"Antes", after:"Después", confirm:"Confirmar el cambio", nothing:"Nada en este filtro.", back:"Lista", qn:"{p} de {m}", draw:"Dibujo", bk:"Atrás", close:"Cerrar", expBtn:"Explicación y fuente",
+ chgT:"Pedir un cambio", chgK:"¿Qué tipo de problema es?", chgW:"¿Qué hay que cambiar?", chgPh:"Ej.: la opción correcta es la única cita de Rashí", chgSend:"Enviar pedido de cambio", chgNeed:"Di qué hay que cambiar para poder enviarlo.",
+ k_hint:"Pista en las opciones", k_fact:"Dato o fuente", k_lang:"Traducción", k_typo:"Ortografía", k_other:"Otro", chgTag:"Cambio · {k}",
+ srcT:"Fuentes", est:"estimado",  sLoad:"Cargando de Sefaria…", sErr:"No se pudo cargar de Sefaria.", sOpen:"Abrir en Sefaria", sVerse:"Pasuk",
+ fT:"Aprobar", fOnly:"Solo los aprobadores pueden aprobar.", fGo:"Aprobar y publicar en la app", fGoS:"Claude lo publica en cuanto lo apruebes.", fMiss:"Faltan {n} cosas para aprobar", fRet:"Devolver a Claude con una nota", fNote:"Nota para Claude…", fSent:"Nota enviada",
+ c1:"Todo revisado", c1o:"Todos los ítems tienen “Bien”.", c1b:"{n} ítems todavía sin revisar.", c2:"Cambios confirmados", c2o:"Todos los cambios están confirmados.", c2b:"{n} cambios pendientes de aplicar o confirmar.",
+ c3:"Comentarios cerrados", c3o:"No quedan hilos abiertos.", c3b:"{n} hilos esperan respuesta.", see:"Ver", approved:"Aprobada por {n}", published:"Publicada",
+ tT:"Revisores", tCount:"{n} personas · {m} pueden aprobar", tInv:"Invitar a alguien", tMail:"Correo", tRole:"Rol", tAdd:"Invitar", tRem:"Quitar", tYou:"Tú", admin:"Dueño", approver:"Aprobador", reviewer:"Revisor", tBad:"Correo no válido", tAsk:"¿Quitar a {e}?", tTeam:"Equipo", tCopy:"Copiar enlace", tCopied:"¡Copiado!",
+ tHelpR:"Revisa y comenta. No puede aprobar la semana.", tHelpA:"Revisa, comenta y además puede dar la aprobación final.", tHelpD:"Todo lo anterior, y además administra a las personas.",
+ tFoot:"Después de invitar, copia el enlace y mándalo por WhatsApp o correo. La persona entra con su cuenta de Google y ya puede revisar. Toca el rol de alguien para cambiarlo.",
+ noDraft:"Todavía no hay borradores.", loading:"Cargando…", err:"No se pudo guardar. Revisa tu conexión.", lang:"Idioma",
+ whence:"De dónde salió", sOpenA:"Abrir en Sefaria ↗", readAt:"leído por Claude el {w}", readBy:"Leído por Claude en Sefaria el {w}.", howT:"Cómo lo usó Claude", uQ:"Pregunta", uC:"Correcta", uD:"Distractores", fullB:"Ver comentario completo", fullH:"Mostrar solo la parte usada",
+ day:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]},
+en: {
+ rev:"Review", quiz:"Parashah Quiz", signT:"Content review", signS:"Sign in with your Google account to review the weekly drafts.", signB:"Sign in with Google",
+ noroleT:"Ask the owner for access", noroleS:"Your account is not allowed to review. Ask the owner to add you with this email:", out:"Sign out",
+ draft:"Draft", deadline:"Deadline: Thursday", approvalBtn:"Final approval", team:"Team", content:"Content", adults:"Adults", kids:"Kids", days:"Days",
+ pend:"pending", good:"marked “Good”", chg:"with changes", applied:"applied", openc:"open comments", revd:"{a} of {b} items reviewed · {c} adult, {d} kids",
+ all:"All", fOpen:"Pending", fChg:"With changes", fOk:"Good", lvl:"Level", easy:"Easy", med:"Medium", hard:"Hard",
+ stOpen:"Pending", stOk:"Good", stChg:"Change requested", stWait:"Change applied · confirm", btnOk:"Good", btnChg:"Request change", correct:"Correct", chars:"ch.",
+ expl:"Explanation", kexpl:"Did you know…?", source:"Source", verse:"Verse", comments:"Comments", reply:"Reply", ph:"Write a comment…", send:"Send", noc:"No comments yet.", cmSend:"Comment", cmPh:"Your comment for the team and Claude…",
+ before:"Before", after:"After", confirm:"Confirm the change", nothing:"Nothing in this filter.", back:"List", qn:"{p} of {m}", draw:"Drawing", bk:"Back", close:"Close", expBtn:"Explanation and source",
+ chgT:"Request a change", chgK:"What kind of problem is it?", chgW:"What needs to change?", chgPh:"E.g. the correct option is the only direct Rashi quote", chgSend:"Send change request", chgNeed:"Say what needs to change to send it.",
+ k_hint:"Hint in the options", k_fact:"Fact or source", k_lang:"Translation", k_typo:"Spelling", k_other:"Other", chgTag:"Change · {k}",
+ srcT:"Sources", est:"estimated",  sLoad:"Loading from Sefaria…", sErr:"Could not load from Sefaria.", sOpen:"Open on Sefaria", sVerse:"Verse",
+ fT:"Approve", fOnly:"Only approvers can approve.", fGo:"Approve and publish to the app", fGoS:"Claude publishes it as soon as you approve.", fMiss:"{n} things left to approve", fRet:"Send back to Claude with a note", fNote:"Note for Claude…", fSent:"Note sent",
+ c1:"Everything reviewed", c1o:"Every item is marked “Good”.", c1b:"{n} items still unreviewed.", c2:"Changes confirmed", c2o:"All changes are confirmed.", c2b:"{n} changes waiting to be applied or confirmed.",
+ c3:"Comments closed", c3o:"No open threads.", c3b:"{n} threads await a reply.", see:"View", approved:"Approved by {n}", published:"Published",
+ tT:"Reviewers", tCount:"{n} people · {m} can approve", tInv:"Invite someone", tMail:"Email", tRole:"Role", tAdd:"Invite", tRem:"Remove", tYou:"You", admin:"Owner", approver:"Approver", reviewer:"Reviewer", tBad:"Invalid email", tAsk:"Remove {e}?", tTeam:"Team", tCopy:"Copy link", tCopied:"Copied!",
+ tHelpR:"Reviews and comments. Cannot approve the week.", tHelpA:"Reviews, comments and can also give the final approval.", tHelpD:"Everything above, plus manages people.",
+ tFoot:"After inviting, copy the link and send it by WhatsApp or email. They sign in with their Google account and can review. Tap someone’s role to change it.",
+ noDraft:"No drafts yet.", loading:"Loading…", err:"Could not save. Check your connection.", lang:"Language",
+ whence:"Where it came from", sOpenA:"Open on Sefaria ↗", readAt:"read by Claude on {w}", readBy:"Read by Claude on Sefaria on {w}.", howT:"How Claude used it", uQ:"Question", uC:"Correct", uD:"Distractors", fullB:"Show full commentary", fullH:"Show only the part used",
+ day:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]},
+he: {
+ rev:"סקירה", quiz:"חידון הפרשה", signT:"סקירת תוכן", signS:"היכנסו עם חשבון Google כדי לסקור את הטיוטות השבועיות.", signB:"התחברות עם Google",
+ noroleT:"בקשו גישה מהבעלים", noroleS:"לחשבון שלכם אין הרשאת סקירה. בקשו מהבעלים להוסיף אתכם עם כתובת זו:", out:"התנתקות",
+ draft:"טיוטה", deadline:"מועד אחרון: יום חמישי", approvalBtn:"אישור סופי", team:"צוות", content:"תוכן", adults:"מבוגרים", kids:"ילדים", days:"ימים",
+ pend:"ממתינות", good:"סומנו ״בסדר״", chg:"עם שינויים", applied:"יושמו", openc:"הערות פתוחות", revd:"{a} מתוך {b} פריטים נסקרו · {c} למבוגרים ו-{d} לילדים",
+ all:"הכול", fOpen:"ממתינות", fChg:"עם שינויים", fOk:"בסדר", lvl:"רמה", easy:"קל", med:"בינוני", hard:"קשה",
+ stOpen:"ממתין", stOk:"בסדר", stChg:"התבקש שינוי", stWait:"השינוי יושם · לאשר", btnOk:"בסדר", btnChg:"לבקש שינוי", correct:"נכונה", chars:"תו׳",
+ expl:"הסבר", kexpl:"ידעתם ש…?", source:"מקור", verse:"פסוק", comments:"הערות", reply:"תגובה", ph:"כתבו הערה…", send:"שליחה", noc:"אין הערות עדיין.", cmSend:"להגיב", cmPh:"ההערה שלכם לצוות ול-Claude…",
+ before:"לפני", after:"אחרי", confirm:"לאשר את השינוי", nothing:"אין כלום בסינון הזה.", back:"רשימה", qn:"{p} מתוך {m}", draw:"ציור", bk:"חזרה", close:"סגירה", expBtn:"הסבר ומקור",
+ chgT:"בקשת שינוי", chgK:"איזו בעיה זו?", chgW:"מה צריך לשנות?", chgPh:"למשל: התשובה הנכונה היא ציטוט ישיר היחיד מרש״י", chgSend:"שליחת בקשת שינוי", chgNeed:"כתבו מה צריך לשנות כדי לשלוח.",
+ k_hint:"רמז באפשרויות", k_fact:"עובדה או מקור", k_lang:"תרגום", k_typo:"איות", k_other:"אחר", chgTag:"שינוי · {k}",
+ srcT:"מקורות", est:"משוער",  sLoad:"טוען מספריא…", sErr:"לא ניתן לטעון מספריא.", sOpen:"פתח בספריא", sVerse:"פסוק",
+ fT:"אישור", fOnly:"רק מאשרים יכולים לאשר.", fGo:"לאשר ולפרסם באפליקציה", fGoS:"Claude יפרסם מיד לאחר האישור.", fMiss:"חסרים {n} דברים לאישור", fRet:"להחזיר ל-Claude עם הערה", fNote:"הערה ל-Claude…", fSent:"ההערה נשלחה",
+ c1:"הכול נסקר", c1o:"כל הפריטים מסומנים ״בסדר״.", c1b:"{n} פריטים טרם נסקרו.", c2:"שינויים אושרו", c2o:"כל השינויים אושרו.", c2b:"{n} שינויים ממתינים ליישום או לאישור.",
+ c3:"הערות סגורות", c3o:"אין שרשורים פתוחים.", c3b:"{n} שרשורים ממתינים לתשובה.", see:"הצג", approved:"אושר על ידי {n}", published:"פורסם",
+ tT:"סוקרים", tCount:"{n} אנשים · {m} יכולים לאשר", tInv:"להזמין מישהו", tMail:"דוא״ל", tRole:"תפקיד", tAdd:"הזמנה", tRem:"הסרה", tYou:"אתם", admin:"בעלים", approver:"מאשר", reviewer:"סוקר", tBad:"כתובת לא תקינה", tAsk:"להסיר את {e}?", tTeam:"צוות", tCopy:"העתקת קישור", tCopied:"הועתק!",
+ tHelpR:"סוקר ומגיב. לא יכול לאשר את השבוע.", tHelpA:"סוקר, מגיב, ויכול גם לתת את האישור הסופי.", tHelpD:"כל האמור לעיל, וגם מנהל את האנשים.",
+ tFoot:"לאחר ההזמנה, העתיקו את הקישור ושלחו בוואטסאפ או במייל. האדם נכנס עם חשבון Google ויכול לסקור. לחצו על התפקיד כדי לשנות אותו.",
+ noDraft:"אין טיוטות עדיין.", loading:"טוען…", err:"השמירה נכשלה. בדקו את החיבור.", lang:"שפה",
+ whence:"מנין הגיע", sOpenA:"פתיחה בספריא ↗", readAt:"נקרא על ידי Claude ב{w}", readBy:"נקרא על ידי Claude בספריא ב{w}.", howT:"איך Claude השתמש בו", uQ:"שאלה", uC:"נכונה", uD:"מסיחים", fullB:"הצג פירוש מלא", fullH:"הצג רק את החלק שנוצל",
+ day:["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"]}
+};
+let UI = "es";
+try { const l = JSON.parse(localStorage.getItem("review-lang") || "null") || JSON.parse(localStorage.getItem("parasha-app-v1") || "{}").lang; if (TX[l]) UI = l; } catch (e) {}
+if (MOCK && TX[P.get("lang")]) UI = P.get("lang");
+const t = (k, v) => { let s = (TX[UI][k] ?? TX.es[k] ?? k); if (v) for (const x in v) s = s.replace("{" + x + "}", v[x]); return s; };
+
+/* ---------- helpers ---------- */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const san = s => esc(s).replace(/&lt;(\/?)(i|b)&gt;/g, "<$1$2>").replace(/&lt;bdi dir=&quot;rtl&quot;&gt;/g, '<bdi dir="rtl">').replace(/&lt;\/bdi&gt;/g, "</bdi>");
+const plain = s => String(s ?? "").replace(/<[^>]*>/g, "");
+const ini = n => String(n || "?").trim().split(/[\s@.]+/).filter(Boolean).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+const COL = ["#0f766e", "#6d28d9", "#4f6b3a", "#b5562f", "#1d4ed8", "#9d174d"];
+const colr = id => { let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return COL[h % COL.length]; };
+const av = (id, n, sm) => id === "claude" ? `<span class="av${sm ? " s" : ""}" style="background:#2e2a24">C</span>` : `<span class="av${sm ? " s" : ""}" style="background:${colr(id)}">${esc(ini(n))}</span>`;
+const fmt = at => { try { return new Date(at).toLocaleString(UI, { weekday: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return ""; } };
+const badEmail = e => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+const svg = (d, w = 22) => `<svg aria-hidden="true" width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="#2e2a24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+/* ---------- Sefaria text (cached per ref; stubbed in mock mode) ---------- */
+const SEF = new Map();
+function sefLoad(ref) {
+  if (SEF.has(ref)) return;
+  SEF.set(ref, { st: "load" });
+  const done = (o) => { SEF.set(ref, o); render(); };
+  if (MOCK) { setTimeout(() => P.get("sef") === "err" ? done({ st: "err" }) : done({ st: "ok", he: "וַיִּשְׁלַח יַעֲקֹב מַלְאָכִים לְפָנָיו אֶל־עֵשָׂו אָחִיו — טקסט לדוגמה לבדיקה.\n\nעוד פסקה של פירוש לדוגמה.", en: "Jacob sent messengers ahead of him to his brother Esau. (Fixed sample text for tests.)\n\nAnother sample commentary paragraph." }), 30); return; }
+  fetch(apiUrl(ref)).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(j => { const o = parseText(j); done(o.he || o.en ? { st: "ok", ...o } : { st: "err" }); }).catch(() => done({ st: "err" }));
+}
+function refsOf(it) {
+  const vs = verseRefs(it.v).map(ref => ({ ref, verse: true }));
+  const src = Array.isArray(it.src) && it.src.length ? it.src.filter(x => x && x.ref).map(x => ({ ...x })) : deriveRefs((it.t.es || {}).s, it.v);
+  return { vs, src: src.filter(x => !vs.some(v => v.ref === x.ref)) };
+}
+
+/* ---------- backend: real (Firebase v10 modular, like shim.js) or in-memory mock ---------- */
+async function realBackend() {
+  const V = "https://www.gstatic.com/firebasejs/10.12.2/";
+  const [a, f, au] = await Promise.all([import(V + "firebase-app.js"), import(V + "firebase-firestore.js"), import(V + "firebase-auth.js")]);
+  const app = a.initializeApp(window.QUIZ_CFG.firebase), auth = au.getAuth(app), fs = f.getFirestore(app);
+  const D = p => f.doc(fs, p), C = p => f.collection(fs, p);
+  const snap = (ref, cb) => f.onSnapshot(ref, cb, e => console.warn("snapshot", e.code));
+  const wrap = u => u ? { uid: u.uid, email: (u.email || "").toLowerCase(), name: u.displayName || u.email, anon: u.isAnonymous } : null;
+  let emit = () => {};
+  return {
+    onAuth(cb) { emit = () => cb(wrap(auth.currentUser)); au.onAuthStateChanged(auth, emit); },
+    async signIn() {
+      const p = new au.GoogleAuthProvider(), u = auth.currentUser;
+      try {
+        if (u && u.isAnonymous) { try { await au.linkWithPopup(u, p); } catch (e) { if (e.code === "auth/credential-already-in-use") await au.signInWithCredential(auth, au.GoogleAuthProvider.credentialFromError(e)); else throw e; } }
+        else await au.signInWithPopup(auth, p);
+      } catch (e) { if (!/popup-closed|cancelled/.test(e.code || "")) console.warn(e); return; }
+      await auth.currentUser.getIdToken(true); emit();
+    },
+    signOut() { return au.signOut(auth).then(emit); },
+    async getRole(email) { try { const s = await f.getDoc(D("roles/" + email)); return s.exists() ? s.data() : null; } catch (e) { return null; } },
+    watchDrafts: cb => snap(C("drafts"), s => cb(s.docs.map(d => d.data()))),
+    watchDays: (id, cb) => snap(C(`drafts/${id}/days`), s => { const m = {}; s.docs.forEach(d => m[d.id] = d.data()); cb(m); }),
+    watchThreads: (id, cb) => snap(C(`drafts/${id}/threads`), s => { const m = {}; s.docs.forEach(d => m[d.id] = d.data()); cb(m); }),
+    watchMsgs: (id, key, cb) => snap(f.query(C(`drafts/${id}/threads/${key}/messages`), f.orderBy("at")), s => cb(s.docs.map(d => d.data()))),
+    setMark(id, key, me, v) {
+      const o = { marks: { [me.uid]: v }, names: { [me.uid]: me.name } };
+      if (v === "change") o.reply = f.deleteField();
+      return f.setDoc(D(`drafts/${id}/threads/${key}`), o, { merge: true });
+    },
+    addMsg(id, key, me, text, kind) {
+      const at = Date.now(), b = f.writeBatch(fs), m = { uid: me.uid, name: me.name, text, at, by: "human" };
+      if (kind) m.kind = kind;
+      b.set(f.doc(C(`drafts/${id}/threads/${key}/messages`)), m);
+      b.set(D(`drafts/${id}/threads/${key}`), { last: { by: "human", uid: me.uid, at } }, { merge: true });
+      return b.commit();
+    },
+    approve: (id, me) => f.updateDoc(D("drafts/" + id), { status: "approved", approvedBy: me.email, approvedName: me.name, approvedAt: Date.now() }),
+    watchRoles: cb => snap(C("roles"), s => cb(s.docs.map(d => ({ email: d.id, ...d.data() })))),
+    putRole: (email, role, me) => f.setDoc(D("roles/" + email), { role, addedBy: me.email, at: Date.now() }),
+    delRole: email => f.deleteDoc(D("roles/" + email)),
+    setMarked: (id, uid, n) => f.updateDoc(D("drafts/" + id), { ["marked." + uid]: n }),
+  };
+}
+
+async function mockBackend() {
+  const w = await (await fetch("weeks/vayishlach-5787.json")).json();
+  const as = P.get("as") || "approver", ready = P.get("ready") === "1";
+  const days = {}; for (let n = 1; n <= 7; n++) days[n] = { day: n, Q: w.Q.filter(x => x.day === n), K: w.K.filter(x => x.day === n) };
+  days[3].Q[0].src = [{ ref: "Ramban on Genesis 32:26", url: "https://www.sefaria.org/Ramban_on_Genesis.32.26", edition: "Sefaria · edición vocalizada", readAt: "lunes 10:14", text: { he: "וְהָעִנְיָן כִּי הַמְּאֹרָע כֻּלּוֹ רֶמֶז לְדוֹרוֹתָיו… שֶׁיִּהְיֶה דּוֹר בְּזַרְעוֹ שֶׁל יַעֲקֹב יִתְגַּבֵּר עֵשָׂו עֲלֵיהֶם עַד שֶׁיִּהְיֶה קָרוֹב לְקַעְקֵעַ בֵּיצָתָן…", en: "(sample English text for tests)" }, used: "שֶׁיִּהְיֶה דּוֹר בְּזַרְעוֹ שֶׁל יַעֲקֹב יִתְגַּבֵּר עֵשָׂו עֲלֵיהֶם עַד שֶׁיִּהְיֶה קָרוֹב לְקַעְקֵעַ בֵּיצָתָן", question: "el orden de la herida", correct: "la frase resaltada", distractors: "inventados; ningún comentarista los sostiene" }];
+  const meta = { id: w.id, name: w.name, shabbat: w.shabbat, status: "review", rev: 2, counts: { adult: w.Q.length, kids: w.K.length }, approvedBy: null };
+  const people = { u1: "Sara L.", u2: "Moshé K.", u3: "David M.", me: "David M." };
+  const th = {}, msgs = {};
+  const mark = (k, u, v) => { (th[k] = th[k] || { marks: {}, names: {} }).marks[u] = v; th[k].names[u] = people[u]; };
+  for (let n = 1; n <= 7; n++) {
+    days[n].Q.forEach((_, i) => { if (ready || n <= 2 || (n === 3 && i < 12) || (n === 4 && i % 3 === 0)) mark(`q${n}_${i}`, "u1", "ok"); if (ready || n === 1 || (n === 3 && i < 5)) mark(`q${n}_${i}`, "u2", "ok"); });
+    days[n].K.forEach((_, i) => { if (ready || n < 3) mark(`k${n}_${i}`, "u1", "ok"); });
+  }
+  if (!ready) {
+    mark("q3_8", "u2", "change"); th.q3_8.last = { by: "claude", uid: "claude", at: Date.now() - 36e5 }; th.q3_8.reply = { at: Date.now() - 36e5, changed: true };
+    const q = days[3].Q[8], ok = q.t.es.o[q.a];
+    msgs.q3_8 = [
+      { uid: "u2", name: "Moshé K.", text: "La correcta es bastante más larga que las otras tres; se adivina por el largo.", at: Date.now() - 864e5, by: "human", kind: "hint" },
+      { uid: "claude", name: "Claude", text: "Tienes razón. Acorté la opción y ajusté las demás para que tengan un largo parecido. El sentido sigue a la fuente.", at: Date.now() - 36e5, by: "claude", before: ok + " (versión larga)", after: ok }];
+    mark("q3_9", "u1", "change"); th.q3_9.last = { by: "human", uid: "u1", at: Date.now() - 72e5 };
+    msgs.q3_9 = [{ uid: "u1", name: "Sara L.", text: "En la explicación en hebreo, ¿podemos citar a Rashí con sus palabras?", at: Date.now() - 72e5, by: "human", kind: "fact" }];
+  }
+  const L = {}, fire = (ch, ...a) => (L[ch] || []).forEach(cb => cb(...a));
+  const sub = (ch, cb, get) => { (L[ch] = L[ch] || []).push(cb); setTimeout(() => cb(get()), 0); return () => { L[ch] = L[ch].filter(x => x !== cb); }; };
+  let user = as === "out" ? null : as === "anon" ? { uid: "a1", email: "", name: "", anon: true } : { uid: "me", email: "david@example.com", name: "David M.", anon: false };
+  let cbAuth = () => {};
+  const roles = [{ email: "david@example.com", role: as === "reviewer" ? "reviewer" : as === "approver" ? "approver" : "admin", addedBy: "cli", at: 1 }, { email: "sara@example.com", role: "approver", addedBy: "david@example.com", at: 2 }, { email: "moshe@example.com", role: "reviewer", addedBy: "david@example.com", at: 3 }, { email: "ariel.g@example.com", role: "reviewer", addedBy: "david@example.com", at: 4 }];
+  return {
+    onAuth(cb) { cbAuth = () => cb(user); cbAuth(); },
+    async signIn() { user = { uid: "me", email: "david@example.com", name: "David M.", anon: false }; cbAuth(); },
+    async signOut() { user = null; cbAuth(); },
+    async getRole(email) { return as === "norole" ? null : (roles.find(r => r.email === email) || null); },
+    watchDrafts: cb => sub("d", cb, () => [meta]),
+    watchDays: (id, cb) => sub("days", cb, () => days),
+    watchThreads: (id, cb) => sub("th", cb, () => ({ ...th })),
+    watchMsgs: (id, key, cb) => sub("m" + key, cb, () => msgs[key] || []),
+    async setMark(id, key, me, v) { mark(key, "me", v); if (v === "change") delete th[key].reply; fire("th", { ...th }); },
+    async addMsg(id, key, me, text, kind) { const at = Date.now(), m = { uid: "me", name: me.name, text, at, by: "human" }; if (kind) m.kind = kind; (msgs[key] = msgs[key] || []).push(m); (th[key] = th[key] || { marks: {}, names: {} }).last = { by: "human", uid: "me", at }; fire("m" + key, [...msgs[key]]); fire("th", { ...th }); },
+    async approve(id, me) { Object.assign(meta, { status: "approved", approvedBy: me.email, approvedName: me.name, approvedAt: Date.now() }); fire("d", [meta]); },
+    watchRoles: cb => sub("r", cb, () => [...roles]),
+    async putRole(email, role, me) { const r = roles.find(x => x.email === email); if (r) r.role = role; else roles.push({ email, role, addedBy: me.email, at: Date.now() }); fire("r", [...roles]); },
+    async delRole(email) { roles.splice(roles.findIndex(x => x.email === email), 1); fire("r", [...roles]); },
+    async setMarked() {},
+  };
+}
+
+/* ---------- state ---------- */
+const S = { user: null, role: null, roleLoaded: false, drafts: [], id: null, days: {}, th: {}, sec: "q", day: 1, lvl: 0, flt: "all", open: null, cl: UI, msgs: [], cm: "", sheet: null, kind: null, chgText: "", xv: false, xe: false, full: {}, final: false, team: false, roles: [], note: "", sent: false, newEmail: "", newRole: "reviewer", err: "", copied: "" };
+let B, unsubs = [], msgUnsub = null, msgKey = null;
+const isDesk = () => matchMedia("(min-width:900px)").matches;
+const canApprove = () => S.role && (S.role.role === "approver" || S.role.role === "admin");
+const isAdmin = () => S.role && S.role.role === "admin";
+const meObj = () => ({ uid: S.user.uid, email: S.user.email, name: S.user.name || S.user.email });
+
+/* ---------- derived data ---------- */
+function items() {
+  const out = [];
+  for (let n = 1; n <= 7; n++) { const d = S.days[n]; if (!d) continue; (d.Q || []).forEach((it, i) => out.push({ key: `q${n}_${i}`, kind: "q", day: n, idx: i, it })); (d.K || []).forEach((it, i) => out.push({ key: `k${n}_${i}`, kind: "k", day: n, idx: i, it })); }
+  return out;
+}
+function st(key) {
+  const th = S.th[key]; if (!th || !th.marks) return "open";
+  const v = Object.values(th.marks);
+  if (v.includes("change")) return th.reply && th.reply.changed ? "wait" : "change";
+  return v.includes("ok") ? "ok" : "open";
+}
+const myMark = key => (S.th[key] && S.th[key].marks && S.th[key].marks[S.user.uid]) || null;
+function summary() {
+  const all = items(), c = { open: 0, ok: 0, change: 0, wait: 0 }, day = {}, rv = {};
+  for (const x of all) { const s = st(x.key); c[s]++; const k = x.kind + x.day; (day[k] = day[k] || { ok: 0, n: 0 }).n++; if (s === "ok") day[k].ok++; }
+  let openc = 0;
+  for (const [k, th] of Object.entries(S.th)) {
+    if (th.last && th.last.by === "human") openc++;
+    for (const [u, v] of Object.entries(th.marks || {})) if (k[0] !== "_" && v) { rv[u] = rv[u] || { n: (th.names || {})[u] || u, c: 0 }; rv[u].c++; }
+  }
+  return { all, c, day, rv, openc, total: all.length, kinds: { q: all.filter(x => x.kind === "q").length, k: all.filter(x => x.kind === "k").length } };
+}
+const curDraft = () => S.drafts.find(d => d.id === S.id);
+function visible(sm) {
+  return sm.all.filter(x => x.kind === S.sec && x.day === S.day && (S.sec === "k" || !S.lvl || x.it.d === S.lvl)).filter(x => { const s = st(x.key); return S.flt === "all" || (S.flt === "open" && s === "open") || (S.flt === "change" && (s === "change" || s === "wait")) || (S.flt === "ok" && s === "ok"); });
+}
+function openKeyNow(sm) { const vis = visible(sm || summary()); return S.open && vis.some(x => x.key === S.open) ? S.open : (isDesk() && vis[0] ? vis[0].key : null); }
+
+/* ---------- item pieces ---------- */
+const pill = s => `<span class="pill st ${s}">${t({ open: "stOpen", ok: "stOk", change: "stChg", wait: "stWait" }[s])}</span>`;
+const srcName = s => { const p = plain(s).split(/;| (?:sobre|on|על) /)[0].trim(); return p.length < 26 ? p : ""; };
+const dirOf = l => l === "he" ? "rtl" : "ltr";
+const langTabs = () => `<div class="lt" role="tablist" aria-label="${t("lang")}">${[["es", "ES"], ["en", "EN"], ["he", "עב"]].map(([c, l]) => `<button role="tab" data-a="cl" data-v="${c}" lang="${c}" aria-selected="${S.cl === c}">${l}</button>`).join("")}</div>`;
+
+function blocks(x, mobile) {
+  const it = x.it, tl = it.t[S.cl] || it.t.es, kid = x.kind === "k", lang = S.cl, dir = dirOf(lang), heC = lang === "he" ? " he" : "";
+  const showV = !mobile || S.xv, showE = !mobile;
+  const verse = showV ? (it.v || []).map(v => `<div class="verse"><small>${t("verse")} · <bdi dir="rtl">${esc(v.r)}</bdi></small><p lang="he" dir="rtl">${esc(v.t)}</p></div>`).join("") : "";
+  const img = kid && it.img ? `<img class="kimg" alt="${t("draw")}" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 320 160">${it.img}</svg>`)}">` : "";
+  const q = `<h3 class="q${heC}" lang="${lang}" dir="${dir}" ${lang === "he" ? 'style="text-align:right"' : ""}>${san(tl.q)}</h3>`;
+  const alt = ["es", "en", "he"].filter(l => l !== lang && it.t[l]).map(l => `<span lang="${l}" dir="${dirOf(l)}" class="${l === "he" ? "he" : ""}" style="${l === "he" ? "text-align:right;font-size:16px;color:var(--ink)" : ""}"><b>${l === "he" ? "עב" : l.toUpperCase()}</b> ${san(it.t[l].q)}</span>`).join("");
+  const opts = (tl.o || []).map((o, i) => `<li class="opt${i === it.a ? " c" : ""}${heC}" dir="${dir}" lang="${lang}"><span class="l">${"ABCD"[i]}</span><span class="t">${san(o)}</span>${i === it.a ? `<span class="ok">${t("correct")}</span>` : ""}<span class="len">${plain(o).length} ${t("chars")}</span></li>`).join("");
+  const expl = showE && tl.e ? `<div class="expl" dir="${dir}" lang="${lang}"><b>${kid ? t("kexpl") : t("expl")}.</b> ${san(tl.e)}${tl.s ? `<em>${t("source")}: ${san(tl.s)}</em>` : ""}</div>` : "";
+  return { verse, img, q, alt, opts, expl, srcs: mobile ? "" : sourcesHtml(x, tl, false) };
+}
+
+/* "De dónde salió": one card per source. Stored text (src[].text, src[].used) shows instantly; otherwise live from Sefaria. */
+function srcList(it) { const { src } = refsOf(it); return src.map(r => ({ ...r, est: !Array.isArray(it.src) || !it.src.length })); }
+function hl(text, used) {
+  const e = esc(text), u = esc(used || "");
+  if (!u) return e;
+  const i = e.indexOf(u);
+  return i < 0 ? e + `<br><mark>${u}</mark>` : e.slice(0, i) + `<mark>${u}</mark>` + e.slice(i + u.length);
+}
+function cardHtml(x, r, mobile) {
+  const k = x.key + "|" + r.ref, full = !!S.full[k], stored = r.text && (r.text.he || r.text.en);
+  if (full && !stored) sefLoad(r.ref);
+  const live = SEF.get(r.ref), d = stored ? r.text : live && live.st === "ok" ? live : null;
+  let body = "";
+  if (full) {
+    if (d) body = `${d.he ? `<p class="hep" lang="he" dir="rtl">${hl(d.he, r.used)}</p>` : ""}${d.en ? `<p class="enp" lang="en" dir="ltr">${esc(d.en)}</p>` : ""}`;
+    else if (live && live.st === "err") body = `<span class="sub">${t("sErr")} <a href="${sefUrl(r.ref)}" target="_blank" rel="noopener">${t("sOpen")}</a></span>`;
+    else body = `<span class="sub">${t("sLoad")}</span>`;
+  } else if (r.used) body = `<p class="hep" lang="he" dir="rtl"><mark>${esc(r.used)}</mark></p>`;
+  const sub = [r.edition || "Sefaria", r.readAt ? t("readAt", { w: r.readAt }) : ""].filter(Boolean).join(" · ");
+  const uses = [["uQ", r.question], ["uC", r.correct], ["uD", r.distractors]].filter(u => u[1]);
+  const how = uses.length ? (mobile ? `<div style="display:flex;flex-direction:column;gap:6px"><h5 class="h5">${t("howT")}</h5>${uses.map(u => `<span style="display:flex;gap:8px"><b style="flex:none;width:92px">${t(u[0])}</b><span>${esc(u[1])}</span></span>`).join("")}</div>` : `<div class="row" style="gap:6px 14px;font-size:13px;color:var(--mut)">${uses.filter(u => u[0] !== "uQ").map(u => `<span><b style="color:var(--ink)">${t(u[0])} ←</b> ${esc(u[1])}</span>`).join("")}</div>`) : "";
+  const card = `<div class="srcard"><div class="row nw" style="justify-content:space-between;gap:8px"><span style="display:flex;flex-direction:column;min-width:0"><b dir="ltr" style="font-size:14px;text-align:start">${mobile ? "" : t("whence") + " · "}${esc(r.label || r.ref)}${r.est ? ` <span class="pill" style="font-weight:500">≈ ${t("est")}</span>` : ""}</b><span class="sub" style="font-size:12px">${esc(sub)}</span></span>
+ <a href="${esc(r.url || sefUrl(r.ref))}" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;min-height:44px;display:flex;align-items:center;white-space:nowrap">${mobile ? "Sefaria ↗" : t("sOpenA")}</a></div>
+ ${body}${mobile ? "" : how}
+ <button class="chip" data-a="full" data-v="${esc(k)}" style="align-self:flex-start;font-weight:600;min-height:44px">${full ? t("fullH") : t("fullB")}</button></div>`;
+  return mobile ? card + how : card;
+}
+function sourcesHtml(x, tl, mobile) {
+  const list = srcList(x.it); if (!list.length) return "";
+  return list.map(r => cardHtml(x, r, mobile)).join("");
+}
+function sourceSheet(x) {
+  const tl = x.it.t[S.cl] || x.it.t.es, kid = x.kind === "k", dir = dirOf(S.cl);
+  const read = srcList(x.it).map(r => r.readAt).find(Boolean);
+  return `<div style="display:flex;flex-direction:column;gap:12px;overflow:auto;font-size:15px;line-height:1.5">
+ <div style="display:flex;flex-direction:column;gap:4px"><h5 class="h5">${kid ? t("kexpl") : t("expl")}</h5><span dir="${dir}" lang="${S.cl}">${san(tl.e || "")}</span>${tl.s ? `<span class="sub" dir="${dir}">${t("source")}: ${san(tl.s)}</span>` : ""}</div>
+ ${sourcesHtml(x, tl, true)}${read ? `<span class="sub">${t("readBy", { w: read })}</span>` : ""}</div>`;
+}
+
+function thread() {
+  return S.msgs.map(m => `<div class="msg">${av(m.uid, m.name)}<div class="b"><span><b>${esc(m.name)}</b> <span>· ${fmt(m.at)}</span></span>${m.kind ? `<span class="tag">${t("chgTag", { k: t("k_" + m.kind) })}</span>` : ""}<span>${esc(m.text)}</span>${m.after !== undefined ? `<div class="diff"><div class="bf"><b>${t("before")}</b><s>${esc(m.before ?? "")}</s></div><div class="af"><b>${t("after")}</b><span>${esc(m.after)}</span></div></div>` : ""}</div></div>`).join("") || `<span class="sub">${t("noc")}</span>`;
+}
+const confirmBtn = key => st(key) === "wait" && myMark(key) === "change" ? `<button class="btn grn" data-a="mark" data-v="ok" style="align-self:flex-start">${t("confirm")}</button>` : "";
+
+/* desktop: article with inline comments */
+function articleHtml(x, pos, total) {
+  const it = x.it, s = st(x.key), mine = myMark(x.key), b = blocks(x, false);
+  const lv = x.kind === "q" && it.d ? `<span class="pill ${["", "easy", "med", "hard"][it.d]}">${t(["", "easy", "med", "hard"][it.d])}</span>` : "";
+  const sn = srcName((it.t.es || {}).s), src = sn ? `<span class="pill src">${esc(sn)}</span>` : "";
+  return `<article class="card art" data-key="${x.key}">
+<div class="main"><div class="row" style="gap:8px"><span class="sub" style="font-weight:600">#${x.day}.${x.idx + 1}</span>${lv}${src}${pill(s)}</div>${langTabs().replace('class="lt"', 'class="lt" style="align-self:flex-start;margin:0"')}
+ ${b.verse}${b.img}${b.q}<div class="alt">${b.alt}</div><ol class="opts">${b.opts}</ol>${b.expl}${b.srcs}
+ <div class="acts"><button class="mk ok${mine === "ok" ? " on" : ""}" data-a="mark" data-v="ok">${t("btnOk")}</button><button class="mk chg${mine === "change" ? " on" : ""}" data-a="sheet" data-v="chg">${t("btnChg")}</button></div></div>
+<aside class="cm" aria-label="${t("comments")}"><h4>${t("comments")}${S.msgs.length ? " · " + S.msgs.length : ""}</h4>${thread()}${confirmBtn(x.key)}
+ <label class="l">${t("reply")}<textarea class="f" id="cm" rows="2" placeholder="${t("ph")}">${esc(S.cm)}</textarea></label><button class="btn dark" data-a="send" style="align-self:flex-start">${t("send")}</button></aside></article>`;
+}
+
+/* phone: one question per screen, bar at the bottom (board "Movil") */
+function phoneItem(x, pos, vis) {
+  const it = x.it, s = st(x.key), mine = myMark(x.key), b = blocks(x, true), sm = summary();
+  const lvl = x.kind === "q" && it.d ? t(["", "easy", "med", "hard"][it.d]) : t("kids"), sn = srcName((it.t.es || {}).s);
+  const lcls = x.kind === "q" && it.d ? ["", "easy", "med", "hard"][it.d] : "easy";
+  const ticks = vis.map((v, i) => { const q = st(v.key); return `<span style="background:${i === pos ? "#2e2a24" : q === "ok" ? "#4f6b3a" : q === "open" ? "#e2d1b1" : "#b5562f"}"></span>`; }).join("");
+  const head = `<header class="hd" style="padding:12px 16px 10px;gap:8px;background:var(--hd)"><div class="row nw" style="justify-content:space-between">
+ <button data-a="back" aria-label="${t("back")}" style="border:0;background:transparent;padding:0;min-height:44px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:start"><span class="sub" style="font-size:12px">${esc(((curDraft().name || {})[UI]) || S.id)} · ${t("draft")} ${curDraft().rev || 1}</span>
+ <span class="row nw" style="gap:4px;font-size:17px;font-weight:600">${TX[UI].day[x.day - 1]} · ${t("qn", { p: pos + 1, m: vis.length })} ${svg('<path d="M6 9l6 6 6-6"/>', 16)}</span></button>
+ <div class="row nw" style="gap:6px">${isAdmin() ? `<button class="ic" data-a="team" aria-label="${t("team")}">${svg('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M19 8v6M16 11h6"/>')}</button>` : ""}
+ <button class="ic" data-a="final" aria-label="${t("approvalBtn")}">${svg('<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>')}<span class="badge">${Math.min(99, sm.c.open + sm.c.change + sm.c.wait)}${sm.c.open + sm.c.change + sm.c.wait > 99 ? "+" : ""}</span></button></div></div>
+ <div class="ticks" aria-hidden="true" style="grid-template-columns:repeat(${vis.length},minmax(0,1fr))">${ticks}</div></header>`;
+  const body = `<div class="wrap" style="padding-top:16px"><article data-key="${x.key}" style="display:flex;flex-direction:column;gap:14px">
+ <div class="row" style="gap:8px"><span class="pill ${lcls}">${lvl}${sn ? " · " + esc(sn) : ""}</span><span class="pill ${s}" style="white-space:normal">${t({ open: "stOpen", ok: "stOk", change: "stChg", wait: "stWait" }[s])}</span>${langTabs()}</div>
+ ${b.img}${b.q}<ol class="opts" style="gap:8px">${b.opts}</ol>
+ <div class="chips"><button class="chip${S.xv ? " on" : ""}" data-a="xv" aria-pressed="${S.xv}">${t("verse")}</button><button class="chip" data-a="sheet" data-v="src">${t("expBtn")}</button></div>
+ ${b.verse}</article></div>`;
+  const bar = `<div class="bar"><button data-a="sheet" data-v="cm" aria-label="${t("comments")}: ${S.msgs.length}">${svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>')}<span class="cn">${S.msgs.length}</span></button>
+ <button class="mk chg${mine === "change" ? " on" : ""}" data-a="sheet" data-v="chg">${t("btnChg")}</button><button class="mk ok${mine === "ok" ? " on" : ""}" data-a="mark" data-v="ok">${t("btnOk")}${mine === "ok" ? " ✓" : ""}</button></div>`;
+  return head + body + bar;
+}
+
+function listRow(x) {
+  const tl = x.it.t[UI] || x.it.t.es;
+  return `<button class="lrow" data-a="open" data-v="${x.key}"><span class="n">#${x.day}.${x.idx + 1}</span><span class="q" lang="${UI}">${esc(plain(tl.q))}</span>${pill(st(x.key))}</button>`;
+}
+
+/* ---------- sheets ---------- */
+function sheetHtml() {
+  const key = openKeyNow(), x = key && items().find(i => i.key === key);
+  if (!S.sheet || !x) return "";
+  if (S.sheet === "src") {
+    return `<div class="ov" data-a="bd"><section class="dlg" role="dialog" aria-modal="true" aria-labelledby="sh" style="max-height:88%"><span class="grab"></span><div class="row nw" style="justify-content:space-between"><h2 id="sh" style="font-size:18px;font-family:Rubik,sans-serif;font-weight:600">${t("expBtn")}</h2><button class="ic" data-a="closesheet" aria-label="${t("close")}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button></div>${sourceSheet(x)}</section></div>`;
+  }
+  if (S.sheet === "cm") {
+    return `<div class="ov" data-a="bd"><section class="dlg" role="dialog" aria-modal="true" aria-labelledby="sh"><span class="grab"></span><div class="row nw" style="justify-content:space-between"><h2 id="sh" style="font-size:18px;font-family:Rubik,sans-serif;font-weight:600">${t("comments")} (${S.msgs.length})</h2><button class="ic" data-a="closesheet" aria-label="${t("close")}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button></div>
+ <div style="display:flex;flex-direction:column;gap:12px;overflow:auto">${thread()}${confirmBtn(key)}</div>
+ <label class="l">${t("cmSend")}<textarea class="f hot" id="cm" rows="3" placeholder="${t("cmPh")}">${esc(S.cm)}</textarea></label>
+ <button class="btn dark" data-a="send" style="min-height:52px;justify-content:center">${t("cmSend")}</button></section></div>`;
+  }
+  const kinds = ["hint", "fact", "lang", "typo", "other"].map(k => `<button class="chip${S.kind === k ? " on" : ""}" data-a="kind" data-v="${k}" aria-pressed="${S.kind === k}" style="${S.kind === k ? "background:var(--ter);border-color:var(--ter)" : ""}">${t("k_" + k)}</button>`).join("");
+  const can = S.chgText.trim().length > 0;
+  return `<div class="ov" data-a="bd"><section class="dlg full" role="dialog" aria-modal="true" aria-labelledby="sh"><div class="row nw" style="justify-content:space-between"><button class="btn mob" data-a="closesheet" style="border:0;background:transparent;padding:0 6px">‹ ${t("bk")}</button><h2 id="sh" style="font-size:20px;flex:1;text-align:center">${t("chgT")}</h2><button class="ic" data-a="closesheet" aria-label="${t("close")}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button></div>
+ <span class="sub" style="font-weight:600">#${x.day}.${x.idx + 1} · ${esc(plain((x.it.t[UI] || x.it.t.es).q)).slice(0, 90)}…</span>
+ <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:14px;color:var(--mut)">${t("chgK")}</span><div class="chips">${kinds}</div></div>
+ <label class="l" style="font-size:14px">${t("chgW")}<textarea class="f hot" id="chg" rows="5" placeholder="${t("chgPh")}">${esc(S.chgText)}</textarea></label>
+ ${can ? "" : `<span class="sub">${t("chgNeed")}</span>`}
+ <button class="btn" data-a="sendchg" ${can ? "" : "disabled"} style="min-height:52px;justify-content:center;${can ? "background:var(--ter);border-color:var(--ter);color:#fff" : ""}">${t("chgSend")}</button></section></div>`;
+}
+
+/* ---------- screens ---------- */
+const ICON = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>`;
+const langSw = full => `<div class="seg"${full ? ' style="width:100%"' : ""}>${[["es", "ES"], ["en", "EN"], ["he", "עב"]].map(([c, l]) => `<button data-a="ui" data-v="${c}" aria-selected="${UI === c}">${l}</button>`).join("")}</div>`;
+
+function render() {
+  const f = document.activeElement, fid = f && f.id, sel = f && f.selectionStart;
+  document.documentElement.lang = UI; document.documentElement.dir = UI === "he" ? "rtl" : "ltr";
+  document.getElementById("app").innerHTML = view();
+  if (S.sc) { S.sc = false; const a = document.querySelector("article[data-key]"); if (a && isDesk()) a.scrollIntoView({ block: "start" }); }
+  if (fid) { const e = document.getElementById(fid); if (e) { e.focus(); try { e.setSelectionRange(sel, sel); } catch (x) {} } }
+}
+
+function view() {
+  if (!S.user || S.user.anon) return `<div class="center"><div class="box"><span class="logo" style="width:52px;height:52px;border-radius:14px">${ICON}</span><h1>${t("signT")}</h1><p>${t("signS")}</p><button class="btn dark" data-a="signin" style="min-height:52px;width:100%;justify-content:center">G · ${t("signB")}</button>${langSw(true)}</div></div>`;
+  if (!S.roleLoaded) return `<div class="center"><p class="sub">${t("loading")}</p></div>`;
+  if (!S.role) return `<div class="center"><div class="box"><h1>${t("noroleT")}</h1><p>${t("noroleS")}</p><b dir="ltr" style="word-break:break-all">${esc(S.user.email)}</b><button class="btn" data-a="signout">${t("out")}</button>${langSw(true)}</div></div>`;
+  if (S.team && isAdmin()) return teamHtml();
+  const sm = summary(), d = curDraft();
+  let body = "", head = headerHtml(sm, d);
+  if (!d) body = `<div class="wrap"><p class="dash" style="width:100%">${S.drafts.length ? t("loading") : t("noDraft")}</p></div>`;
+  else {
+    const vis = visible(sm), key = openKeyNow(sm);
+    ensureMsgs(key);
+    const pos = vis.findIndex(x => x.key === key);
+    if (!isDesk() && key) { head = ""; body = phoneItem(vis[pos], pos, vis); }
+    else body = mainHtml(sm, d, vis, key, pos);
+  }
+  return head + body + (S.final && d ? finalHtml(sm, d) : "") + sheetHtml();
+}
+
+function headerHtml(sm, d) {
+  const sel = `<select class="btn" data-a="draft" aria-label="${t("draft")}">${S.drafts.map(x => `<option value="${esc(x.id)}"${x.id === S.id ? " selected" : ""}>${esc((x.name && (x.name[UI] || x.name.es)) || x.id)} · ${t("draft")} ${x.rev || 1}</option>`).join("")}</select>`;
+  const chips = Object.entries(sm.rv).map(([u, r]) => `<span class="row" style="gap:6px;font-size:12px;color:var(--mut)" title="${esc(r.n)}">${av(u, r.n, true)}${r.c}/${sm.total}</span>`).join("");
+  return `<header class="hd"><div class="row"><span class="logo">${ICON}</span><div class="grow"><div class="ttl">${t("rev")}</div><div class="sub">${t("quiz")}</div></div>
+ ${isAdmin() ? `<button class="btn" data-a="team">${t("team")}</button>` : ""}${langSw()}</div>
+ <div class="row">${sel}<span class="sub grow">${t("deadline")}</span>${d ? `<button class="btn dark" data-a="final">${t("approvalBtn")} <span class="badge">${sm.c.open + sm.c.change + sm.c.wait}</span></button>` : ""}</div>
+ ${chips ? `<div class="row" style="gap:12px">${chips}</div>` : ""}</header>`;
+}
+
+function mainHtml(sm, d, vis, key, pos) {
+  const pct = n => (sm.total ? n / sm.total * 100 : 0).toFixed(1);
+  const stats = [[sm.c.open, t("pend"), "#d4c09c"], [sm.c.ok, t("good"), "#4f6b3a"], [sm.c.change + sm.c.wait, `${t("chg")} · ${sm.c.wait} ${t("applied")}`, "#b5562f"], [sm.openc, t("openc"), "#6d28d9"]]
+    .map(([n, l, c]) => `<div class="stat"><i style="background:${c}"></i><span><b>${n}</b><span>${l}</span></span></div>`).join("");
+  const dayChip = n => { const x = sm.day[S.sec + n] || { ok: 0, n: 0 }; return { x, full: x.n && x.ok === x.n }; };
+  const dayNames = n => TX[UI].day[n - 1];
+  const dchips = [1, 2, 3, 4, 5, 6, 7].map(n => { const { x, full } = dayChip(n); return `<button class="chip${S.day === n ? " on" : full ? " full" : ""}" role="tab" aria-selected="${S.day === n}" data-a="day" data-v="${n}">${dayNames(n).slice(0, UI === "he" ? 9 : 3)} ${x.ok}/${x.n}</button>`; }).join("");
+  const dside = [1, 2, 3, 4, 5, 6, 7].map(n => { const { x, full } = dayChip(n); return `<button class="dr${S.day === n ? " on" : ""}" data-a="day" data-v="${n}"><span style="flex:1"><b style="font-size:14px">${n} · ${dayNames(n)}</b><i><span style="width:${x.n ? Math.round(x.ok / x.n * 100) : 0}%;background:${full ? "#4f6b3a" : "#b5562f"}"></span></i></span><span class="sub">${x.ok}/${x.n}</span></button>`; }).join("");
+  const secs = [["q", t("adults"), sm.kinds.q], ["k", t("kids"), sm.kinds.k]].filter(s => s[2]).map(([k, l, n]) => { const ok = sm.all.filter(x => x.kind === k && st(x.key) === "ok").length; return `<button class="chip${S.sec === k ? " on" : ""}" data-a="sec" data-v="${k}" style="min-height:44px">${l} <span style="font-size:12px;opacity:.8;margin-inline-start:6px">${ok}/${n}</span></button>`; }).join("");
+  const flts = [["all", "all"], ["open", "fOpen"], ["change", "fChg"], ["ok", "fOk"]].map(([id, k]) => `<button class="chip${S.flt === id ? " on" : ""}" role="tab" aria-selected="${S.flt === id}" data-a="flt" data-v="${id}">${t(k)}</button>`).join("");
+  const lvls = S.sec === "q" ? `<div class="chips" aria-label="${t("lvl")}">${[[0, "all"], [1, "easy"], [2, "med"], [3, "hard"]].map(([v, k]) => `<button class="chip${S.lvl === v ? " on" : ""}" data-a="lvl" data-v="${v}">${t(k)}</button>`).join("")}</div>` : "";
+  let list;
+  if (!vis.length) list = `<p class="dash">${t("nothing")}</p>`;
+  else list = vis.map(x => x.key === key ? articleHtml(x, pos, vis.length) : `<div class="card">${listRow(x)}</div>`).join("");
+  const status = d.status === "approved" ? `<span class="pill ok">${t("approved", { n: esc(d.approvedName || d.approvedBy || "") })}</span>` : d.status === "published" ? `<span class="pill ok">${t("published")}</span>` : "";
+  return `<div class="wrap">
+ <div class="top"><div class="stats">${stats}</div><div class="prog" aria-hidden="true"><span style="width:${pct(sm.c.ok)}%;background:#4f6b3a"></span><span style="width:${pct(sm.c.change + sm.c.wait)}%;background:#b5562f"></span></div>
+ <span class="sub">${t("revd", { a: sm.c.ok, b: sm.total, c: sm.kinds.q, d: sm.kinds.k })} ${status}</span></div>
+ <nav class="side"><div class="chips"><h2 class="h2" style="flex:1 1 100%">${t("content")}</h2>${secs}</div>
+  <div class="days m" role="tablist" aria-label="${t("days")}">${dchips}</div>
+  <div class="dlist"><h2 class="h2" style="flex:1 1 100%;margin-bottom:4px">${t("days")}</h2>${dside}</div></nav>
+ <main class="mainc"><div class="row" style="justify-content:space-between"><h1 style="margin:0;font-size:20px;font-weight:600">${dayNames(S.day)} · ${S.sec === "q" ? t("adults") : t("kids")}</h1><div class="chips" role="tablist">${flts}</div></div>${lvls}
+ ${list}</main></div>`;
+}
+
+function finalHtml(sm, d) {
+  const n1 = sm.c.open, n2 = sm.c.change + sm.c.wait, n3 = sm.openc;
+  const rows = [[n1, "c1", "c1o", "c1b", "open"], [n2, "c2", "c2o", "c2b", "change"], [n3, "c3", "c3o", "c3b", "open"]].map(([n, a, b, c, flt]) => `<li><span class="m${n ? "" : " g"}">${n ? "!" : "✓"}</span><span style="flex:1"><b>${t(a)}</b><span class="s">${n ? t(c, { n }) : t(b)}</span></span>${n ? `<button class="btn" style="min-height:36px" data-a="see" data-v="${flt}">${t("see")}</button>` : ""}</li>`).join("");
+  const miss = [n1, n2, n3].filter(Boolean).length, ready = !miss, pend = d.status === "review";
+  const go = !pend ? `<span class="pill ok" style="align-self:flex-start">${d.status === "published" ? t("published") : t("approved", { n: esc(d.approvedName || d.approvedBy || "") })}</span>`
+    : ready && canApprove() ? `<button class="btn grn" data-a="approve" style="min-height:54px;justify-content:center">${t("fGo")}</button><span class="sub" style="text-align:center">${t("fGoS")}</span>` : `<button class="btn" disabled style="min-height:54px;justify-content:center">${ready ? t("fOnly") : t("fMiss", { n: miss })}</button>`;
+  return `<div class="ov" data-a="bd"><section class="dlg" role="dialog" aria-modal="true" aria-labelledby="ft" style="padding-top:20px"><div class="row nw" style="align-items:flex-start;justify-content:space-between"><div><span class="sub">${t("draft")} ${d.rev || 1} · ${sm.kinds.q} ${t("adults").toLowerCase()} · ${sm.kinds.k} ${t("kids").toLowerCase()}</span><h2 id="ft">${t("fT")} ${esc((d.name && (d.name[UI] || d.name.es)) || d.id)}</h2></div><button class="btn" data-a="closef" aria-label="${t("close")}" style="width:44px;padding:0;justify-content:center">✕</button></div>
+ <ul class="chk">${rows}</ul>
+ ${canApprove() ? "" : `<div class="sub">🔒 ${t("fOnly")}</div>`}
+ <div class="row" style="flex-direction:column;align-items:stretch;gap:8px">${go}
+ ${canApprove() && pend ? `<textarea class="f" id="note" rows="2" placeholder="${t("fNote")}">${esc(S.note)}</textarea><button class="btn ter" data-a="retnote" style="justify-content:center">${S.sent ? "✓ " + t("fSent") : t("fRet")}</button>` : ""}</div></section></div>`;
+}
+
+/* Revisores · invitar y roles (admins only; rules enforce it too) */
+function teamHtml() {
+  const me = S.user.email, rs = [...S.roles].sort((a, b) => (a.role === "admin" ? 0 : 1) - (b.role === "admin" ? 0 : 1) || a.email.localeCompare(b.email));
+  const can = rs.filter(r => r.role !== "reviewer").length, valid = !badEmail(S.newEmail.trim());
+  const help = { reviewer: "tHelpR", approver: "tHelpA", admin: "tHelpD" }[S.newRole];
+  const people = rs.map(r => { const self = r.email === me;
+    return `<div class="tp" dir="ltr"><span class="av" style="width:40px;height:40px;font-size:14px;background:${colr(r.email)}">${esc(ini(r.email))}</span>
+ <span class="grow" style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;overflow:hidden;text-overflow:ellipsis">${esc(r.email.split("@")[0])}</span><span class="sub" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.email)}${self ? " · " + t("tYou") : ""}</span></span>
+ ${self ? `<span class="sub" style="font-weight:600">${t(r.role)}</span>` : `<select class="rolebtn" data-a="setrole" data-v="${esc(r.email)}" aria-label="${esc(r.email)}">${["admin", "approver", "reviewer"].map(x => `<option value="${x}"${r.role === x ? " selected" : ""}>${t(x)}</option>`).join("")}</select>
+ <button class="btn ghost" data-a="copy" style="min-height:44px;font-size:13px">${S.copied === r.email ? t("tCopied") : t("tCopy")}</button>
+ <button class="ic" data-a="delrole" data-v="${esc(r.email)}" aria-label="${t("tRem")} ${esc(r.email)}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button>`}</div>`; }).join("");
+  return `<header class="hd" style="flex-direction:row;align-items:center;gap:12px"><button class="ic" data-a="team" aria-label="${t("bk")}" style="border:1px solid var(--line);background:#fff;border-radius:14px">${svg('<path d="M15 6l-6 6 6 6"/>', 20)}</button>
+ <div class="grow" style="display:flex;flex-direction:column"><h1 class="ttl" style="margin:0;font-size:24px">${t("tT")}</h1><span class="sub">${t("tCount", { n: rs.length, m: can })}</span></div>${langSw()}</header>
+ <div class="wrap team" style="padding-bottom:40px">
+ <form class="card" data-a="inv" style="padding:14px;display:flex;flex-direction:column;gap:12px"><h2 style="margin:0;font-size:16px;font-weight:600">${t("tInv")}</h2>
+  <label class="l">${t("tMail")}<input id="ne" type="email" dir="ltr" autocomplete="off" placeholder="name@gmail.com" value="${esc(S.newEmail)}" style="border:1.5px solid var(--line);border-radius:12px;background:#fff;min-height:48px;padding:0 12px;font-size:16px;width:100%"></label>
+  <div role="radiogroup" aria-label="${t("tRole")}" style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:600">${t("tRole")}</span>
+   <div class="seg">${["reviewer", "approver", "admin"].map(x => `<button type="button" role="radio" data-a="nrole" data-v="${x}" aria-checked="${S.newRole === x}" style="min-height:44px;font-size:14px;padding:0 4px">${t(x)}</button>`).join("")}</div>
+   <span class="sub" style="line-height:1.4">${t(help)}</span></div>
+  ${S.err ? `<span class="sub" style="color:var(--terd)">${esc(S.err)}</span>` : ""}
+  <button type="submit" class="btn" style="min-height:50px;justify-content:center;border:0;${valid ? "background:var(--grn);color:#fff" : "background:var(--line);color:var(--mut)"}">${t("tAdd")}</button></form>
+ <div style="display:flex;flex-direction:column;gap:8px"><h2 class="h2">${t("tTeam")}</h2><div class="card">${people}</div></div>
+ <p class="sub" style="margin:0 4px;line-height:1.5">${t("tFoot")}</p></div>`;
+}
+
+/* ---------- live data ---------- */
+function ensureMsgs(key) {
+  if (key === msgKey) return; msgKey = key; if (msgUnsub) { msgUnsub(); msgUnsub = null; } S.msgs = []; S.cm = "";
+  if (key && S.id) msgUnsub = B.watchMsgs(S.id, key, m => { S.msgs = m; render(); });
+}
+/* keep drafts/{id}.marked.{uid} = how many items I have marked, so the quiz app can show "pending" cheaply */
+function syncMarked() {
+  const d = curDraft(); if (!d || !S.user) return;
+  const n = Object.entries(S.th).filter(([k, th]) => k[0] !== "_" && th.marks && th.marks[S.user.uid]).length;
+  if (((d.marked || {})[S.user.uid] || 0) !== n && S.lastSync !== n) { S.lastSync = n; B.setMarked(S.id, S.user.uid, n).catch(e => { S.lastSync = null; console.warn(e); }); }
+}
+function pickDraft(id) {
+  unsubs.forEach(u => u()); unsubs = []; S.id = id; S.days = {}; S.th = {}; msgKey = null; S.open = null;
+  if (!id) return;
+  unsubs.push(B.watchDays(id, m => { S.days = m; render(); }), B.watchThreads(id, m => { S.th = m; syncMarked(); render(); }));
+}
+async function onUser(u) {
+  S.user = u; S.role = null; S.roleLoaded = false; render();
+  if (!u || u.anon) return;
+  S.role = await B.getRole(u.email); S.roleLoaded = true;
+  if (S.role) {
+    B.watchDrafts(ds => { S.drafts = ds.sort((a, b) => (b.shabbat || "").localeCompare(a.shabbat || "")); if (!S.id || !ds.some(x => x.id === S.id)) { const h = decodeURIComponent(location.hash.slice(1)); pickDraft((ds.find(x => x.id === h) || S.drafts[0] || {}).id); } render(); });
+    if (S.role.role === "admin") B.watchRoles(r => { S.roles = r; render(); });
+  }
+  render();
+}
+
+/* ---------- events ---------- */
+const go = fn => Promise.resolve().then(fn).catch(e => { console.warn(e); S.err = t("err"); render(); });
+document.addEventListener("input", e => { const i = e.target.id; if (i === "cm") S.cm = e.target.value; else if (i === "note") S.note = e.target.value; else if (i === "ne") { S.newEmail = e.target.value; S.err = ""; } else if (i === "chg") { const was = S.chgText.trim().length > 0; S.chgText = e.target.value; if (was !== S.chgText.trim().length > 0) render(); } });
+document.addEventListener("change", e => {
+  const a = e.target.dataset.a;
+  if (a === "draft") { pickDraft(e.target.value); render(); }
+  else if (a === "setrole") go(() => B.putRole(e.target.dataset.v, e.target.value, S.user));
+});
+addEventListener("resize", () => render());
+document.addEventListener("submit", e => {
+  e.preventDefault(); const em = S.newEmail.trim().toLowerCase();
+  if (badEmail(em)) S.err = t("tBad"); else { S.err = ""; S.newEmail = ""; go(() => B.putRole(em, S.newRole, S.user)); }
+  render();
+});
+let tx = null;
+document.addEventListener("touchstart", e => { const a = e.target.closest(".bar,.ov") ? null : e.target.closest("article[data-key]"); tx = a && !isDesk() ? [e.touches[0].clientX, e.touches[0].clientY] : null; }, { passive: true });
+document.addEventListener("touchend", e => {
+  if (!tx) return; const dx = e.changedTouches[0].clientX - tx[0], dy = e.changedTouches[0].clientY - tx[1]; tx = null;
+  if (Math.abs(dx) > 70 && Math.abs(dy) < 50) { const sm = summary(), vis = visible(sm), i = vis.findIndex(x => x.key === S.open), n = vis[i + ((dx < 0) === (UI !== "he") ? 1 : -1)]; if (n) { S.open = n.key; S.xv = S.xe = false; scrollTo(0, 0); render(); } }
+}, { passive: true });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-a]"); if (!b || b.tagName === "SELECT" || b.tagName === "FORM") return;
+  const a = b.dataset.a, v = b.dataset.v;
+  if (a === "bd") { if (e.target !== b) return; S.sheet = null; S.final = false; render(); return; }
+  if (a === "signin") go(() => B.signIn());
+  else if (a === "signout") go(() => B.signOut());
+  else if (a === "ui") { UI = v; S.cl = v; try { localStorage.setItem("review-lang", JSON.stringify(v)); } catch (x) {} }
+  else if (a === "cl") S.cl = v;
+  else if (a === "sec") { S.sec = v; S.open = null; }
+  else if (a === "day") { S.day = +v; S.open = null; }
+  else if (a === "lvl") { S.lvl = +v; S.open = null; }
+  else if (a === "flt") { S.flt = v; S.open = null; }
+  else if (a === "open") { S.open = v; S.xv = S.xe = false; S.sc = true; scrollTo(0, 0); }
+  else if (a === "back") S.open = null;
+  else if (a === "xv") S.xv = !S.xv;
+  else if (a === "xe") S.xe = !S.xe;
+  else if (a === "full") S.full[v] = !S.full[v];
+  else if (a === "team") S.team = !S.team;
+  else if (a === "final") S.final = true;
+  else if (a === "closef") S.final = false;
+  else if (a === "see") { S.final = false; S.team = false; S.flt = v; S.open = null; }
+  else if (a === "sheet") { S.sheet = v; if (v === "chg") { S.kind = null; S.chgText = ""; } }
+  else if (a === "closesheet") S.sheet = null;
+  else if (a === "kind") S.kind = v;
+  else if (a === "mark") { const k = openKeyNow(); if (k) go(() => B.setMark(S.id, k, meObj(), v)); S.sheet = null; }
+  else if (a === "send") { const k = openKeyNow(), txt = S.cm.trim(); if (k && txt) { S.cm = ""; go(() => B.addMsg(S.id, k, meObj(), txt)); } }
+  else if (a === "sendchg") {
+    const k = openKeyNow(), txt = S.chgText.trim(), kind = S.kind || "other";
+    if (k && txt) { go(async () => { await B.setMark(S.id, k, meObj(), "change"); await B.addMsg(S.id, k, meObj(), txt, kind); }); S.sheet = null; S.chgText = ""; if (!isDesk()) S.open = null; }
+  }
+  else if (a === "approve") go(async () => { await B.approve(S.id, meObj()); });
+  else if (a === "retnote") { const txt = S.note.trim(); if (txt) go(async () => { await B.addMsg(S.id, "_general", meObj(), txt); S.note = ""; S.sent = true; render(); }); }
+  else if (a === "nrole") S.newRole = v;
+  else if (a === "copy") { const row = b.closest(".tp"); const em = row && row.querySelector(".sub").textContent.split(" ")[0]; try { navigator.clipboard.writeText(location.origin + location.pathname); } catch (x) {} S.copied = em; setTimeout(() => { S.copied = ""; render(); }, 1800); }
+  else if (a === "delrole") { if (confirm(t("tAsk", { e: v }))) go(() => B.delRole(v)); }
+  render();
+});
+
+/* ---------- boot ---------- */
+(async () => {
+  try {
+    if (!MOCK && !(window.QUIZ_CFG && window.QUIZ_CFG.firebase)) throw new Error("no config");
+    B = MOCK ? await mockBackend() : await realBackend();
+    B.onAuth(onUser);
+  } catch (e) { console.warn(e); document.getElementById("app").innerHTML = `<div class="center"><p class="sub">${esc(t("err"))}</p></div>`; }
+})();
+render();
+</script>
+</body>
+</html>
