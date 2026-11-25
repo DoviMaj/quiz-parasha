@@ -75,7 +75,7 @@
     if (!canPush && !(ios && !standalone)) return;
     if (localStorage.getItem("bell-hidden")) return;
     var b = document.createElement("button");
-    b.className = "btn ghost"; b.style.cssText = "width:100%;margin-top:8px";
+    b.className = "btn ghost"; b.style.cssText = "width:100%;box-sizing:border-box;margin-top:8px;white-space:normal";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     b.textContent = canPush ? t.on : t.ios;
     b.onclick = function () { if (canPush) subscribe(b).catch(function (e) { console.warn(e); }); else { localStorage.setItem("bell-hidden", "1"); b.remove(); } };
@@ -96,7 +96,7 @@
   async function google() {
     var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
     var b = document.createElement("button");
-    b.className = "btn ghost"; b.style.cssText = "width:100%;margin-top:8px";
+    b.className = "btn ghost"; b.style.cssText = "width:100%;box-sizing:border-box;margin-top:8px;white-space:normal";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     if (u.isAnonymous) {
       if (localStorage.getItem("google-hidden")) return;
