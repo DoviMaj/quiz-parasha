@@ -1,0 +1,1587 @@
+{
+ "id": "vayeshev",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Vayeshev: three stories",
+  "es": "Vayéshev: tres historias",
+  "he": "וישב: שלושה סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same story, seen through three different people. Choose whose eyes you will see it through — then come back and try the others.",
+   "es": "La misma historia, vista por tres personas distintas. Elige con los ojos de quién la vas a vivir, y después vuelve a probar las otras.",
+   "he": "אותו סיפור, דרך עיניהם של שלושה אנשים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "yosef",
+    "who": "yosef",
+    "name": {
+     "en": "Yosef",
+     "es": "Yosef",
+     "he": "יוסף"
+    },
+    "tag": {
+     "en": "The dreamer — from his father’s tent to a prison in Mitzrayim.",
+     "es": "El soñador: de la tienda de su padre a una cárcel en Mitzráyim.",
+     "he": "בעל החלומות — מאהל אביו עד בית הסהר במצרים."
+    },
+    "outro": {
+     "en": "You followed Yosef from his father’s tent to a prison in Mitzrayim. Through all of it, Hashem was with him. The story continues in Parashat Miketz!",
+     "es": "Seguiste a Yosef desde la tienda de su padre hasta una cárcel en Mitzráyim. En todo momento, Hashem estuvo con él. ¡La historia sigue en la parashá Miketz!",
+     "he": "הלכתם בעקבות יוסף מאהל אביו ועד בית הסהר במצרים. בכל הדרך, ה׳ היה עמו. ההמשך בפרשת מקץ!"
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The coat and the dreams",
+       "es": "La túnica y los sueños",
+       "he": "הכתנת והחלומות"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov loved Yosef more than all his sons, because he was born to him in his old age, and he made him a special coat — the ketonet pasim.",
+         "es": "Yaakov amaba a Yosef más que a todos sus hijos, porque le nació en su vejez, y le hizo una túnica especial: la ketonet pasim.",
+         "he": "וישראל אהב את יוסף מכל בניו כי בן זקנים הוא לו, ועשה לו כתנת פסים."
+        },
+        "src": "בראשית לז:ג"
+       },
+       {
+        "t": {
+         "en": "Yosef is seventeen and shepherds the flock with his brothers. Go out and find them.",
+         "es": "Yosef tiene diecisiete años y pastorea el rebaño con sus hermanos. Sal a buscarlos.",
+         "he": "יוסף בן שבע עשרה שנה, היה רעה את אחיו בצאן. צאו למצוא אותם."
+        },
+        "src": "בראשית לז:ב"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        30
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 12,
+         "z": 36
+        },
+        {
+         "t": "tent",
+         "x": 19,
+         "z": 31
+        },
+        {
+         "t": "tree",
+         "x": -8,
+         "z": 38
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Go out to the <b>field</b> to find your brothers.",
+          "es": "Sal al <b>campo</b> a buscar a tus hermanos.",
+          "he": "צאו אל <b>השדה</b> למצוא את האחים."
+         },
+         "at": [
+          -16,
+          -14
+         ],
+         "r": 6,
+         "talk": [
+          {
+           "t": {
+            "en": "“Listen, please, to this dream that I dreamed:",
+            "es": "“Escuchen, por favor, este sueño que soñé:",
+            "he": "״שמעו נא החלום הזה אשר חלמתי:"
+           },
+           "w": "yosef",
+           "src": "בראשית לז:ו"
+          },
+          {
+           "t": {
+            "en": "We were binding sheaves in the field — and my sheaf rose up and stood upright, and your sheaves gathered around and bowed down to my sheaf.”",
+            "es": "estábamos atando gavillas en el campo, y mi gavilla se levantó y se quedó de pie, y sus gavillas la rodearon y se inclinaron ante mi gavilla.”",
+            "he": "והנה אנחנו מאלמים אלמים בתוך השדה, והנה קמה אלמתי וגם נצבה, והנה תסבינה אלמתיכם ותשתחוין לאלמתי.״"
+           },
+           "w": "yosef",
+           "src": "בראשית לז:ז"
+          },
+          {
+           "t": {
+            "en": "“Will you really be king over us? Will you rule over us?”",
+            "es": "“¿Acaso vas a reinar sobre nosotros? ¿Vas a gobernarnos?”",
+            "he": "״המלך תמלך עלינו, אם משול תמשל בנו?״"
+           },
+           "w": "brothers",
+           "src": "בראשית לז:ח"
+          },
+          {
+           "t": {
+            "en": "And they hated him even more — for his dreams and for his words.",
+            "es": "Y lo odiaron aún más, por sus sueños y por sus palabras.",
+            "he": "ויוספו עוד שנא אתו על חלמתיו ועל דבריו."
+           },
+           "src": "בראשית לז:ח"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": -20,
+           "z": -17,
+           "sprite": "brothers",
+           "h": 3.4
+          },
+          {
+           "t": "sheaf",
+           "x": -22,
+           "z": -10
+          },
+          {
+           "t": "sheaf",
+           "x": -20,
+           "z": -7
+          },
+          {
+           "t": "sheaf",
+           "x": -17,
+           "z": -6
+          },
+          {
+           "t": "sheaf",
+           "x": -13,
+           "z": -7
+          },
+          {
+           "t": "sheaf",
+           "x": -11,
+           "z": -10
+          },
+          {
+           "t": "sheaf",
+           "x": -11,
+           "z": -14
+          },
+          {
+           "t": "sheaf",
+           "x": -22,
+           "z": -14
+          },
+          {
+           "t": "sheaf",
+           "x": -14,
+           "z": -17
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Yosef dreams another dream. Go back to <b>Yaakov’s tent</b> to tell it.",
+          "es": "Yosef sueña otro sueño. Vuelve a la <b>tienda de Yaakov</b> para contarlo.",
+          "he": "יוסף חולם חלום נוסף. חזרו אל <b>אהל יעקב</b> לספר אותו."
+         },
+         "at": [
+          12,
+          31
+         ],
+         "r": 4.5,
+         "talk": [
+          {
+           "t": {
+            "en": "“I dreamed another dream: the sun, the moon and eleven stars were bowing down to me.”",
+            "es": "“Soñé otro sueño: el sol, la luna y once estrellas se inclinaban ante mí.”",
+            "he": "״הנה חלמתי חלום עוד, והנה השמש והירח ואחד עשר כוכבים משתחוים לי.״"
+           },
+           "w": "yosef",
+           "src": "בראשית לז:ט"
+          },
+          {
+           "t": {
+            "en": "“What is this dream that you dreamed? Shall I and your mother and your brothers come and bow down to the ground before you?”",
+            "es": "“¿Qué sueño es este que soñaste? ¿Acaso vendremos yo, tu madre y tus hermanos a inclinarnos ante ti hasta el suelo?”",
+            "he": "״מה החלום הזה אשר חלמת? הבוא נבוא אני ואמך ואחיך להשתחות לך ארצה?״"
+           },
+           "w": "yaakov",
+           "src": "בראשית לז:י"
+          },
+          {
+           "t": {
+            "en": "His brothers were jealous of him, but his father kept the matter in mind — waiting to see when it would come true.",
+            "es": "Sus hermanos le tenían envidia, pero su padre guardó el asunto, esperando a ver cuándo se cumpliría.",
+            "he": "ויקנאו בו אחיו, ואביו שמר את הדבר — היה ממתין ומצפה מתי יבוא."
+           },
+           "src": "בראשית לז:יא; רש״י"
+          }
+         ],
+         "npc": [
+          {
+           "x": 14,
+           "z": 30,
+           "sprite": "yaakov"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Hineni — to Shechem",
+       "es": "Hineni: rumbo a Shjem",
+       "he": "הנני — אל שכם"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The brothers went to pasture their father’s flock in Shechem.",
+         "es": "Los hermanos fueron a apacentar el rebaño de su padre en Shjem.",
+         "he": "וילכו אחיו לרעות את צאן אביהם בשכם."
+        },
+        "src": "בראשית לז:יב"
+       },
+       {
+        "t": {
+         "en": "“Aren’t your brothers pasturing in Shechem? Come, I will send you to them.”",
+         "es": "“¿No están tus hermanos apacentando en Shjem? Ven, te enviaré a ellos.”",
+         "he": "״הלוא אחיך רעים בשכם, לכה ואשלחך אליהם.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לז:יג"
+       },
+       {
+        "t": {
+         "en": "“Hineni — here I am.”",
+         "es": "“Hineni: aquí estoy.”",
+         "he": "״הנני.״"
+        },
+        "w": "yosef",
+        "src": "בראשית לז:יג"
+       },
+       {
+        "t": {
+         "en": "“Go, please, see how your brothers are and how the flock is, and bring me back word.”",
+         "es": "“Ve, por favor, mira cómo están tus hermanos y cómo está el rebaño, y tráeme noticias.”",
+         "he": "״לך נא ראה את שלום אחיך ואת שלום הצאן, והשבני דבר.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לז:יד"
+       },
+       {
+        "ask": {
+         "en": "Yaakov sends Yosef to his brothers, who are jealous of him. What does Yosef answer?",
+         "es": "Yaakov envía a Yosef con sus hermanos, que le tienen envidia. ¿Qué responde Yosef?",
+         "he": "יעקב שולח את יוסף אל אחיו שמקנאים בו. מה עונה יוסף?"
+        },
+        "options": [
+         {
+          "e": "🙋",
+          "label": {
+           "en": "“Hineni” — I’ll go right away",
+           "es": "“Hineni”: voy enseguida",
+           "he": "״הנני״ — אלך מיד"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Rashi: Yosef knew his brothers hated him — and still he went at once to honor his father.",
+             "es": "Rashi: Yosef sabía que sus hermanos lo odiaban, y aun así fue de inmediato para honrar a su padre.",
+             "he": "רש״י: לשון ענוה וזריזות, נזדרז למצות אביו ואף על פי שהיה יודע באחיו ששונאים אותו."
+            },
+            "src": "רש״י בראשית לז:יג"
+           }
+          ],
+          "middah": "kibud"
+         },
+         {
+          "e": "😟",
+          "label": {
+           "en": "Ask to send someone else",
+           "es": "Pedir que envíen a otro",
+           "he": "לבקש שישלחו מישהו אחר"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yosef didn’t look for excuses. He said “Hineni” — and went at once to honor his father.",
+             "es": "Yosef no buscó excusas. Dijo “Hineni”, y fue de inmediato para honrar a su padre.",
+             "he": "יוסף לא חיפש תירוצים. הוא אמר ״הנני״ — ונזדרז למצות אביו."
+            },
+            "src": "רש״י בראשית לז:יג"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        95
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": -6,
+         "z": 101
+        },
+        {
+         "t": "tent",
+         "x": 5,
+         "z": 103
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Walk north to the field of <b>Shechem</b>, where the brothers were pasturing the flock.",
+          "es": "Camina hacia el norte, al campo de <b>Shjem</b>, donde los hermanos pastoreaban el rebaño.",
+          "he": "לכו צפונה אל השדה ב<b>שכם</b>, שם רעו האחים את הצאן."
+         },
+         "at": [
+          -14,
+          10
+         ],
+         "r": 7,
+         "talk": [
+          {
+           "t": {
+            "en": "Yosef reaches Shechem, but the field is empty. A man finds him wandering in the field.",
+            "es": "Yosef llega a Shjem, pero el campo está vacío. Un hombre lo encuentra perdido en el campo.",
+            "he": "יוסף מגיע לשכם, אבל השדה ריק. איש מוצא אותו תועה בשדה."
+           },
+           "src": "בראשית לז:טו"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "The brothers aren’t here. A <b>man</b> is wandering in the field — go ask him.",
+          "es": "Los hermanos no están aquí. Un <b>hombre</b> anda por el campo: ve a preguntarle.",
+          "he": "האחים אינם כאן. <b>איש</b> תועה בשדה — לכו לשאול אותו."
+         },
+         "at": [
+          -5,
+          4
+         ],
+         "r": 3.4,
+         "npc": [
+          {
+           "x": -5,
+           "z": 4,
+           "c": [
+            0.92,
+            0.92,
+            0.95
+           ],
+           "wander": 1,
+           "sprite": "angel"
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "“What are you looking for?”",
+            "es": "“¿Qué buscas?”",
+            "he": "״מה תבקש?״"
+           },
+           "w": "angel",
+           "src": "בראשית לז:טו"
+          },
+          {
+           "t": {
+            "en": "“I am looking for my brothers. Please tell me, where are they pasturing?”",
+            "es": "“Busco a mis hermanos. Dime, por favor, ¿dónde están apacentando?”",
+            "he": "״את אחי אנכי מבקש, הגידה נא לי איפה הם רעים.״"
+           },
+           "w": "yosef",
+           "src": "בראשית לז:טז"
+          },
+          {
+           "t": {
+            "en": "“They have left here, for I heard them say: ‘Let us go to Dotan.’”",
+            "es": "“Se fueron de aquí, porque los oí decir: ‘Vamos a Dotán’.”",
+            "he": "״נסעו מזה, כי שמעתי אמרים: נלכה דתינה.״"
+           },
+           "w": "angel",
+           "src": "בראשית לז:יז"
+          },
+          {
+           "t": {
+            "en": "Rashi explains that this “man” was the angel Gavriel.",
+            "es": "Rashi explica que este “hombre” era el ángel Gavriel.",
+            "he": "רש״י: ״וימצאהו איש — זה גבריאל.״"
+           },
+           "src": "רש״י בראשית לז:טו"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Follow his directions to <b>Dotan</b> and find the brothers’ camp.",
+          "es": "Sigue sus indicaciones hasta <b>Dotán</b> y encuentra el campamento de los hermanos.",
+          "he": "לכו לפי דבריו אל <b>דותן</b> ומצאו את מחנה האחים."
+         },
+         "at": [
+          16,
+          -80
+         ],
+         "r": 9,
+         "objects": [
+          {
+           "t": "tent",
+           "x": 23,
+           "z": -80
+          },
+          {
+           "t": "tent",
+           "x": 18,
+           "z": -86
+          },
+          {
+           "t": "tent",
+           "x": 10,
+           "z": -84
+          },
+          {
+           "t": "tent",
+           "x": 11,
+           "z": -75
+          },
+          {
+           "t": "pit",
+           "x": 14,
+           "z": -71
+          },
+          {
+           "t": "person",
+           "x": 19,
+           "z": -82,
+           "sprite": "brothers",
+           "h": 3.4
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "The brothers saw him from far away, and before he came near they plotted against him.",
+            "es": "Los hermanos lo vieron de lejos y, antes de que se acercara, conspiraron contra él.",
+            "he": "ויראו אתו מרחק, ובטרם יקרב אליהם ויתנכלו אתו."
+           },
+           "src": "בראשית לז:יח"
+          },
+          {
+           "t": {
+            "en": "“Here comes that dreamer! … Then we will see what becomes of his dreams.”",
+            "es": "“¡Ahí viene ese soñador! … Y veremos qué será de sus sueños.”",
+            "he": "״הנה בעל החלמות הלזה בא… ונראה מה יהיו חלמתיו.״"
+           },
+           "w": "brothers",
+           "src": "בראשית לז:יט–כ"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "The pit and the caravan",
+       "es": "El pozo y la caravana",
+       "he": "הבור והשיירה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“Let us not take his life. Do not shed blood — throw him into this pit in the wilderness, but do not lay a hand on him.”",
+         "es": "“No le quitemos la vida. No derramen sangre: échenlo en este pozo del desierto, pero no le pongan la mano encima.”",
+         "he": "״לא נכנו נפש. אל תשפכו דם, השליכו אתו אל הבור הזה אשר במדבר, ויד אל תשלחו בו.״"
+        },
+        "w": "reuven",
+        "src": "בראשית לז:כא–כב"
+       },
+       {
+        "t": {
+         "en": "Reuven said this to save him from them and bring him back to his father.",
+         "es": "Reuvén dijo esto para salvarlo de ellos y devolverlo a su padre.",
+         "he": "למען הציל אתו מידם, להשיבו אל אביו."
+        },
+        "src": "בראשית לז:כב"
+       },
+       {
+        "t": {
+         "en": "They took off Yosef’s coat and threw him into the pit. The pit was empty — there was no water in it.",
+         "es": "Le quitaron a Yosef su túnica y lo echaron al pozo. El pozo estaba vacío: no tenía agua.",
+         "he": "ויפשיטו את יוסף את כתנתו… וישלכו אתו הברה, והבור רק אין בו מים."
+        },
+        "src": "בראשית לז:כג–כד"
+       },
+       {
+        "t": {
+         "en": "Rashi: there was no water in it — but there were snakes and scorpions.",
+         "es": "Rashi: agua no tenía, pero sí había serpientes y escorpiones.",
+         "he": "רש״י: ״מים אין בו, אבל נחשים ועקרבים יש בו.״"
+        },
+        "src": "רש״י בראשית לז:כד"
+       },
+       {
+        "t": {
+         "en": "They sat down to eat bread, looked up — and saw a caravan of Yishmaelim coming from Gilad, their camels carrying spices, on the way down to Mitzrayim.",
+         "es": "Se sentaron a comer pan, levantaron la vista y vieron una caravana de ishmaelitas que venía de Guilad; sus camellos cargaban especias y bajaban a Mitzráyim.",
+         "he": "וישבו לאכל לחם, וישאו עיניהם ויראו והנה ארחת ישמעאלים באה מגלעד, וגמליהם נשאים נכאת וצרי ולט, הולכים להוריד מצרימה."
+        },
+        "src": "בראשית לז:כה"
+       },
+       {
+        "t": {
+         "en": "Rashi: caravans like this usually carried foul-smelling tar — but this one carried sweet spices, so that Yosef would not suffer from a bad smell.",
+         "es": "Rashi: esas caravanas solían llevar brea de mal olor, pero esta llevaba especias aromáticas, para que Yosef no sufriera un mal olor.",
+         "he": "רש״י: אין דרכן של ערביים לשאת אלא נפט ועטרן שריחן רע, ולזה נזדמנו בשמים, שלא יוזק מריח רע."
+        },
+        "src": "רש״י בראשית לז:כה"
+       },
+       {
+        "t": {
+         "en": "“What do we gain if we kill our brother and cover up his blood? Come, let us sell him to the Yishmaelim, and let our hands not harm him — for he is our brother, our own flesh.”",
+         "es": "“¿Qué ganamos con matar a nuestro hermano y ocultar su sangre? Vengan, vendámoslo a los ishmaelitas y que nuestra mano no le haga daño, porque es nuestro hermano, nuestra carne.”",
+         "he": "״מה בצע כי נהרג את אחינו וכסינו את דמו? לכו ונמכרנו לישמעאלים וידנו אל תהי בו, כי אחינו בשרנו הוא.״"
+        },
+        "w": "yehudah",
+        "src": "בראשית לז:כו–כז"
+       },
+       {
+        "t": {
+         "en": "And his brothers listened to him.",
+         "es": "Y sus hermanos le hicieron caso.",
+         "he": "וישמעו אחיו."
+        },
+        "src": "בראשית לז:כז"
+       },
+       {
+        "t": {
+         "en": "They pulled Yosef up out of the pit and sold him for twenty pieces of silver, and he was brought down to Mitzrayim.",
+         "es": "Sacaron a Yosef del pozo y lo vendieron por veinte monedas de plata, y lo llevaron a Mitzráyim.",
+         "he": "וימשכו ויעלו את יוסף מן הבור, וימכרו את יוסף לישמעאלים בעשרים כסף, ויביאו את יוסף מצרימה."
+        },
+        "src": "בראשית לז:כח"
+       },
+       {
+        "t": {
+         "en": "Help the caravan’s camel down the road to Mitzrayim — dodge the rocks!",
+         "es": "Ayuda al camello de la caravana a bajar por el camino a Mitzráyim: ¡esquiva las rocas!",
+         "he": "עזרו לגמל של השיירה לרדת בדרך למצרים — התחמקו מהסלעים!"
+        }
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 420,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "camel",
+       "pickup": "scenery/spice_jar",
+       "low": [
+        "rock",
+        "jars",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "camel",
+        "cart"
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "In Mitzrayim",
+       "es": "En Mitzráyim",
+       "he": "במצרים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "In Mitzrayim, Yosef was bought by Potifar, an officer of Pharaoh. Hashem was with Yosef, and he succeeded in everything.",
+         "es": "En Mitzráyim, Yosef fue comprado por Potifar, un oficial del faraón. Hashem estaba con Yosef, y todo le salía bien.",
+         "he": "ויקנהו פוטיפר סריס פרעה… ויהי ה׳ את יוסף ויהי איש מצליח."
+        },
+        "w": "potifar",
+        "src": "בראשית לט:א–ב",
+        "n": {
+         "en": "The Torah tells",
+         "es": "La Torá cuenta",
+         "he": "התורה מספרת"
+        }
+       },
+       {
+        "t": {
+         "en": "Later, Yosef was put in prison — and there too Hashem was with him. The prison chief put him in charge of all the prisoners.",
+         "es": "Más tarde, Yosef fue puesto en la cárcel, y también allí Hashem estaba con él. El jefe de la cárcel lo puso a cargo de todos los presos.",
+         "he": "ויתן שר בית הסהר ביד יוסף את כל האסירם אשר בבית הסהר."
+        },
+        "src": "בראשית לט:כ–כב"
+       },
+       {
+        "t": {
+         "en": "Pharaoh’s butler and baker were in that prison. One night, each of them dreamed a dream.",
+         "es": "El copero y el panadero del faraón estaban en esa cárcel. Una noche, cada uno soñó un sueño.",
+         "he": "ויחלמו חלום שניהם, איש חלמו בלילה אחד."
+        },
+        "src": "בראשית מ:ה"
+       },
+       {
+        "t": {
+         "en": "“Why do you look so sad today?”",
+         "es": "“¿Por qué están tan tristes hoy?”",
+         "he": "״מדוע פניכם רעים היום?״"
+        },
+        "w": "yosef",
+        "src": "בראשית מ:ז"
+       },
+       {
+        "t": {
+         "en": "“We dreamed a dream, and there is no one to explain it.”",
+         "es": "“Soñamos un sueño, y no hay quien lo interprete.”",
+         "he": "״חלום חלמנו, ופתר אין אתו.״"
+        },
+        "w": "butler_baker",
+        "src": "בראשית מ:ח"
+       },
+       {
+        "t": {
+         "en": "“Don’t explanations belong to G-d? Please, tell me.”",
+         "es": "“¿Acaso las interpretaciones no son de D-os? Cuéntenmelo, por favor.”",
+         "he": "״הלוא לאלקים פתרנים, ספרו נא לי.״"
+        },
+        "w": "yosef",
+        "src": "בראשית מ:ח"
+       },
+       {
+        "t": {
+         "en": "“In my dream there was a vine with three branches. It blossomed and its grapes ripened. I squeezed them into Pharaoh’s cup and gave the cup to Pharaoh.”",
+         "es": "“En mi sueño había una vid con tres ramas. Floreció y sus uvas maduraron. Las exprimí en la copa del faraón y le di la copa al faraón.”",
+         "he": "״בחלומי והנה גפן לפני, ובגפן שלשה שריגם… ואשחט אתם אל כוס פרעה, ואתן את הכוס על כף פרעה.״"
+        },
+        "w": "butler_baker",
+        "src": "בראשית מ:ט–יא",
+        "n": {
+         "en": "Butler",
+         "es": "Copero",
+         "he": "שר המשקים"
+        }
+       },
+       {
+        "t": {
+         "en": "“The three branches are three days. In three days Pharaoh will give you back your post. Please, remember me, and mention me to Pharaoh.”",
+         "es": "“Las tres ramas son tres días. En tres días el faraón te devolverá tu puesto. Por favor, acuérdate de mí y menciónanme ante el faraón.”",
+         "he": "״שלשת השרגים שלשת ימים הם… כי אם זכרתני אתך… והזכרתני אל פרעה.״"
+        },
+        "w": "yosef",
+        "src": "בראשית מ:יב–יד"
+       },
+       {
+        "t": {
+         "en": "“In my dream there were three baskets of white bread on my head, and the birds were eating from the top basket.”",
+         "es": "“En mi sueño había tres canastas de pan blanco sobre mi cabeza, y los pájaros comían de la canasta de arriba.”",
+         "he": "״אף אני בחלומי, והנה שלשה סלי חרי על ראשי… והעוף אכל אתם מן הסל מעל ראשי.״"
+        },
+        "w": "baker",
+        "src": "בראשית מ:טז–יז",
+        "n": {
+         "en": "Baker",
+         "es": "Panadero",
+         "he": "שר האופים"
+        }
+       },
+       {
+        "t": {
+         "en": "Yosef explained this dream too — but it was bad news for the baker.",
+         "es": "Yosef interpretó también este sueño, pero eran malas noticias para el panadero.",
+         "he": "גם את החלום הזה פתר יוסף — אך הבשורה לשר האופים הייתה רעה."
+        },
+        "src": "בראשית מ:יח–יט"
+       },
+       {
+        "t": {
+         "en": "Three days later, on Pharaoh’s birthday, everything happened just as Yosef said. But the butler did not remember Yosef — he forgot him.",
+         "es": "Tres días después, en el cumpleaños del faraón, todo pasó tal como Yosef dijo. Pero el copero no se acordó de Yosef: se olvidó de él.",
+         "he": "ויהי ביום השלישי יום הלדת את פרעה… ולא זכר שר המשקים את יוסף, וישכחהו."
+        },
+        "src": "בראשית מ:כ–כג"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "reuven",
+    "who": "reuven",
+    "name": {
+     "en": "Reuven",
+     "es": "Reuvén",
+     "he": "ראובן"
+    },
+    "tag": {
+     "en": "The firstborn who tried to save his brother.",
+     "es": "El primogénito que quiso salvar a su hermano.",
+     "he": "הבכור שניסה להציל את אחיו."
+    },
+    "outro": {
+     "en": "Reuven tried to save Yosef and bring him home to their father. He came back too late — but he never forgot his brother.",
+     "es": "Reuvén quiso salvar a Yosef y devolverlo a su padre. Llegó demasiado tarde, pero nunca olvidó a su hermano.",
+     "he": "ראובן ניסה להציל את יוסף ולהשיבו אל אביו. הוא חזר מאוחר מדי — אך מעולם לא שכח את אחיו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The plan at Dotan",
+       "es": "El plan en Dotán",
+       "he": "העצה בדותן"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The brothers saw him from far away, and before he came near they plotted against him.",
+         "es": "Los hermanos lo vieron de lejos y, antes de que se acercara, conspiraron contra él.",
+         "he": "ויראו אתו מרחק, ובטרם יקרב אליהם ויתנכלו אתו."
+        },
+        "src": "בראשית לז:יח"
+       },
+       {
+        "t": {
+         "en": "“Here comes that dreamer! … Then we will see what becomes of his dreams.”",
+         "es": "“¡Ahí viene ese soñador! … Y veremos qué será de sus sueños.”",
+         "he": "״הנה בעל החלמות הלזה בא… ונראה מה יהיו חלמתיו.״"
+        },
+        "w": "brothers",
+        "src": "בראשית לז:יט–כ"
+       },
+       {
+        "ask": {
+         "en": "Your brothers want to harm Yosef. You are the oldest. What do you do?",
+         "es": "Tus hermanos quieren hacerle daño a Yosef. Tú eres el mayor. ¿Qué haces?",
+         "he": "האחים רוצים לפגוע ביוסף. אתם הבכור. מה תעשו?"
+        },
+        "options": [
+         {
+          "e": "🛡️",
+          "label": {
+           "en": "Speak up and find a way to save him",
+           "es": "Hablar y buscar una forma de salvarlo",
+           "he": "לדבר ולמצוא דרך להצילו"
+          },
+          "middah": "gevurah"
+         },
+         {
+          "e": "🤐",
+          "label": {
+           "en": "Stay quiet",
+           "es": "Quedarse callado",
+           "he": "לשתוק"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Reuven didn’t stay quiet — he spoke up:",
+             "es": "Reuvén no se quedó callado; habló:",
+             "he": "ראובן לא שתק — הוא דיבר:"
+            }
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "“Let us not take his life. Do not shed blood — throw him into this pit in the wilderness, but do not lay a hand on him.”",
+         "es": "“No le quitemos la vida. No derramen sangre: échenlo en este pozo del desierto, pero no le pongan la mano encima.”",
+         "he": "״לא נכנו נפש. אל תשפכו דם, השליכו אתו אל הבור הזה אשר במדבר, ויד אל תשלחו בו.״"
+        },
+        "w": "reuven",
+        "src": "בראשית לז:כא–כב"
+       },
+       {
+        "t": {
+         "en": "Reuven said this to save him from them and bring him back to his father.",
+         "es": "Reuvén dijo esto para salvarlo de ellos y devolverlo a su padre.",
+         "he": "למען הציל אתו מידם, להשיבו אל אביו."
+        },
+        "src": "בראשית לז:כב"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        30
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 10,
+         "z": 34
+        },
+        {
+         "t": "tent",
+         "x": 16,
+         "z": 28
+        },
+        {
+         "t": "tent",
+         "x": 4,
+         "z": 38
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Go to the <b>pit</b> in the wilderness.",
+          "es": "Ve al <b>pozo</b> del desierto.",
+          "he": "לכו אל <b>הבור</b> אשר במדבר."
+         },
+         "at": [
+          -12,
+          -28
+         ],
+         "r": 5,
+         "talk": [
+          {
+           "t": {
+            "en": "They took off Yosef’s coat and threw him into the pit. The pit was empty — there was no water in it.",
+            "es": "Le quitaron a Yosef su túnica y lo echaron al pozo. El pozo estaba vacío: no tenía agua.",
+            "he": "ויפשיטו את יוסף את כתנתו… וישלכו אתו הברה, והבור רק אין בו מים."
+           },
+           "src": "בראשית לז:כג–כד"
+          },
+          {
+           "t": {
+            "en": "Rashi: there was no water in it — but there were snakes and scorpions.",
+            "es": "Rashi: agua no tenía, pero sí había serpientes y escorpiones.",
+            "he": "רש״י: ״מים אין בו, אבל נחשים ועקרבים יש בו.״"
+           },
+           "src": "רש״י בראשית לז:כד"
+          }
+         ],
+         "objects": [
+          {
+           "t": "pit",
+           "x": -12,
+           "z": -28
+          },
+          {
+           "t": "rock",
+           "x": -16,
+           "z": -25
+          },
+          {
+           "t": "rock",
+           "x": -8,
+           "z": -32
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Reuven goes away. Walk back to the <b>tents</b>.",
+          "es": "Reuvén se va. Regresa a las <b>tiendas</b>.",
+          "he": "ראובן הולך משם. חזרו אל <b>האהלים</b>."
+         },
+         "at": [
+          12,
+          30
+         ],
+         "r": 6,
+         "talk": [
+          {
+           "t": {
+            "en": "Reuven was not there when Yosef was sold. Rashi: it was his day to go and serve his father — or he was busy fasting and doing teshuvah.",
+            "es": "Reuvén no estaba cuando vendieron a Yosef. Rashi: le tocaba ir a servir a su padre; o estaba ocupado ayunando y haciendo teshuvá.",
+            "he": "ובמכירתו לא היה שם, שהגיע יומו לילך ולשמש את אביו. דבר אחר: עסוק היה בשקו ובתעניתו."
+           },
+           "src": "רש״י בראשית לז:כט"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Hurry back!",
+       "es": "¡Rápido, de vuelta!",
+       "he": "חזרה מהירה!"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Meanwhile, a caravan passed by, and Yosef was sold and taken down to Mitzrayim. Reuven doesn’t know yet — he hurries back to the pit.",
+         "es": "Mientras tanto pasó una caravana, y Yosef fue vendido y llevado a Mitzráyim. Reuvén todavía no lo sabe: vuelve corriendo al pozo.",
+         "he": "בינתיים עברה שיירה, ויוסף נמכר והורד מצרימה. ראובן עוד אינו יודע — והוא ממהר לחזור אל הבור."
+        },
+        "src": "בראשית לז:כה–כח"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 360,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "reuven",
+       "pickup": false,
+       "low": [
+        "rock",
+        "jars",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "pile",
+        "cart"
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "The empty pit",
+       "es": "El pozo vacío",
+       "he": "הבור הריק"
+      },
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        26
+       ],
+       "objects": [
+        {
+         "t": "pit",
+         "x": 0,
+         "z": -18
+        },
+        {
+         "t": "rock",
+         "x": -4,
+         "z": -15
+        },
+        {
+         "t": "rock",
+         "x": 4,
+         "z": -21
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Run to the <b>pit</b>!",
+          "es": "¡Corre al <b>pozo</b>!",
+          "he": "רוצו אל <b>הבור</b>!"
+         },
+         "at": [
+          0,
+          -18
+         ],
+         "r": 4.5,
+         "talk": [
+          {
+           "t": {
+            "en": "Reuven returned to the pit — and Yosef was not in the pit! He tore his clothes.",
+            "es": "Reuvén volvió al pozo, ¡y Yosef no estaba en el pozo! Rasgó sus ropas.",
+            "he": "וישב ראובן אל הבור, והנה אין יוסף בבור, ויקרע את בגדיו."
+           },
+           "src": "בראשית לז:כט"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Go to your <b>brothers</b>.",
+          "es": "Ve con tus <b>hermanos</b>.",
+          "he": "לכו אל <b>האחים</b>."
+         },
+         "at": [
+          22,
+          -40
+         ],
+         "r": 5,
+         "objects": [
+          {
+           "t": "tent",
+           "x": 28,
+           "z": -44
+          },
+          {
+           "t": "tent",
+           "x": 18,
+           "z": -48
+          },
+          {
+           "t": "person",
+           "x": 24,
+           "z": -42,
+           "sprite": "brothers",
+           "h": 3.4
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "“The boy is gone! And I — where can I go?”",
+            "es": "“¡El muchacho no está! Y yo, ¿adónde iré?”",
+            "he": "״הילד איננו, ואני אנה אני בא?״"
+           },
+           "w": "reuven",
+           "src": "בראשית לז:ל"
+          }
+         ]
+        }
+       ]
+      },
+      "after": [
+       {
+        "t": {
+         "en": "The brothers dipped Yosef’s coat in the blood of a goat and brought it to their father.",
+         "es": "Los hermanos mojaron la túnica de Yosef en sangre de cabrito y se la llevaron a su padre.",
+         "he": "ויקחו את כתנת יוסף, וישחטו שעיר עזים, ויטבלו את הכתנת בדם… ויביאו אל אביהם."
+        },
+        "src": "בראשית לז:לא–לב"
+       },
+       {
+        "t": {
+         "en": "“It is my son’s coat! A wild animal has eaten him — Yosef has surely been torn to pieces!”",
+         "es": "“¡Es la túnica de mi hijo! Una fiera lo devoró: ¡Yosef fue despedazado!”",
+         "he": "״כתנת בני, חיה רעה אכלתהו, טרף טרף יוסף!״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לז:לג"
+       },
+       {
+        "t": {
+         "en": "All his sons and daughters tried to comfort him, but he refused to be comforted.",
+         "es": "Todos sus hijos e hijas intentaron consolarlo, pero él no quiso ser consolado.",
+         "he": "ויקמו כל בניו וכל בנתיו לנחמו, וימאן להתנחם."
+        },
+        "src": "בראשית לז:לה"
+       },
+       {
+        "t": {
+         "en": "Years later, in Mitzrayim, Reuven would remind his brothers: “Didn’t I tell you not to sin against the boy?”",
+         "es": "Años después, en Mitzráyim, Reuvén les recordaría a sus hermanos: “¿No les dije que no pecaran contra el muchacho?”",
+         "he": "שנים אחר כך, במצרים, אמר ראובן לאחיו: ״הלוא אמרתי אליכם לאמר אל תחטאו בילד.״"
+        },
+        "src": "בראשית מב:כב"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "yehudah",
+    "who": "yehudah",
+    "name": {
+     "en": "Yehudah",
+     "es": "Yehudá",
+     "he": "יהודה"
+    },
+    "tag": {
+     "en": "The brother who changed — from “let us sell him” to “take me instead”.",
+     "es": "El hermano que cambió: de “vendámoslo” a “tómenme a mí en su lugar”.",
+     "he": "האח שהשתנה — מ״לכו ונמכרנו״ ועד ״ישב נא עבדך תחת הנער״."
+    },
+    "outro": {
+     "en": "Yehudah’s idea saved Yosef’s life, but sent him far from home. Years later, Yehudah would be ready to give himself up for his brother Binyamin.",
+     "es": "La idea de Yehudá salvó la vida de Yosef, pero lo alejó de casa. Años después, Yehudá estaría dispuesto a entregarse por su hermano Binyamin.",
+     "he": "עצת יהודה הצילה את חיי יוסף, אבל שלחה אותו הרחק מביתו. שנים אחר כך היה יהודה מוכן למסור את עצמו בעד אחיו בנימין."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Shepherds in Shechem",
+       "es": "Pastores en Shjem",
+       "he": "רועים בשכם"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov’s sons went to pasture their father’s flock in Shechem.",
+         "es": "Los hijos de Yaakov fueron a apacentar el rebaño de su padre en Shjem.",
+         "he": "וילכו אחיו לרעות את צאן אביהם בשכם."
+        },
+        "src": "בראשית לז:יב"
+       },
+       {
+        "t": {
+         "en": "Yehudah is Leah’s fourth son. Help him bring the flock into the pen.",
+         "es": "Yehudá es el cuarto hijo de Leá. Ayúdalo a meter el rebaño en el corral.",
+         "he": "יהודה הוא בנה הרביעי של לאה. עזרו לו להכניס את הצאן לדיר."
+        },
+        "src": "בראשית כט:לה"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 10,
+       "every": 99,
+       "player": {
+        "sprite": "yehudah",
+        "h": 3.2
+       },
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.2,
+        "gap": 0.42,
+        "style": "fence"
+       },
+       "objects": [
+        {
+         "t": "tent",
+         "x": -9,
+         "z": -38
+        },
+        {
+         "t": "tent",
+         "x": 4,
+         "z": -40
+        },
+        {
+         "t": "tree",
+         "x": 14,
+         "z": -30
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "The caravan on the road",
+       "es": "La caravana en el camino",
+       "he": "השיירה בדרך"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The brothers saw him from far away, and before he came near they plotted against him.",
+         "es": "Los hermanos lo vieron de lejos y, antes de que se acercara, conspiraron contra él.",
+         "he": "ויראו אתו מרחק, ובטרם יקרב אליהם ויתנכלו אתו."
+        },
+        "src": "בראשית לז:יח"
+       },
+       {
+        "t": {
+         "en": "“Here comes that dreamer! … Then we will see what becomes of his dreams.”",
+         "es": "“¡Ahí viene ese soñador! … Y veremos qué será de sus sueños.”",
+         "he": "״הנה בעל החלמות הלזה בא… ונראה מה יהיו חלמתיו.״"
+        },
+        "w": "brothers",
+        "src": "בראשית לז:יט–כ"
+       },
+       {
+        "t": {
+         "en": "“Let us not take his life. Do not shed blood — throw him into this pit in the wilderness, but do not lay a hand on him.”",
+         "es": "“No le quitemos la vida. No derramen sangre: échenlo en este pozo del desierto, pero no le pongan la mano encima.”",
+         "he": "״לא נכנו נפש. אל תשפכו דם, השליכו אתו אל הבור הזה אשר במדבר, ויד אל תשלחו בו.״"
+        },
+        "w": "reuven",
+        "src": "בראשית לז:כא–כב"
+       },
+       {
+        "t": {
+         "en": "Reuven said this to save him from them and bring him back to his father.",
+         "es": "Reuvén dijo esto para salvarlo de ellos y devolverlo a su padre.",
+         "he": "למען הציל אתו מידם, להשיבו אל אביו."
+        },
+        "src": "בראשית לז:כב"
+       },
+       {
+        "t": {
+         "en": "They took off Yosef’s coat and threw him into the pit. The pit was empty — there was no water in it.",
+         "es": "Le quitaron a Yosef su túnica y lo echaron al pozo. El pozo estaba vacío: no tenía agua.",
+         "he": "ויפשיטו את יוסף את כתנתו… וישלכו אתו הברה, והבור רק אין בו מים."
+        },
+        "src": "בראשית לז:כג–כד"
+       },
+       {
+        "t": {
+         "en": "Rashi: there was no water in it — but there were snakes and scorpions.",
+         "es": "Rashi: agua no tenía, pero sí había serpientes y escorpiones.",
+         "he": "רש״י: ״מים אין בו, אבל נחשים ועקרבים יש בו.״"
+        },
+        "src": "רש״י בראשית לז:כד"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "start": [
+        0,
+        28
+       ],
+       "objects": [
+        {
+         "t": "pit",
+         "x": -7,
+         "z": 22
+        },
+        {
+         "t": "tent",
+         "x": 8,
+         "z": 33
+        },
+        {
+         "t": "tent",
+         "x": 14,
+         "z": 27
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Look up! Climb to the <b>road</b> where a caravan is passing.",
+          "es": "¡Mira! Sube al <b>camino</b> por donde pasa una caravana.",
+          "he": "הביטו! עלו אל <b>הדרך</b> שבה עוברת שיירה."
+         },
+         "at": [
+          18,
+          -30
+         ],
+         "r": 6,
+         "talk": [
+          {
+           "t": {
+            "en": "They sat down to eat bread, looked up — and saw a caravan of Yishmaelim coming from Gilad, their camels carrying spices, on the way down to Mitzrayim.",
+            "es": "Se sentaron a comer pan, levantaron la vista y vieron una caravana de ishmaelitas que venía de Guilad; sus camellos cargaban especias y bajaban a Mitzráyim.",
+            "he": "וישבו לאכל לחם, וישאו עיניהם ויראו והנה ארחת ישמעאלים באה מגלעד, וגמליהם נשאים נכאת וצרי ולט, הולכים להוריד מצרימה."
+           },
+           "src": "בראשית לז:כה"
+          },
+          {
+           "t": {
+            "en": "Rashi: caravans like this usually carried foul-smelling tar — but this one carried sweet spices, so that Yosef would not suffer from a bad smell.",
+            "es": "Rashi: esas caravanas solían llevar brea de mal olor, pero esta llevaba especias aromáticas, para que Yosef no sufriera un mal olor.",
+            "he": "רש״י: אין דרכן של ערביים לשאת אלא נפט ועטרן שריחן רע, ולזה נזדמנו בשמים, שלא יוזק מריח רע."
+           },
+           "src": "רש״י בראשית לז:כה"
+          },
+          {
+           "ask": {
+            "en": "The caravan is coming. The brothers are angry at Yosef. What does Yehudah say?",
+            "es": "Se acerca la caravana. Los hermanos están enojados con Yosef. ¿Qué dice Yehudá?",
+            "he": "השיירה מתקרבת. האחים כועסים על יוסף. מה אומר יהודה?"
+           },
+           "options": [
+            {
+             "e": "✋",
+             "label": {
+              "en": "“Don’t harm him — he is our brother”",
+              "es": "“No le hagan daño: es nuestro hermano”",
+              "he": "״אל תפגעו בו — אחינו הוא״"
+             },
+             "middah": "achdut"
+            },
+            {
+             "e": "😶",
+             "label": {
+              "en": "Say nothing",
+              "es": "No decir nada",
+              "he": "לא לומר דבר"
+             },
+             "reply": [
+              {
+               "t": {
+                "en": "Yehudah did speak up — and his words saved Yosef’s life:",
+                "es": "Yehudá sí habló, y sus palabras salvaron la vida de Yosef:",
+                "he": "יהודה דיבר — ודבריו הצילו את חיי יוסף:"
+               }
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "t": {
+            "en": "“What do we gain if we kill our brother and cover up his blood? Come, let us sell him to the Yishmaelim, and let our hands not harm him — for he is our brother, our own flesh.”",
+            "es": "“¿Qué ganamos con matar a nuestro hermano y ocultar su sangre? Vengan, vendámoslo a los ishmaelitas y que nuestra mano no le haga daño, porque es nuestro hermano, nuestra carne.”",
+            "he": "״מה בצע כי נהרג את אחינו וכסינו את דמו? לכו ונמכרנו לישמעאלים וידנו אל תהי בו, כי אחינו בשרנו הוא.״"
+           },
+           "w": "yehudah",
+           "src": "בראשית לז:כו–כז"
+          },
+          {
+           "t": {
+            "en": "And his brothers listened to him.",
+            "es": "Y sus hermanos le hicieron caso.",
+            "he": "וישמעו אחיו."
+           },
+           "src": "בראשית לז:כז"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 22,
+           "z": -34,
+           "sprite": "camel",
+           "h": 3.6
+          },
+          {
+           "t": "person",
+           "x": 26,
+           "z": -37,
+           "sprite": "camel",
+           "h": 3.6
+          },
+          {
+           "t": "person",
+           "x": 30,
+           "z": -40,
+           "sprite": "camel",
+           "h": 3.6
+          },
+          {
+           "t": "rock",
+           "x": 12,
+           "z": -24
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Twenty pieces of silver",
+       "es": "Veinte monedas de plata",
+       "he": "עשרים כסף"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "They pulled Yosef up out of the pit and sold him for twenty pieces of silver, and he was brought down to Mitzrayim.",
+         "es": "Sacaron a Yosef del pozo y lo vendieron por veinte monedas de plata, y lo llevaron a Mitzráyim.",
+         "he": "וימשכו ויעלו את יוסף מן הבור, וימכרו את יוסף לישמעאלים בעשרים כסף, ויביאו את יוסף מצרימה."
+        },
+        "src": "בראשית לז:כח"
+       },
+       {
+        "t": {
+         "en": "The brothers dipped Yosef’s coat in the blood of a goat and brought it to their father.",
+         "es": "Los hermanos mojaron la túnica de Yosef en sangre de cabrito y se la llevaron a su padre.",
+         "he": "ויקחו את כתנת יוסף, וישחטו שעיר עזים, ויטבלו את הכתנת בדם… ויביאו אל אביהם."
+        },
+        "src": "בראשית לז:לא–לב"
+       },
+       {
+        "t": {
+         "en": "“It is my son’s coat! A wild animal has eaten him — Yosef has surely been torn to pieces!”",
+         "es": "“¡Es la túnica de mi hijo! Una fiera lo devoró: ¡Yosef fue despedazado!”",
+         "he": "״כתנת בני, חיה רעה אכלתהו, טרף טרף יוסף!״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לז:לג"
+       },
+       {
+        "t": {
+         "en": "All his sons and daughters tried to comfort him, but he refused to be comforted.",
+         "es": "Todos sus hijos e hijas intentaron consolarlo, pero él no quiso ser consolado.",
+         "he": "ויקמו כל בניו וכל בנתיו לנחמו, וימאן להתנחם."
+        },
+        "src": "בראשית לז:לה"
+       },
+       {
+        "t": {
+         "en": "Many years later, Yehudah would stand before the ruler of Mitzrayim and say: “Please let me stay as your servant instead of the boy.” He had learned to protect his brother.",
+         "es": "Muchos años después, Yehudá se presentaría ante el gobernante de Mitzráyim y diría: “Permite que yo me quede como tu siervo en lugar del muchacho”. Había aprendido a proteger a su hermano.",
+         "he": "שנים רבות אחר כך עמד יהודה לפני שליט מצרים ואמר: ״ישב נא עבדך תחת הנער עבד לאדני.״ הוא למד להגן על אחיו."
+        },
+        "src": "בראשית מד:לג"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

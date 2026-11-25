@@ -1,0 +1,718 @@
+{
+ "id": "noach",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Noach: two stories",
+  "es": "Nóaj: dos historias",
+  "he": "נח: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "noach",
+    "who": "noach",
+    "name": {
+     "en": "Noach",
+     "es": "Nóaj",
+     "he": "נח"
+    },
+    "tag": {
+     "en": "Build the ark, bring in the animals, and wait out the flood.",
+     "es": "Construye el arca, mete a los animales y espera a que pase el diluvio.",
+     "he": "בנו את התבה, הכניסו את החיות וחכו עד שיעבור המבול."
+    },
+    "outro": {
+     "en": "Hashem promised never again to bring a flood on the whole world, and the rainbow is the sign of that promise.",
+     "es": "Hashem prometió no volver a traer un diluvio sobre todo el mundo, y el arcoíris es la señal de esa promesa.",
+     "he": "ה׳ הבטיח שלא יביא עוד מבול על כל הארץ, והקשת היא אות הברית."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "A tzaddik in his generation",
+       "es": "Un tzadik en su generación",
+       "he": "צדיק בדורותיו"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Noach was a righteous man, perfect in his generation; Noach walked with G-d.",
+         "es": "Nóaj era un hombre justo, íntegro en su generación; Nóaj andaba con D-os.",
+         "he": "נח איש צדיק תמים היה בדרתיו, את האלקים התהלך נח."
+        },
+        "src": "בראשית ו:ט"
+       },
+       {
+        "t": {
+         "en": "G-d told Noach: “Make yourself an ark of gopher wood.” Rashi: Noach worked on it for 120 years, so people would see and ask — and do teshuvah.",
+         "es": "D-os le dijo a Nóaj: “Hazte un arca de madera de gofer”. Rashi: Nóaj trabajó en ella 120 años, para que la gente viera, preguntara e hiciera teshuvá.",
+         "he": "״עשה לך תבת עצי גפר.״ רש״י: מאה ועשרים שנה היה נח עוסק בה, כדי שיראוהו אנשי דור המבול ויעשו תשובה."
+        },
+        "src": "בראשית ו:יד; רש״י"
+       },
+       {
+        "ask": {
+         "en": "Neighbors laugh at the ark. What does Noach do?",
+         "es": "Los vecinos se ríen del arca. ¿Qué hace Nóaj?",
+         "he": "השכנים צוחקים על התבה. מה עושה נח?"
+        },
+        "options": [
+         {
+          "e": "🗣️",
+          "label": {
+           "en": "Explain and warn them to change",
+           "es": "Explicarles y advertirles que cambien",
+           "he": "להסביר ולהזהיר אותם לשוב"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Noach kept warning them, hoping they would return to Hashem.",
+             "es": "Nóaj siguió advirtiéndoles, con la esperanza de que volvieran a Hashem.",
+             "he": "נח המשיך להזהיר אותם, בתקוה שישובו אל ה׳."
+            },
+            "w": "noach"
+           }
+          ],
+          "middah": "chesed"
+         },
+         {
+          "e": "🔨",
+          "label": {
+           "en": "Ignore them and keep building",
+           "es": "Ignorarlos y seguir construyendo",
+           "he": "להתעלם ולהמשיך לבנות"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Noach kept building — and the ark itself was a warning to everyone who passed by.",
+             "es": "Nóaj siguió construyendo, y el arca misma era una advertencia para todos los que pasaban.",
+             "he": "נח המשיך לבנות — והתבה עצמה הייתה אזהרה לכל העוברים."
+            }
+           }
+          ],
+          "middah": "savlanut"
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        22
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Cut <b>gopher wood</b> for the ark.",
+          "es": "Corta <b>madera de gofer</b> para el arca.",
+          "he": "כרתו <b>עצי גפר</b> לתבה."
+         },
+         "at": [
+          0,
+          -2
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/acacia",
+          "n": 4,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "Wood ready!",
+           "es": "¡Madera lista!",
+           "he": "העצים מוכנים!"
+          }
+         }
+        },
+        {
+         "text": {
+          "en": "Bring the wood to the <b>ark</b>.",
+          "es": "Lleva la madera al <b>arca</b>.",
+          "he": "הביאו את העצים אל <b>התבה</b>."
+         },
+         "at": [
+          0,
+          -30
+         ],
+         "r": 7,
+         "objects": [
+          {
+           "t": "person",
+           "x": 0,
+           "z": -36,
+           "sprite": "scenery/ark",
+           "h": 7
+          },
+          {
+           "t": "person",
+           "x": -6,
+           "z": -31,
+           "sprite": "noach_wife",
+           "h": 3.2
+          },
+          {
+           "t": "person",
+           "x": 5,
+           "z": -31,
+           "sprite": "shem",
+           "h": 3.2
+          },
+          {
+           "t": "person",
+           "x": 8,
+           "z": -29,
+           "sprite": "cham",
+           "h": 3.2
+          },
+          {
+           "t": "person",
+           "x": -9,
+           "z": -29,
+           "sprite": "yefet",
+           "h": 3.2
+          }
+         ],
+         "par": 8
+        }
+       ],
+       "player": {
+        "sprite": "noach",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Pairs of every kind",
+       "es": "Parejas de cada especie",
+       "he": "זוגות מכל מין"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“From every living thing, two of each, bring into the ark, to keep them alive with you — male and female.” Find the pairs!",
+         "es": "“De todo ser viviente, dos de cada uno, mete en el arca para mantenerlos con vida contigo: macho y hembra”. ¡Encuentra las parejas!",
+         "he": "״ומכל החי מכל בשר שנים מכל תביא אל התבה להחית אתך, זכר ונקבה יהיו.״ מצאו את הזוגות!"
+        },
+        "src": "בראשית ו:יט"
+       }
+      ],
+      "game": {
+       "type": "memory",
+       "cards": [
+        "sheep",
+        "goat",
+        "camel",
+        "cow",
+        "donkey",
+        "lion"
+       ],
+       "text": {
+        "en": "Match the animals two by two!",
+        "es": "¡Une a los animales de dos en dos!",
+        "he": "התאימו את החיות שנים שנים!"
+       },
+       "done": {
+        "en": "Two by two!",
+        "es": "¡De dos en dos!",
+        "he": "שנים שנים!"
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Two by two",
+       "es": "De dos en dos",
+       "he": "שנים שנים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Two of every kind came to Noach into the ark, male and female, as G-d commanded.",
+         "es": "De cada especie llegaron dos a Nóaj al arca, macho y hembra, como D-os había ordenado.",
+         "he": "שנים שנים באו אל נח אל התבה, זכר ונקבה, כאשר צוה אלקים את נח."
+        },
+        "src": "בראשית ז:ט"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.55,
+         0.62,
+         0.38
+        ],
+        "sky": [
+         0.5,
+         0.58,
+         0.7
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4,
+        "rain": 1
+       },
+       "animal": "mixed",
+       "n": 12,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.5,
+        "gap": 0.42,
+        "style": "ark"
+       },
+       "every": 4,
+       "player": {
+        "sprite": "noach",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "On the waters",
+       "es": "Sobre las aguas",
+       "he": "על פני המים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The waters grew stronger and rose very high over the earth — and the ark moved on the surface of the waters.",
+         "es": "Las aguas se hicieron más fuertes y crecieron mucho sobre la tierra, y el arca avanzaba sobre la superficie de las aguas.",
+         "he": "ויגברו המים וירבו מאד על הארץ, ותלך התבה על פני המים."
+        },
+        "src": "בראשית ז:יח"
+       }
+      ],
+      "game": {
+       "type": "steer",
+       "img": "scenery/ark",
+       "time": 25,
+       "obstacles": [
+        "scenery/boulder",
+        "scenery/rocks",
+        "scenery/hill"
+       ],
+       "text": {
+        "en": "Steer the ark across the waters!",
+        "es": "¡Guía el arca sobre las aguas!",
+        "he": "נווטו את התבה על פני המים!"
+       },
+       "done": {
+        "en": "Safe and sound!",
+        "es": "¡Sanos y salvos!",
+        "he": "בשלום!"
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The rainbow",
+       "es": "El arcoíris",
+       "he": "הקשת"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The rain fell forty days and forty nights. Then the ark came to rest on the mountains of Ararat.",
+         "es": "La lluvia cayó cuarenta días y cuarenta noches. Luego el arca se posó sobre los montes de Ararat.",
+         "he": "ויהי הגשם על הארץ ארבעים יום וארבעים לילה… ותנח התבה… על הרי אררט."
+        },
+        "src": "בראשית ז:יב; ח:ד"
+       },
+       {
+        "t": {
+         "en": "Noach came out and built an altar to Hashem.",
+         "es": "Nóaj salió y construyó un altar a Hashem.",
+         "he": "ויבן נח מזבח לה׳."
+        },
+        "src": "בראשית ח:כ"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": 18,
+         "z": -40,
+         "sprite": "scenery/rainbow",
+         "h": 12
+        },
+        {
+         "t": "person",
+         "x": 30,
+         "z": -10,
+         "sprite": "scenery/ark",
+         "h": 7
+        },
+        {
+         "t": "person",
+         "x": -19,
+         "z": -31,
+         "sprite": "noach_wife",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": -9,
+         "z": -31,
+         "sprite": "shem",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": -7,
+         "z": -27,
+         "sprite": "cham",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": -21,
+         "z": -27,
+         "sprite": "yefet",
+         "h": 3.2
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Lay the <b>stones</b> of the altar.",
+          "es": "Coloca las <b>piedras</b> del altar.",
+          "he": "סדרו את <b>אבני</b> המזבח."
+         },
+         "at": [
+          0,
+          0
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/altar",
+          "n": 3,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "The altar is built!",
+           "es": "¡El altar está construido!",
+           "he": "המזבח נבנה!"
+          }
+         }
+        },
+        {
+         "text": {
+          "en": "Build the <b>altar</b> on the hill.",
+          "es": "Construye el <b>altar</b> en la colina.",
+          "he": "בנו את <b>המזבח</b> על הגבעה."
+         },
+         "at": [
+          -14,
+          -26
+         ],
+         "r": 4,
+         "talk": [
+          {
+           "t": {
+            "en": "“I have set My bow in the cloud; it will be a sign of the covenant between Me and the earth.”",
+            "es": "“He puesto Mi arco en la nube; será señal del pacto entre Mí y la tierra.”",
+            "he": "״את קשתי נתתי בענן, והיתה לאות ברית ביני ובין הארץ.״"
+           },
+           "src": "בראשית ט:יג"
+          }
+         ],
+         "objects": [
+          {
+           "t": "altar",
+           "x": -14,
+           "z": -28
+          }
+         ],
+         "par": 9
+        }
+       ],
+       "player": {
+        "sprite": "noach",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "dove",
+    "who": "dove",
+    "name": {
+     "en": "The dove",
+     "es": "La paloma",
+     "he": "היונה"
+    },
+    "tag": {
+     "en": "Fly over the flood waters and bring back a sign of hope.",
+     "es": "Vuela sobre las aguas del diluvio y trae una señal de esperanza.",
+     "he": "עופו מעל מי המבול והביאו סימן של תקוה."
+    },
+    "outro": {
+     "en": "The dove brought an olive leaf — and Noach knew the waters had gone down.",
+     "es": "La paloma trajo una hoja de olivo, y Nóaj supo que las aguas habían bajado.",
+     "he": "היונה הביאה עלה זית — ונח ידע כי קלו המים."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "No place to rest",
+       "es": "Ningún lugar para descansar",
+       "he": "לא מצאה מנוח"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Noach opened the window of the ark and sent out the raven, which flew back and forth.",
+         "es": "Nóaj abrió la ventana del arca y envió al cuervo, que iba y venía.",
+         "he": "ויפתח נח את חלון התבה… וישלח את הערב, ויצא יצוא ושוב."
+        },
+        "src": "בראשית ח:ו–ז"
+       },
+       {
+        "t": {
+         "en": "Then he sent the dove — but it found no place to rest its foot, and returned to the ark. Fly over the waters!",
+         "es": "Luego envió a la paloma, pero no encontró dónde posar su pata y volvió al arca. ¡Vuela sobre las aguas!",
+         "he": "וישלח את היונה… ולא מצאה היונה מנוח לכף רגלה ותשב אליו אל התבה. עופו מעל המים!"
+        },
+        "src": "בראשית ח:ח–ט"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "water",
+       "goal": 380,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "dove",
+       "pickup": false,
+       "low": [
+        "reeds"
+       ],
+       "tall": [
+        "boulder",
+        "pile"
+       ],
+       "goalSprite": "scenery/ark",
+       "side": []
+      }
+     },
+     {
+      "title": {
+       "en": "The olive leaf",
+       "es": "La hoja de olivo",
+       "he": "עלה זית"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Seven days later Noach sent the dove again.",
+         "es": "Siete días después Nóaj envió otra vez a la paloma.",
+         "he": "ויחל עוד שבעת ימים אחרים, ויסף שלח את היונה."
+        },
+        "src": "בראשית ח:י"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        24
+       ],
+       "objects": [
+        {
+         "t": "rock",
+         "x": 8,
+         "z": 4
+        },
+        {
+         "t": "rock",
+         "x": -6,
+         "z": -10
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Find an <b>olive tree</b> on the hills.",
+          "es": "Encuentra un <b>olivo</b> en las colinas.",
+          "he": "מצאו <b>עץ זית</b> על ההרים."
+         },
+         "at": [
+          -18,
+          -34
+         ],
+         "r": 4,
+         "talk": [
+          {
+           "t": {
+            "en": "The dove came back in the evening — with a fresh olive leaf in its mouth! Noach knew the waters had gone down.",
+            "es": "La paloma volvió al atardecer, ¡con una hoja de olivo fresca en el pico! Nóaj supo que las aguas habían bajado.",
+            "he": "ותבא אליו היונה לעת ערב, והנה עלה זית טרף בפיה, וידע נח כי קלו המים מעל הארץ."
+           },
+           "src": "בראשית ח:יא"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": -18,
+           "z": -36,
+           "sprite": "scenery/olive",
+           "h": 6
+          }
+         ],
+         "par": 10
+        }
+       ],
+       "player": {
+        "sprite": "dove",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "noach": {
+    "en": "Noach",
+    "es": "Nóaj",
+    "he": "נח"
+   },
+   "dove": {
+    "en": "The dove",
+    "es": "La paloma",
+    "he": "היונה"
+   },
+   "noach_wife": {
+    "en": "Noach’s wife",
+    "es": "La esposa de Nóaj",
+    "he": "אשת נח"
+   }
+  }
+ }
+}

@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    // leaderboard: anyone reads, each device writes only its own doc
+    match /scores/{uid} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == uid
+                   && request.resource.size() < 200;
+    }
+    // push subscriptions: write-only from clients, read by the weekly sender (admin)
+    match /push/{id} {
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['sub','lang','at']);
+    }
+  }
+}

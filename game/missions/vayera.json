@@ -1,0 +1,1166 @@
+{
+ "id": "vayera",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Vayera: three stories",
+  "es": "Vayerá: tres historias",
+  "he": "וירא: שלושה סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "guests",
+    "who": "avraham",
+    "name": {
+     "en": "Avraham’s tent",
+     "es": "La tienda de Avraham",
+     "he": "אהל אברהם"
+    },
+    "tag": {
+     "en": "Run to welcome three guests — and hear a promise that makes Sarah laugh.",
+     "es": "Corre a recibir a tres huéspedes y escucha una promesa que hace reír a Sará.",
+     "he": "רוצו לקבל שלושה אורחים — ושמעו הבטחה שגורמת לשרה לצחוק."
+    },
+    "outro": {
+     "en": "Avraham ran to do chesed, even on a hot day while he was in pain. And the promise came true: Yitzchak was born!",
+     "es": "Avraham corrió a hacer jésed, aun en un día caluroso y con dolor. Y la promesa se cumplió: ¡nació Itzjak!",
+     "he": "אברהם רץ לעשות חסד, גם ביום חם וכשכאב לו. וההבטחה התקיימה: יצחק נולד!"
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Three travelers",
+       "es": "Tres viajeros",
+       "he": "שלושה אנשים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem appeared to Avraham by the oaks of Mamre, while he sat at the entrance of his tent in the heat of the day.",
+         "es": "Hashem se le apareció a Avraham junto a los robles de Mamré, mientras estaba sentado a la entrada de su tienda en el calor del día.",
+         "he": "וירא אליו ה׳ באלני ממרא, והוא ישב פתח האהל כחם היום."
+        },
+        "src": "בראשית יח:א"
+       },
+       {
+        "t": {
+         "en": "Rashi: it was the third day after his brit milah, when he was in pain — and still he looked out for guests.",
+         "es": "Rashi: era el tercer día después de su brit milá, cuando le dolía, y aun así buscaba huéspedes.",
+         "he": "רש״י: יום שלישי למילתו היה… ויצא לראות אם יש עובר ושב ויכניסם בביתו."
+        },
+        "src": "רש״י בראשית יח:א"
+       },
+       {
+        "ask": {
+         "en": "Three men are standing out there. What does Avraham do?",
+         "es": "Hay tres hombres allá afuera. ¿Qué hace Avraham?",
+         "he": "שלושה אנשים עומדים שם. מה עושה אברהם?"
+        },
+        "options": [
+         {
+          "e": "🏃",
+          "label": {
+           "en": "Run to greet them",
+           "es": "Correr a recibirlos",
+           "he": "לרוץ לקראתם"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "He saw them and ran from the entrance of the tent to greet them.",
+             "es": "Los vio y corrió desde la entrada de la tienda a recibirlos.",
+             "he": "וירא, וירץ לקראתם מפתח האהל."
+            },
+            "src": "בראשית יח:ב"
+           }
+          ],
+          "middah": "zerizut"
+         },
+         {
+          "e": "🛌",
+          "label": {
+           "en": "Rest — he is in pain",
+           "es": "Descansar: le duele",
+           "he": "לנוח — כואב לו"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Even in pain, Avraham got up and ran to greet them!",
+             "es": "¡Aun con dolor, Avraham se levantó y corrió a recibirlos!",
+             "he": "גם בכאבו, אברהם קם ורץ לקראתם!"
+            },
+            "src": "בראשית יח:ב"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.72,
+         0.5
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "player": {
+        "robe": [
+         0.35,
+         0.42,
+         0.7
+        ],
+        "sprite": "avraham",
+        "h": 3.2
+       },
+       "start": [
+        0,
+        60
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 0,
+         "z": 66
+        },
+        {
+         "t": "tree",
+         "x": 7,
+         "z": 62,
+         "s": 1.5
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Three travelers are standing out there — <b>run to greet them</b>.",
+          "es": "Hay tres viajeros allá afuera: <b>corre a recibirlos</b>.",
+          "he": "שלושה הולכי דרכים עומדים שם — <b>רוצו לקראתם</b>."
+         },
+         "at": [
+          14,
+          10
+         ],
+         "r": 4,
+         "npc": [
+          {
+           "x": 13,
+           "z": 8,
+           "c": [
+            0.92,
+            0.92,
+            0.95
+           ],
+           "follow": 1,
+           "sprite": "angel",
+           "h": 3.3
+          },
+          {
+           "x": 15,
+           "z": 9,
+           "c": [
+            0.92,
+            0.92,
+            0.95
+           ],
+           "follow": 1,
+           "sprite": "angel",
+           "h": 3.3
+          },
+          {
+           "x": 14,
+           "z": 6,
+           "c": [
+            0.92,
+            0.92,
+            0.95
+           ],
+           "follow": 1,
+           "sprite": "angel",
+           "h": 3.3
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "“My lords, please do not pass by your servant. Let a little water be brought, wash your feet, and rest under the tree.”",
+            "es": "“Señores míos, por favor no pasen de largo a su siervo. Que traigan un poco de agua, lávense los pies y descansen bajo el árbol”.",
+            "he": "״אדני, אם נא מצאתי חן בעיניך, אל נא תעבר מעל עבדך. יקח נא מעט מים ורחצו רגליכם, והשענו תחת העץ.״"
+           },
+           "w": "avraham",
+           "src": "בראשית יח:ג–ד"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Bring them to rest <b>under the tree</b> by the tent.",
+          "es": "Llévalos a descansar <b>bajo el árbol</b>, junto a la tienda.",
+          "he": "הביאו אותם לנוח <b>תחת העץ</b> ליד האוהל."
+         },
+         "at": [
+          7,
+          62
+         ],
+         "r": 5
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Prepare the meal",
+       "es": "Preparar la comida",
+       "he": "הכנת הסעודה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Avraham hurried to the tent, to Sarah, and ran to the cattle. Everything had to be ready fast!",
+         "es": "Avraham se apresuró a la tienda, con Sará, y corrió al ganado. ¡Todo tenía que estar listo rápido!",
+         "he": "וימהר אברהם האהלה אל שרה… ואל הבקר רץ אברהם."
+        },
+        "src": "בראשית יח:ו–ז"
+       }
+      ],
+      "choose": {
+       "mode": "all",
+       "title": {
+        "en": "What first?",
+        "es": "¿Qué primero?",
+        "he": "מה קודם?"
+       },
+       "options": [
+        {
+         "e": "🍞",
+         "label": {
+          "en": "Bake cakes with Sarah",
+          "es": "Hornear tortas con Sará",
+          "he": "לאפות עוגות עם שרה"
+         },
+         "fmt": "tap",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "tap",
+            "img": "scenery/bread",
+            "n": 3,
+            "speed": 0.9,
+            "zone": 0.22,
+            "text": {
+             "en": "“Hurry! Three measures of fine flour — knead and make cakes!”",
+             "es": "“¡Rápido! Tres medidas de harina fina: amasa y haz tortas”.",
+             "he": "״מהרי שלש סאים קמח סלת, לושי ועשי עגות!״"
+            },
+            "done": {
+             "en": "Cakes ready!",
+             "es": "¡Tortas listas!",
+             "he": "העוגות מוכנות!"
+            },
+            "hint": {
+             "en": "Bereshit 18:6",
+             "es": "Bereshit 18:6",
+             "he": "בראשית יח:ו"
+            }
+           }
+          }
+         ]
+        },
+        {
+         "e": "🐄",
+         "label": {
+          "en": "Bring a calf from the herd",
+          "es": "Traer un ternero del ganado",
+          "he": "להביא בן בקר"
+         },
+         "fmt": "herd",
+         "chapters": [
+          {
+           "title": null,
+           "talk": [
+            {
+             "t": {
+              "en": "Avraham ran to the cattle and took a tender, good calf.",
+              "es": "Avraham corrió al ganado y tomó un ternero tierno y bueno.",
+              "he": "ואל הבקר רץ אברהם, ויקח בן בקר רך וטוב."
+             },
+             "src": "בראשית יח:ז"
+            }
+           ],
+           "game": {
+            "type": "herd",
+            "scene": {
+             "ground": [
+              0.62,
+              0.66,
+              0.4
+             ],
+             "sky": [
+              0.6,
+              0.75,
+              0.92
+             ],
+             "fog": [
+              0.82,
+              0.86,
+              0.8
+             ],
+             "hills": 1.4
+            },
+            "animal": "cow",
+            "n": 3,
+            "every": 99,
+            "pen": {
+             "x": 0,
+             "z": -24,
+             "r": 6,
+             "gap": 0.45,
+             "style": "fence"
+            },
+            "objects": [],
+            "player": {
+             "sprite": "avraham",
+             "h": 3.2
+            },
+            "par": 25
+           }
+          }
+         ]
+        },
+        {
+         "e": "🫙",
+         "label": {
+          "en": "Bring butter and milk",
+          "es": "Traer mantequilla y leche",
+          "he": "להביא חמאה וחלב"
+         },
+         "fmt": "explore",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "explore",
+            "scene": {
+             "ground": [
+              0.62,
+              0.66,
+              0.4
+             ],
+             "sky": [
+              0.6,
+              0.75,
+              0.92
+             ],
+             "fog": [
+              0.82,
+              0.86,
+              0.8
+             ],
+             "hills": 1.4
+            },
+            "start": [
+             0,
+             20
+            ],
+            "objects": [],
+            "steps": [
+             {
+              "text": {
+               "en": "Fetch the <b>butter and milk</b> from the tent.",
+               "es": "Trae la <b>mantequilla y la leche</b> de la tienda.",
+               "he": "הביאו <b>חמאה וחלב</b> מהאהל."
+              },
+              "at": [
+               -8,
+               14
+              ],
+              "r": 3.5,
+              "limit": 15,
+              "objects": [
+               {
+                "t": "tent",
+                "x": -11,
+                "z": 17
+               },
+               {
+                "t": "person",
+                "x": -6,
+                "z": 13,
+                "sprite": "scenery/jars",
+                "h": 1.4
+               }
+              ]
+             },
+             {
+              "text": {
+               "en": "Serve the guests under the <b>tree</b> — quickly!",
+               "es": "Sirve a los huéspedes bajo el <b>árbol</b>, ¡rápido!",
+               "he": "הגישו לאורחים תחת <b>העץ</b> — מהר!"
+              },
+              "at": [
+               14,
+               -18
+              ],
+              "r": 4,
+              "objects": [
+               {
+                "t": "tree",
+                "x": 16,
+                "z": -21
+               },
+               {
+                "t": "person",
+                "x": 12,
+                "z": -20,
+                "sprite": "angel",
+                "h": 3.2
+               }
+              ],
+              "par": 7
+             }
+            ],
+            "player": {
+             "sprite": "avraham",
+             "h": 3.2
+            }
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Sarah laughs",
+       "es": "Sará se ríe",
+       "he": "ותצחק שרה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Avraham stood over them under the tree as they ate.",
+         "es": "Avraham estaba de pie junto a ellos bajo el árbol mientras comían.",
+         "he": "והוא עמד עליהם תחת העץ ויאכלו."
+        },
+        "src": "בראשית יח:ח"
+       },
+       {
+        "t": {
+         "en": "“Where is Sarah your wife?”",
+         "es": "“¿Dónde está Sará, tu esposa?”",
+         "he": "״איה שרה אשתך?״"
+        },
+        "w": "angel",
+        "src": "בראשית יח:ט"
+       },
+       {
+        "t": {
+         "en": "“Here, in the tent.”",
+         "es": "“Aquí, en la tienda”.",
+         "he": "״הנה באהל.״"
+        },
+        "w": "avraham",
+        "src": "בראשית יח:ט"
+       },
+       {
+        "t": {
+         "en": "“I will surely return to you at this time next year, and Sarah your wife will have a son.”",
+         "es": "“Volveré a ti el año próximo por esta época, y Sará, tu esposa, tendrá un hijo”.",
+         "he": "״שוב אשוב אליך כעת חיה, והנה בן לשרה אשתך.״"
+        },
+        "w": "angel",
+        "src": "בראשית יח:י"
+       },
+       {
+        "t": {
+         "en": "Sarah, listening at the tent door, laughed to herself.",
+         "es": "Sará, que escuchaba en la entrada de la tienda, se rió para sí.",
+         "he": "ותצחק שרה בקרבה."
+        },
+        "src": "בראשית יח:יב"
+       },
+       {
+        "t": {
+         "en": "Hashem said: “Is anything too wondrous for Hashem?”",
+         "es": "Hashem dijo: “¿Acaso hay algo demasiado maravilloso para Hashem?”",
+         "he": "״היפלא מה׳ דבר?״"
+        },
+        "src": "בראשית יח:יד"
+       },
+       {
+        "t": {
+         "en": "And so it was: Sarah had a son, and Avraham named him Yitzchak.",
+         "es": "Y así fue: Sará tuvo un hijo, y Avraham lo llamó Itzjak.",
+         "he": "ותהר ותלד שרה לאברהם בן לזקניו… ויקרא אברהם את שם בנו… יצחק."
+        },
+        "src": "בראשית כא:ב–ג"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "sedom",
+    "who": "lot",
+    "name": {
+     "en": "Lot in Sedom",
+     "es": "Lot en Sedom",
+     "he": "לוט בסדום"
+    },
+    "tag": {
+     "en": "Welcome guests in a city that hates guests — then run for your life!",
+     "es": "Recibe huéspedes en una ciudad que odia a los huéspedes, ¡y luego huye para salvar tu vida!",
+     "he": "הכניסו אורחים בעיר ששונאת אורחים — ואז ברחו על נפשכם!"
+    },
+    "outro": {
+     "en": "Lot learned hospitality from Avraham — and in Sedom it saved his life. Rashi: Hashem remembered Avraham and saved Lot.",
+     "es": "Lot aprendió la hospitalidad de Avraham, y en Sedom eso le salvó la vida. Rashi: Hashem recordó a Avraham y salvó a Lot.",
+     "he": "לוט למד הכנסת אורחים מאברהם — ובסדום זה הציל את חייו. ויזכר אלקים את אברהם וישלח את לוט."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Guests at the gate",
+       "es": "Huéspedes en la puerta",
+       "he": "אורחים בשער"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The two angels came to Sedom in the evening, and Lot was sitting at the gate of Sedom.",
+         "es": "Los dos ángeles llegaron a Sedom al anochecer, y Lot estaba sentado a la puerta de Sedom.",
+         "he": "ויבאו שני המלאכים סדמה בערב, ולוט ישב בשער סדם."
+        },
+        "src": "בראשית יט:א"
+       },
+       {
+        "ask": {
+         "en": "In Sedom it is forbidden to host guests. What does Lot do?",
+         "es": "En Sedom está prohibido recibir huéspedes. ¿Qué hace Lot?",
+         "he": "בסדום אסור לארח אורחים. מה עושה לוט?"
+        },
+        "options": [
+         {
+          "e": "🏠",
+          "label": {
+           "en": "Invite them in anyway",
+           "es": "Invitarlos de todos modos",
+           "he": "להזמין אותם בכל זאת"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“Please, my lords, turn aside to your servant’s house, stay the night and wash your feet.”",
+             "es": "“Por favor, señores míos, vengan a la casa de su siervo, pasen la noche y lávense los pies”.",
+             "he": "״הנה נא אדני סורו נא אל בית עבדכם ולינו ורחצו רגליכם.״"
+            },
+            "w": "lot",
+            "src": "בראשית יט:ב"
+           }
+          ],
+          "middah": "chesed"
+         },
+         {
+          "e": "🙈",
+          "label": {
+           "en": "Pretend not to see them",
+           "es": "Hacer como que no los ve",
+           "he": "להעמיד פנים שלא ראה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Lot remembered what he learned in Avraham’s home — and invited them in: “Please, turn aside to your servant’s house.”",
+             "es": "Lot recordó lo que aprendió en casa de Avraham, y los invitó: “Por favor, vengan a la casa de su siervo”.",
+             "he": "לוט נזכר במה שלמד בבית אברהם — והזמין אותם: ״סורו נא אל בית עבדכם.״"
+            },
+            "src": "בראשית יט:ב"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.55,
+         0.42
+        ],
+        "sky": [
+         0.85,
+         0.6,
+         0.45
+        ],
+        "fog": [
+         0.8,
+         0.62,
+         0.5
+        ],
+        "hills": 1.2
+       },
+       "start": [
+        0,
+        26
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": 4,
+         "z": 30,
+         "sprite": "scenery/city_gate",
+         "h": 6
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Lead the guests to Lot’s <b>house</b> before night falls!",
+          "es": "¡Lleva a los huéspedes a la <b>casa</b> de Lot antes de que anochezca!",
+          "he": "הובילו את האורחים <b>לבית</b> לוט לפני רדת הלילה!"
+         },
+         "at": [
+          -12,
+          -30
+         ],
+         "r": 4,
+         "limit": 25,
+         "objects": [
+          {
+           "t": "person",
+           "x": -15,
+           "z": -34,
+           "sprite": "scenery/egypt_house",
+           "h": 5
+          },
+          {
+           "t": "person",
+           "x": -19,
+           "z": -31,
+           "sprite": "lot_wife",
+           "h": 3.2
+          },
+          {
+           "t": "person",
+           "x": -10,
+           "z": -33,
+           "sprite": "lot_daughters",
+           "h": 3.2
+          }
+         ],
+         "npc": [
+          {
+           "t": "person",
+           "x": 2,
+           "z": 22,
+           "sprite": "angel",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 4,
+           "z": 22,
+           "sprite": "angel",
+           "h": 3.2,
+           "follow": "start"
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "lot",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Lot made them a feast and baked matzot, and they ate.",
+         "es": "Lot les preparó un banquete y horneó matzot, y comieron.",
+         "he": "ויעש להם משתה ומצות אפה ויאכלו."
+        },
+        "src": "בראשית יט:ג"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Escape to the mountain!",
+       "es": "¡Huye a la montaña!",
+       "he": "המלטו ההרה!"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“Get up, take your wife and your two daughters!”",
+         "es": "“¡Levántate, toma a tu esposa y a tus dos hijas!”",
+         "he": "״קום קח את אשתך ואת שתי בנתיך.״"
+        },
+        "w": "angel",
+        "src": "בראשית יט:טו"
+       },
+       {
+        "t": {
+         "en": "Lot lingered — so the angels took him by the hand, out of Hashem’s mercy on him.",
+         "es": "Lot se demoraba, así que los ángeles lo tomaron de la mano, por la compasión de Hashem hacia él.",
+         "he": "ויתמהמה, ויחזיקו האנשים בידו… בחמלת ה׳ עליו."
+        },
+        "src": "בראשית יט:טז"
+       },
+       {
+        "t": {
+         "en": "“Escape for your life! Do not look behind you… flee to the mountain!”",
+         "es": "“¡Huye por tu vida! No mires atrás… ¡huye a la montaña!”",
+         "he": "״המלט על נפשך, אל תביט אחריך… ההרה המלט.״"
+        },
+        "w": "angel",
+        "src": "בראשית יט:יז"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.62,
+         0.55,
+         0.42
+        ],
+        "sky": [
+         0.85,
+         0.6,
+         0.45
+        ],
+        "fog": [
+         0.8,
+         0.62,
+         0.5
+        ],
+        "hills": 1.2
+       },
+       "walls": "canyon",
+       "goal": 440,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "lot",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "pile"
+       ],
+       "goalSprite": "scenery/hill"
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Hashem rained sulfur and fire on Sedom. Lot’s wife looked back, and became a pillar of salt.",
+         "es": "Hashem hizo llover azufre y fuego sobre Sedom. La esposa de Lot miró atrás y se convirtió en una estatua de sal.",
+         "he": "וה׳ המטיר על סדם ועל עמרה גפרית ואש… ותבט אשתו מאחריו ותהי נציב מלח."
+        },
+        "src": "בראשית יט:כד–כו"
+       },
+       {
+        "t": {
+         "en": "Hashem remembered Avraham, and saved Lot.",
+         "es": "Hashem recordó a Avraham y salvó a Lot.",
+         "he": "ויזכר אלקים את אברהם, וישלח את לוט."
+        },
+        "src": "בראשית יט:כט"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "akeidah",
+    "who": "yitzchak",
+    "name": {
+     "en": "The Akeidah",
+     "es": "La Akedá",
+     "he": "העקדה"
+    },
+    "tag": {
+     "en": "A father and son walk together to Har HaMoriah.",
+     "es": "Un padre y un hijo caminan juntos hacia el monte Moriá.",
+     "he": "אב ובן הולכים יחדו אל הר המוריה."
+    },
+    "outro": {
+     "en": "Avraham passed the test, and Hashem blessed him: through his children all the nations of the earth will be blessed.",
+     "es": "Avraham pasó la prueba, y Hashem lo bendijo: por medio de sus hijos serán bendecidas todas las naciones de la tierra.",
+     "he": "אברהם עמד בנסיון, וה׳ ברכו: והתברכו בזרעך כל גויי הארץ."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Hineni",
+       "es": "Hineni",
+       "he": "הנני"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "G-d tested Avraham and said to him: “Avraham!” He answered: “Hineni — here I am.”",
+         "es": "D-os puso a prueba a Avraham y le dijo: “¡Avraham!”. Él respondió: “Hineni: aquí estoy”.",
+         "he": "והאלקים נסה את אברהם, ויאמר אליו: ״אברהם.״ ויאמר: ״הנני.״"
+        },
+        "src": "בראשית כב:א"
+       },
+       {
+        "t": {
+         "en": "“Take your son, your only one, whom you love — Yitzchak — and go to the land of Moriah.”",
+         "es": "“Toma a tu hijo, tu único, al que amas, a Itzjak, y ve a la tierra de Moriá”.",
+         "he": "״קח נא את בנך את יחידך אשר אהבת את יצחק, ולך לך אל ארץ המריה.״"
+        },
+        "src": "בראשית כב:ב"
+       },
+       {
+        "t": {
+         "en": "Avraham got up early in the morning and saddled his donkey himself. Rashi: love made him do it himself, quickly.",
+         "es": "Avraham se levantó temprano y él mismo ensilló su asno. Rashi: el amor lo hizo hacerlo él mismo, rápido.",
+         "he": "וישכם אברהם בבקר ויחבש את חמרו. רש״י: הוא בעצמו, ולא צוה לאחד מעבדיו."
+        },
+        "src": "בראשית כב:ג; רש״י"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "start": [
+        0,
+        30
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Walk for three days toward the <b>mountain</b>.",
+          "es": "Camina tres días hacia la <b>montaña</b>.",
+          "he": "לכו שלושה ימים אל <b>ההר</b>."
+         },
+         "at": [
+          10,
+          -60
+         ],
+         "r": 7,
+         "talk": [
+          {
+           "t": {
+            "en": "On the third day Avraham lifted his eyes and saw the place from afar.",
+            "es": "Al tercer día Avraham alzó los ojos y vio el lugar de lejos.",
+            "he": "ביום השלישי וישא אברהם את עיניו וירא את המקום מרחק."
+           },
+           "src": "בראשית כב:ד"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 14,
+           "z": -70,
+           "sprite": "scenery/hill",
+           "h": 10
+          }
+         ],
+         "npc": [
+          {
+           "t": "person",
+           "x": -2,
+           "z": 26,
+           "sprite": "yitzchak",
+           "h": 3.2,
+           "follow": "start"
+          }
+         ],
+         "par": 14
+        }
+       ],
+       "player": {
+        "sprite": "avraham",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The two of them together",
+       "es": "Los dos juntos",
+       "he": "וילכו שניהם יחדו"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“My father!”",
+         "es": "“¡Padre mío!”",
+         "he": "״אבי!״"
+        },
+        "w": "yitzchak",
+        "src": "בראשית כב:ז"
+       },
+       {
+        "t": {
+         "en": "“Hineni, my son.”",
+         "es": "“Hineni, hijo mío”.",
+         "he": "״הנני בני.״"
+        },
+        "w": "avraham",
+        "src": "בראשית כב:ז"
+       },
+       {
+        "t": {
+         "en": "“Here are the fire and the wood — but where is the lamb for the offering?”",
+         "es": "“Aquí están el fuego y la leña, pero ¿dónde está el cordero para la ofrenda?”",
+         "he": "״הנה האש והעצים, ואיה השה לעלה?״"
+        },
+        "w": "yitzchak",
+        "src": "בראשית כב:ז"
+       },
+       {
+        "t": {
+         "en": "“G-d will show us the lamb for the offering, my son.” And the two of them walked on together.",
+         "es": "“D-os nos mostrará el cordero para la ofrenda, hijo mío”. Y siguieron caminando los dos juntos.",
+         "he": "״אלקים יראה לו השה לעלה בני.״ וילכו שניהם יחדו."
+        },
+        "w": "avraham",
+        "src": "בראשית כב:ח"
+       }
+      ],
+      "after": [
+       {
+        "t": {
+         "en": "Avraham called the place “Hashem will see.”",
+         "es": "Avraham llamó a ese lugar “Hashem verá”.",
+         "he": "ויקרא אברהם שם המקום ההוא ה׳ יראה."
+        },
+        "src": "בראשית כב:יד"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Climb up the <b>mountain</b> together.",
+          "es": "Suban juntos la <b>montaña</b>.",
+          "he": "עלו יחד אל <b>ההר</b>."
+         },
+         "at": [
+          0,
+          -36
+         ],
+         "r": 5,
+         "talk": [
+          {
+           "t": {
+            "en": "An angel of Hashem called from heaven: “Avraham, Avraham! Do not harm the boy — now I know that you fear G-d.”",
+            "es": "Un ángel de Hashem llamó desde el cielo: “¡Avraham, Avraham! No le hagas daño al muchacho; ahora sé que temes a D-os”.",
+            "he": "ויקרא אליו מלאך ה׳ מן השמים ויאמר: ״אברהם אברהם… אל תשלח ידך אל הנער… כי עתה ידעתי כי ירא אלקים אתה.״"
+           },
+           "src": "בראשית כב:יא–יב"
+          }
+         ],
+         "objects": [
+          {
+           "t": "altar",
+           "x": 0,
+           "z": -38
+          },
+          {
+           "t": "rock",
+           "x": -4,
+           "z": -30
+          },
+          {
+           "t": "rock",
+           "x": 5,
+           "z": -26
+          }
+         ],
+         "npc": [
+          {
+           "t": "person",
+           "x": -2,
+           "z": 16,
+           "sprite": "yitzchak",
+           "h": 3.2,
+           "follow": "start"
+          }
+         ],
+         "par": 9
+        },
+        {
+         "text": {
+          "en": "Avraham lifted his eyes — find the <b>ram</b> caught in the thicket!",
+          "es": "Avraham alzó los ojos: ¡encuentra el <b>carnero</b> atrapado en el matorral!",
+          "he": "וישא אברהם את עיניו — מצאו את <b>האיל</b> הנאחז בסבך!"
+         },
+         "at": [
+          0,
+          -36
+         ],
+         "r": 5,
+         "mini": {
+          "type": "hidden",
+          "targets": [
+           "sheep"
+          ],
+          "decoys": [
+           "scenery/bush",
+           "scenery/dry_bush",
+           "scenery/rocks",
+           "scenery/bush"
+          ],
+          "count": 16,
+          "time": 60,
+          "done": {
+           "en": "The ram!",
+           "es": "¡El carnero!",
+           "he": "האיל!"
+          }
+         },
+         "talk": [
+          {
+           "t": {
+            "en": "Avraham saw a ram caught by its horns in a thicket, and offered it instead of his son.",
+            "es": "Avraham vio un carnero atrapado por los cuernos en un matorral, y lo ofreció en lugar de su hijo.",
+            "he": "וירא והנה איל אחר נאחז בסבך בקרניו… ויעלהו לעלה תחת בנו."
+           },
+           "src": "בראשית כב:יג"
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "avraham",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "avraham": {
+    "en": "Avraham",
+    "es": "Avraham",
+    "he": "אברהם"
+   },
+   "sarah": {
+    "en": "Sarah",
+    "es": "Sará",
+    "he": "שרה"
+   },
+   "lot": {
+    "en": "Lot",
+    "es": "Lot",
+    "he": "לוט"
+   },
+   "yitzchak": {
+    "en": "Yitzchak",
+    "es": "Itzjak",
+    "he": "יצחק"
+   },
+   "angel": {
+    "en": "Guest",
+    "es": "Huésped",
+    "he": "אורח"
+   }
+  }
+ }
+}

@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+"""Quiz de la Parashá: one command to check and publish-ready a week.
+
+    python3 tools/build.py <app_dir> <week_id> [--no-pdf] [--check-only]
+
+What it does, in order:
+  1. Loads weeks/<week_id>.json (the week's source data; format in tools/FORMAT.md).
+  2. Normalizes it: makes the gradient/element ids inside every kids' drawing unique,
+     so drawings never clash on a page or in a PDF.
+  3. Validates it against every content rule below. Any error stops the build (exit code 1).
+  4. Rebuilds this week's entry in weeks/index.json from the data (keeps every other entry).
+  5. Renders the printable PDFs from the app's own sheet builders:
+       weeks/pdf/<id>-<lang>-<kind>.pdf   lang: es, en, he   kind: q, a, kq, ka
+  6. Prints a JSON summary, including the exact list of files to publish.
+"""
+import json, os, re, sys, functools, threading, http.server, socketserver
+
+LANGS = ["es", "en", "he"]
+BOOKS_LATIN = re.compile(r"\b(Genesis|G[ée]nesis|Exodus|[ÉE]xodo|Leviticus|Lev[íi]tico|Numbers|N[úu]meros|Deuteronomy|Deuteronomio)\b")
+TAG = re.compile(r"<[^>]+>")
+NIKUD = re.compile(r"[֑-ׇ]")
+
+def plain(s): return TAG.sub("", s or "")
+
+def uniq_ids(svg, prefix):
+    ids = re.findall(r'\bid="([^"]+)"', svg)
+    for old in set(ids):
+        if old.startswith(prefix): continue
+        new = f"{prefix}{old}"
+        svg = svg.replace(f'id="{old}"', f'id="{new}"').replace(f"url(#{old})", f"url(#{new})").replace(f'href="#{old}"', f'href="#{new}"')
+    return svg
+
+def validate(w):
+    E, Wn = [], []
+    def err(m): E.append(m)
+    for f in ["id", "order", "shabbat", "heb", "name", "range", "icons", "Q"]:
+        if f not in w: err(f"missing field: {f}")
+    if E: return E, Wn
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", w["shabbat"]): err("shabbat must be YYYY-MM-DD")
+    for L in LANGS:
+        if not w["name"].get(L): err(f"name.{L} missing")
+    Q, K, icons = w["Q"], w.get("K", []), w["icons"]
+    days = any("day" in q for q in Q)
+    def check_item(x, where, kids):
+        if x.get("i") not in icons: err(f"{where}: icon '{x.get('i')}' not in icons")
+        if x.get("a") not in (0, 1, 2, 3): err(f"{where}: a must be 0-3")
+        if not kids and x.get("d") not in (1, 2, 3): err(f"{where}: d must be 1-3")
+        if days and x.get("day") not in range(1, 8): err(f"{where}: day must be 1-7")
+        if kids and not x.get("img"): err(f"{where}: kids question needs img")
+        for L in LANGS:
+            t = (x.get("t") or {}).get(L)
+            if not t: err(f"{where}: missing language {L}"); continue
+            for k in "qoes":
+                if not t.get(k): err(f"{where}.{L}: missing {k}")
+            if not isinstance(t.get("o"), list) or len(t["o"]) != 4: err(f"{where}.{L}: needs exactly 4 options")
+            txt = " ".join([t.get("q", ""), " ".join(t.get("o") or []), t.get("e", ""), t.get("s", "")])
+            if "«" in txt or "»" in txt: err(f"{where}.{L}: use “ ” quotes, not « »")
+            if L != "he" and BOOKS_LATIN.search(plain(txt)): err(f"{where}.{L}: Torah reference must use the Hebrew book name")
+            if L == "he" and "<bdi" in txt: err(f"{where}.he: no bdi tags in Hebrew")
+            if kids and x.get("img") and isinstance(t.get("o"), list) and len(t["o"]) == 4:
+                ans = plain(t["o"][x["a"]]).strip()
+                if len(ans) > 2 and ans in plain(x["img"]): err(f"{where}: the drawing shows the answer text “{ans}”")
+        for v in x.get("v") or []:
+            bare = NIKUD.sub("", v.get("t", ""))
+            if "יהוה" in bare: err(f"{where}: write the Name as ה׳ in verses")
+            if re.search(r"אלה(ים|י)\b", bare) and "אלהי הנכר" not in bare: err(f"{where}: write אֱלֹקִים with ק in verses")
+    for n, x in enumerate(Q): check_item(x, f"Q{n+1}", False)
+    for n, x in enumerate(K): check_item(x, f"K{n+1}", True)
+    # balance
+    if days:
+        for d in range(1, 8):
+            for L, nm in ((1, "easy"), (2, "medium"), (3, "hard")):
+                c = sum(1 for q in Q if q.get("day") == d and q.get("d") == L)
+                if c != 10: err(f"day {d}: has {c} {nm} adult questions, needs 10")
+            if K:
+                kc = sum(1 for q in K if q.get("day") == d)
+                if kc != 10: err(f"day {d}: has {kc} kids' questions, needs 10")
+    else:
+        lv = [q.get("d") for q in Q]
+        if len(set(lv.count(L) for L in (1, 2, 3))) > 1: Wn.append(f"levels not balanced: {[lv.count(L) for L in (1,2,3)]}")
+    pos = [q.get("a") for q in Q]
+    if Q and max(pos.count(i) for i in range(4)) > len(Q) * 0.4: Wn.append(f"answer positions uneven: {[pos.count(i) for i in range(4)]}")
+    return E, Wn
+
+def index_entry(w):
+    Q, K = w["Q"], w.get("K", [])
+    e = {k: w[k] for k in ["id", "order", "shabbat", "heb", "name", "range"]}
+    e.update(n=len(Q), key=[q["a"] for q in Q], lv=[q["d"] for q in Q])
+    if any("day" in q for q in Q): e["dy"] = [q["day"] for q in Q]
+    if K:
+        e.update(kn=len(K), kkey=[q["a"] for q in K])
+        if any("day" in q for q in K): e["kdy"] = [q["day"] for q in K]
+    return e
+
+FONTS = '<style>body,.o,.a,.s,.n,.sub,.name,.hd p{font-family:"Open Sans","DejaVu Sans",sans-serif!important}h1,h2,.q,.lvh,.hb,.p,bdi,[lang=he]{font-family:"Cardo","FreeSerif","Open Sans",serif!important}</style>'
+FONTS_KIDS = '<style>body,h1,h2,.q,.o,.a,.s,.key p,.hd p{font-family:"Open Sans","DejaVu Sans",sans-serif!important}.q,h1,h2{font-weight:800!important}</style>'
+
+def render_pdfs(app, wid):
+    from playwright.sync_api import sync_playwright
+    out = os.path.join(app, "weeks", "pdf"); os.makedirs(out, exist_ok=True)
+    H = functools.partial(http.server.SimpleHTTPRequestHandler, directory=app)
+    H.log_message = lambda *a, **k: None
+    class S(socketserver.TCPServer): allow_reuse_address = True
+    srv = S(("127.0.0.1", 0), H); port = srv.server_address[1]
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    made = []
+    exe = "/usr/bin/google-chrome" if os.path.exists("/usr/bin/google-chrome") else None
+    def clean(html, fonts):
+        html = re.sub(r'<link href="https://fonts\.googleapis[^>]*>', "", html)
+        html = re.sub(r'<script>window\.addEventListener\("load".*?</script>', "", html, flags=re.S)
+        return html.replace("</head>", fonts + "</head>", 1)
+    with sync_playwright() as p:
+        b = p.chromium.launch(**({"executable_path": exe} if exe else {}), args=["--no-sandbox"])
+        ctx = b.new_context()
+        ctx.add_init_script("localStorage.setItem('parasha-app-v1',JSON.stringify({lang:'es',onboarded:true,name:'P D',first:'P',last:'D',user:'p.d',age:13,weeks:{}}))")
+        app_pg = ctx.new_page(); app_pg.goto(f"http://127.0.0.1:{port}/index.html")
+        app_pg.wait_for_function("typeof sheetHTML==='function'&&typeof kidsSheetHTML==='function'")
+        app_pg.evaluate("async id=>{window.__w=await loadWeek(id)}", wid)
+        hasK = app_pg.evaluate("!!(window.__w&&window.__w.K&&window.__w.K.length)")
+        pdf = ctx.new_page()
+        for L in LANGS:
+            for kind in ["q", "a"] + (["kq", "ka"] if hasK else []):
+                fn = "kidsSheetHTML" if kind.startswith("k") else "sheetHTML"
+                html = app_pg.evaluate(f"([l,a])=>{fn}(window.__w,l,a)", [L, kind.endswith("a")])
+                pdf.set_content(clean(html, FONTS_KIDS if kind.startswith("k") else FONTS), wait_until="load")
+                pdf.wait_for_timeout(120)
+                path = os.path.join(out, f"{wid}-{L}-{kind}.pdf")
+                pdf.pdf(path=path, prefer_css_page_size=True, print_background=True)
+                made.append(os.path.relpath(path, app))
+        b.close()
+    srv.shutdown()
+    return made
+
+def main():
+    a = [x for x in sys.argv[1:] if not x.startswith("--")]; flags = {x for x in sys.argv[1:] if x.startswith("--")}
+    if len(a) != 2: print(__doc__); sys.exit(2)
+    app, wid = a
+    wp = os.path.join(app, "weeks", f"{wid}.json"); ip = os.path.join(app, "weeks", "index.json")
+    w = json.load(open(wp))
+    if w.get("id") != wid: print(json.dumps({"ok": False, "errors": [f"id in file is {w.get('id')}, expected {wid}"]})); sys.exit(1)
+    for n, k in enumerate(w.get("K", [])):
+        if k.get("img"): k["img"] = uniq_ids(k["img"], f"{wid}-k{n+1}-")
+    errors, warnings = validate(w)
+    if errors:
+        print(json.dumps({"ok": False, "errors": errors, "warnings": warnings}, ensure_ascii=False, indent=1)); sys.exit(1)
+    if "--check-only" in flags:
+        print(json.dumps({"ok": True, "warnings": warnings}, ensure_ascii=False)); return
+    json.dump(w, open(wp, "w"), ensure_ascii=False, separators=(",", ":"))
+    idx = json.load(open(ip)) if os.path.exists(ip) else {"weeks": []}
+    idx["weeks"] = [e for e in idx["weeks"] if e.get("id") != wid] + [index_entry(w)]
+    idx["weeks"].sort(key=lambda e: e["shabbat"])
+    json.dump(idx, open(ip, "w"), ensure_ascii=False, separators=(",", ":"))
+    pdfs = [] if "--no-pdf" in flags else render_pdfs(app, wid)
+    files = [f"weeks/{wid}.json", "weeks/index.json"] + pdfs
+    print(json.dumps({"ok": True, "warnings": warnings, "questions": len(w["Q"]), "kids": len(w.get("K", [])), "publish": files}, ensure_ascii=False, indent=1))
+
+if __name__ == "__main__":
+    main()

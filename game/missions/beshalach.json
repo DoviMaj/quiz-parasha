@@ -1,0 +1,696 @@
+{
+ "id": "beshalach",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Beshalach: two stories",
+  "es": "Beshalaj: dos historias",
+  "he": "בשלח: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "sea",
+    "who": "moshe",
+    "name": {
+     "en": "The sea splits",
+     "es": "El mar se abre",
+     "he": "קריעת ים סוף"
+    },
+    "tag": {
+     "en": "Follow the pillar of cloud, cross the sea on dry land, and sing!",
+     "es": "Sigue la columna de nube, cruza el mar en seco, ¡y canta!",
+     "he": "לכו אחרי עמוד הענן, עברו בים ביבשה — ושירו!"
+    },
+    "outro": {
+     "en": "Bnei Yisrael saw Hashem’s great hand, and they believed in Hashem and in Moshe His servant.",
+     "es": "Bnei Israel vieron la gran mano de Hashem, y creyeron en Hashem y en Moshé, Su siervo.",
+     "he": "וירא ישראל את היד הגדלה… ויאמינו בה׳ ובמשה עבדו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The pillar of cloud",
+       "es": "La columna de nube",
+       "he": "עמוד הענן"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "G-d did not lead them by the short way through the land of the Plishtim, but around, by way of the wilderness to Yam Suf.",
+         "es": "D-os no los llevó por el camino corto de la tierra de los filisteos, sino rodeando, por el desierto hacia Yam Suf.",
+         "he": "ולא נחם אלקים דרך ארץ פלשתים כי קרוב הוא… ויסב אלקים את העם דרך המדבר ים סוף."
+        },
+        "src": "שמות יג:יז–יח"
+       },
+       {
+        "t": {
+         "en": "Hashem went before them — in a pillar of cloud by day and a pillar of fire by night. Follow the cloud!",
+         "es": "Hashem iba delante de ellos: en una columna de nube de día y una columna de fuego de noche. ¡Sigue la nube!",
+         "he": "וה׳ הלך לפניהם יומם בעמוד ענן לנחתם הדרך, ולילה בעמוד אש להאיר להם. לכו אחרי הענן!"
+        },
+        "src": "שמות יג:כא"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        30
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Follow the <b>pillar of cloud</b>.",
+          "es": "Sigue la <b>columna de nube</b>.",
+          "he": "לכו אחרי <b>עמוד הענן</b>."
+         },
+         "at": [
+          0,
+          -10
+         ],
+         "r": 3.5,
+         "npc": [
+          {
+           "x": 0,
+           "z": -10,
+           "wander": 1,
+           "sprite": "scenery/pillar_cloud",
+           "h": 6
+          }
+         ],
+         "par": 20
+        },
+        {
+         "text": {
+          "en": "Camp by the <b>sea</b>.",
+          "es": "Acampa junto al <b>mar</b>.",
+          "he": "חנו על <b>הים</b>."
+         },
+         "at": [
+          10,
+          -60
+         ],
+         "r": 7,
+         "objects": [
+          {
+           "t": "person",
+           "x": 10,
+           "z": -68,
+           "sprite": "scenery/sea_wall",
+           "h": 6
+          },
+          {
+           "t": "tent",
+           "x": 2,
+           "z": -54
+          },
+          {
+           "t": "tent",
+           "x": 18,
+           "z": -56
+          }
+         ],
+         "par": 10
+        }
+       ],
+       "player": {
+        "sprite": "moshe",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Stand and see",
+       "es": "Quédense y vean",
+       "he": "התיצבו וראו"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Pharaoh came close. Bnei Yisrael looked up, saw Mitzrayim chasing after them, and were very afraid.",
+         "es": "El faraón se acercó. Bnei Israel alzaron la vista, vieron a Mitzráyim persiguiéndolos y tuvieron mucho miedo.",
+         "he": "ופרעה הקריב, וישאו בני ישראל את עיניהם והנה מצרים נסע אחריהם, וייראו מאד."
+        },
+        "src": "שמות יד:י"
+       },
+       {
+        "ask": {
+         "en": "The sea in front, Pharaoh behind. What do you tell the people?",
+         "es": "El mar adelante, el faraón atrás. ¿Qué le dices al pueblo?",
+         "he": "הים לפנים, פרעה מאחור. מה תאמרו לעם?"
+        },
+        "options": [
+         {
+          "e": "🙏",
+          "label": {
+           "en": "“Don’t be afraid — Hashem will fight for you”",
+           "es": "“No teman: Hashem peleará por ustedes”",
+           "he": "״אל תיראו — ה׳ ילחם לכם״"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“Do not be afraid! Stand firm and see Hashem’s salvation… Hashem will fight for you, and you shall be silent.”",
+             "es": "“¡No teman! Quédense firmes y vean la salvación de Hashem… Hashem peleará por ustedes, y ustedes callarán”.",
+             "he": "״אל תיראו, התיצבו וראו את ישועת ה׳… ה׳ ילחם לכם ואתם תחרישון.״"
+            },
+            "w": "moshe",
+            "src": "שמות יד:יג–יד"
+           }
+          ],
+          "middah": "emunah"
+         },
+         {
+          "e": "↩️",
+          "label": {
+           "en": "“Let’s go back to Mitzrayim”",
+           "es": "“Volvamos a Mitzráyim”",
+           "he": "״נחזור למצרים״"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Moshe said: “Do not be afraid! Stand firm and see Hashem’s salvation — Hashem will fight for you.”",
+             "es": "Moshé dijo: “¡No teman! Quédense firmes y vean la salvación de Hashem: Hashem peleará por ustedes”.",
+             "he": "״אל תיראו, התיצבו וראו את ישועת ה׳… ה׳ ילחם לכם.״"
+            },
+            "w": "moshe",
+            "src": "שמות יד:יג–יד"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "Moshe stretched out his hand over the sea; Hashem sent a strong east wind all night, and the waters split. Bnei Yisrael walked through the sea on dry land!",
+         "es": "Moshé extendió su mano sobre el mar; Hashem envió un fuerte viento del este toda la noche, y las aguas se dividieron. ¡Bnei Israel cruzaron el mar en seco!",
+         "he": "ויט משה את ידו על הים, ויולך ה׳ את הים ברוח קדים עזה כל הלילה… ויבקעו המים. ויבאו בני ישראל בתוך הים ביבשה."
+        },
+        "src": "שמות יד:כא–כב"
+       }
+      ],
+      "game": {
+       "type": "path",
+       "walls": 0.14,
+       "obstacles": [
+        "scenery/boulder",
+        "scenery/reeds"
+       ],
+       "count": 6,
+       "walker": "bnei_yisrael",
+       "goal": "scenery/oasis",
+       "text": {
+        "en": "Draw the way through the sea, between the walls of water!",
+        "es": "¡Dibuja el camino por el mar, entre las paredes de agua!",
+        "he": "ציירו את הדרך בתוך הים, בין חומות המים!"
+       },
+       "done": {
+        "en": "On dry land!",
+        "es": "¡En tierra seca!",
+        "he": "ביבשה!"
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Bnei Yisrael walked on dry land in the middle of the sea, and the water was a wall for them on their right and on their left.",
+         "es": "Bnei Israel caminaron en seco en medio del mar, y el agua era para ellos una muralla a su derecha y a su izquierda.",
+         "he": "ובני ישראל הלכו ביבשה בתוך הים, והמים להם חמה מימינם ומשמאלם."
+        },
+        "src": "שמות יד:כט"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Across!",
+       "es": "¡Al otro lado!",
+       "he": "אל הגדה השנייה!"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Mitzrayim chased after them into the sea. Hurry to the other shore!",
+         "es": "Mitzráyim los persiguió dentro del mar. ¡Rápido a la otra orilla!",
+         "he": "וירדפו מצרים ויבאו אחריהם… אל תוך הים. מהרו אל החוף השני!"
+        },
+        "src": "שמות יד:כג"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.88,
+         0.72,
+         0.5
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "water",
+       "goal": 600,
+       "obstacles": [
+        "rock",
+        "wheel"
+       ],
+       "every": 5,
+       "runner": "moshe",
+       "pickup": false,
+       "goalSprite": "scenery/oasis",
+       "low": [
+        "reeds",
+        "rock"
+       ],
+       "tall": [
+        "boulder",
+        "pile",
+        "cart"
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Az yashir",
+       "es": "Az iashir",
+       "he": "אז ישיר"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“I will sing to Hashem, for He is greatly exalted; horse and rider He threw into the sea.”",
+         "es": "“Cantaré a Hashem, porque Él es sumamente exaltado; caballo y jinete arrojó al mar”.",
+         "he": "״אשירה לה׳ כי גאה גאה, סוס ורכבו רמה בים.״"
+        },
+        "w": "moshe",
+        "src": "שמות טו:א"
+       },
+       {
+        "t": {
+         "en": "Miriam the prophetess took a tof in her hand, and all the women went out after her with tofim and dancing.",
+         "es": "Miriam, la profetisa, tomó un tof en la mano, y todas las mujeres salieron tras ella con tofim y danzas.",
+         "he": "ותקח מרים הנביאה אחות אהרן את התף בידה, ותצאן כל הנשים אחריה בתפים ובמחלת."
+        },
+        "src": "שמות טו:כ"
+       }
+      ],
+      "game": {
+       "type": "rhythm",
+       "img": "miriam",
+       "n": 8,
+       "bpm": 84,
+       "text": {
+        "en": "Play the tof with Miriam — keep the beat!",
+        "es": "¡Toca el tof con Miriam, sigue el ritmo!",
+        "he": "נגנו בתף עם מרים — שמרו על הקצב!"
+       },
+       "done": {
+        "en": "Shirat HaYam!",
+        "es": "¡Shirat HaYam!",
+        "he": "שירת הים!"
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "“Sing to Hashem, for He is greatly exalted; horse and rider He threw into the sea.”",
+         "es": "“Canten a Hashem, porque Él es sumamente exaltado; caballo y jinete arrojó al mar”.",
+         "he": "״שירו לה׳ כי גאה גאה, סוס ורכבו רמה בים.״"
+        },
+        "w": "miriam",
+        "src": "שמות טו:כא"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "mann",
+    "who": "bnei_yisrael",
+    "name": {
+     "en": "Bread from heaven",
+     "es": "Pan del cielo",
+     "he": "לחם מן השמים"
+    },
+    "tag": {
+     "en": "Catch the mann every morning — and twice as much on Friday.",
+     "es": "Atrapa el man cada mañana, y el doble el viernes.",
+     "he": "תפסו את המן בכל בוקר — ופי שנים ביום השישי."
+    },
+    "outro": {
+     "en": "For forty years Bnei Yisrael ate the mann, until they came to the land. Everyone had exactly what they needed.",
+     "es": "Durante cuarenta años Bnei Israel comieron el man, hasta llegar a la tierra. Cada uno tenía exactamente lo que necesitaba.",
+     "he": "ובני ישראל אכלו את המן ארבעים שנה… עד באם אל קצה ארץ כנען. לכל אחד היה בדיוק כפי צרכו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "What is it?",
+       "es": "¿Qué es esto?",
+       "he": "מן הוא"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "In the wilderness the people complained: there was no bread.",
+         "es": "En el desierto el pueblo se quejó: no había pan.",
+         "he": "וילונו כל עדת בני ישראל על משה ועל אהרן במדבר."
+        },
+        "src": "שמות טז:ב"
+       },
+       {
+        "t": {
+         "en": "Hashem said to Moshe: “I will rain down bread from heaven for you. The people will go out and gather each day’s portion on its day.”",
+         "es": "Hashem le dijo a Moshé: “Haré llover pan del cielo para ustedes. El pueblo saldrá y recogerá cada día la porción de ese día”.",
+         "he": "ויאמר ה׳ אל משה: ״הנני ממטיר לכם לחם מן השמים, ויצא העם ולקטו דבר יום ביומו.״"
+        },
+        "src": "שמות טז:ד"
+       },
+       {
+        "t": {
+         "en": "In the morning there was something fine and flaky on the ground, like frost. They said: “Man hu?” — “What is it?”",
+         "es": "Por la mañana había algo fino y escamoso en el suelo, como escarcha. Dijeron: “¿Man hu?”, “¿Qué es esto?”.",
+         "he": "והנה על פני המדבר דק מחספס דק ככפר על הארץ… ויאמרו איש אל אחיו: ״מן הוא?״"
+        },
+        "src": "שמות טז:יד–טו"
+       },
+       {
+        "t": {
+         "en": "“It is the bread that Hashem has given you to eat.” Catch it in your basket!",
+         "es": "“Es el pan que Hashem les ha dado para comer”. ¡Atrápalo en tu canasta!",
+         "he": "״הוא הלחם אשר נתן ה׳ לכם לאכלה.״ תפסו אותו בסל!"
+        },
+        "w": "moshe",
+        "src": "שמות טז:טו; טז:כא"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        16
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 10,
+         "z": 22
+        },
+        {
+         "t": "tent",
+         "x": -10,
+         "z": 24
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Catch an <b>omer</b> of mann for each person in your tent.",
+          "es": "Atrapa un <b>ómer</b> de man para cada persona de tu tienda.",
+          "he": "תפסו <b>עמר</b> מן לכל איש באהלכם."
+         },
+         "at": [
+          0,
+          -4
+         ],
+         "r": 4,
+         "collect": {
+          "n": 10,
+          "r": 16,
+          "h": 1.5,
+          "label": null,
+          "sprite": "scenery/mann",
+          "style": "catch"
+         }
+        }
+       ],
+       "player": {
+        "sprite": "bnei_yisrael",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Whoever gathered much had nothing extra, and whoever gathered little was not short — each had exactly what they needed.",
+         "es": "Quien recogió mucho no tuvo de sobra, y quien recogió poco no le faltó: cada uno tuvo exactamente lo que necesitaba.",
+         "he": "ולא העדיף המרבה, והממעיט לא החסיר, איש לפי אכלו לקטו."
+        },
+        "src": "שמות טז:יח"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "A double portion",
+       "es": "Una porción doble",
+       "he": "לחם משנה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "On the sixth day they gathered twice as much bread, two omer for each person.",
+         "es": "El sexto día recogieron el doble de pan, dos ómer por persona.",
+         "he": "ויהי ביום הששי לקטו לחם משנה, שני העמר לאחד."
+        },
+        "src": "שמות טז:כב"
+       },
+       {
+        "t": {
+         "en": "“Tomorrow is a day of rest, a holy Shabbat to Hashem. Bake what you want to bake today.”",
+         "es": "“Mañana es día de descanso, un Shabat santo para Hashem. Horneen hoy lo que quieran hornear”.",
+         "he": "״שבתון שבת קדש לה׳ מחר, את אשר תאפו אפו.״"
+        },
+        "w": "moshe",
+        "src": "שמות טז:כג"
+       },
+       {
+        "ask": {
+         "en": "Some people want to go out on Shabbat to look for mann. What do you do?",
+         "es": "Algunos quieren salir en Shabat a buscar man. ¿Qué haces?",
+         "he": "יש אנשים שרוצים לצאת בשבת לחפש מן. מה תעשו?"
+        },
+        "options": [
+         {
+          "e": "🕯️",
+          "label": {
+           "en": "Stay home and rest",
+           "es": "Quedarse en casa y descansar",
+           "he": "להישאר בבית ולנוח"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“Let each person stay in his place; let no one go out of his place on the seventh day.”",
+             "es": "“Que cada uno se quede en su lugar; que nadie salga de su lugar el séptimo día”.",
+             "he": "״שבו איש תחתיו, אל יצא איש ממקמו ביום השביעי.״"
+            },
+            "src": "שמות טז:כט"
+           }
+          ],
+          "middah": "emunah"
+         },
+         {
+          "e": "🧺",
+          "label": {
+           "en": "Go out to look",
+           "es": "Salir a buscar",
+           "he": "לצאת לחפש"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Those who went out on Shabbat found nothing — the mann did not fall on Shabbat.",
+             "es": "Los que salieron en Shabat no encontraron nada: el man no caía en Shabat.",
+             "he": "ויהי ביום השביעי יצאו מן העם ללקט, ולא מצאו."
+            },
+            "src": "שמות טז:כז"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        16
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 10,
+         "z": 22
+        },
+        {
+         "t": "tent",
+         "x": -10,
+         "z": 24
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Friday: catch a <b>double portion</b>!",
+          "es": "Viernes: ¡atrapa una <b>porción doble</b>!",
+          "he": "יום שישי: תפסו <b>לחם משנה</b>!"
+         },
+         "at": [
+          0,
+          -4
+         ],
+         "r": 4,
+         "collect": {
+          "n": 20,
+          "r": 12,
+          "h": 1.4,
+          "label": null,
+          "sprite": "scenery/mann",
+          "style": "catch"
+         }
+        }
+       ],
+       "player": {
+        "sprite": "bnei_yisrael",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Moshe told Aharon to put an omer of mann in a jar and keep it for all generations, to remember the bread Hashem fed them in the wilderness.",
+         "es": "Moshé le dijo a Aharón que pusiera un ómer de man en un frasco y lo guardara por todas las generaciones, para recordar el pan con que Hashem los alimentó en el desierto.",
+         "he": "ויאמר משה אל אהרן: ״קח צנצנת אחת ותן שמה מלא העמר מן, והנח אתו לפני ה׳ למשמרת לדרתיכם.״"
+        },
+        "src": "שמות טז:לג"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "moshe": {
+    "en": "Moshe",
+    "es": "Moshé",
+    "he": "משה"
+   },
+   "miriam": {
+    "en": "Miriam",
+    "es": "Miriam",
+    "he": "מרים"
+   },
+   "bnei_yisrael": {
+    "en": "Bnei Yisrael",
+    "es": "Bnei Israel",
+    "he": "בני ישראל"
+   },
+   "aharon": {
+    "en": "Aharon",
+    "es": "Aharón",
+    "he": "אהרן"
+   }
+  }
+ }
+}

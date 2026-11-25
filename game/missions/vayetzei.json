@@ -1,0 +1,1018 @@
+{
+ "id": "vayetzei",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Vayetzei: three stories",
+  "es": "Vayetzé: tres historias",
+  "he": "ויצא: שלושה סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "ladder",
+    "who": "yaakov",
+    "name": {
+     "en": "Yaakov’s dream",
+     "es": "El sueño de Yaakov",
+     "he": "חלום יעקב"
+    },
+    "tag": {
+     "en": "A night on the stones, a ladder to heaven, and a promise.",
+     "es": "Una noche sobre las piedras, una escalera al cielo y una promesa.",
+     "he": "לילה על האבנים, סולם השמימה והבטחה."
+    },
+    "outro": {
+     "en": "“Surely Hashem is in this place.” Yaakov named it Beit El — the House of G-d.",
+     "es": "“Ciertamente Hashem está en este lugar”. Yaakov lo llamó Beit El: la Casa de D-os.",
+     "he": "״אכן יש ה׳ במקום הזה.״ ויקרא את שם המקום ההוא בית אל."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The stones",
+       "es": "Las piedras",
+       "he": "האבנים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov left Be’er Sheva and went toward Charan. He reached the place and stayed the night, because the sun had set.",
+         "es": "Yaakov salió de Beer Sheva y fue hacia Jarán. Llegó al lugar y pasó allí la noche, porque el sol se había puesto.",
+         "he": "ויצא יעקב מבאר שבע וילך חרנה. ויפגע במקום וילן שם כי בא השמש."
+        },
+        "src": "בראשית כח:י–יא"
+       },
+       {
+        "t": {
+         "en": "He took stones of the place and put them around his head. Rashi: to protect himself from wild animals. Hurry, it’s getting dark!",
+         "es": "Tomó piedras del lugar y las puso alrededor de su cabeza. Rashi: para protegerse de los animales salvajes. ¡Rápido, está oscureciendo!",
+         "he": "ויקח מאבני המקום וישם מראשתיו. רש״י: עשאן כמין מרזב סביב לראשו, שירא מפני חיות רעות."
+        },
+        "src": "בראשית כח:יא; רש״י"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.55,
+         0.42
+        ],
+        "sky": [
+         0.85,
+         0.6,
+         0.45
+        ],
+        "fog": [
+         0.8,
+         0.62,
+         0.5
+        ],
+        "hills": 1.2
+       },
+       "start": [
+        0,
+        18
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Arrange the <b>stones</b> around your head before dark.",
+          "es": "Acomoda las <b>piedras</b> alrededor de tu cabeza antes de que oscurezca.",
+          "he": "סדרו את <b>האבנים</b> סביב ראשכם לפני החשכה."
+         },
+         "at": [
+          0,
+          0
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/rocks",
+          "n": 3,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "Safe for the night!",
+           "es": "¡A salvo por la noche!",
+           "he": "מוגנים ללילה!"
+          }
+         },
+         "limit": 55
+        },
+        {
+         "text": {
+          "en": "Lie down to sleep among the <b>stones</b>.",
+          "es": "Acuéstate a dormir entre las <b>piedras</b>.",
+          "he": "שכבו לישון בין <b>האבנים</b>."
+         },
+         "at": [
+          0,
+          -6
+         ],
+         "r": 2.5,
+         "objects": [
+          {
+           "t": "person",
+           "x": -1.6,
+           "z": -7,
+           "sprite": "scenery/rocks",
+           "h": 1.1
+          },
+          {
+           "t": "person",
+           "x": 1.6,
+           "z": -7,
+           "sprite": "scenery/rocks",
+           "h": 1.1
+          },
+          {
+           "t": "person",
+           "x": -1.1,
+           "z": -8.3,
+           "sprite": "scenery/rocks",
+           "h": 1.1
+          },
+          {
+           "t": "person",
+           "x": 1.1,
+           "z": -8.3,
+           "sprite": "scenery/rocks",
+           "h": 1.1
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "Rashi: the stones argued — “Let the tzaddik rest his head on me!” — and Hashem made them into one stone.",
+            "es": "Rashi: las piedras discutían —“¡Que el tzadik apoye su cabeza sobre mí!”— y Hashem las convirtió en una sola piedra.",
+            "he": "רש״י: התחילו מריבות זו עם זו, זאת אומרת עלי יניח צדיק את ראשו… ומיד עשאן הקב״ה אבן אחת."
+           },
+           "src": "רש״י בראשית כח:יא"
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The ladder",
+       "es": "La escalera",
+       "he": "הסולם"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "He dreamed: a ladder stood on the earth with its top reaching the heavens, and angels of G-d were going up and down on it.",
+         "es": "Soñó: una escalera estaba apoyada en la tierra y su parte superior llegaba al cielo, y ángeles de D-os subían y bajaban por ella.",
+         "he": "ויחלם, והנה סלם מצב ארצה וראשו מגיע השמימה, והנה מלאכי אלקים עלים וירדים בו."
+        },
+        "src": "בראשית כח:יב"
+       },
+       {
+        "t": {
+         "en": "Hashem stood over him: “I am Hashem… The land you are lying on I will give to you… I will guard you wherever you go.”",
+         "es": "Hashem estaba junto a él: “Yo soy Hashem… La tierra sobre la que estás acostado te la daré… Te cuidaré dondequiera que vayas”.",
+         "he": "והנה ה׳ נצב עליו ויאמר: ״אני ה׳… הארץ אשר אתה שכב עליה לך אתננה… ושמרתיך בכל אשר תלך.״"
+        },
+        "src": "בראשית כח:יג–טו"
+       },
+       {
+        "t": {
+         "en": "“Surely Hashem is in this place, and I did not know! This is the House of G-d, and this is the gate of heaven.”",
+         "es": "“¡Ciertamente Hashem está en este lugar, y yo no lo sabía! Esta es la Casa de D-os, y esta es la puerta del cielo”.",
+         "he": "״אכן יש ה׳ במקום הזה ואנכי לא ידעתי… אין זה כי אם בית אלקים, וזה שער השמים.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית כח:טז–יז"
+       },
+       {
+        "ask": {
+         "en": "Yaakov wakes up. How does he thank Hashem?",
+         "es": "Yaakov se despierta. ¿Cómo le agradece a Hashem?",
+         "he": "יעקב מתעורר. איך יודה לה׳?"
+        },
+        "options": [
+         {
+          "e": "🪨",
+          "label": {
+           "en": "Set up the stone as a monument",
+           "es": "Levantar la piedra como monumento",
+           "he": "להקים את האבן למצבה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov set up the stone as a monument and poured oil on top of it, and named the place Beit El.",
+             "es": "Yaakov levantó la piedra como monumento, derramó aceite sobre ella y llamó al lugar Beit El.",
+             "he": "ויקח את האבן… וישם אתה מצבה ויצק שמן על ראשה. ויקרא את שם המקום ההוא בית אל."
+            },
+            "src": "בראשית כח:יח–יט"
+           }
+          ],
+          "middah": "hakarat"
+         },
+         {
+          "e": "🏃",
+          "label": {
+           "en": "Hurry on to Charan",
+           "es": "Seguir rápido hacia Jarán",
+           "he": "למהר לחרן"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Before going on, Yaakov stopped to thank Hashem: he set up the stone as a monument and named the place Beit El.",
+             "es": "Antes de seguir, Yaakov se detuvo a agradecer a Hashem: levantó la piedra como monumento y llamó al lugar Beit El.",
+             "he": "לפני שהמשיך, עצר יעקב להודות לה׳: הקים את האבן למצבה וקרא למקום בית אל."
+            },
+            "src": "בראשית כח:יח–יט"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "tap",
+       "img": "scenery/stone_pile",
+       "n": 3,
+       "speed": 0.9,
+       "zone": 0.24,
+       "text": {
+        "en": "Raise the stone — steady!",
+        "es": "¡Levanta la piedra con firmeza!",
+        "he": "הקימו את האבן — ביציבות!"
+       },
+       "done": {
+        "en": "Beit El!",
+        "es": "¡Beit El!",
+        "he": "בית אל!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "rachel",
+    "who": "rachel",
+    "name": {
+     "en": "Rachel at the well",
+     "es": "Rajel en el pozo",
+     "he": "רחל על הבאר"
+    },
+    "tag": {
+     "en": "A shepherdess, a heavy stone, and a long-awaited meeting.",
+     "es": "Una pastora, una piedra pesada y un encuentro muy esperado.",
+     "he": "רועה, אבן כבדה ופגישה מיוחלת."
+    },
+    "outro": {
+     "en": "Yaakov worked seven years for Rachel, and they seemed to him like a few days, because of his love for her.",
+     "es": "Yaakov trabajó siete años por Rajel, y le parecieron unos pocos días, por su amor por ella.",
+     "he": "ויעבד יעקב ברחל שבע שנים, ויהיו בעיניו כימים אחדים באהבתו אתה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The shepherdess",
+       "es": "La pastora",
+       "he": "הרועה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov saw a well in the field, with three flocks of sheep lying beside it, and a big stone on the mouth of the well.",
+         "es": "Yaakov vio un pozo en el campo, con tres rebaños de ovejas echados junto a él, y una gran piedra sobre la boca del pozo.",
+         "he": "וירא והנה באר בשדה, והנה שם שלשה עדרי צאן רבצים עליה… והאבן גדלה על פי הבאר."
+        },
+        "src": "בראשית כט:ב"
+       },
+       {
+        "t": {
+         "en": "“My brothers, where are you from? Do you know Lavan?”",
+         "es": "“Hermanos míos, ¿de dónde son? ¿Conocen a Laván?”",
+         "he": "״אחי, מאין אתם?… הידעתם את לבן?״"
+        },
+        "w": "yaakov",
+        "src": "בראשית כט:ד–ה"
+       },
+       {
+        "t": {
+         "en": "“We know him — and here is Rachel his daughter, coming with the sheep.”",
+         "es": "“Lo conocemos, y aquí viene Rajel, su hija, con las ovejas”.",
+         "he": "״ידענו… והנה רחל בתו באה עם הצאן.״"
+        },
+        "src": "בראשית כט:ה–ו",
+        "n": {
+         "en": "Shepherds",
+         "es": "Pastores",
+         "he": "הרועים"
+        }
+       },
+       {
+        "t": {
+         "en": "Rachel came with her father’s sheep, for she was a shepherdess. Bring the flock to the well!",
+         "es": "Rajel venía con las ovejas de su padre, porque era pastora. ¡Lleva el rebaño al pozo!",
+         "he": "ורחל באה עם הצאן אשר לאביה, כי רעה הוא. הביאו את הצאן אל הבאר!"
+        },
+        "src": "בראשית כט:ט"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 10,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 5.8,
+        "gap": 0.5,
+        "style": "well"
+       },
+       "objects": [],
+       "player": {
+        "sprite": "rachel",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The heavy stone",
+       "es": "La piedra pesada",
+       "he": "האבן הגדולה"
+      },
+      "talk": [
+       {
+        "ask": {
+         "en": "The stone is so heavy, the shepherds wait for everyone to gather. What does Yaakov do?",
+         "es": "La piedra es tan pesada que los pastores esperan a que se reúnan todos. ¿Qué hace Yaakov?",
+         "he": "האבן כה כבדה שהרועים מחכים שכולם יתאספו. מה עושה יעקב?"
+        },
+        "options": [
+         {
+          "e": "💪",
+          "label": {
+           "en": "Roll it off by himself",
+           "es": "Quitarla él solo",
+           "he": "לגלול אותה לבדו"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov came near and rolled the stone off the mouth of the well — by himself. Rashi: as easily as removing a cork from a bottle.",
+             "es": "Yaakov se acercó y quitó la piedra de la boca del pozo, él solo. Rashi: tan fácil como quitar un corcho de una botella.",
+             "he": "ויגש יעקב ויגל את האבן מעל פי הבאר. רש״י: כמעביר את הפקק מעל פי צלוחית."
+            },
+            "src": "בראשית כט:י; רש״י"
+           }
+          ],
+          "middah": "gevurah"
+         },
+         {
+          "e": "⏳",
+          "label": {
+           "en": "Wait with the shepherds",
+           "es": "Esperar con los pastores",
+           "he": "לחכות עם הרועים"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov didn’t wait — he came near and rolled the stone off by himself!",
+             "es": "Yaakov no esperó: ¡se acercó y quitó la piedra él solo!",
+             "he": "יעקב לא חיכה — הוא ניגש וגלל את האבן לבדו!"
+            },
+            "src": "בראשית כט:י"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "tap",
+       "img": "scenery/well",
+       "n": 4,
+       "speed": 1.05,
+       "zone": 0.2,
+       "text": {
+        "en": "Roll the big stone off the well!",
+        "es": "¡Quita la gran piedra del pozo!",
+        "he": "גוללו את האבן מעל פי הבאר!"
+       },
+       "done": {
+        "en": "The well is open!",
+        "es": "¡El pozo está abierto!",
+        "he": "הבאר פתוחה!"
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "He watered the sheep of Lavan, and wept, and told Rachel that he was Rivkah’s son.",
+         "es": "Dio de beber a las ovejas de Laván, lloró, y le contó a Rajel que era hijo de Rivká.",
+         "he": "וישק את צאן לבן… וישא את קלו ויבך. ויגד יעקב לרחל… וכי בן רבקה הוא."
+        },
+        "src": "בראשית כט:י–יב"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Run and tell!",
+       "es": "¡Corre a contarlo!",
+       "he": "רוצו לספר!"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Rachel ran and told her father.",
+         "es": "Rajel corrió y se lo contó a su padre.",
+         "he": "ותרץ ותגד לאביה."
+        },
+        "src": "בראשית כט:יב"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "walls": "canyon",
+       "goal": 360,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "rachel",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "tent"
+       ],
+       "goalSprite": "scenery/tent_light"
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Lavan ran to greet Yaakov and brought him to his house. Yaakov said: “I will work for you seven years for Rachel.”",
+         "es": "Laván corrió a recibir a Yaakov y lo llevó a su casa. Yaakov dijo: “Trabajaré para ti siete años por Rajel”.",
+         "he": "וירץ לקראתו… ויביאהו אל ביתו… ויאמר: ״אעבדך שבע שנים ברחל בתך הקטנה.״"
+        },
+        "src": "בראשית כט:יג–יח"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "home",
+    "who": "lavan",
+    "name": {
+     "en": "Leaving Lavan",
+     "es": "Dejar a Laván",
+     "he": "הפרידה מלבן"
+    },
+    "tag": {
+     "en": "Twenty years later: pack up, run home — and make a covenant of stones.",
+     "es": "Veinte años después: empaca, vuelve a casa y haz un pacto de piedras.",
+     "he": "עשרים שנה אחר כך: ארזו, חזרו הביתה — וכרתו ברית של אבנים."
+    },
+    "outro": {
+     "en": "Yaakov and Lavan made peace at Gal-Ed, and Yaakov continued home with his family. Angels of G-d met him on the way.",
+     "es": "Yaakov y Laván hicieron las paces en Gal-Ed, y Yaakov siguió a casa con su familia. Ángeles de D-os lo recibieron en el camino.",
+     "he": "יעקב ולבן כרתו ברית בגלעד, ויעקב המשיך הביתה עם משפחתו. ויפגעו בו מלאכי אלקים."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Yaakov’s wages",
+       "es": "El salario de Yaakov",
+       "he": "שכר יעקב"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“I will pass through all your flock today and remove from there every speckled and spotted sheep… and spotted and speckled among the goats — that will be my wage.”",
+         "es": "“Pasaré hoy por todo tu rebaño y apartaré de allí toda oveja moteada y manchada… y manchada y moteada entre las cabras: ese será mi salario”.",
+         "he": "״אעבר בכל צאנך היום, הסר משם כל שה נקד וטלוא… וטלוא ונקד בעזים, והיה שכרי.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית ל:לב"
+       }
+      ],
+      "game": {
+       "type": "sort",
+       "text": {
+        "en": "Separate Yaakov’s wages from Lavan’s flock!",
+        "es": "¡Separa el salario de Yaakov del rebaño de Laván!",
+        "he": "הפרידו את שכר יעקב מצאן לבן!"
+       },
+       "done": {
+        "en": "Hashem blessed Yaakov!",
+        "es": "¡Hashem bendijo a Yaakov!",
+        "he": "ה׳ ברך את יעקב!"
+       },
+       "bins": [
+        {
+         "id": "y",
+         "label": {
+          "en": "Speckled and spotted: Yaakov’s",
+          "es": "Moteadas y manchadas: de Yaakov",
+          "he": "נקודים וטלואים: של יעקב"
+         },
+         "mark": "spots"
+        },
+        {
+         "id": "l",
+         "label": {
+          "en": "Plain: Lavan’s",
+          "es": "Lisas: de Laván",
+          "he": "חלקים: של לבן"
+         }
+        }
+       ],
+       "items": [
+        {
+         "img": "sheep",
+         "mark": "speckles",
+         "bin": "y"
+        },
+        {
+         "img": "goat",
+         "mark": "spots",
+         "bin": "y"
+        },
+        {
+         "img": "sheep",
+         "bin": "l"
+        },
+        {
+         "img": "goat",
+         "bin": "l"
+        },
+        {
+         "img": "sheep",
+         "mark": "spots",
+         "bin": "y"
+        },
+        {
+         "img": "goat",
+         "mark": "speckles",
+         "bin": "y"
+        },
+        {
+         "img": "sheep",
+         "bin": "l"
+        },
+        {
+         "img": "sheep",
+         "mark": "speckles",
+         "bin": "y"
+        }
+       ]
+      },
+      "after": [
+       {
+        "t": {
+         "en": "The man grew very, very rich, with many flocks, servants, camels and donkeys.",
+         "es": "El hombre se enriqueció muchísimo, con muchos rebaños, siervos, camellos y asnos.",
+         "he": "ויפרץ האיש מאד מאד, ויהי לו צאן רבות ושפחות ועבדים וגמלים וחמרים."
+        },
+        "src": "בראשית ל:מג"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Return home",
+       "es": "Vuelve a casa",
+       "he": "שוב אל ארץ אבותיך"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem said to Yaakov: “Return to the land of your fathers, to your birthplace, and I will be with you.”",
+         "es": "Hashem le dijo a Yaakov: “Vuelve a la tierra de tus padres, a tu lugar de nacimiento, y Yo estaré contigo”.",
+         "he": "ויאמר ה׳ אל יעקב: ״שוב אל ארץ אבותיך ולמולדתך, ואהיה עמך.״"
+        },
+        "src": "בראשית לא:ג"
+       },
+       {
+        "t": {
+         "en": "Yaakov put his children and wives on the camels and led all his flocks. Lead the flock out, fast!",
+         "es": "Yaakov subió a sus hijos y esposas a los camellos y llevó todos sus rebaños. ¡Guía el rebaño, rápido!",
+         "he": "ויקם יעקב וישא את בניו ואת נשיו על הגמלים, וינהג את כל מקנהו. הובילו את הצאן מהר!"
+        },
+        "src": "בראשית לא:יז–יח"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 12,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.4,
+        "gap": 0.42,
+        "style": "fence"
+       },
+       "objects": [
+        {
+         "t": "person",
+         "x": -12,
+         "z": -36,
+         "sprite": "rachel",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": -8,
+         "z": -38,
+         "sprite": "leah",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": 8,
+         "z": -38,
+         "sprite": "bilhah",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": 12,
+         "z": -36,
+         "sprite": "zilpah",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": 0,
+         "z": -40,
+         "sprite": "camel",
+         "h": 3.4
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       },
+       "par": 70
+      }
+     },
+     {
+      "title": {
+       "en": "Lavan gives chase",
+       "es": "Laván persigue",
+       "he": "לבן רודף"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "On the third day Lavan was told that Yaakov had fled. He chased him for seven days and caught up at the mountain of Gilad.",
+         "es": "Al tercer día le avisaron a Laván que Yaakov había huido. Lo persiguió siete días y lo alcanzó en el monte de Guilad.",
+         "he": "ויגד ללבן ביום השלישי כי ברח יעקב… וירדף אחריו דרך שבעת ימים וידבק אתו בהר הגלעד."
+        },
+        "src": "בראשית לא:כב–כג"
+       },
+       {
+        "t": {
+         "en": "Hashem came to Lavan in a dream: “Be careful not to speak with Yaakov, good or bad.”",
+         "es": "Hashem se le apareció a Laván en sueños: “Cuídate de no hablar con Yaakov, ni bien ni mal”.",
+         "he": "ויבא אלקים אל לבן הארמי בחלם הלילה ויאמר לו: ״השמר לך פן תדבר עם יעקב מטוב עד רע.״"
+        },
+        "src": "בראשית לא:כד"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 500,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "every": 5,
+       "runner": "yaakov",
+       "pickup": false,
+       "goalSprite": "scenery/hill",
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "camel",
+        "pile"
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "The covenant of stones",
+       "es": "El pacto de piedras",
+       "he": "גל עד"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“Come, let us make a covenant, I and you.”",
+         "es": "“Ven, hagamos un pacto, tú y yo”.",
+         "he": "״ועתה לכה נכרתה ברית אני ואתה.״"
+        },
+        "w": "lavan",
+        "src": "בראשית לא:מד"
+       },
+       {
+        "ask": {
+         "en": "Lavan wants peace. What does Yaakov answer?",
+         "es": "Laván quiere paz. ¿Qué responde Yaakov?",
+         "he": "לבן רוצה שלום. מה עונה יעקב?"
+        },
+        "options": [
+         {
+          "e": "🤝",
+          "label": {
+           "en": "Agree, and build a monument together",
+           "es": "Aceptar y construir juntos un monumento",
+           "he": "להסכים ולבנות יחד גל"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov took a stone and set it up as a monument.",
+             "es": "Yaakov tomó una piedra y la levantó como monumento.",
+             "he": "ויקח יעקב אבן וירימה מצבה."
+            },
+            "src": "בראשית לא:מה"
+           }
+          ],
+          "middah": "shalom"
+         },
+         {
+          "e": "😠",
+          "label": {
+           "en": "Remind Lavan of all the tricks",
+           "es": "Recordarle a Laván todos sus engaños",
+           "he": "להזכיר ללבן את כל רמאויותיו"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov had told Lavan how hard he worked for twenty years — but now he chose peace, and set up a stone as a monument.",
+             "es": "Yaakov le había dicho a Laván lo duro que trabajó veinte años, pero ahora eligió la paz y levantó una piedra como monumento.",
+             "he": "יעקב כבר הוכיח את לבן על עשרים שנות עבודה — אך עתה בחר בשלום, והרים אבן למצבה."
+            },
+            "src": "בראשית לא:לו–מה"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "Yaakov told his relatives: “Gather stones!” and they made a mound.",
+         "es": "Yaakov les dijo a sus parientes: “¡Junten piedras!”, e hicieron un montón.",
+         "he": "ויאמר יעקב לאחיו: ״לקטו אבנים.״ ויקחו אבנים ויעשו גל."
+        },
+        "src": "בראשית לא:מו"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        18
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Pile up the <b>stones</b>.",
+          "es": "Amontona las <b>piedras</b>.",
+          "he": "ערמו את <b>האבנים</b>."
+         },
+         "at": [
+          0,
+          0
+         ],
+         "r": 4,
+         "mini": {
+          "type": "stack",
+          "n": 7,
+          "done": {
+           "en": "Gal-Ed!",
+           "es": "¡Gal-Ed!",
+           "he": "גלעד!"
+          }
+         }
+        },
+        {
+         "text": {
+          "en": "Build the mound — <b>Gal-Ed</b>.",
+          "es": "Construye el montón: <b>Gal-Ed</b>.",
+          "he": "בנו את הגל — <b>גלעד</b>."
+         },
+         "at": [
+          -10,
+          -24
+         ],
+         "r": 4,
+         "objects": [
+          {
+           "t": "person",
+           "x": -10,
+           "z": -26,
+           "sprite": "scenery/stone_pile",
+           "h": 3
+          },
+          {
+           "t": "person",
+           "x": -4,
+           "z": -26,
+           "sprite": "lavan",
+           "h": 3.2
+          }
+         ],
+         "par": 7
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Early in the morning Lavan kissed his grandchildren and daughters, blessed them, and went home.",
+         "es": "Temprano por la mañana Laván besó a sus nietos y a sus hijas, los bendijo y volvió a su casa.",
+         "he": "וישכם לבן בבקר וינשק לבניו ולבנותיו ויברך אתהם, וילך וישב לבן למקמו."
+        },
+        "src": "בראשית לב:א"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "yaakov": {
+    "en": "Yaakov",
+    "es": "Yaakov",
+    "he": "יעקב"
+   },
+   "rachel": {
+    "en": "Rachel",
+    "es": "Rajel",
+    "he": "רחל"
+   },
+   "lavan": {
+    "en": "Lavan",
+    "es": "Laván",
+    "he": "לבן"
+   },
+   "angel": {
+    "en": "Angel",
+    "es": "Ángel",
+    "he": "מלאך"
+   }
+  }
+ }
+}

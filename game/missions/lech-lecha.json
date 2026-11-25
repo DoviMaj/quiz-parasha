@@ -1,0 +1,668 @@
+{
+ "id": "lech-lecha",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Lech Lecha: two stories",
+  "es": "Lej Lejá: dos historias",
+  "he": "לך לך: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "avram",
+    "who": "avraham",
+    "name": {
+     "en": "Avram",
+     "es": "Avram",
+     "he": "אברם"
+    },
+    "tag": {
+     "en": "Leave everything behind and follow Hashem to a new land.",
+     "es": "Deja todo atrás y sigue a Hashem a una tierra nueva.",
+     "he": "עזבו הכל ולכו אחרי ה׳ אל ארץ חדשה."
+    },
+    "outro": {
+     "en": "Avram trusted Hashem completely — and Hashem promised that his children would be as many as the stars.",
+     "es": "Avram confió plenamente en Hashem, y Hashem le prometió que sus hijos serían tantos como las estrellas.",
+     "he": "אברם בטח בה׳ בכל לבו — וה׳ הבטיח שזרעו יהיה ככוכבי השמים."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Lech lecha",
+       "es": "Lej lejá",
+       "he": "לך לך"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem said to Avram: “Go from your land, from your birthplace and from your father’s house, to the land that I will show you.”",
+         "es": "Hashem le dijo a Avram: “Vete de tu tierra, de tu lugar de nacimiento y de la casa de tu padre, a la tierra que te mostraré”.",
+         "he": "ויאמר ה׳ אל אברם: ״לך לך מארצך וממולדתך ומבית אביך אל הארץ אשר אראך.״"
+        },
+        "src": "בראשית יב:א"
+       },
+       {
+        "ask": {
+         "en": "Avram doesn’t even know where he is going. What does he do?",
+         "es": "Avram ni siquiera sabe adónde va. ¿Qué hace?",
+         "he": "אברם אינו יודע אפילו לאן הוא הולך. מה הוא עושה?"
+        },
+        "options": [
+         {
+          "e": "🎒",
+          "label": {
+           "en": "Pack and leave right away",
+           "es": "Empacar y salir enseguida",
+           "he": "לארוז ולצאת מיד"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Avram went, as Hashem had told him. He was seventy-five years old.",
+             "es": "Avram fue, como Hashem le había dicho. Tenía setenta y cinco años.",
+             "he": "וילך אברם כאשר דבר אליו ה׳… ואברם בן חמש שנים ושבעים שנה."
+            },
+            "src": "בראשית יב:ד"
+           }
+          ],
+          "middah": "emunah"
+         },
+         {
+          "e": "🗺️",
+          "label": {
+           "en": "Ask for a map first",
+           "es": "Pedir primero un mapa",
+           "he": "לבקש קודם מפה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Hashem didn’t give a map — and Avram went anyway, trusting Him. He was seventy-five years old.",
+             "es": "Hashem no le dio un mapa, y Avram fue de todos modos, confiando en Él. Tenía setenta y cinco años.",
+             "he": "ה׳ לא נתן מפה — ואברם הלך בכל זאת, בוטח בו. בן שבעים וחמש שנה היה."
+            },
+            "src": "בראשית יב:ד"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "He took Sarai his wife, Lot his nephew, and the souls they had made in Charan.",
+         "es": "Tomó a Sarai, su esposa, a Lot, su sobrino, y a las almas que habían hecho en Jarán.",
+         "he": "ויקח אברם את שרי אשתו ואת לוט בן אחיו… ואת הנפש אשר עשו בחרן."
+        },
+        "src": "בראשית יב:ה"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "player": {
+        "robe": [
+         0.35,
+         0.42,
+         0.7
+        ],
+        "sprite": "avraham",
+        "h": 3.2
+       },
+       "start": [
+        0,
+        95
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": -6,
+         "z": 100
+        },
+        {
+         "t": "tent",
+         "x": 5,
+         "z": 102
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Walk to <b>Shechem</b>, to Elon Moreh.",
+          "es": "Camina hasta <b>Shjem</b>, a Elón Moré.",
+          "he": "לכו אל <b>שכם</b>, עד אלון מורה."
+         },
+         "at": [
+          -14,
+          30
+         ],
+         "r": 7,
+         "objects": [
+          {
+           "t": "tree",
+           "x": -14,
+           "z": 26,
+           "s": 1.6
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "Avram passed through the land to Shechem, to Elon Moreh. Hashem appeared to him: “To your offspring I will give this land.” He built an altar there.",
+            "es": "Avram atravesó la tierra hasta Shjem, hasta Elón Moré. Hashem se le apareció: “A tu descendencia daré esta tierra”. Allí construyó un altar.",
+            "he": "ויעבר אברם בארץ עד מקום שכם עד אלון מורה… וירא ה׳ אל אברם ויאמר: ״לזרעך אתן את הארץ הזאת.״ ויבן שם מזבח."
+           },
+           "src": "בראשית יב:ו–ז"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Continue to the hill <b>between Beit El and Ai</b> and build an altar.",
+          "es": "Sigue hasta el monte <b>entre Bet El y Ai</b> y construye un altar.",
+          "he": "המשיכו אל ההר <b>בין בית אל לעי</b> ובנו מזבח."
+         },
+         "at": [
+          14,
+          -25
+         ],
+         "r": 7,
+         "objects": [
+          {
+           "t": "altar",
+           "x": 14,
+           "z": -27,
+           "reveal": 1
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "Between Beit El and Ai he built another altar and called out in the name of Hashem.",
+            "es": "Entre Beit El y Ai construyó otro altar e invocó el nombre de Hashem.",
+            "he": "ויבן שם מזבח לה׳, ויקרא בשם ה׳."
+           },
+           "src": "בראשית יב:ח"
+          },
+          {
+           "t": {
+            "en": "Rashi: Avram taught people about Hashem everywhere he went.",
+            "es": "Rashi: Avram enseñaba a la gente sobre Hashem dondequiera que iba.",
+            "he": "רש״י: ויקרא בשם ה׳ — היה מתפלל ומודיע לבני אדם את שמו של הקב״ה."
+           },
+           "src": "רש״י בראשית יב:ח"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Settle at the oaks of <b>Mamre</b> in Chevron.",
+          "es": "Establécete junto a los robles de <b>Mamré</b>, en Jevrón.",
+          "he": "התיישבו באלוני <b>ממרא</b> אשר בחברון."
+         },
+         "at": [
+          -6,
+          -85
+         ],
+         "r": 8,
+         "objects": [
+          {
+           "t": "tree",
+           "x": -9,
+           "z": -88,
+           "s": 1.5
+          },
+          {
+           "t": "tree",
+           "x": -2,
+           "z": -90,
+           "s": 1.4
+          },
+          {
+           "t": "tent",
+           "x": -5,
+           "z": -82
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "Avram settled by the oaks of Mamre in Chevron, and built an altar there to Hashem.",
+            "es": "Avram se estableció junto a los robles de Mamré, en Jevrón, y construyó allí un altar a Hashem.",
+            "he": "ויבא וישב באלני ממרא אשר בחברון, ויבן שם מזבח לה׳."
+           },
+           "src": "בראשית יג:יח"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Count the stars",
+       "es": "Cuenta las estrellas",
+       "he": "ספור הכוכבים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem took Avram outside: “Look at the sky and count the stars, if you can count them… So will your offspring be.”",
+         "es": "Hashem sacó a Avram afuera: “Mira al cielo y cuenta las estrellas, si puedes contarlas… Así será tu descendencia”.",
+         "he": "ויוצא אתו החוצה ויאמר: ״הבט נא השמימה וספר הכוכבים אם תוכל לספר אתם… כה יהיה זרעך.״"
+        },
+        "src": "בראשית טו:ה"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.3,
+         0.32,
+         0.28
+        ],
+        "sky": [
+         0.08,
+         0.1,
+         0.22
+        ],
+        "fog": [
+         0.1,
+         0.12,
+         0.24
+        ],
+        "hills": 1.2
+       },
+       "start": [
+        0,
+        16
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Count the <b>stars</b>!",
+          "es": "¡Cuenta las <b>estrellas</b>!",
+          "he": "ספרו את <b>הכוכבים</b>!"
+         },
+         "at": [
+          0,
+          -4
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/star",
+          "n": 6,
+          "speed": 1.15,
+          "zone": 0.22,
+          "done": {
+           "en": "So will your offspring be!",
+           "es": "¡Así será tu descendencia!",
+           "he": "כה יהיה זרעך!"
+          }
+         }
+        }
+       ],
+       "player": {
+        "sprite": "avraham",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Avram believed in Hashem, and Hashem counted it as righteousness.",
+         "es": "Avram creyó en Hashem, y Él se lo contó como justicia.",
+         "he": "והאמן בה׳, ויחשבה לו צדקה."
+        },
+        "src": "בראשית טו:ו"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lot",
+    "who": "lot",
+    "name": {
+     "en": "Lot",
+     "es": "Lot",
+     "he": "לוט"
+    },
+    "tag": {
+     "en": "Shepherds quarrel, Lot chooses Sedom — and Avram comes to the rescue.",
+     "es": "Los pastores discuten, Lot elige Sedom, y Avram viene al rescate.",
+     "he": "הרועים רבים, לוט בוחר בסדום — ואברם יוצא להציל."
+    },
+    "outro": {
+     "en": "Even after they parted, Avram did not abandon Lot. When Lot was captured, Avram risked everything to save him.",
+     "es": "Aun después de separarse, Avram no abandonó a Lot. Cuando Lot fue capturado, Avram arriesgó todo para salvarlo.",
+     "he": "גם אחרי שנפרדו, אברם לא עזב את לוט. כשלוט נשבה, אברם סיכן הכל כדי להצילו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Quarrel of the shepherds",
+       "es": "La pelea de los pastores",
+       "he": "ריב הרועים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Lot also had sheep, cattle and tents, and the land could not hold them both. There was a quarrel between Avram’s shepherds and Lot’s shepherds.",
+         "es": "Lot también tenía ovejas, vacas y tiendas, y la tierra no alcanzaba para los dos. Hubo una pelea entre los pastores de Avram y los de Lot.",
+         "he": "וגם ללוט… היה צאן ובקר ואהלים, ולא נשא אתם הארץ לשבת יחדו… ויהי ריב בין רעי מקנה אברם ובין רעי מקנה לוט."
+        },
+        "src": "בראשית יג:ה–ז"
+       },
+       {
+        "t": {
+         "en": "Rashi: Lot’s shepherds let their animals graze in other people’s fields; Avram’s shepherds told them that was stealing.",
+         "es": "Rashi: los pastores de Lot dejaban pastar a sus animales en campos ajenos; los de Avram les decían que eso era robar.",
+         "he": "רש״י: רועי לוט רשעים היו ומרעים בהמתם בשדות אחרים, ורועי אברם מוכיחים אותם על הגזל."
+        },
+        "src": "רש״י בראשית יג:ז"
+       },
+       {
+        "t": {
+         "en": "Keep Lot’s flock together in the pen — away from other people’s fields.",
+         "es": "Mantén el rebaño de Lot en el corral, lejos de los campos ajenos.",
+         "he": "שמרו את צאן לוט בדיר — הרחק משדות של אחרים."
+        }
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 10,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.2,
+        "gap": 0.42,
+        "style": "fence"
+       },
+       "objects": [
+        {
+         "t": "tent",
+         "x": -10,
+         "z": -36
+        },
+        {
+         "t": "tent",
+         "x": 10,
+         "z": -38
+        }
+       ],
+       "player": {
+        "sprite": "lot",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Choose a land",
+       "es": "Elegir una tierra",
+       "he": "בחירת ארץ"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“Please let there be no quarrel between me and you, and between my shepherds and your shepherds — for we are brothers.”",
+         "es": "“Por favor, que no haya pelea entre tú y yo, ni entre mis pastores y los tuyos, porque somos hermanos”.",
+         "he": "״אל נא תהי מריבה ביני וביניך ובין רעי ובין רעיך, כי אנשים אחים אנחנו.״"
+        },
+        "w": "avraham",
+        "src": "בראשית יג:ח"
+       },
+       {
+        "t": {
+         "en": "“If you go left, I will go right; if you go right, I will go left.”",
+         "es": "“Si tú vas a la izquierda, yo iré a la derecha; si tú vas a la derecha, yo iré a la izquierda”.",
+         "he": "״אם השמאל ואימנה, ואם הימין ואשמאילה.״"
+        },
+        "w": "avraham",
+        "src": "בראשית יג:ט"
+       },
+       {
+        "t": {
+         "en": "Lot saw that the plain of the Yarden was well-watered everywhere, and chose it for himself. He pitched his tents as far as Sedom.",
+         "es": "Lot vio que la llanura del Yardén estaba bien regada por todas partes y la eligió para sí. Puso sus tiendas hasta Sedom.",
+         "he": "וירא את כל ככר הירדן כי כלה משקה… ויבחר לו לוט את כל ככר הירדן… ויאהל עד סדם."
+        },
+        "src": "בראשית יג:י–יב"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        26
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Lead Lot’s camp down to the green <b>plain of the Yarden</b>.",
+          "es": "Lleva el campamento de Lot a la verde <b>llanura del Yardén</b>.",
+          "he": "הובילו את מחנה לוט אל <b>ככר הירדן</b> הירוק."
+         },
+         "at": [
+          20,
+          -40
+         ],
+         "r": 7,
+         "objects": [
+          {
+           "t": "person",
+           "x": 26,
+           "z": -46,
+           "sprite": "scenery/riverbank",
+           "h": 6
+          },
+          {
+           "t": "palm",
+           "x": 14,
+           "z": -44
+          },
+          {
+           "t": "palm",
+           "x": 28,
+           "z": -36
+          }
+         ],
+         "par": 10
+        }
+       ],
+       "player": {
+        "sprite": "lot",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The rescue",
+       "es": "El rescate",
+       "he": "ההצלה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Kings went to war and captured Lot and all his possessions, because he lived in Sedom.",
+         "es": "Unos reyes hicieron guerra y capturaron a Lot y todas sus posesiones, porque vivía en Sedom.",
+         "he": "ויקחו את לוט ואת רכשו בן אחי אברם וילכו, והוא ישב בסדם."
+        },
+        "src": "בראשית יד:יב"
+       },
+       {
+        "t": {
+         "en": "When Avram heard that his relative was captured, he took his 318 trained men and chased them as far as Dan. Hurry!",
+         "es": "Cuando Avram oyó que su pariente había sido capturado, tomó a sus 318 hombres entrenados y los persiguió hasta Dan. ¡Rápido!",
+         "he": "וישמע אברם כי נשבה אחיו, וירק את חניכיו ילידי ביתו שמנה עשר ושלש מאות, וירדף עד דן."
+        },
+        "src": "בראשית יד:יד"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 420,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "avraham",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "pile",
+        "tent"
+       ],
+       "goalSprite": "scenery/city_gate"
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Avram brought back everything — and also brought back Lot and his possessions.",
+         "es": "Avram recuperó todo, y también trajo de vuelta a Lot y sus posesiones.",
+         "he": "וישב את כל הרכש, וגם את לוט אחיו ורכשו השיב."
+        },
+        "src": "בראשית יד:טז"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "avraham": {
+    "en": "Avram",
+    "es": "Avram",
+    "he": "אברם"
+   },
+   "lot": {
+    "en": "Lot",
+    "es": "Lot",
+    "he": "לוט"
+   },
+   "sarah": {
+    "en": "Sarai",
+    "es": "Sarai",
+    "he": "שרי"
+   }
+  }
+ }
+}

@@ -1,0 +1,637 @@
+{
+ "id": "chayei-sara",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Chayei Sarah: two stories",
+  "es": "Jayé Sará: dos historias",
+  "he": "חיי שרה: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "eliezer",
+    "who": "eliezer",
+    "name": {
+     "en": "Eliezer’s mission",
+     "es": "La misión de Eliézer",
+     "he": "שליחות אליעזר"
+    },
+    "tag": {
+     "en": "Find a wife for Yitzchak — and watch for a girl with a kind heart.",
+     "es": "Encuentra una esposa para Itzjak, y busca a una joven de corazón bondadoso.",
+     "he": "מצאו אשה ליצחק — וחפשו נערה בעלת לב טוב."
+    },
+    "outro": {
+     "en": "Rivkah’s kindness showed she was right for Yitzchak. He brought her into Sarah’s tent, and loved her.",
+     "es": "La bondad de Rivká mostró que era la indicada para Itzjak. Él la llevó a la tienda de Sará y la amó.",
+     "he": "החסד של רבקה הראה שהיא הראויה ליצחק. ויבאה יצחק האהלה שרה אמו… ויאהבה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The journey",
+       "es": "El viaje",
+       "he": "המסע"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Avraham made his servant swear: do not take a wife for my son from the Canaanites — go to my land and my birthplace.",
+         "es": "Avraham hizo jurar a su siervo: no tomes esposa para mi hijo de los cananeos; ve a mi tierra y a mi lugar de nacimiento.",
+         "he": "ואשביעך… אשר לא תקח אשה לבני מבנות הכנעני… כי אל ארצי ואל מולדתי תלך."
+        },
+        "src": "בראשית כד:ג–ד"
+       },
+       {
+        "t": {
+         "en": "The servant took ten of his master’s camels and set out for Aram Naharayim.",
+         "es": "El siervo tomó diez de los camellos de su amo y partió hacia Aram Naharáyim.",
+         "he": "ויקח העבד עשרה גמלים מגמלי אדניו וילך… אל ארם נהרים."
+        },
+        "src": "בראשית כד:י"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 400,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "eliezer",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush",
+        "jars"
+       ],
+       "tall": [
+        "boulder",
+        "pile"
+       ],
+       "goalSprite": "scenery/well"
+      }
+     },
+     {
+      "title": {
+       "en": "At the well",
+       "es": "En el pozo",
+       "he": "על הבאר"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "He made the camels kneel by the well in the evening, when the women come out to draw water.",
+         "es": "Hizo arrodillar a los camellos junto al pozo al atardecer, cuando las mujeres salen a sacar agua.",
+         "he": "ויברך הגמלים מחוץ לעיר אל באר המים, לעת ערב, לעת צאת השאבת."
+        },
+        "src": "בראשית כד:יא"
+       },
+       {
+        "ask": {
+         "en": "How will Eliezer find the right girl?",
+         "es": "¿Cómo encontrará Eliézer a la joven indicada?",
+         "he": "איך ימצא אליעזר את הנערה הנכונה?"
+        },
+        "options": [
+         {
+          "e": "🙏",
+          "label": {
+           "en": "Pray and ask for a sign of kindness",
+           "es": "Rezar y pedir una señal de bondad",
+           "he": "להתפלל ולבקש סימן של חסד"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“Let the girl who says ‘Drink, and I will water your camels too’ — let her be the one.”",
+             "es": "“Que la joven que diga ‘Bebe, y también daré de beber a tus camellos’ sea la indicada”.",
+             "he": "״והיה הנערה אשר אמר אליה הטי נא כדך ואשתה, ואמרה שתה וגם גמליך אשקה — אתה הכחת.״"
+            },
+            "w": "eliezer",
+            "src": "בראשית כד:יד"
+           }
+          ],
+          "middah": "emunah"
+         },
+         {
+          "e": "💎",
+          "label": {
+           "en": "Choose the richest family",
+           "es": "Elegir a la familia más rica",
+           "he": "לבחור את המשפחה העשירה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Eliezer didn’t look for riches — he prayed for a girl with a kind heart: “Let her say: drink, and I will water your camels too.”",
+             "es": "Eliézer no buscó riquezas: rezó por una joven de corazón bondadoso: “Que diga: bebe, y también daré de beber a tus camellos”.",
+             "he": "אליעזר לא חיפש עושר — הוא התפלל לנערה בעלת חסד: ״שתה וגם גמליך אשקה.״"
+            },
+            "src": "בראשית כד:יד"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "Before he finished speaking, Rivkah came out with her jar on her shoulder.",
+         "es": "Antes de que terminara de hablar, Rivká salió con su cántaro al hombro.",
+         "he": "ויהי הוא טרם כלה לדבר, והנה רבקה יצאת… וכדה על שכמה."
+        },
+        "src": "בראשית כד:טו"
+       },
+       {
+        "t": {
+         "en": "“Drink, my master. I will draw for your camels too, until they finish drinking.”",
+         "es": "“Bebe, señor mío. También sacaré agua para tus camellos, hasta que terminen de beber”.",
+         "he": "״שתה אדני… גם לגמליך אשאב עד אם כלו לשתת.״"
+        },
+        "w": "rivkah",
+        "src": "בראשית כד:יח–יט"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Water the camels",
+       "es": "Dar de beber a los camellos",
+       "he": "השקאת הגמלים"
+      },
+      "choose": {
+       "mode": "all",
+       "title": {
+        "en": "Help Rivkah!",
+        "es": "¡Ayuda a Rivká!",
+        "he": "עזרו לרבקה!"
+       },
+       "options": [
+        {
+         "e": "🪣",
+         "label": {
+          "en": "Pour water into the trough",
+          "es": "Verter agua en el abrevadero",
+          "he": "לערות מים אל השקת"
+         },
+         "fmt": "pour",
+         "chapters": [
+          {
+           "title": null,
+           "talk": [
+            {
+             "t": {
+              "en": "She quickly emptied her jar into the trough, ran back to the well to draw more, and drew for all his camels.",
+              "es": "Rápido vació su cántaro en el abrevadero, corrió otra vez al pozo a sacar más, y sacó agua para todos sus camellos.",
+              "he": "ותמהר ותער כדה אל השקת, ותרץ עוד אל הבאר לשאב, ותשאב לכל גמליו."
+             },
+             "src": "בראשית כד:כ"
+            }
+           ],
+           "game": {
+            "type": "pour",
+            "n": 4,
+            "img": "scenery/jars",
+            "text": {
+             "en": "She quickly emptied her jar into the trough — fill each trough for the camels!",
+             "es": "Rápido vació su cántaro en el abrevadero: ¡llena cada abrevadero para los camellos!",
+             "he": "ותמהר ותער כדה אל השקת — מלאו כל שוקת לגמלים!"
+            },
+            "done": {
+             "en": "The camels drank!",
+             "es": "¡Los camellos bebieron!",
+             "he": "הגמלים שתו!"
+            }
+           }
+          }
+         ]
+        },
+        {
+         "e": "🐪",
+         "label": {
+          "en": "Bring the camels to the trough",
+          "es": "Llevar los camellos al abrevadero",
+          "he": "להביא את הגמלים לשקת"
+         },
+         "fmt": "herd",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "herd",
+            "scene": {
+             "ground": [
+              0.88,
+              0.72,
+              0.5
+             ],
+             "sky": [
+              0.62,
+              0.74,
+              0.9
+             ],
+             "fog": [
+              0.93,
+              0.84,
+              0.68
+             ],
+             "hills": 1.0
+            },
+            "animal": "camel",
+            "n": 10,
+            "pen": {
+             "x": 0,
+             "z": -24,
+             "r": 6.5,
+             "gap": 0.5,
+             "style": "well",
+             "sprite": "rivkah"
+            },
+            "every": 4,
+            "player": {
+             "sprite": "rivkah",
+             "h": 3.2
+            }
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "“I will go”",
+       "es": "“Iré”",
+       "he": "״אלך״"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The servant gave her a gold nose ring and two bracelets, and bowed to Hashem in thanks.",
+         "es": "El siervo le dio un anillo de oro para la nariz y dos brazaletes, y se inclinó ante Hashem en agradecimiento.",
+         "he": "ויקח האיש נזם זהב… ושני צמידים על ידיה… ויקד האיש וישתחו לה׳."
+        },
+        "src": "בראשית כד:כב–כו"
+       },
+       {
+        "t": {
+         "en": "Her family asked Rivkah: “Will you go with this man?”",
+         "es": "Su familia le preguntó a Rivká: “¿Irás con este hombre?”",
+         "he": "ויקראו לרבקה ויאמרו אליה: ״התלכי עם האיש הזה?״"
+        },
+        "w": "lavan_young",
+        "src": "בראשית כד:נח",
+        "n": {
+         "en": "Rivkah’s family",
+         "es": "La familia de Rivká",
+         "he": "משפחת רבקה"
+        }
+       },
+       {
+        "t": {
+         "en": "“I will go.”",
+         "es": "“Iré”.",
+         "he": "״אלך.״"
+        },
+        "w": "rivkah",
+        "src": "בראשית כד:נח"
+       },
+       {
+        "t": {
+         "en": "Yitzchak brought her into the tent of Sarah his mother, she became his wife, and he loved her.",
+         "es": "Itzjak la llevó a la tienda de Sará, su madre; ella fue su esposa, y él la amó.",
+         "he": "ויבאה יצחק האהלה שרה אמו, ויקח את רבקה ותהי לו לאשה ויאהבה."
+        },
+        "src": "בראשית כד:סז"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "machpelah",
+    "who": "avraham",
+    "name": {
+     "en": "The cave of Machpelah",
+     "es": "La cueva de Majpelá",
+     "he": "מערת המכפלה"
+    },
+    "tag": {
+     "en": "Avraham buys a resting place for Sarah — and pays in full.",
+     "es": "Avraham compra un lugar de descanso para Sará y paga el precio completo.",
+     "he": "אברהם קונה מקום מנוחה לשרה — ומשלם את מלוא המחיר."
+    },
+    "outro": {
+     "en": "Avraham paid the full price, so that no one could ever say the cave was not his. It is in Chevron to this day.",
+     "es": "Avraham pagó el precio completo, para que nadie pudiera decir jamás que la cueva no era suya. Está en Jevrón hasta hoy.",
+     "he": "אברהם שילם את מלוא המחיר, כדי שאיש לא יוכל לומר שהמערה אינה שלו. היא בחברון עד היום."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Four hundred silver shekels",
+       "es": "Cuatrocientos siclos de plata",
+       "he": "ארבע מאות שקל כסף"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Sarah lived 127 years, and she passed away in Chevron. Avraham came to eulogize and weep for her.",
+         "es": "Sará vivió 127 años y falleció en Jevrón. Avraham vino a hacer su elogio y a llorarla.",
+         "he": "ויהיו חיי שרה מאה שנה ועשרים שנה ושבע שנים… ותמת שרה… היא חברון… ויבא אברהם לספד לשרה ולבכתה."
+        },
+        "src": "בראשית כג:א–ב"
+       },
+       {
+        "t": {
+         "en": "“I am a stranger and a resident with you. Give me a burial place.”",
+         "es": "“Soy forastero y residente entre ustedes. Denme un lugar de sepultura”.",
+         "he": "״גר ותושב אנכי עמכם, תנו לי אחזת קבר עמכם.״"
+        },
+        "w": "avraham",
+        "src": "בראשית כג:ד"
+       },
+       {
+        "t": {
+         "en": "“No, my lord, listen to me: I give you the field, and I give you the cave in it.”",
+         "es": "“No, señor mío, escúchame: te doy el campo, y te doy la cueva que hay en él”.",
+         "he": "״לא אדני שמעני, השדה נתתי לך והמערה אשר בו לך נתתיה.״"
+        },
+        "src": "בראשית כג:יא",
+        "n": {
+         "en": "Efron",
+         "es": "Efrón",
+         "he": "עפרון"
+        },
+        "w": "efron"
+       },
+       {
+        "ask": {
+         "en": "Efron offers the cave for free. What does Avraham do?",
+         "es": "Efrón ofrece la cueva gratis. ¿Qué hace Avraham?",
+         "he": "עפרון מציע את המערה בחינם. מה עושה אברהם?"
+        },
+        "options": [
+         {
+          "e": "⚖️",
+          "label": {
+           "en": "Insist on paying the full price",
+           "es": "Insistir en pagar el precio completo",
+           "he": "להתעקש לשלם את מלוא המחיר"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“Please listen to me: I am giving the money for the field. Take it from me.”",
+             "es": "“Por favor, escúchame: te doy el dinero por el campo. Tómalo de mí”.",
+             "he": "״אך אם אתה לו שמעני, נתתי כסף השדה קח ממני.״"
+            },
+            "w": "avraham",
+            "src": "בראשית כג:יג"
+           }
+          ],
+          "middah": "emet"
+         },
+         {
+          "e": "🎁",
+          "label": {
+           "en": "Accept the gift",
+           "es": "Aceptar el regalo",
+           "he": "לקבל את המתנה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Avraham did not want a gift — he wanted the cave to be truly his: “I am giving the money for the field. Take it from me.”",
+             "es": "Avraham no quería un regalo: quería que la cueva fuera realmente suya: “Te doy el dinero por el campo. Tómalo de mí”.",
+             "he": "אברהם לא רצה מתנה — הוא רצה שהמערה תהיה שלו באמת: ״נתתי כסף השדה קח ממני.״"
+            },
+            "src": "בראשית כג:יג"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "“Land worth four hundred silver shekels — what is that between me and you?”",
+         "es": "“Una tierra de cuatrocientos siclos de plata, ¿qué es eso entre tú y yo?”",
+         "he": "״ארץ ארבע מאת שקל כסף ביני ובינך מה הוא?״"
+        },
+        "src": "בראשית כג:טו",
+        "n": {
+         "en": "Efron",
+         "es": "Efrón",
+         "he": "עפרון"
+        },
+        "w": "efron"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Weigh out the <b>400 shekels</b> of silver.",
+          "es": "Pesa los <b>400 siclos</b> de plata.",
+          "he": "שקלו את <b>400 שקלי</b> הכסף."
+         },
+         "at": [
+          0,
+          2
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/coins",
+          "n": 4,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "400 shekels!",
+           "es": "¡400 siclos!",
+           "he": "400 שקל!"
+          }
+         }
+        },
+        {
+         "text": {
+          "en": "Weigh out the silver to <b>Efron</b> at the city gate.",
+          "es": "Pésale la plata a <b>Efrón</b> en la puerta de la ciudad.",
+          "he": "שקלו את הכסף <b>לעפרון</b> בשער העיר."
+         },
+         "at": [
+          16,
+          -26
+         ],
+         "r": 5,
+         "talk": [
+          {
+           "t": {
+            "en": "Avraham weighed out to Efron four hundred silver shekels, in front of everyone at the gate.",
+            "es": "Avraham le pesó a Efrón cuatrocientos siclos de plata, delante de todos en la puerta.",
+            "he": "וישקל אברהם לעפרן את הכסף… ארבע מאות שקל כסף עבר לסחר."
+           },
+           "src": "בראשית כג:טז"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 20,
+           "z": -32,
+           "sprite": "scenery/city_gate",
+           "h": 7
+          },
+          {
+           "t": "person",
+           "x": 14,
+           "z": -29,
+           "sprite": "efron",
+           "h": 3.2
+          }
+         ],
+         "par": 8
+        },
+        {
+         "text": {
+          "en": "Go to the <b>cave of Machpelah</b>, facing Mamre.",
+          "es": "Ve a la <b>cueva de Majpelá</b>, frente a Mamré.",
+          "he": "לכו אל <b>מערת המכפלה</b> על פני ממרא."
+         },
+         "at": [
+          -18,
+          -50
+         ],
+         "r": 5,
+         "talk": [
+          {
+           "t": {
+            "en": "Avraham buried Sarah in the cave of the field of Machpelah, facing Mamre — that is Chevron.",
+            "es": "Avraham sepultó a Sará en la cueva del campo de Majpelá, frente a Mamré, que es Jevrón.",
+            "he": "ואחרי כן קבר אברהם את שרה אשתו אל מערת שדה המכפלה על פני ממרא, הוא חברון."
+           },
+           "src": "בראשית כג:יט"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": -18,
+           "z": -56,
+           "sprite": "scenery/hill",
+           "h": 7
+          }
+         ],
+         "par": 9
+        }
+       ],
+       "player": {
+        "sprite": "avraham",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "avraham": {
+    "en": "Avraham",
+    "es": "Avraham",
+    "he": "אברהם"
+   },
+   "eliezer": {
+    "en": "Eliezer",
+    "es": "Eliézer",
+    "he": "אליעזר"
+   },
+   "rivkah": {
+    "en": "Rivkah",
+    "es": "Rivká",
+    "he": "רבקה"
+   },
+   "efron": {
+    "en": "Efron",
+    "es": "Efrón",
+    "he": "עפרון"
+   }
+  }
+ }
+}

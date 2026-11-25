@@ -1,0 +1,1011 @@
+{
+ "id": "bereshit",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Bereshit",
+  "es": "Bereshit",
+  "he": "בראשית"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The whole parashah as one story, in three parts: from creation, to Gan Eden, to the ten generations until Noach. Each part continues the one before.",
+   "es": "Toda la parashá como una sola historia, en tres partes: de la creación, a Gan Edén, a las diez generaciones hasta Nóaj. Cada parte continúa la anterior.",
+   "he": "כל הפרשה כסיפור אחד, בשלושה חלקים: מהבריאה, לגן עדן, ועד עשרת הדורות עד נח. כל חלק ממשיך את הקודם."
+  },
+  "paths": [
+   {
+    "id": "creation",
+    "who": "scenery/sparkle",
+    "name": {
+     "en": "Part 1: Creation",
+     "es": "Parte 1: La Creación",
+     "he": "חלק א׳: הבריאה"
+    },
+    "tag": {
+     "en": "Six days of creation — you put the world together, then Shabbat.",
+     "es": "Seis días de creación: tú armas el mundo, y luego Shabat.",
+     "he": "ששת ימי בראשית — אתם מרכיבים את העולם, ואחר כך שבת."
+    },
+    "outro": {
+     "en": "The world is ready, and Shabbat is holy. Continue the story in Part 2: Gan Eden.",
+     "es": "El mundo está listo, y el Shabat es santo. Sigue la historia en la Parte 2: Gan Edén.",
+     "he": "העולם מוכן, והשבת קדושה. המשיכו את הסיפור בחלק ב׳: גן עדן."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "In the beginning",
+       "es": "Al principio",
+       "he": "בראשית"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "In the beginning, G-d created the heavens and the earth. The earth was empty and formless.",
+         "es": "Al principio, D-os creó los cielos y la tierra. La tierra estaba vacía y sin forma.",
+         "he": "בראשית ברא אלקים את השמים ואת הארץ. והארץ היתה תהו ובהו."
+        },
+        "src": "בראשית א:א–ב"
+       },
+       {
+        "t": {
+         "en": "What was created on each day? Put every creation on its day — the Torah will tell you if you are right.",
+         "es": "¿Qué se creó cada día? Pon cada creación en su día: la Torá te dirá si acertaste.",
+         "he": "מה נברא בכל יום? הניחו כל בריאה ביומה — התורה תגיד לכם אם צדקתם."
+        }
+       }
+      ],
+      "game": {
+       "type": "build",
+       "layout": "creation",
+       "slots": [
+        {
+         "id": "d1",
+         "label": {
+          "en": "Day 1",
+          "es": "Día 1",
+          "he": "יום א׳"
+         },
+         "at": [
+          -9.0,
+          0
+         ]
+        },
+        {
+         "id": "d2",
+         "label": {
+          "en": "Day 2",
+          "es": "Día 2",
+          "he": "יום ב׳"
+         },
+         "at": [
+          -5.4,
+          0
+         ]
+        },
+        {
+         "id": "d3",
+         "label": {
+          "en": "Day 3",
+          "es": "Día 3",
+          "he": "יום ג׳"
+         },
+         "at": [
+          -1.8,
+          0
+         ]
+        },
+        {
+         "id": "d4",
+         "label": {
+          "en": "Day 4",
+          "es": "Día 4",
+          "he": "יום ד׳"
+         },
+         "at": [
+          1.8,
+          0
+         ]
+        },
+        {
+         "id": "d5",
+         "label": {
+          "en": "Day 5",
+          "es": "Día 5",
+          "he": "יום ה׳"
+         },
+         "at": [
+          5.4,
+          0
+         ]
+        },
+        {
+         "id": "d6",
+         "label": {
+          "en": "Day 6",
+          "es": "Día 6",
+          "he": "יום ו׳"
+         },
+         "at": [
+          9.0,
+          0
+         ]
+        }
+       ],
+       "items": [
+        {
+         "id": "d1",
+         "n": {
+          "en": "Light",
+          "es": "La luz",
+          "he": "האור"
+         },
+         "s": {
+          "en": "and darkness",
+          "es": "y la oscuridad",
+          "he": "והחושך"
+         },
+         "model": "light",
+         "ref": "⁧בראשית א:ג–ה⁩",
+         "ok": {
+          "en": "Day 1: “Let there be light” — and Hashem separated light from darkness.",
+          "es": "Día 1: “Que haya luz”, y Hashem separó la luz de la oscuridad.",
+          "he": "יום ראשון: ״יהי אור״, וה׳ הבדיל בין האור ובין החושך."
+         },
+         "no": {
+          "en": "Light came first of all.",
+          "es": "La luz fue lo primero de todo.",
+          "he": "האור נברא ראשון."
+         },
+         "e": "✨"
+        },
+        {
+         "id": "d2",
+         "n": {
+          "en": "Sky",
+          "es": "El cielo",
+          "he": "הרקיע"
+         },
+         "s": {
+          "en": "the firmament",
+          "es": "el firmamento",
+          "he": "השמים"
+         },
+         "model": "sky",
+         "ref": "⁧בראשית א:ו–ח⁩",
+         "ok": {
+          "en": "Day 2: the firmament, separating the waters above from the waters below.",
+          "es": "Día 2: el firmamento, que separa las aguas de arriba de las de abajo.",
+          "he": "יום שני: הרקיע, המבדיל בין המים העליונים למים התחתונים."
+         },
+         "no": {
+          "en": "The sky divides the waters — right after light.",
+          "es": "El cielo separa las aguas, justo después de la luz.",
+          "he": "הרקיע מבדיל בין המים — מיד אחרי האור."
+         },
+         "e": "☁️"
+        },
+        {
+         "id": "d3",
+         "n": {
+          "en": "Land & plants",
+          "es": "Tierra y plantas",
+          "he": "יבשה וצמחים"
+         },
+         "s": {
+          "en": "seas, grass, trees",
+          "es": "mares, pasto, árboles",
+          "he": "ימים, דשא, עצים"
+         },
+         "model": "land",
+         "ref": "⁧בראשית א:ט–יג⁩",
+         "ok": {
+          "en": "Day 3: the waters gathered, dry land appeared, and plants and trees grew.",
+          "es": "Día 3: las aguas se juntaron, apareció la tierra seca y crecieron las plantas y los árboles.",
+          "he": "יום שלישי: המים נקוו, נראתה היבשה, וצמחו דשא ועצים."
+         },
+         "no": {
+          "en": "Plants need dry land — the day after the sky.",
+          "es": "Las plantas necesitan tierra seca: el día después del cielo.",
+          "he": "צמחים צריכים יבשה — יום אחרי הרקיע."
+         },
+         "e": "🌳"
+        },
+        {
+         "id": "d4",
+         "n": {
+          "en": "Sun & moon",
+          "es": "Sol y luna",
+          "he": "שמש וירח"
+         },
+         "s": {
+          "en": "and stars",
+          "es": "y estrellas",
+          "he": "וכוכבים"
+         },
+         "model": "lights",
+         "ref": "⁧בראשית א:יד–יט⁩",
+         "ok": {
+          "en": "Day 4: the great lights — the sun, the moon and the stars.",
+          "es": "Día 4: las grandes luminarias: el sol, la luna y las estrellas.",
+          "he": "יום רביעי: המאורות הגדולים — השמש, הירח והכוכבים."
+         },
+         "no": {
+          "en": "The sun and moon came in the middle of the week.",
+          "es": "El sol y la luna llegaron a mitad de la semana.",
+          "he": "השמש והירח נבראו באמצע השבוע."
+         },
+         "e": "🌙"
+        },
+        {
+         "id": "d5",
+         "n": {
+          "en": "Fish & birds",
+          "es": "Peces y aves",
+          "he": "דגים ועופות"
+         },
+         "s": {
+          "en": "sea and sky creatures",
+          "es": "del mar y del cielo",
+          "he": "בים ובשמים"
+         },
+         "model": "fishbirds",
+         "ref": "⁧בראשית א:כ–כג⁩",
+         "ok": {
+          "en": "Day 5: fish to fill the waters and birds to fly across the sky.",
+          "es": "Día 5: peces que llenan las aguas y aves que vuelan por el cielo.",
+          "he": "יום חמישי: דגים הממלאים את המים ועופות המעופפים ברקיע."
+         },
+         "no": {
+          "en": "Fish and birds came the day before the animals.",
+          "es": "Los peces y las aves llegaron el día antes que los animales.",
+          "he": "הדגים והעופות נבראו יום לפני החיות."
+         },
+         "e": "🐟"
+        },
+        {
+         "id": "d6",
+         "n": {
+          "en": "Animals & people",
+          "es": "Animales y personas",
+          "he": "חיות ואדם"
+         },
+         "s": {
+          "en": "the last day",
+          "es": "el último día",
+          "he": "היום האחרון"
+         },
+         "model": "animals",
+         "ref": "⁧בראשית א:כד–לא⁩",
+         "ok": {
+          "en": "Day 6: land animals, and finally Adam — “and it was very good.”",
+          "es": "Día 6: los animales de la tierra y, al final, Adam: “y era muy bueno”.",
+          "he": "יום שישי: חיות היבשה, ולבסוף האדם — ״והנה טוב מאד״."
+         },
+         "no": {
+          "en": "People were created last of all.",
+          "es": "Las personas fueron creadas al final de todo.",
+          "he": "האדם נברא אחרון."
+         },
+         "e": "🐑"
+        }
+       ]
+      },
+      "after": [
+       {
+        "t": {
+         "en": "G-d saw everything He had made — and it was very good.",
+         "es": "D-os vio todo lo que había hecho, y era muy bueno.",
+         "he": "וירא אלקים את כל אשר עשה, והנה טוב מאד."
+        },
+        "src": "בראשית א:לא"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "The seventh day",
+       "es": "El séptimo día",
+       "he": "יום השביעי"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The heavens and the earth were finished. On the seventh day G-d finished His work and rested.",
+         "es": "Los cielos y la tierra quedaron terminados. En el séptimo día D-os terminó Su obra y descansó.",
+         "he": "ויכלו השמים והארץ וכל צבאם. ויכל אלקים ביום השביעי מלאכתו אשר עשה, וישבת ביום השביעי."
+        },
+        "src": "בראשית ב:א–ב"
+       },
+       {
+        "t": {
+         "en": "G-d blessed the seventh day and made it holy.",
+         "es": "D-os bendijo el séptimo día y lo santificó.",
+         "he": "ויברך אלקים את יום השביעי ויקדש אתו."
+        },
+        "src": "בראשית ב:ג"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "garden",
+    "who": "adam",
+    "name": {
+     "en": "Part 2: Gan Eden",
+     "es": "Parte 2: Gan Edén",
+     "he": "חלק ב׳: גן עדן"
+    },
+    "tag": {
+     "en": "Life in Gan Eden — and the choice that changed everything.",
+     "es": "La vida en Gan Edén y la decisión que lo cambió todo.",
+     "he": "החיים בגן עדן — וההחלטה ששינתה הכל."
+    },
+    "outro": {
+     "en": "Adam and Chava left Gan Eden — but Hashem made them clothing and cared for them even outside the garden. Continue in Part 3.",
+     "es": "Adam y Javá salieron de Gan Edén, pero Hashem les hizo ropa y los cuidó también fuera del jardín. Sigue en la Parte 3.",
+     "he": "אדם וחוה יצאו מגן עדן — אך ה׳ עשה להם כתנות עור ודאג להם גם מחוץ לגן. המשיכו בחלק ג׳."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Naming the animals",
+       "es": "Nombrar a los animales",
+       "he": "קריאת שמות"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem formed man from the dust of the ground and breathed into him a soul of life.",
+         "es": "Hashem formó al hombre del polvo de la tierra y sopló en él un alma de vida.",
+         "he": "וייצר ה׳ אלקים את האדם עפר מן האדמה, ויפח באפיו נשמת חיים."
+        },
+        "src": "בראשית ב:ז"
+       },
+       {
+        "t": {
+         "en": "He placed him in Gan Eden, to work it and to guard it.",
+         "es": "Lo puso en Gan Edén, para trabajarlo y cuidarlo.",
+         "he": "ויניחהו בגן עדן לעבדה ולשמרה."
+        },
+        "src": "בראשית ב:טו"
+       },
+       {
+        "t": {
+         "en": "Hashem brought every animal to Adam to see what he would call it — and whatever Adam called each one, that was its name. Lead the animals to Adam!",
+         "es": "Hashem trajo cada animal a Adam para ver cómo lo llamaría, y como Adam llamó a cada uno, ese fue su nombre. ¡Guía a los animales hacia Adam!",
+         "he": "ויבא אל האדם לראות מה יקרא לו, וכל אשר יקרא לו האדם נפש חיה הוא שמו. הובילו את החיות אל אדם!"
+        },
+        "src": "בראשית ב:יט"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "mixed",
+       "n": 8,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -24,
+        "r": 6.4,
+        "gap": 0.45,
+        "style": "fence"
+       },
+       "objects": [
+        {
+         "t": "tree",
+         "x": -10,
+         "z": -30
+        },
+        {
+         "t": "tree",
+         "x": 12,
+         "z": -32
+        },
+        {
+         "t": "palm",
+         "x": 18,
+         "z": -10
+        }
+       ],
+       "player": {
+        "sprite": "adam",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The snake",
+       "es": "La serpiente",
+       "he": "הנחש"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem said: “It is not good for man to be alone” — and He made Chava.",
+         "es": "Hashem dijo: “No es bueno que el hombre esté solo”, e hizo a Javá.",
+         "he": "ויאמר ה׳ אלקים: ״לא טוב היות האדם לבדו, אעשה לו עזר כנגדו.״"
+        },
+        "src": "בראשית ב:יח"
+       },
+       {
+        "t": {
+         "en": "“Did G-d really say you may not eat from any tree of the garden?”",
+         "es": "“¿De veras dijo D-os que no pueden comer de ningún árbol del jardín?”",
+         "he": "״אף כי אמר אלקים לא תאכלו מכל עץ הגן?״"
+        },
+        "w": "snake",
+        "src": "בראשית ג:א"
+       },
+       {
+        "t": {
+         "en": "“We may eat from the fruit of the trees of the garden. But about the tree in the middle of the garden, G-d said: do not eat from it and do not touch it.”",
+         "es": "“Podemos comer del fruto de los árboles del jardín. Pero del árbol que está en medio del jardín, D-os dijo: no coman de él ni lo toquen.”",
+         "he": "״מפרי עץ הגן נאכל. ומפרי העץ אשר בתוך הגן אמר אלקים: לא תאכלו ממנו ולא תגעו בו.״"
+        },
+        "w": "chava",
+        "src": "בראשית ג:ב–ג"
+       },
+       {
+        "t": {
+         "en": "“You will not die… you will be like G-d, knowing good and bad.”",
+         "es": "“No morirán… serán como D-os, conocedores del bien y del mal.”",
+         "he": "״לא מות תמתון… והייתם כאלקים ידעי טוב ורע.״"
+        },
+        "w": "snake",
+        "src": "בראשית ג:ד–ה"
+       },
+       {
+        "t": {
+         "en": "Chava ate from the tree and gave some to Adam, and he ate.",
+         "es": "Javá comió del árbol y le dio a Adam, y él comió.",
+         "he": "ותקח מפריו ותאכל, ותתן גם לאישה עמה ויאכל."
+        },
+        "src": "בראשית ג:ו"
+       },
+       {
+        "t": {
+         "en": "They hid among the trees. Hashem called to Adam: “Ayekah — where are you?”",
+         "es": "Se escondieron entre los árboles. Hashem llamó a Adam: “Ayeka, ¿dónde estás?”",
+         "he": "ויתחבא האדם ואשתו בתוך עץ הגן. ויקרא ה׳ אלקים אל האדם ויאמר לו: ״איכה?״"
+        },
+        "src": "בראשית ג:ח–ט"
+       },
+       {
+        "ask": {
+         "en": "Adam is hiding. What should he do?",
+         "es": "Adam se esconde. ¿Qué debería hacer?",
+         "he": "אדם מתחבא. מה עליו לעשות?"
+        },
+        "options": [
+         {
+          "e": "🙋",
+          "label": {
+           "en": "Come out and answer",
+           "es": "Salir y responder",
+           "he": "לצאת ולענות"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "“I heard Your voice in the garden and I was afraid… so I hid.”",
+             "es": "“Oí Tu voz en el jardín y tuve miedo… y me escondí.”",
+             "he": "״את קלך שמעתי בגן ואירא… ואחבא.״"
+            },
+            "w": "adam",
+            "src": "בראשית ג:י"
+           }
+          ],
+          "middah": "emet"
+         },
+         {
+          "e": "🌳",
+          "label": {
+           "en": "Stay hidden behind a tree",
+           "es": "Quedarse escondido detrás de un árbol",
+           "he": "להישאר מוסתר מאחורי עץ"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "No one can hide from Hashem. Adam came out and answered: “I heard Your voice and I was afraid.”",
+             "es": "Nadie puede esconderse de Hashem. Adam salió y respondió: “Oí Tu voz y tuve miedo”.",
+             "he": "אי אפשר להתחבא מפני ה׳. אדם יצא וענה: ״את קלך שמעתי בגן ואירא.״"
+            },
+            "src": "בראשית ג:י"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        24
+       ],
+       "objects": [
+        {
+         "t": "tree",
+         "x": -6,
+         "z": 18
+        },
+        {
+         "t": "tree",
+         "x": 6,
+         "z": 14
+        },
+        {
+         "t": "palm",
+         "x": -12,
+         "z": 6
+        },
+        {
+         "t": "tree",
+         "x": 10,
+         "z": 2
+        },
+        {
+         "t": "palm",
+         "x": -4,
+         "z": -4
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Leave Gan Eden — walk <b>east</b>, out of the garden.",
+          "es": "Sal de Gan Edén: camina hacia el <b>este</b>, fuera del jardín.",
+          "he": "צאו מגן עדן — לכו <b>קדמה</b>, אל מחוץ לגן."
+         },
+         "at": [
+          22,
+          -30
+         ],
+         "r": 6,
+         "talk": [
+          {
+           "t": {
+            "en": "Hashem sent them out of Gan Eden to work the ground. Keruvim and a turning flaming sword guarded the way to the Tree of Life.",
+            "es": "Hashem los sacó de Gan Edén para trabajar la tierra. Keruvim y una espada de fuego giratoria cuidaban el camino al Árbol de la Vida.",
+            "he": "וישלחהו ה׳ אלקים מגן עדן לעבד את האדמה… וישכן מקדם לגן עדן את הכרבים ואת להט החרב המתהפכת לשמר את דרך עץ החיים."
+           },
+           "src": "בראשית ג:כג–כד"
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "adam",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "brothers",
+    "who": "hevel",
+    "name": {
+     "en": "Part 3: Kayin, Hevel and the generations",
+     "es": "Parte 3: Kayin, Hevel y las generaciones",
+     "he": "חלק ג׳: קין, הבל והדורות"
+    },
+    "tag": {
+     "en": "Two brothers, two offerings — and the first question: “Where is your brother?”",
+     "es": "Dos hermanos, dos ofrendas, y la primera pregunta: “¿Dónde está tu hermano?”",
+     "he": "שני אחים, שני קורבנות — והשאלה הראשונה: ״אי הבל אחיך?״"
+    },
+    "outro": {
+     "en": "Ten generations from Adam to Noach — and in a world going wrong, Noach found favor in Hashem’s eyes. The story continues in Parashat Noach!",
+     "es": "Diez generaciones de Adam a Nóaj, y en un mundo que iba mal, Nóaj halló gracia a los ojos de Hashem. ¡La historia sigue en la parashá Nóaj!",
+     "he": "עשרה דורות מאדם ועד נח — ובעולם שהשחית דרכו, נח מצא חן בעיני ה׳. ההמשך בפרשת נח!"
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The shepherd",
+       "es": "El pastor",
+       "he": "רועה הצאן"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hevel was a shepherd of sheep, and Kayin worked the ground.",
+         "es": "Hevel era pastor de ovejas, y Kayin trabajaba la tierra.",
+         "he": "ויהי הבל רעה צאן, וקין היה עבד אדמה."
+        },
+        "src": "בראשית ד:ב"
+       },
+       {
+        "ask": {
+         "en": "Hevel wants to bring Hashem a gift. Which sheep does he choose?",
+         "es": "Hevel quiere traerle un regalo a Hashem. ¿Qué ovejas elige?",
+         "he": "הבל רוצה להביא מנחה לה׳. אילו כבשים יבחר?"
+        },
+        "options": [
+         {
+          "e": "⭐",
+          "label": {
+           "en": "The firstborn and the best",
+           "es": "Las primogénitas y las mejores",
+           "he": "הבכורות והמשובחות"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Hevel brought from the firstborn of his flock and from the best of them.",
+             "es": "Hevel trajo de las primogénitas de su rebaño y de las mejores.",
+             "he": "והבל הביא גם הוא מבכרות צאנו ומחלבהן."
+            },
+            "src": "בראשית ד:ד"
+           }
+          ],
+          "middah": "chesed"
+         },
+         {
+          "e": "🐑",
+          "label": {
+           "en": "Whichever comes first",
+           "es": "La primera que pase",
+           "he": "מה שיבוא ראשון"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Hevel chose carefully: the firstborn of his flock and the very best of them.",
+             "es": "Hevel eligió con cuidado: las primogénitas de su rebaño y las mejores.",
+             "he": "הבל בחר בקפידה: מבכרות צאנו ומחלבהן."
+            },
+            "src": "בראשית ד:ד"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "t": {
+         "en": "Lead Hevel’s flock into the pen.",
+         "es": "Guía el rebaño de Hevel al corral.",
+         "he": "הובילו את צאן הבל לדיר."
+        }
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 10,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.2,
+        "gap": 0.42,
+        "style": "fence"
+       },
+       "objects": [],
+       "player": {
+        "sprite": "hevel",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Where is your brother?",
+       "es": "¿Dónde está tu hermano?",
+       "he": "אי הבל אחיך?"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Kayin brought an offering from the fruit of the ground. Hashem turned to Hevel’s offering, but not to Kayin’s, and Kayin was very angry.",
+         "es": "Kayin trajo una ofrenda del fruto de la tierra. Hashem aceptó la ofrenda de Hevel, pero no la de Kayin, y Kayin se enojó mucho.",
+         "he": "ויבא קין מפרי האדמה מנחה לה׳… וישע ה׳ אל הבל ואל מנחתו, ואל קין ואל מנחתו לא שעה, ויחר לקין מאד."
+        },
+        "src": "בראשית ד:ג–ה"
+       },
+       {
+        "t": {
+         "en": "Hashem said to Kayin: “If you do good, you will be lifted up.”",
+         "es": "Hashem le dijo a Kayin: “Si haces el bien, serás enaltecido”.",
+         "he": "ויאמר ה׳ אל קין: ״הלוא אם תיטיב שאת.״"
+        },
+        "src": "בראשית ד:ו–ז"
+       },
+       {
+        "t": {
+         "en": "But in the field, Kayin rose up against his brother Hevel and killed him.",
+         "es": "Pero en el campo, Kayin se levantó contra su hermano Hevel y lo mató.",
+         "he": "ויהי בהיותם בשדה ויקם קין אל הבל אחיו ויהרגהו."
+        },
+        "src": "בראשית ד:ח"
+       },
+       {
+        "t": {
+         "en": "Hashem asked Kayin: “Where is Hevel your brother?”",
+         "es": "Hashem le preguntó a Kayin: “¿Dónde está Hevel, tu hermano?”",
+         "he": "ויאמר ה׳ אל קין: ״אי הבל אחיך?״"
+        },
+        "src": "בראשית ד:ט"
+       },
+       {
+        "t": {
+         "en": "“I do not know. Am I my brother’s keeper?”",
+         "es": "“No lo sé. ¿Acaso soy yo el guardián de mi hermano?”",
+         "he": "״לא ידעתי, השמר אחי אנכי?״"
+        },
+        "w": "kayin",
+        "src": "בראשית ד:ט"
+       },
+       {
+        "t": {
+         "en": "Kayin had to wander the earth, and settled in the land of Nod, east of Eden.",
+         "es": "Kayin tuvo que andar errante por la tierra y se estableció en la tierra de Nod, al este de Edén.",
+         "he": "ויצא קין מלפני ה׳, וישב בארץ נוד קדמת עדן."
+        },
+        "src": "בראשית ד:טז"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Ten generations",
+       "es": "Diez generaciones",
+       "he": "עשרה דורות"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Adam and Chava had another son, and named him Shet.",
+         "es": "Adam y Javá tuvieron otro hijo, y lo llamaron Shet.",
+         "he": "וידע אדם עוד את אשתו ותלד בן ותקרא את שמו שת."
+        },
+        "w": "shet",
+        "src": "בראשית ד:כה",
+        "n": {
+         "en": "The Torah tells",
+         "es": "La Torá cuenta",
+         "he": "התורה מספרת"
+        }
+       },
+       {
+        "t": {
+         "en": "“This is the book of the generations of Adam.” Find the ten generations, from Adam to Noach!",
+         "es": "“Este es el libro de las generaciones de Adam”. ¡Encuentra las diez generaciones, de Adam a Nóaj!",
+         "he": "״זה ספר תולדת אדם.״ מצאו את עשרת הדורות, מאדם ועד נח!"
+        },
+        "src": "בראשית ה:א"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 14,
+         "z": 24
+        },
+        {
+         "t": "tree",
+         "x": -12,
+         "z": 10
+        },
+        {
+         "t": "tree",
+         "x": 16,
+         "z": -16
+        },
+        {
+         "t": "person",
+         "x": 4,
+         "z": 16,
+         "sprite": "chava",
+         "h": 3.2
+        },
+        {
+         "t": "person",
+         "x": -4,
+         "z": 18,
+         "sprite": "shet",
+         "h": 3.2
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Write the <b>ten generations</b> in the book: Adam, Shet, Enosh, Keinan, Mahalalel, Yered, Chanoch, Metushelach, Lemech, Noach.",
+          "es": "Encuentra las <b>diez generaciones</b>: Adam, Shet, Enosh, Keinán, Mahalalel, Yéred, Janoj, Metushélaj, Lémej, Nóaj.",
+          "he": "מצאו את <b>עשרת הדורות</b>: אדם, שת, אנוש, קינן, מהללאל, ירד, חנוך, מתושלח, למך, נח."
+         },
+         "at": [
+          0,
+          -4
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/quill",
+          "n": 5,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "Ten generations!",
+           "es": "¡Diez generaciones!",
+           "he": "עשרה דורות!"
+          }
+         }
+        }
+       ],
+       "player": {
+        "sprite": "adam",
+        "h": 3.2
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Chanoch walked with G-d. Metushelach lived 969 years — longer than anyone.",
+         "es": "Janoj anduvo con D-os. Metushélaj vivió 969 años, más que nadie.",
+         "he": "ויתהלך חנוך את האלקים… ויהיו כל ימי מתושלח תשע וששים שנה ותשע מאות שנה."
+        },
+        "src": "בראשית ה:כד–כז"
+       },
+       {
+        "t": {
+         "en": "Lemech named his son Noach: “This one will comfort us.”",
+         "es": "Lémej llamó a su hijo Nóaj: “Este nos consolará”.",
+         "he": "ויקרא את שמו נח לאמר: ״זה ינחמנו.״"
+        },
+        "src": "בראשית ה:כט"
+       },
+       {
+        "t": {
+         "en": "The world became full of wrongdoing — but Noach found favor in the eyes of Hashem.",
+         "es": "El mundo se llenó de maldad, pero Nóaj halló gracia a los ojos de Hashem.",
+         "he": "וירא ה׳ כי רבה רעת האדם בארץ… ונח מצא חן בעיני ה׳."
+        },
+        "src": "בראשית ו:ה–ח"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "adam": {
+    "en": "Adam",
+    "es": "Adam",
+    "he": "אדם"
+   },
+   "chava": {
+    "en": "Chava",
+    "es": "Javá",
+    "he": "חוה"
+   },
+   "snake": {
+    "en": "The snake",
+    "es": "La serpiente",
+    "he": "הנחש"
+   },
+   "kayin": {
+    "en": "Kayin",
+    "es": "Kayin",
+    "he": "קין"
+   },
+   "hevel": {
+    "en": "Hevel",
+    "es": "Hevel",
+    "he": "הבל"
+   }
+  },
+  "sequential": true
+ }
+}

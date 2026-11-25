@@ -1,0 +1,671 @@
+{
+ "id": "terumah",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Terumah: two stories",
+  "es": "Terumá: dos historias",
+  "he": "תרומה: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "gifts",
+    "who": "bnei_yisrael",
+    "name": {
+     "en": "Bring the gifts",
+     "es": "Traigan las ofrendas",
+     "he": "הביאו תרומה"
+    },
+    "tag": {
+     "en": "Everyone gives from the heart — then build the Mishkan.",
+     "es": "Cada uno da de corazón, y luego se construye el Mishkán.",
+     "he": "כל אחד נותן מלבו — ואז בונים את המשכן."
+    },
+    "outro": {
+     "en": "“Make Me a Mikdash, and I will dwell among them.” Every gift, big or small, became part of Hashem’s home.",
+     "es": "“Háganme un Mikdash, y habitaré entre ellos”. Cada ofrenda, grande o pequeña, pasó a ser parte del hogar de Hashem.",
+     "he": "״ועשו לי מקדש ושכנתי בתוכם.״ כל תרומה, גדולה או קטנה, נעשתה חלק מבית ה׳."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "From every heart",
+       "es": "De todo corazón",
+       "he": "אשר ידבנו לבו"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Hashem told Moshe: “Speak to Bnei Yisrael, that they take for Me a terumah — from every person whose heart moves him to give.”",
+         "es": "Hashem le dijo a Moshé: “Habla a Bnei Israel, que tomen para Mí una ofrenda, de cada persona cuyo corazón la impulse a dar”.",
+         "he": "״דבר אל בני ישראל ויקחו לי תרומה, מאת כל איש אשר ידבנו לבו תקחו את תרומתי.״"
+        },
+        "src": "שמות כה:ב"
+       },
+       {
+        "t": {
+         "en": "Gold, silver and copper; blue, purple and scarlet wool; linen; acacia wood; oil for the light; spices; and precious stones.",
+         "es": "Oro, plata y cobre; lana azul, púrpura y escarlata; lino; madera de acacia; aceite para la luz; especias; y piedras preciosas.",
+         "he": "זהב וכסף ונחשת, ותכלת וארגמן ותולעת שני ושש… ועצי שטים, שמן למאר, בשמים… אבני שהם."
+        },
+        "src": "שמות כה:ג–ז"
+       },
+       {
+        "ask": {
+         "en": "What will you give?",
+         "es": "¿Qué vas a dar?",
+         "he": "מה תתנו?"
+        },
+        "options": [
+         {
+          "e": "💛",
+          "label": {
+           "en": "Something I really love",
+           "es": "Algo que de verdad quiero",
+           "he": "משהו שאני באמת אוהב"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "A gift from the heart is exactly what Hashem asked for.",
+             "es": "Un regalo de corazón es exactamente lo que Hashem pidió.",
+             "he": "מתנה מן הלב — זה בדיוק מה שה׳ ביקש."
+            }
+           }
+          ],
+          "middah": "chesed"
+         },
+         {
+          "e": "🪙",
+          "label": {
+           "en": "Something I don’t need",
+           "es": "Algo que no necesito",
+           "he": "משהו שאיני צריך"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Hashem asked for gifts “from every person whose heart moves him” — the best gifts come from the heart.",
+             "es": "Hashem pidió ofrendas “de cada persona cuyo corazón la impulse”: los mejores regalos salen del corazón.",
+             "he": "ה׳ ביקש ״מאת כל איש אשר ידבנו לבו״ — המתנות הטובות ביותר באות מן הלב."
+            },
+            "src": "שמות כה:ב"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        18
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Lead the people bringing <b>gifts</b> to Moshe.",
+          "es": "Guía al pueblo que trae <b>ofrendas</b> a Moshé.",
+          "he": "הובילו את העם המביא <b>תרומה</b> אל משה."
+         },
+         "at": [
+          0,
+          -32
+         ],
+         "r": 4,
+         "objects": [
+          {
+           "t": "person",
+           "x": 0,
+           "z": -35,
+           "sprite": "moshe",
+           "h": 3.2
+          },
+          {
+           "t": "person",
+           "x": -3,
+           "z": -31,
+           "sprite": "scenery/coins",
+           "h": 1.2
+          },
+          {
+           "t": "person",
+           "x": 3,
+           "z": -31,
+           "sprite": "scenery/jars",
+           "h": 1.3
+          }
+         ],
+         "npc": [
+          {
+           "t": "person",
+           "x": -3,
+           "z": 14,
+           "sprite": "bnei_yisrael",
+           "h": 3.4,
+           "follow": "start"
+          }
+         ],
+         "par": 9
+        }
+       ],
+       "player": {
+        "sprite": "bnei_yisrael",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Build the Mishkan",
+       "es": "Construye el Mishkán",
+       "he": "בנו את המשכן"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“Make Me a Mikdash, and I will dwell among them — exactly like the pattern I show you.”",
+         "es": "“Háganme un Mikdash, y habitaré entre ellos, exactamente según el modelo que te muestro”.",
+         "he": "״ועשו לי מקדש ושכנתי בתוכם. ככל אשר אני מראה אותך את תבנית המשכן… וכן תעשו.״"
+        },
+        "src": "שמות כה:ח–ט"
+       }
+      ],
+      "game": {
+       "type": "build",
+       "layout": "mishkan",
+       "slots": [
+        {
+         "id": "aron",
+         "at": [
+          -5,
+          0
+         ]
+        },
+        {
+         "id": "shulchan",
+         "at": [
+          2,
+          -1.6
+         ]
+        },
+        {
+         "id": "menorah",
+         "at": [
+          2,
+          1.6
+         ]
+        },
+        {
+         "id": "ketoret",
+         "at": [
+          -1.3,
+          0
+         ]
+        },
+        {
+         "id": "kiyor",
+         "at": [
+          11.5,
+          0.7
+         ]
+        },
+        {
+         "id": "mizbeach",
+         "at": [
+          16,
+          0
+         ]
+        }
+       ],
+       "items": [
+        {
+         "id": "aron",
+         "n": {
+          "en": "Aron",
+          "es": "Arón",
+          "he": "ארון"
+         },
+         "s": {
+          "en": "Ark",
+          "es": "Arca",
+          "he": "הארון"
+         },
+         "model": "aron",
+         "ref": "⁧שמות כו:לג–לד⁩",
+         "ok": {
+          "en": "Behind the parochet, in the Kodesh HaKodashim.",
+          "es": "Detrás de la parójet, en el Kódesh HaKodashim.",
+          "he": "מאחורי הפרוכת, בקודש הקודשים."
+         },
+         "no": {
+          "en": "The Aron goes in the innermost room, behind the curtain.",
+          "es": "El Arón va en la sala más interior, detrás de la cortina.",
+          "he": "הארון עומד בחדר הפנימי, מאחורי הפרוכת."
+         }
+        },
+        {
+         "id": "shulchan",
+         "n": {
+          "en": "Shulchan",
+          "es": "Shuljan",
+          "he": "שולחן"
+         },
+         "s": {
+          "en": "Table",
+          "es": "Mesa",
+          "he": "לחם הפנים"
+         },
+         "model": "shulchan",
+         "ref": "⁧שמות כו:לה⁩",
+         "ok": {
+          "en": "Outside the parochet, “and the Shulchan you shall put on the north side.”",
+          "es": "Fuera de la parójet: “y el Shuljan pondrás del lado norte”.",
+          "he": "מחוץ לפרוכת: ״והשולחן תתן על צלע צפון״."
+         },
+         "no": {
+          "en": "The Shulchan stands in the Kodesh, on the north side.",
+          "es": "El Shuljan está en el Kódesh, del lado norte.",
+          "he": "השולחן עומד בקודש, בצד צפון."
+         }
+        },
+        {
+         "id": "menorah",
+         "n": {
+          "en": "Menorah",
+          "es": "Menorá",
+          "he": "מנורה"
+         },
+         "s": {
+          "en": "Lamp",
+          "es": "Candelabro",
+          "he": "המאור"
+         },
+         "model": "menorah",
+         "ref": "⁧שמות כו:לה⁩",
+         "ok": {
+          "en": "“The Menorah opposite the Shulchan, on the south side.”",
+          "es": "“La Menorá frente al Shuljan, del lado sur”.",
+          "he": "״ואת המנורה נוכח השולחן על צלע המשכן תימנה״."
+         },
+         "no": {
+          "en": "The Menorah faces the Shulchan — on the south side.",
+          "es": "La Menorá está frente al Shuljan, del lado sur.",
+          "he": "המנורה מול השולחן — בצד דרום."
+         }
+        },
+        {
+         "id": "ketoret",
+         "n": {
+          "en": "Golden altar",
+          "es": "Altar de oro",
+          "he": "מזבח הזהב"
+         },
+         "s": {
+          "en": "Incense",
+          "es": "Incienso",
+          "he": "הקטורת"
+         },
+         "model": "ketoret",
+         "ref": "⁧שמות ל:ו⁩",
+         "ok": {
+          "en": "“Before the parochet that is over the Aron.”",
+          "es": "“Delante de la parójet que está sobre el Arón”.",
+          "he": "״לפני הפרוכת אשר על ארון העדות״."
+         },
+         "no": {
+          "en": "The incense altar stands in front of the parochet, in the middle.",
+          "es": "El altar del incienso está delante de la parójet, en el medio.",
+          "he": "מזבח הקטורת עומד לפני הפרוכת, באמצע."
+         }
+        },
+        {
+         "id": "kiyor",
+         "n": {
+          "en": "Kiyor",
+          "es": "Kiyor",
+          "he": "כיור"
+         },
+         "s": {
+          "en": "Basin",
+          "es": "Lavatorio",
+          "he": "לרחיצה"
+         },
+         "model": "kiyor",
+         "ref": "⁧שמות ל:יח⁩",
+         "ok": {
+          "en": "“Between the Ohel Moed and the altar” — the Kohanim washed there.",
+          "es": "“Entre el Óhel Moed y el altar”: allí se lavaban los kohanim.",
+          "he": "״בין אהל מועד ובין המזבח״ — שם רחצו הכהנים."
+         },
+         "no": {
+          "en": "The Kiyor stands outside, between the tent and the big altar.",
+          "es": "El Kiyor está afuera, entre la tienda y el altar grande.",
+          "he": "הכיור עומד בחוץ, בין האוהל למזבח הגדול."
+         }
+        },
+        {
+         "id": "mizbeach",
+         "n": {
+          "en": "Copper altar",
+          "es": "Altar de cobre",
+          "he": "מזבח הנחושת"
+         },
+         "s": {
+          "en": "Offerings",
+          "es": "Ofrendas",
+          "he": "הקרבנות"
+         },
+         "model": "mizbeach",
+         "ref": "⁧שמות מ:ו⁩",
+         "ok": {
+          "en": "“Before the entrance of the Mishkan.”",
+          "es": "“Delante de la entrada del Mishkán”.",
+          "he": "״לפני פתח משכן אהל מועד״."
+         },
+         "no": {
+          "en": "The copper altar stands in the courtyard, in front of the entrance.",
+          "es": "El altar de cobre está en el patio, frente a la entrada.",
+          "he": "מזבח הנחושת עומד בחצר, מול הפתח."
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "keilim",
+    "who": "scenery/menorah",
+    "name": {
+     "en": "Inside the Mishkan",
+     "es": "Dentro del Mishkán",
+     "he": "בתוך המשכן"
+    },
+    "tag": {
+     "en": "Visit the Aron, the Shulchan, the Menorah and the Mizbe’ach — one by one.",
+     "es": "Visita el Arón, el Shuljan, la Menorá y el Mizbeaj, uno por uno.",
+     "he": "בקרו בארון, בשלחן, במנורה ובמזבח — אחד אחד."
+    },
+    "outro": {
+     "en": "Each vessel had its own place and purpose — and together they made a home for Hashem among His people.",
+     "es": "Cada utensilio tenía su lugar y su propósito, y juntos hicieron un hogar para Hashem entre Su pueblo.",
+     "he": "לכל כלי היה מקומו ותפקידו — ויחד הם עשו בית לה׳ בתוך עמו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The vessels",
+       "es": "Los utensilios",
+       "he": "הכלים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Walk through the Mishkan and visit each vessel. Which one first?",
+         "es": "Recorre el Mishkán y visita cada utensilio. ¿Cuál primero?",
+         "he": "עברו במשכן ובקרו בכל כלי. במה תתחילו?"
+        }
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        26
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": -18,
+         "z": -20,
+         "sprite": "scenery/courtyard",
+         "h": 3.4
+        },
+        {
+         "t": "person",
+         "x": 18,
+         "z": -20,
+         "sprite": "scenery/courtyard",
+         "h": 3.4
+        },
+        {
+         "t": "person",
+         "x": 0,
+         "z": -40,
+         "sprite": "scenery/mishkan_tent",
+         "h": 6
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Visit the <b>Aron</b>.",
+          "es": "Visita el <b>Arón</b>.",
+          "he": "בקרו ב<b>ארון</b>."
+         },
+         "at": [
+          0,
+          -30
+         ],
+         "r": 3.5,
+         "talk": [
+          {
+           "t": {
+            "en": "An ark of acacia wood, covered with pure gold inside and out, with two golden keruvim on its cover, their wings spread upward.",
+            "es": "Un arca de madera de acacia, cubierta de oro puro por dentro y por fuera, con dos keruvim de oro sobre la tapa, con las alas extendidas hacia arriba.",
+            "he": "ועשו ארון עצי שטים… וצפית אתו זהב טהור מבית ומחוץ… ועשית שנים כרבים זהב… והיו הכרבים פרשי כנפים למעלה."
+           },
+           "src": "שמות כה:י–כ"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 0,
+           "z": -32,
+           "sprite": "scenery/aron",
+           "h": 2.6
+          },
+          {
+           "t": "person",
+           "x": 0,
+           "z": -27,
+           "sprite": "scenery/parochet",
+           "h": 4.5
+          }
+         ],
+         "par": 8
+        },
+        {
+         "text": {
+          "en": "Visit the <b>Shulchan</b>.",
+          "es": "Visita el <b>Shuljan</b>.",
+          "he": "בקרו ב<b>שלחן</b>."
+         },
+         "at": [
+          -10,
+          -14
+         ],
+         "r": 3.5,
+         "talk": [
+          {
+           "t": {
+            "en": "A table covered in gold. On it was the lechem hapanim, always before Hashem.",
+            "es": "Una mesa cubierta de oro. Sobre ella estaba el léjem hapanim, siempre delante de Hashem.",
+            "he": "ועשית שלחן עצי שטים… וצפית אתו זהב טהור… ונתת על השלחן לחם פנים לפני תמיד."
+           },
+           "src": "שמות כה:כג–ל"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": -10,
+           "z": -16,
+           "sprite": "scenery/shulchan",
+           "h": 2.4
+          }
+         ],
+         "par": 7
+        },
+        {
+         "text": {
+          "en": "Visit the <b>Menorah</b>.",
+          "es": "Visita la <b>Menorá</b>.",
+          "he": "בקרו ב<b>מנורה</b>."
+         },
+         "at": [
+          10,
+          -14
+         ],
+         "r": 3.5,
+         "talk": [
+          {
+           "t": {
+            "en": "A Menorah of pure gold, hammered from one piece, with seven lamps.",
+            "es": "Una Menorá de oro puro, labrada de una sola pieza, con siete lámparas.",
+            "he": "ועשית מנרת זהב טהור, מקשה תיעשה המנורה… ועשית את נרתיה שבעה."
+           },
+           "src": "שמות כה:לא–לז"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 10,
+           "z": -16,
+           "sprite": "scenery/menorah",
+           "h": 3
+          }
+         ],
+         "par": 7
+        },
+        {
+         "text": {
+          "en": "Visit the <b>copper Mizbe’ach</b> in the courtyard.",
+          "es": "Visita el <b>Mizbeaj de cobre</b> en el patio.",
+          "he": "בקרו ב<b>מזבח הנחשת</b> בחצר."
+         },
+         "at": [
+          0,
+          8
+         ],
+         "r": 4,
+         "talk": [
+          {
+           "t": {
+            "en": "An altar of acacia wood, five cubits long and five wide, with horns on its four corners, covered with copper.",
+            "es": "Un altar de madera de acacia, de cinco codos de largo y cinco de ancho, con cuernos en sus cuatro esquinas, cubierto de cobre.",
+            "he": "ועשית את המזבח עצי שטים, חמש אמות ארך וחמש אמות רחב… ועשית קרנתיו על ארבע פנתיו… וצפית אתו נחשת."
+           },
+           "src": "שמות כז:א–ב"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 0,
+           "z": 6,
+           "sprite": "scenery/mizbach_nechoshet",
+           "h": 2.6
+          }
+         ],
+         "par": 8
+        }
+       ],
+       "player": {
+        "sprite": "moshe",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "moshe": {
+    "en": "Moshe",
+    "es": "Moshé",
+    "he": "משה"
+   },
+   "bnei_yisrael": {
+    "en": "Bnei Yisrael",
+    "es": "Bnei Israel",
+    "he": "בני ישראל"
+   }
+  }
+ }
+}

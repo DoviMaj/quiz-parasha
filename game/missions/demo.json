@@ -1,0 +1,1551 @@
+{
+ "id": "demo",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Game modes demo",
+  "es": "Demo de modos de juego",
+  "he": "הדגמת סוגי משחק"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "Every kind of game in one place — try each one.",
+   "es": "Todos los tipos de juego en un lugar: prueba cada uno.",
+   "he": "כל סוגי המשחקים במקום אחד — נסו כל אחד."
+  },
+  "paths": [
+   {
+    "id": "talk",
+    "who": "avraham",
+    "name": {
+     "en": "Talk & choose",
+     "es": "Hablar y elegir",
+     "he": "שיחה ובחירה"
+    },
+    "tag": {
+     "en": "Characters talk, and you decide how to act.",
+     "es": "Los personajes hablan y tú decides cómo actuar.",
+     "he": "הדמויות מדברות ואתם מחליטים איך לפעול."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Walk and talk",
+       "es": "Caminar y hablar",
+       "he": "הליכה ושיחה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "This is a demo line from the narrator.",
+         "es": "Esta es una línea de demostración del narrador.",
+         "he": "זו שורת הדגמה של המספר."
+        },
+        "src": "הדגמה"
+       },
+       {
+        "t": {
+         "en": "Characters speak with their portrait.",
+         "es": "Los personajes hablan con su retrato.",
+         "he": "הדמויות מדברות עם הדיוקן שלהן."
+        },
+        "w": "sarah"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Walk to the <b>tent</b>.",
+          "es": "Camina a la <b>tienda</b>.",
+          "he": "לכו אל <b>האהל</b>."
+         },
+         "at": [
+          10,
+          -10
+         ],
+         "r": 5,
+         "talk": [
+          {
+           "t": {
+            "en": "A guest is coming. What do you do?",
+            "es": "Viene un invitado. ¿Qué haces?",
+            "he": "אורח מגיע. מה תעשו?"
+           },
+           "w": "lot"
+          },
+          {
+           "ask": {
+            "en": "How do you greet the guest?",
+            "es": "¿Cómo recibes al invitado?",
+            "he": "איך תקבלו את האורח?"
+           },
+           "options": [
+            {
+             "e": "🏃",
+             "label": {
+              "en": "Run to greet him",
+              "es": "Correr a recibirlo",
+              "he": "לרוץ לקראתו"
+             },
+             "middah": "chesed",
+             "reply": [
+              {
+               "t": {
+                "en": "Thank you! (chesed)",
+                "es": "¡Gracias! (jésed)",
+                "he": "תודה! (חסד)"
+               },
+               "w": "lot"
+              }
+             ]
+            },
+            {
+             "e": "🪑",
+             "label": {
+              "en": "Wait for him to come",
+              "es": "Esperar a que llegue",
+              "he": "לחכות שיגיע"
+             },
+             "reply": [
+              {
+               "t": {
+                "en": "He arrives slowly…",
+                "es": "Llega despacio…",
+                "he": "הוא מגיע לאט…"
+               },
+               "w": "lot"
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "objects": [
+          {
+           "t": "tent",
+           "x": 13,
+           "z": -13
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "avraham",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "catch",
+    "who": "scenery/mann",
+    "name": {
+     "en": "Catch",
+     "es": "Atrapar",
+     "he": "תפיסה"
+    },
+    "tag": {
+     "en": "Drag the basket to catch what falls.",
+     "es": "Arrastra la canasta para atrapar lo que cae.",
+     "he": "גררו את הסל כדי לתפוס את מה שנופל."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Bread from heaven",
+       "es": "Pan del cielo",
+       "he": "לחם מן השמים"
+      },
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.75,
+         0.52
+        ],
+        "sky": [
+         0.66,
+         0.78,
+         0.93
+        ],
+        "fog": [
+         0.9,
+         0.85,
+         0.74
+        ],
+        "hills": 0.8
+       },
+       "start": [
+        0,
+        10
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Catch <b>12</b> pieces of mann.",
+          "es": "Atrapa <b>12</b> trozos de man.",
+          "he": "תפסו <b>12</b> פתיתי מן."
+         },
+         "at": [
+          0,
+          -6
+         ],
+         "r": 4,
+         "collect": {
+          "n": 12,
+          "r": 12,
+          "h": 1.4,
+          "label": null,
+          "sprite": "scenery/mann",
+          "style": "catch"
+         }
+        }
+       ],
+       "player": {
+        "sprite": "bnei_yisrael",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "timed",
+    "who": "scenery/jars",
+    "name": {
+     "en": "Timed delivery",
+     "es": "Entrega contra reloj",
+     "he": "משלוח נגד השעון"
+    },
+    "tag": {
+     "en": "Fill a jar and bring it before time runs out.",
+     "es": "Llena un cántaro y llévalo antes de que se acabe el tiempo.",
+     "he": "מלאו כד והביאו אותו לפני שהזמן נגמר."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Water for the guests",
+       "es": "Agua para los invitados",
+       "he": "מים לאורחים"
+      },
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [],
+       "steps": [
+        {
+         "text": {
+          "en": "Fill a <b>jar</b> at the well.",
+          "es": "Llena un <b>cántaro</b> en el pozo.",
+          "he": "מלאו <b>כד</b> בבאר."
+         },
+         "at": [
+          -14,
+          0
+         ],
+         "r": 3,
+         "tapg": {
+          "img": "scenery/well",
+          "n": 2,
+          "done": {
+           "en": "Full!",
+           "es": "¡Lleno!",
+           "he": "מלא!"
+          }
+         },
+         "objects": [
+          {
+           "t": "well",
+           "x": -17,
+           "z": -2
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Bring it to the <b>guests</b> — hurry!",
+          "es": "¡Llévalo a los <b>invitados</b>, rápido!",
+          "he": "הביאו אותו <b>לאורחים</b> — מהר!"
+         },
+         "at": [
+          14,
+          -20
+         ],
+         "r": 4,
+         "objects": [
+          {
+           "t": "person",
+           "x": 16,
+           "z": -22,
+           "sprite": "angel",
+           "h": 3.2
+          }
+         ],
+         "par": 6
+        }
+       ],
+       "player": {
+        "sprite": "rivkah",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "herd",
+    "who": "sheep",
+    "name": {
+     "en": "Herd",
+     "es": "Pastorear",
+     "he": "רעייה"
+    },
+    "tag": {
+     "en": "Guide the flock into the pen. They move away from you.",
+     "es": "Guía el rebaño al corral. Se alejan de ti.",
+     "he": "הובילו את העדר לדיר. הם מתרחקים מכם."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Into the pen",
+       "es": "Al corral",
+       "he": "אל הדיר"
+      },
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "sheep",
+       "n": 8,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -26,
+        "r": 6.2,
+        "gap": 0.42,
+        "style": "fence"
+       },
+       "objects": [],
+       "player": {
+        "sprite": "rachel",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "build",
+    "who": "scenery/menorah",
+    "name": {
+     "en": "Build",
+     "es": "Construir",
+     "he": "בנייה"
+    },
+    "tag": {
+     "en": "Pick a piece and place it where it belongs.",
+     "es": "Elige una pieza y colócala en su lugar.",
+     "he": "בחרו חלק והניחו אותו במקומו."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Set up the Mishkan",
+       "es": "Arma el Mishkán",
+       "he": "הקימו את המשכן"
+      },
+      "game": {
+       "type": "build",
+       "layout": "mishkan",
+       "slots": [
+        {
+         "id": "aron",
+         "at": [
+          -5,
+          0
+         ]
+        },
+        {
+         "id": "shulchan",
+         "at": [
+          2,
+          -1.6
+         ]
+        },
+        {
+         "id": "menorah",
+         "at": [
+          2,
+          1.6
+         ]
+        },
+        {
+         "id": "ketoret",
+         "at": [
+          -1.3,
+          0
+         ]
+        },
+        {
+         "id": "kiyor",
+         "at": [
+          11.5,
+          0.7
+         ]
+        },
+        {
+         "id": "mizbeach",
+         "at": [
+          16,
+          0
+         ]
+        }
+       ],
+       "items": [
+        {
+         "id": "aron",
+         "n": {
+          "en": "Aron",
+          "es": "Arón",
+          "he": "ארון"
+         },
+         "s": {
+          "en": "Ark",
+          "es": "Arca",
+          "he": "הארון"
+         },
+         "model": "aron",
+         "ref": "⁧שמות כו:לג–לד⁩",
+         "ok": {
+          "en": "Behind the parochet, in the Kodesh HaKodashim.",
+          "es": "Detrás de la parójet, en el Kódesh HaKodashim.",
+          "he": "מאחורי הפרוכת, בקודש הקודשים."
+         },
+         "no": {
+          "en": "The Aron goes in the innermost room, behind the curtain.",
+          "es": "El Arón va en la sala más interior, detrás de la cortina.",
+          "he": "הארון עומד בחדר הפנימי, מאחורי הפרוכת."
+         }
+        },
+        {
+         "id": "shulchan",
+         "n": {
+          "en": "Shulchan",
+          "es": "Shuljan",
+          "he": "שולחן"
+         },
+         "s": {
+          "en": "Table",
+          "es": "Mesa",
+          "he": "לחם הפנים"
+         },
+         "model": "shulchan",
+         "ref": "⁧שמות כו:לה⁩",
+         "ok": {
+          "en": "Outside the parochet, “and the Shulchan you shall put on the north side.”",
+          "es": "Fuera de la parójet: “y el Shuljan pondrás del lado norte”.",
+          "he": "מחוץ לפרוכת: ״והשולחן תתן על צלע צפון״."
+         },
+         "no": {
+          "en": "The Shulchan stands in the Kodesh, on the north side.",
+          "es": "El Shuljan está en el Kódesh, del lado norte.",
+          "he": "השולחן עומד בקודש, בצד צפון."
+         }
+        },
+        {
+         "id": "menorah",
+         "n": {
+          "en": "Menorah",
+          "es": "Menorá",
+          "he": "מנורה"
+         },
+         "s": {
+          "en": "Lamp",
+          "es": "Candelabro",
+          "he": "המאור"
+         },
+         "model": "menorah",
+         "ref": "⁧שמות כו:לה⁩",
+         "ok": {
+          "en": "“The Menorah opposite the Shulchan, on the south side.”",
+          "es": "“La Menorá frente al Shuljan, del lado sur”.",
+          "he": "״ואת המנורה נוכח השולחן על צלע המשכן תימנה״."
+         },
+         "no": {
+          "en": "The Menorah faces the Shulchan — on the south side.",
+          "es": "La Menorá está frente al Shuljan, del lado sur.",
+          "he": "המנורה מול השולחן — בצד דרום."
+         }
+        },
+        {
+         "id": "ketoret",
+         "n": {
+          "en": "Golden altar",
+          "es": "Altar de oro",
+          "he": "מזבח הזהב"
+         },
+         "s": {
+          "en": "Incense",
+          "es": "Incienso",
+          "he": "הקטורת"
+         },
+         "model": "ketoret",
+         "ref": "⁧שמות ל:ו⁩",
+         "ok": {
+          "en": "“Before the parochet that is over the Aron.”",
+          "es": "“Delante de la parójet que está sobre el Arón”.",
+          "he": "״לפני הפרוכת אשר על ארון העדות״."
+         },
+         "no": {
+          "en": "The incense altar stands in front of the parochet, in the middle.",
+          "es": "El altar del incienso está delante de la parójet, en el medio.",
+          "he": "מזבח הקטורת עומד לפני הפרוכת, באמצע."
+         }
+        },
+        {
+         "id": "kiyor",
+         "n": {
+          "en": "Kiyor",
+          "es": "Kiyor",
+          "he": "כיור"
+         },
+         "s": {
+          "en": "Basin",
+          "es": "Lavatorio",
+          "he": "לרחיצה"
+         },
+         "model": "kiyor",
+         "ref": "⁧שמות ל:יח⁩",
+         "ok": {
+          "en": "“Between the Ohel Moed and the altar” — the Kohanim washed there.",
+          "es": "“Entre el Óhel Moed y el altar”: allí se lavaban los kohanim.",
+          "he": "״בין אהל מועד ובין המזבח״ — שם רחצו הכהנים."
+         },
+         "no": {
+          "en": "The Kiyor stands outside, between the tent and the big altar.",
+          "es": "El Kiyor está afuera, entre la tienda y el altar grande.",
+          "he": "הכיור עומד בחוץ, בין האוהל למזבח הגדול."
+         }
+        },
+        {
+         "id": "mizbeach",
+         "n": {
+          "en": "Copper altar",
+          "es": "Altar de cobre",
+          "he": "מזבח הנחושת"
+         },
+         "s": {
+          "en": "Offerings",
+          "es": "Ofrendas",
+          "he": "הקרבנות"
+         },
+         "model": "mizbeach",
+         "ref": "⁧שמות מ:ו⁩",
+         "ok": {
+          "en": "“Before the entrance of the Mishkan.”",
+          "es": "“Delante de la entrada del Mishkán”.",
+          "he": "״לפני פתח משכן אהל מועד״."
+         },
+         "no": {
+          "en": "The copper altar stands in the courtyard, in front of the entrance.",
+          "es": "El altar de cobre está en el patio, frente a la entrada.",
+          "he": "מזבח הנחושת עומד בחצר, מול הפתח."
+         }
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "run",
+    "who": "camel",
+    "name": {
+     "en": "Run",
+     "es": "Correr",
+     "he": "ריצה"
+    },
+    "tag": {
+     "en": "Swipe to change lanes, swipe up to jump.",
+     "es": "Desliza para cambiar de carril y hacia arriba para saltar.",
+     "he": "החליקו להחלפת מסלול, למעלה לקפיצה."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The caravan road",
+       "es": "El camino de la caravana",
+       "he": "דרך השיירה"
+      },
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "none",
+       "goal": 380,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "camel",
+       "pickup": "scenery/spice_jar",
+       "low": [
+        "rock",
+        "jars",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "camel",
+        "cart"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "tap",
+    "who": "scenery/well",
+    "name": {
+     "en": "Timing",
+     "es": "Precisión",
+     "he": "תזמון"
+    },
+    "tag": {
+     "en": "Tap when the marker is in the green zone.",
+     "es": "Toca cuando el marcador esté en la zona verde.",
+     "he": "הקישו כשהסמן באזור הירוק."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Roll the stone",
+       "es": "Rueda la piedra",
+       "he": "גוללו את האבן"
+      },
+      "game": {
+       "type": "tap",
+       "img": "scenery/well",
+       "n": 4,
+       "speed": 1.0,
+       "zone": 0.22,
+       "text": {
+        "en": "Roll the big stone off the well!",
+        "es": "¡Quita la gran piedra del pozo!",
+        "he": "גוללו את האבן הגדולה מעל פי הבאר!"
+       },
+       "hint": {
+        "en": "Each push needs perfect timing.",
+        "es": "Cada empujón necesita buena precisión.",
+        "he": "כל דחיפה צריכה תזמון מדויק."
+       },
+       "done": {
+        "en": "Done!",
+        "es": "¡Listo!",
+        "he": "הצלחתם!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "choose",
+    "who": "scenery/sparkle",
+    "name": {
+     "en": "Choose the order",
+     "es": "Elige el orden",
+     "he": "בחרו את הסדר"
+    },
+    "tag": {
+     "en": "A menu of tasks: do them in any order.",
+     "es": "Un menú de tareas: hazlas en el orden que quieras.",
+     "he": "תפריט משימות: עשו אותן בכל סדר."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Prepare for the guests",
+       "es": "Prepárate para los invitados",
+       "he": "הכנה לאורחים"
+      },
+      "choose": {
+       "mode": "all",
+       "title": {
+        "en": "What first?",
+        "es": "¿Qué primero?",
+        "he": "מה קודם?"
+       },
+       "options": [
+        {
+         "e": "🍞",
+         "label": {
+          "en": "Bake bread",
+          "es": "Hornear pan",
+          "he": "לאפות לחם"
+         },
+         "fmt": "tap",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "tap",
+            "img": "scenery/bread",
+            "n": 3,
+            "text": {
+             "en": "Knead the dough!",
+             "es": "¡Amasa la masa!",
+             "he": "לושו את הבצק!"
+            },
+            "done": {
+             "en": "Bread ready!",
+             "es": "¡Pan listo!",
+             "he": "הלחם מוכן!"
+            }
+           }
+          }
+         ]
+        },
+        {
+         "e": "💧",
+         "label": {
+          "en": "Bring water",
+          "es": "Traer agua",
+          "he": "להביא מים"
+         },
+         "fmt": "explore",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "explore",
+            "scene": {
+             "ground": [
+              0.62,
+              0.66,
+              0.4
+             ],
+             "sky": [
+              0.6,
+              0.75,
+              0.92
+             ],
+             "fog": [
+              0.82,
+              0.86,
+              0.8
+             ],
+             "hills": 1.4
+            },
+            "start": [
+             0,
+             10
+            ],
+            "objects": [],
+            "steps": [
+             {
+              "text": {
+               "en": "Draw <b>water</b>.",
+               "es": "Saca <b>agua</b>.",
+               "he": "שאבו <b>מים</b>."
+              },
+              "at": [
+               0,
+               -4
+              ],
+              "r": 4,
+              "tapg": {
+               "img": "scenery/jars",
+               "n": 3,
+               "done": {
+                "en": "Water ready!",
+                "es": "¡Agua lista!",
+                "he": "המים מוכנים!"
+               }
+              }
+             }
+            ],
+            "player": {
+             "sprite": "avraham",
+             "h": 3.2
+            }
+           }
+          }
+         ]
+        },
+        {
+         "e": "🐑",
+         "label": {
+          "en": "Bring a calf from the herd",
+          "es": "Traer un ternero del rebaño",
+          "he": "להביא בן בקר"
+         },
+         "fmt": "herd",
+         "chapters": [
+          {
+           "title": null,
+           "game": {
+            "type": "herd",
+            "scene": {
+             "ground": [
+              0.62,
+              0.66,
+              0.4
+             ],
+             "sky": [
+              0.6,
+              0.75,
+              0.92
+             ],
+             "fog": [
+              0.82,
+              0.86,
+              0.8
+             ],
+             "hills": 1.4
+            },
+            "animal": "cow",
+            "n": 3,
+            "every": 99,
+            "pen": {
+             "x": 0,
+             "z": -24,
+             "r": 6,
+             "gap": 0.45,
+             "style": "fence"
+            },
+            "objects": [],
+            "player": {
+             "sprite": "avraham",
+             "h": 3.2
+            }
+           }
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "rhythm",
+    "who": "miriam",
+    "name": {
+     "en": "Rhythm",
+     "es": "Ritmo",
+     "he": "קצב"
+    },
+    "tag": {
+     "en": "Tap on the beat with Miriam’s tof.",
+     "es": "Toca al ritmo con el tof de Miriam.",
+     "he": "הקישו בקצב עם התף של מרים."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Shirat HaYam",
+       "es": "Shirat HaYam",
+       "he": "שירת הים"
+      },
+      "game": {
+       "type": "rhythm",
+       "img": "miriam",
+       "n": 8,
+       "bpm": 84,
+       "text": {
+        "en": "Play the tof with Miriam!",
+        "es": "¡Toca el tof con Miriam!",
+        "he": "נגנו בתף עם מרים!"
+       },
+       "done": {
+        "en": "Shirat HaYam!",
+        "es": "¡Shirat HaYam!",
+        "he": "שירת הים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "steer",
+    "who": "scenery/ark",
+    "name": {
+     "en": "Steer",
+     "es": "Timón",
+     "he": "היגוי"
+    },
+    "tag": {
+     "en": "Guide the ark through the waters.",
+     "es": "Guía el arca por las aguas.",
+     "he": "נווטו את התבה במים."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "On the waters",
+       "es": "Sobre las aguas",
+       "he": "על פני המים"
+      },
+      "game": {
+       "type": "steer",
+       "img": "scenery/ark",
+       "time": 25,
+       "obstacles": [
+        "scenery/boulder",
+        "scenery/rocks",
+        "scenery/hill"
+       ],
+       "pickup": "dove",
+       "text": {
+        "en": "Steer the ark — avoid the rocks!",
+        "es": "Guía el arca: ¡esquiva las rocas!",
+        "he": "נווטו את התבה — התחמקו מהסלעים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "sort",
+    "who": "sheep",
+    "name": {
+     "en": "Sort",
+     "es": "Clasificar",
+     "he": "מיון"
+    },
+    "tag": {
+     "en": "Drag each animal into the right group.",
+     "es": "Arrastra cada animal al grupo correcto.",
+     "he": "גררו כל בהמה לקבוצה הנכונה."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Speckled and spotted",
+       "es": "Moteadas y manchadas",
+       "he": "נקד וטלוא"
+      },
+      "game": {
+       "type": "sort",
+       "text": {
+        "en": "Sort the flock!",
+        "es": "¡Separa el rebaño!",
+        "he": "מיינו את הצאן!"
+       },
+       "bins": [
+        {
+         "id": "nakod",
+         "label": {
+          "en": "Speckled",
+          "es": "Moteadas",
+          "he": "נקודים"
+         },
+         "mark": "speckles"
+        },
+        {
+         "id": "talu",
+         "label": {
+          "en": "Spotted",
+          "es": "Manchadas",
+          "he": "טלואים"
+         },
+         "mark": "spots"
+        },
+        {
+         "id": "plain",
+         "label": {
+          "en": "Plain",
+          "es": "Lisas",
+          "he": "חלקים"
+         }
+        }
+       ],
+       "items": [
+        {
+         "img": "sheep",
+         "mark": "speckles",
+         "bin": "nakod"
+        },
+        {
+         "img": "goat",
+         "mark": "speckles",
+         "bin": "nakod"
+        },
+        {
+         "img": "sheep",
+         "mark": "spots",
+         "bin": "talu"
+        },
+        {
+         "img": "goat",
+         "mark": "spots",
+         "bin": "talu"
+        },
+        {
+         "img": "sheep",
+         "bin": "plain"
+        },
+        {
+         "img": "goat",
+         "bin": "plain"
+        },
+        {
+         "img": "sheep",
+         "mark": "spots",
+         "bin": "talu"
+        },
+        {
+         "img": "sheep",
+         "mark": "speckles",
+         "bin": "nakod"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "id": "hidden",
+    "who": "scenery/bush",
+    "name": {
+     "en": "Find it",
+     "es": "Buscar",
+     "he": "חיפוש"
+    },
+    "tag": {
+     "en": "Find what’s hidden in the picture.",
+     "es": "Encuentra lo escondido en el dibujo.",
+     "he": "מצאו את המוסתר בתמונה."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "In the thicket",
+       "es": "En el matorral",
+       "he": "בסבך"
+      },
+      "game": {
+       "type": "hidden",
+       "targets": [
+        "sheep"
+       ],
+       "decoys": [
+        "scenery/bush",
+        "scenery/dry_bush",
+        "scenery/rocks",
+        "scenery/olive"
+       ],
+       "count": 16,
+       "text": {
+        "en": "Find the ram in the thicket!",
+        "es": "¡Encuentra el carnero en el matorral!",
+        "he": "מצאו את האיל בסבך!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "pour",
+    "who": "scenery/jars",
+    "name": {
+     "en": "Pour",
+     "es": "Verter",
+     "he": "מזיגה"
+    },
+    "tag": {
+     "en": "Hold to pour, stop between the lines.",
+     "es": "Mantén para verter y detente entre las líneas.",
+     "he": "החזיקו כדי למזוג ועצרו בין הקווים."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Water for the camels",
+       "es": "Agua para los camellos",
+       "he": "מים לגמלים"
+      },
+      "game": {
+       "type": "pour",
+       "n": 3,
+       "text": {
+        "en": "Fill each trough for the camels!",
+        "es": "¡Llena cada abrevadero para los camellos!",
+        "he": "מלאו כל שוקת לגמלים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "stack",
+    "who": "scenery/stone_pile",
+    "name": {
+     "en": "Stack",
+     "es": "Apilar",
+     "he": "ערימה"
+    },
+    "tag": {
+     "en": "Drop the stones straight on top of each other.",
+     "es": "Deja caer las piedras una encima de otra.",
+     "he": "הפילו את האבנים זו על גבי זו."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "A pile of stones",
+       "es": "Un montón de piedras",
+       "he": "גל אבנים"
+      },
+      "game": {
+       "type": "stack",
+       "n": 7,
+       "text": {
+        "en": "Build the mound — line up the stones!",
+        "es": "Construye el montón: ¡alinea las piedras!",
+        "he": "בנו את הגל — סדרו את האבנים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "path",
+    "who": "bnei_yisrael",
+    "name": {
+     "en": "Draw a path",
+     "es": "Dibujar el camino",
+     "he": "ציור שביל"
+    },
+    "tag": {
+     "en": "Draw the way around the obstacles.",
+     "es": "Dibuja el camino rodeando los obstáculos.",
+     "he": "ציירו דרך שעוקפת את המכשולים."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Through the sea",
+       "es": "Por el mar",
+       "he": "בתוך הים"
+      },
+      "game": {
+       "type": "path",
+       "walls": 0.12,
+       "obstacles": [
+        "scenery/boulder",
+        "scenery/reeds"
+       ],
+       "count": 6,
+       "walker": "bnei_yisrael",
+       "goal": "scenery/oasis",
+       "text": {
+        "en": "Draw the way through the sea, between the walls of water!",
+        "es": "¡Dibuja el camino por el mar, entre las paredes de agua!",
+        "he": "ציירו את הדרך בתוך הים, בין חומות המים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "memory",
+    "who": "scenery/star",
+    "name": {
+     "en": "Memory",
+     "es": "Memoria",
+     "he": "זיכרון"
+    },
+    "tag": {
+     "en": "Flip the cards and find the pairs.",
+     "es": "Voltea las cartas y encuentra los pares.",
+     "he": "הפכו את הקלפים ומצאו זוגות."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Yosef’s dreams",
+       "es": "Los sueños de Yosef",
+       "he": "חלומות יוסף"
+      },
+      "game": {
+       "type": "memory",
+       "cards": [
+        "scenery/sheaf",
+        "scenery/star",
+        "scenery/wheat",
+        "scenery/sparkle",
+        "scenery/bread",
+        "scenery/candle"
+       ],
+       "text": {
+        "en": "Match the pictures from Yosef’s dreams!",
+        "es": "¡Une las imágenes de los sueños de Yosef!",
+        "he": "התאימו את התמונות מחלומות יוסף!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "sneak",
+    "who": "miriam",
+    "name": {
+     "en": "Sneak",
+     "es": "Sigilo",
+     "he": "התגנבות"
+    },
+    "tag": {
+     "en": "Get to the river without being seen.",
+     "es": "Llega al río sin que te vean.",
+     "he": "הגיעו ליאור בלי שיראו אתכם."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "To the river",
+       "es": "Al río",
+       "he": "אל היאור"
+      },
+      "game": {
+       "type": "sneak",
+       "player": "miriam",
+       "guard": "egypt_soldier",
+       "hide": "scenery/reeds",
+       "goal": "scenery/reeds",
+       "guards": 3,
+       "text": {
+        "en": "Get to the river — hide in the reeds when the guards look!",
+        "es": "Llega al río: ¡escóndete en los juncos cuando miren los guardias!",
+        "he": "הגיעו ליאור — התחבאו בסוף כשהשומרים מסתכלים!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "maze",
+    "who": "moshe",
+    "name": {
+     "en": "Maze",
+     "es": "Laberinto",
+     "he": "מבוך"
+    },
+    "tag": {
+     "en": "Find the way and visit every camp.",
+     "es": "Encuentra el camino y visita cada campamento.",
+     "he": "מצאו את הדרך ובקרו בכל חניה."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Journeys in the wilderness",
+       "es": "Viajes por el desierto",
+       "he": "מסעות במדבר"
+      },
+      "game": {
+       "type": "maze",
+       "size": 7,
+       "stations": 4,
+       "player": "moshe",
+       "station": "scenery/tent_small",
+       "goal": "scenery/city_gate",
+       "text": {
+        "en": "Lead the way through the wilderness — stop at every camp!",
+        "es": "Guía por el desierto: ¡pasa por cada campamento!",
+        "he": "הובילו במדבר — עצרו בכל חניה!"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "sticker",
+    "who": "noach",
+    "name": {
+     "en": "Stickers",
+     "es": "Figuras",
+     "he": "מדבקות"
+    },
+    "tag": {
+     "en": "Retell the story by placing the stickers.",
+     "es": "Cuenta la historia colocando las figuras.",
+     "he": "ספרו את הסיפור בעזרת המדבקות."
+    },
+    "outro": {
+     "en": "Demo done.",
+     "es": "Demo terminada.",
+     "he": "ההדגמה הסתיימה."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Retell: Noach",
+       "es": "Cuenta: Nóaj",
+       "he": "ספרו: נח"
+      },
+      "game": {
+       "type": "sticker",
+       "bg": "scenery/ark",
+       "text": {
+        "en": "Retell the story of the ark!",
+        "es": "¡Cuenta la historia del arca!",
+        "he": "ספרו את סיפור התבה!"
+       },
+       "end": {
+        "en": "Everyone is in the ark!",
+        "es": "¡Todos están en el arca!",
+        "he": "כולם בתבה!"
+       },
+       "steps": [
+        {
+         "sticker": "noach",
+         "x": 0.25,
+         "y": 0.78,
+         "caption": {
+          "en": "Noach stands by the ark.",
+          "es": "Nóaj está junto al arca.",
+          "he": "נח עומד ליד התבה."
+         }
+        },
+        {
+         "sticker": "noach_wife",
+         "x": 0.75,
+         "y": 0.78,
+         "caption": {
+          "en": "His wife comes too.",
+          "es": "También viene su esposa.",
+          "he": "גם אשתו באה."
+         }
+        },
+        {
+         "sticker": "sheep",
+         "x": 0.4,
+         "y": 0.95,
+         "h": 60,
+         "caption": {
+          "en": "The animals come two by two.",
+          "es": "Los animales llegan de dos en dos.",
+          "he": "החיות באות שנים שנים."
+         }
+        },
+        {
+         "sticker": "dove",
+         "x": 0.55,
+         "y": 0.25,
+         "h": 50,
+         "caption": {
+          "en": "Later, the dove flies out.",
+          "es": "Después, la paloma sale volando.",
+          "he": "אחר כך יוצאת היונה."
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

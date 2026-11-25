@@ -1,0 +1,34 @@
+:root{--olive:#4f6b3a;--terra:#b5562f;--ink:#2e2a24;--surface:#fdf6ea;--line:#e2d1b1}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#e9dcc4;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+.hud{position:fixed;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;justify-content:space-between;gap:8px;pointer-events:none;z-index:5}
+.pill{background:rgba(253,246,234,.93);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);white-space:nowrap}
+a.pill{pointer-events:auto;text-decoration:none;color:var(--ink)}
+.mission{position:fixed;top:calc(max(10px,env(safe-area-inset-top)) + 46px);left:10px;right:10px;margin:0 auto;max-width:420px;background:rgba(46,42,36,.86);color:#fff;border-radius:16px;padding:9px 14px;font-weight:600;font-size:14px;line-height:1.35;pointer-events:none;z-index:5}
+.mission b{color:#f3dfb0}
+.hint{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(46,42,36,.82);color:#fff;border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;pointer-events:none;text-align:center;max-width:92vw;transition:opacity .4s;z-index:5}
+.joy{position:fixed;width:110px;height:110px;border-radius:50%;border:3px solid rgba(255,255,255,.75);background:rgba(255,255,255,.18);transform:translate(-50%,-50%);pointer-events:none;display:none;z-index:4}
+.joy i{position:absolute;left:50%;top:50%;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.85);transform:translate(-50%,-50%)}
+.card{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(30,20,10,.45);padding:16px;z-index:20}
+.card.on{display:flex}
+.card .in{background:var(--surface);border-radius:22px;padding:20px;max-width:430px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.3);max-height:90vh;overflow:auto}
+.card h2{margin:0 0 6px;font-size:21px;line-height:1.25}.card p{margin:0 0 14px;color:#5a4e3c}
+.card .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);margin-bottom:4px}
+.opts{display:grid;gap:8px}
+.opts button,.go{all:unset;cursor:pointer;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:700;font-size:16px}
+.opts button.ok{background:#e3ecd9;border-color:var(--olive)}.opts button.bad{background:#f6e0d5;border-color:var(--terra)}
+.go{display:block;text-align:center;background:var(--olive);color:#fff;border-color:var(--olive);margin-top:12px}
+button:focus-visible,a:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+.err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;font-weight:700}
+.arrow{position:fixed;width:46px;height:46px;border-radius:50%;background:rgba(253,246,234,.95);display:none;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2);pointer-events:none;z-index:5;transform:translate(-50%,-50%)}
+.arrow svg{transition:transform .1s}
+.label{position:fixed;transform:translate(-50%,-100%);background:rgba(253,246,234,.95);border-radius:10px;padding:3px 8px;font-size:12px;font-weight:800;pointer-events:none;white-space:nowrap;z-index:4;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+#hCnt{unicode-bidi:isolate;direction:ltr}
+/* layout fixes: the bottom hint sits above the build tray; HUD pills shrink instead of overflowing */
+body.building .hint{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 96px)}
+.hud .pill{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.hud #hTitle{flex:1 1 auto;text-align:center}
+.hud .back,.hud #hCnt{flex:none}
+@media (max-width:400px){.hud{gap:6px}.hud .pill{padding:8px 10px;font-size:13px}.hud .back .bl{display:none}.hud .back{width:38px;padding:8px 0;text-align:center}}

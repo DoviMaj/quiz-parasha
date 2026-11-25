@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz de la Parashá</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script src="config.js"></script>
+<script src="shim.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=David+Libre:wght@500;700&family=Frank+Ruhl+Libre:wght@500;700&family=Baloo+2:wght@500;600;700;800&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+:root{--page:#e9dcc4;--surface:#fdf6ea;--soft:#f4ecdc;--tile:#efe2ca;--ink:#2e2a24;--muted:#5a4e3c;--line:#e2d1b1;--track:#d4c09c;--olive:#4f6b3a;--terra:#b5562f;--chip:#dccbab;--ok:#4f6b3a;--ok-bg:#e3ecd9;--bad:#b5562f;--bad-bg:#f6e0d5}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--ink);font-family:Rubik,system-ui,sans-serif;line-height:1.5;font-size:17px}
+bdi,.heb,.pasuk p,[lang=he]{font-family:"David Libre","Frank Ruhl Libre",serif}
+bdi{font-size:1.06em}
+header{padding:16px 16px 10px;display:flex;flex-direction:column;gap:10px;max-width:760px;margin:0 auto}
+.hrow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ttl{display:flex;align-items:center;gap:10px}
+.logo{flex:0 0 46px;height:46px;border-radius:14px;background:var(--terra);display:flex;align-items:center;justify-content:center}
+.heb{display:block;color:var(--terra);font-size:17px;line-height:1.2}
+h1{font-size:22px;font-weight:700;margin:0;line-height:1.15}
+.langs{display:flex;gap:3px;background:var(--chip);border-radius:14px;padding:3px}
+.langs button{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);border-radius:11px;padding:7px 11px;min-width:22px;text-align:center}
+.langs button.on{background:var(--surface);color:var(--ink)}
+.weekbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.weekbar select{cursor:pointer;font:inherit;font-size:16px;font-weight:600;padding:8px 14px;border-radius:999px;border:0;background:var(--surface);color:var(--ink);max-width:240px}
+.cur{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fdf6ea;background:var(--olive);border-radius:999px;padding:5px 10px}
+.sub{margin:0;color:var(--muted);font-size:15px}
+body.quizmode .sub{display:none}
+nav{position:fixed;inset-inline:0;bottom:0;z-index:8;background:var(--page);border-top:1px solid var(--track);display:flex;justify-content:center;padding:6px 6px calc(10px + env(safe-area-inset-bottom))}
+nav .in{display:flex;width:100%;max-width:560px}
+nav button{all:unset;cursor:pointer;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:13px;font-weight:500;padding:4px 0;min-height:52px}
+nav button .ico{border-radius:999px;padding:4px 14px;display:flex}
+nav button .lb,.knav button .lb{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 2px;box-sizing:border-box}
+@media (max-width:400px){nav button{font-size:12px}nav button .ico{padding:4px 10px}.knav button{font-size:13px}.knav button .ico{padding:5px 12px}}
+@media (max-width:340px){nav button,.knav button{font-size:11px;letter-spacing:-.01em}.knav button .lb{padding:0}.knav,nav{padding-left:2px;padding-right:2px}.knav button{font-size:10.5px}nav button .ico,.knav button .ico{padding:4px 8px}}
+nav button svg{width:22px;height:22px;stroke:currentColor}
+nav button.on{color:var(--terra);font-weight:700}
+nav button.on .ico{background:var(--olive);color:#fdf6ea}
+.score{max-width:760px;margin:0 auto;padding:0 16px 8px;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--muted)}
+.score .pts{background:var(--soft);color:var(--olive);border-radius:999px;padding:3px 10px;font-weight:700}
+.score .pts b{font-weight:700}
+.bar{height:12px;background:var(--track);flex:1;border-radius:6px;position:relative;display:flex;cursor:pointer}
+.bar i{display:block;height:100%;transition:width .4s ease}.bar i.g{background:var(--olive);border-start-start-radius:6px;border-end-start-radius:6px}.bar i.r{background:var(--terra)}
+.bar .mk{position:absolute;top:-3px;width:4px;height:18px;border-radius:2px;background:var(--ink);transition:inset-inline-start .3s ease;box-shadow:0 0 0 2px var(--page)}
+main{max-width:760px;margin:0 auto;padding:6px 14px calc(var(--navh,110px) + 32px)}
+.view{display:none}.view.on{display:block}
+.card{background:var(--surface);border-radius:22px;padding:18px;margin:0 0 14px}
+.top{display:flex;gap:12px;align-items:flex-start}
+.art{flex:0 0 44px;height:44px;border-radius:12px;background:var(--terra);display:flex;align-items:center;justify-content:center}
+.art svg{width:30px;height:30px}
+.art svg *{stroke:#fdf6ea!important}.art svg [fill="#f3dfb0"]{fill:#fdf6ea!important}
+.num{font-size:14px;font-weight:600;color:var(--muted)}
+.q{font-size:24px;font-weight:600;margin:0;line-height:1.28}
+.pasuk{margin-top:12px;padding:10px 14px;background:var(--soft);border-radius:16px}
+.pasuk p{font-size:22px;line-height:1.55;margin:0;text-align:right;color:var(--muted)}
+.pasuk .ref{display:block;font-size:13px;color:var(--muted);text-align:right;margin:0 0 4px;opacity:.8}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.opts.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts button{all:unset;cursor:pointer;background:var(--tile);border-radius:18px;padding:14px;font-size:17px;line-height:1.32;font-weight:500;display:flex;gap:10px;align-items:flex-start;border:2px solid transparent}
+.opts.grid2 button{flex-direction:column;gap:4px;min-height:96px}
+.opts button .l{font-weight:700;color:var(--terra);font-size:19px;line-height:1.2}
+@media (hover:hover) and (pointer:fine){.opts button:hover{border-color:var(--track)}}
+.opts button.right{background:var(--ok-bg);border-color:var(--ok);color:#2c4220}
+.opts button.wrong{background:var(--bad-bg);border-color:var(--bad);color:#6b2c14}
+.opts button[disabled]{cursor:default}
+.ans{display:none;margin-top:12px;padding:12px 14px;background:var(--soft);border-radius:16px;font-size:16px}
+.ans.show{display:block}
+.ans .src,.src{display:block;margin-top:8px;font-size:13.5px;color:var(--muted)}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:var(--olive);color:#fdf6ea;padding:13px 22px;border-radius:18px;font-weight:600;font-size:17px;min-height:26px}
+.btn.ghost{background:var(--chip);color:var(--ink)}
+.btn[disabled]{opacity:.4;cursor:default}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.stat{background:var(--surface);border-radius:18px;padding:14px 16px}
+.stat .k{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-size:36px;font-weight:700;line-height:1.1}
+.stat .s{font-size:14px;color:var(--muted)}
+.panel{background:var(--surface);border-radius:18px;padding:6px 16px 6px}
+h2.sec{font-size:21px;font-weight:700;margin:10px 0 4px}
+.wk{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 10px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}.wk .track{grid-column:1/-1}
+.wk:last-child{border-bottom:0}
+.wk .nm{font-weight:600;font-size:16px}
+.wk .track{flex:1;height:12px;background:var(--track);border-radius:6px;overflow:hidden;position:relative}
+.wk .track i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--olive)}
+.wk .track u{position:absolute;inset-block:0;inset-inline-start:0;background:var(--terra);opacity:.85}
+.wk .pt{text-align:end;font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted)}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tabs button{all:unset;cursor:pointer;font-size:15px;font-weight:600;padding:9px 16px;border-radius:999px;background:var(--surface)}
+.tabs button.on{background:var(--olive);color:#fdf6ea}
+table.lb{width:100%;border-collapse:collapse;background:var(--surface);border-radius:18px;overflow:hidden}
+.lb td,.lb th{padding:12px 14px;text-align:start;border-bottom:1px solid var(--line);font-size:17px}
+.lb tr:last-child td{border-bottom:0}
+.lb th{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lb td.n,.lb th.n{text-align:end;font-variant-numeric:tabular-nums}
+.lb tr.me td{background:var(--soft);font-weight:700}
+.medal{display:inline-block;width:30px;height:30px;border-radius:50%;text-align:center;line-height:30px;font-size:14px;font-weight:700;background:var(--track);color:#1b1b1b}
+.m1{background:#e8c25a}.m2{background:#cfd4dc}.m3{background:#d9a27a}
+.note{font-size:14px;color:var(--muted);background:var(--soft);border-radius:14px;padding:10px 14px;margin:0 0 12px}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+.prtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+#printSheet .ans{display:block}#printSheet .q{font-size:19px}#printSheet .card{padding:14px}
+.modal{position:fixed;inset:0;background:rgba(46,42,36,.5);display:none;align-items:center;justify-content:center;z-index:20}
+.modal>div{background:var(--surface);border-radius:22px;padding:22px;max-width:320px;text-align:center}
+.modal button{margin:12px 4px 0}
+.hact{display:flex;gap:6px;align-items:center}
+.gear{all:unset;cursor:pointer;width:40px;height:40px;border-radius:12px;background:var(--chip);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.onb{background:var(--surface);border-radius:26px;padding:24px 22px;width:min(360px,90vw);display:flex;flex-direction:column;gap:10px;text-align:start}
+.onb h2{margin:4px 0 6px;font-size:26px}
+.onb label,.onb .lbl{font-weight:600;font-size:16px}
+.onb input{font:inherit;font-size:18px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:#fff;color:var(--ink)}
+.onb input:focus{outline:none;border-color:var(--olive)}
+.onb .hint{margin:-4px 0 4px;font-size:14px;color:var(--muted)}
+.olangs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.olangs button{all:unset;cursor:pointer;text-align:center;padding:12px 6px;border-radius:14px;background:var(--tile);font-weight:600;font-size:16px;border:2px solid transparent}
+.olangs button.on{border-color:var(--olive);background:var(--ok-bg)}
+.onb{position:relative;max-height:90vh;max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.onb>*{flex-shrink:0}#onb{z-index:40;padding:16px 0}.onb .btn{margin-top:8px;justify-content:center}.oX{all:unset;cursor:pointer;position:absolute;top:10px;inset-inline-end:12px;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--muted)}@media (hover:hover) and (pointer:fine){.oX:hover{background:var(--soft)}}
+.logo.big{width:60px;height:60px;border-radius:18px;flex:none}
+/* flashcard */
+.fc{perspective:1400px;position:relative}
+.face{position:relative;background:var(--surface);border-radius:28px;padding:20px 18px}
+.face.back{background:#fffaf0}
+.fc.turn-out .face{transition:transform .17s ease-in;transform:rotateY(90deg)}
+.fc.turn-in .face{animation:turnIn .2s ease-out}
+@keyframes turnIn{from{transform:rotateY(-90deg)}to{transform:none}}
+.lvb{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:3px 10px}
+.fhead .lvb{margin-inline-start:auto}
+.lvb.l1{background:#e3ecd9;color:#3b5229}.lvb.l2{background:#f4e3c3;color:#7a5512}.lvb.l3{background:#f6dccf;color:#8f3a17}
+.unlock{background:var(--olive);color:#fdf6ea;border-radius:14px;padding:10px 14px;font-weight:700;margin-bottom:10px;text-align:center}
+.fhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.art.sm{flex:0 0 40px;height:40px;border-radius:12px}.art.sm svg{width:26px;height:26px}
+.face .q{margin:0 0 4px}
+.link{all:unset;cursor:pointer;display:block;margin:14px auto 0;color:var(--olive);font-weight:600;font-size:15px;text-decoration:underline;text-align:center}
+.verdict{font-size:24px;font-weight:700;display:block;margin-bottom:6px}
+.verdict.vok{color:var(--ok)}.verdict.vbad{color:var(--bad)}
+.corr{margin:6px 0 12px;padding:12px 14px;border-radius:16px;background:var(--ok-bg);border:2px solid var(--ok);font-weight:600;color:#2c4220;font-size:17px}
+.corr .l{margin-inline-end:8px;color:var(--terra)}
+.expl{font-size:17px;line-height:1.6}
+.arr{all:unset;cursor:pointer;width:38px;height:38px;border-radius:12px;background:var(--surface);color:var(--ink);font-size:24px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:0 0 38px}.arr[disabled]{opacity:.35;cursor:default}[dir=rtl] .arr svg{transform:scaleX(-1)}
+.backbtns{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px}.backbtns .link{margin:0}
+.fcnav{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px}
+.fcnav .pos{direction:ltr;unicode-bidi:isolate;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.endcard{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--olive);color:#fdf6ea}
+.endbig{font-size:60px;font-weight:700;line-height:1}
+.endpts{font-size:20px;margin:6px 0}.endcard p{max-width:340px;font-size:17px}
+.endbtns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.endcard .btn{background:#fdf6ea;color:var(--olive)}.endcard .btn.ghost{background:none;color:#fdf6ea;border:1.5px solid rgba(253,246,234,.5)}
+.fc.in-next{animation:inN .3s ease}.fc.in-prev{animation:inP .3s ease}
+@keyframes inN{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes inP{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+[dir=rtl] .fc.in-next{animation-name:inP}[dir=rtl] .fc.in-prev{animation-name:inN}
+@media (max-width:440px){h1{font-size:19px}.ttl .logo{display:none}.langs button{padding:7px 9px}.face .q{font-size:21px}.pasuk p{font-size:19px}.opts button{font-size:16px;padding:11px 12px}.opts{gap:8px;margin-top:10px}.face{padding:16px 14px}header{padding:12px 14px 8px;gap:8px}}
+.score .pts,#an{direction:ltr;unicode-bidi:isolate}
+@media (max-width:380px){.lb td,.lb th{padding:10px 7px;font-size:15px}.lb th{font-size:11px;letter-spacing:0}.medal{width:26px;height:26px;line-height:26px;font-size:12.5px}table.lb{table-layout:fixed}.lb th:first-child,.lb td:first-child{width:38px}.lb th.n,.lb td.n{width:64px}.lb td.nm{overflow-wrap:anywhere}}
+@media (max-width:360px){.opts.grid2{grid-template-columns:1fr}.opts.grid2 button{min-height:0;flex-direction:row}}
+@media print{header,nav,.score,.prtools,.note,#v-quiz,#v-dash,#v-lb{display:none!important}body{background:#fff}main{max-width:none;padding:0}#v-print{display:block!important}}
+/* ---------- welcome (neutral) / settings (age theme) ---------- */
+#onb.first .onb{background:#fff;color:#111827;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Varela Round",sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+#onb.first{background:#f3f4f6}
+#onb.first .onb .logo{background:#111827}
+#onb.first .onb .btn{background:#111827;color:#fff;border-radius:14px}
+#onb.first .onb input{border-color:#d1d5db;color:#111827}#onb.first .onb input:focus{border-color:#111827}
+#onb.first .onb .hint{color:#4b5563}
+#onb.first .olangs button,#onb.first .oages button{background:#f3f4f6;color:#111827;border:2px solid transparent}
+#onb.first .olangs button.on,#onb.first .oages button.on{border-color:#111827;background:#fff}
+#onb.first .oX{color:#4b5563}#onb.first .link{color:#374151}
+/* settings: adult (Jerusalem stone) */
+#onb .oages button{background:var(--tile);color:var(--ink);border:2px solid transparent}
+#onb .oages button.on{border-color:var(--olive);background:var(--ok-bg)}
+/* settings: kids (design A) */
+#onb.kid{background:rgba(43,29,14,.45)}
+#onb.kid .onb{background:#fff;color:#2b1d0e;font-family:"Baloo 2","Varela Round",Rubik,sans-serif;border-radius:30px}
+#onb.kid .onb h2{font-weight:800}
+#onb.kid .onb .logo{background:#0f766e;overflow:hidden}
+#onb.kid .onb input{border-color:#e6cf9f;color:#2b1d0e;font-weight:700}#onb.kid .onb input:focus{border-color:#c2410c}
+#onb.kid .onb .hint{color:#5c4630}
+#onb.kid .olangs button,#onb.kid .oages button{background:#fff4dc;color:#2b1d0e;border:2px solid #e6cf9f;font-weight:800}
+#onb.kid .olangs button.on,#onb.kid .oages button.on{background:#ffe1c7;border-color:#c2410c;color:#9a3412}
+#onb.kid .onb .btn{background:#c2410c;color:#fff;border-radius:22px;font-weight:800;font-size:20px;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+#onb.kid .oX{color:#5c4630}#onb.kid .link{color:#5c4630}
+.onames{display:grid;grid-template-columns:1fr 1fr;gap:8px}.onames input{min-width:0}#oUser{margin:-2px 0 0;font-weight:600}#oUser:empty{display:none}
+.olangs.osnd{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* profile / welcome as a full page */
+#onb{padding:0!important;align-items:stretch;justify-content:stretch}
+#onb .onb{width:100%;max-width:none;height:100%;height:100dvh;max-height:none;border-radius:0!important;box-shadow:none!important;box-sizing:border-box;
+  padding:calc(18px + env(safe-area-inset-top)) max(20px,calc((100% - 520px)/2)) calc(16px + env(safe-area-inset-bottom));gap:12px}
+#onb .onb .oX{top:calc(10px + env(safe-area-inset-top));inset-inline-end:max(12px,calc((100% - 520px)/2 - 8px))}
+#onb .onb #oGo{margin-top:auto}
+#onb .onb #oGo{position:sticky;bottom:0;z-index:2;box-shadow:0 -10px 14px -6px rgba(0,0,0,.08)}
+.oages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.oages button{all:unset;cursor:pointer;text-align:center;padding:10px 6px;border-radius:14px;font-weight:700;font-size:16px;line-height:1.2;display:flex;flex-direction:column;align-items:center;gap:2px}.oai{font-size:26px;line-height:1}
+.oages.need{animation:shake .35s}.oneed{color:#b91c1c!important;font-weight:600}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* ---------- kids mode (design A, high contrast) ---------- */
+body.kids{--k-page:#fff4dc;--k-surf:#fff;--k-ink:#2b1d0e;--k-muted:#5c4630;--k-line:#e6cf9f;--k-acc:#c2410c;--k-teal:#0f766e;--k-purple:#6d28d9;background:var(--k-page);color:var(--k-ink);font-family:"Baloo 2","Varela Round",Rubik,sans-serif}
+html:has(body.kids){background:#fff4dc}
+body.kids>header,body.kids>#scorebar,body.kids>main,body.kids>nav{display:none!important}
+#kids{display:none;max-width:560px;margin:0 auto;padding:14px 14px calc(118px + env(safe-area-inset-bottom))}
+body.kids #kids{display:block}
+.ktop{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.kme{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:48px}
+.kav{width:48px;height:48px;border-radius:50%;background:var(--k-teal);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.khi{font-weight:800;font-size:21px;line-height:1.1}
+.kstar{display:flex;align-items:center;gap:6px;background:var(--k-acc);color:#fff;border-radius:999px;padding:6px 14px;font-weight:800;font-size:20px;flex:none}
+.kweek{margin:10px 0 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.kweek select{font:inherit;font-weight:700;font-size:17px;color:var(--k-ink);background:#fff;border:2px solid var(--k-line);border-radius:999px;padding:6px 14px;min-height:42px}
+.kpath{display:flex;gap:5px;margin:12px 0 6px}.kpath i{flex:1;height:14px;border-radius:7px;background:var(--k-line)}
+.kpath i.ok{background:var(--k-purple)}.kpath i.no{background:#9f8a6a}.kpath i.cur{background:var(--k-acc)}
+.kqn{font-weight:700;font-size:16px;color:var(--k-muted)}
+.kcard{background:var(--k-surf);border-radius:28px;padding:14px;box-shadow:0 6px 0 rgba(0,0,0,.07);display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.kscene{border-radius:20px;overflow:hidden;line-height:0}.kscene svg{width:100%;height:auto;display:block}
+.kq{margin:0;font-weight:800;font-size:23px;line-height:1.22}
+.kv{margin:0;font-family:"Varela Round",sans-serif;font-size:17px;line-height:1.6;color:var(--k-muted);text-align:right}
+.kopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.kopts.one{grid-template-columns:1fr}
+.kopts button{all:unset;cursor:pointer;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:12px 14px;min-height:72px;border-radius:22px;font-weight:800;font-size:20px;line-height:1.2;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.kopts button .l{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:17px}
+.kopts button:nth-child(1){background:#ffe1c7;color:#9a3412}.kopts button:nth-child(2){background:#ccefe8;color:#115e59}
+.kopts button:nth-child(3){background:#e4dcfd;color:#5b21b6}.kopts button:nth-child(4){background:#fff0a8;color:#713f12}
+.kopts button.right{background:#15803d!important;color:#fff!important}.kopts button.wrong{background:#b91c1c!important;color:#fff!important}
+.kopts button.right .l,.kopts button.wrong .l{color:#1f2937}
+.kopts button:focus-visible{outline:3px solid var(--k-ink);outline-offset:2px}
+.kbtn{all:unset;cursor:pointer;box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;border-radius:22px;background:var(--k-acc);color:#fff;font-weight:800;font-size:22px;box-shadow:0 5px 0 rgba(0,0,0,.18);margin-top:12px}
+.kbtn.alt{background:var(--k-teal)}.kbtn.ghost{background:#fff;color:var(--k-ink);border:2px solid var(--k-line);box-shadow:none}
+.kwin{text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative;padding-top:6px}
+.kwin h2{margin:0;font-size:30px;line-height:1.1;font-weight:800}.kwin .kplus{font-weight:800;font-size:22px;color:var(--k-acc)}
+.kconf{position:absolute;inset:0 0 auto 0;height:70px;pointer-events:none}
+.ktag{align-self:flex-start;background:var(--k-teal);color:#fff;font-weight:800;font-size:15px;border-radius:999px;padding:3px 12px}
+.kfact{margin:0;font-weight:600;font-size:19px;line-height:1.45}
+.ksrc{font-weight:700;font-size:15px;color:var(--k-muted)}
+.kans{font-weight:800;font-size:20px}
+.kstk{display:flex;align-items:center;gap:14px}
+.kst{width:84px;height:84px;flex:none;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:4px solid currentColor;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.kst svg{width:50px;height:50px}.kst svg [stroke]:not([stroke=none]){stroke:currentColor}.kst svg [fill]:not([fill=none]){fill:currentColor;fill-opacity:.25}
+.kst.big{width:74px;height:74px;border-style:dashed;transform:rotate(-8deg)}
+.kst.off{border:3px dashed #b8a27c;background:#f4ead6;color:#8a7350;box-shadow:none}
+.kgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 6px}
+.kgrid>div{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font-weight:700;font-size:15px}
+.kgrid .kst:not(.off){transform:rotate(var(--r,0deg))}
+.kh1{margin:6px 0 0;font-size:32px;font-weight:800;line-height:1.1}.ksub{font-weight:700;font-size:17px;color:var(--k-muted)}
+.krow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.kbox{background:#fff;border-radius:22px;padding:12px 14px;box-shadow:0 4px 0 rgba(0,0,0,.06)}.kbox b{display:block;font-size:30px;line-height:1.1}.kbox span{font-weight:700;font-size:15px;color:var(--k-muted)}
+.kempty{background:#fff;border-radius:22px;padding:22px;text-align:center;font-weight:700;font-size:19px;margin-top:14px}
+.kpo{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-weight:700;font-size:17px}.kpo span{display:flex;align-items:center;gap:8px}.kpo i{flex:none;font-style:normal;width:28px;height:28px;border:2px solid var(--k-ink);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+.kkey{margin-top:14px;border:2px dashed var(--k-muted)}
+.kwin{overflow:hidden}.kconf{width:100%}
+.tts{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--chip);color:var(--ink)}
+.tts svg{width:22px;height:22px}.tts.on{background:var(--olive);color:#fff}.tts:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.fhead .tts{margin-inline-start:auto}.fhead .lvb{margin-inline-start:0}
+.vrow{display:flex;align-items:center;gap:10px;justify-content:space-between}
+body.kids .tts{width:52px;height:52px;background:#fff4dc;color:#c2410c;border:2px solid #e6cf9f}body.kids .tts svg{width:26px;height:26px}body.kids .tts.on{background:#c2410c;color:#fff;border-color:#c2410c}
+.kqrow{display:flex;align-items:flex-start;gap:10px}.kqrow .kq{flex:1}
+.ktagrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.no-tts .tts{display:none!important}
+.prm{margin:0}.popts{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin-top:10px;font-size:16px}.popts span{display:flex;gap:8px;align-items:flex-start}.popts i{font-style:normal;font-weight:700;color:var(--terra)}
+@media (max-width:420px){.popts{grid-template-columns:1fr}}
+.kpm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.kpm button{all:unset;cursor:pointer;text-align:center;padding:10px 6px;border-radius:18px;background:#fff;border:2px solid var(--k-line);font-weight:800;font-size:17px}.kpm button.on{background:#ffe1c7;border-color:var(--k-acc);color:#9a3412}
+.klb{gap:0;padding:6px 10px}.klr{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:2px dashed #f0e2c4}.klr:last-child{border-bottom:0}.klr.me{background:#fff4dc;border-radius:14px}
+.kmed{width:34px;height:34px;flex:none;border-radius:50%;background:#f4ead6;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}.knm{flex:1;font-weight:800;font-size:19px;overflow-wrap:anywhere}.knm small{font-size:14px;color:var(--k-muted)}.kst2{font-weight:800;font-size:19px;white-space:nowrap}
+.un{display:block;font-size:13px;font-weight:500;color:var(--muted);direction:ltr;unicode-bidi:isolate}body.kids .un{color:var(--k-muted);font-weight:700}
+.days,.kdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:10px 0 2px}
+.days button,.kdays button{all:unset;cursor:pointer;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:50px;border-radius:14px;background:var(--chip);color:var(--ink);font-weight:700;font-size:13px;line-height:1.1;border:2px solid transparent}
+.days button .dl,.kdays button .dl{font-size:15px}.days button.on{background:var(--olive);color:#fff}.days button.done:not(.on){border-color:var(--olive)}
+.days button:disabled,.kdays button:disabled{opacity:.45;cursor:default}.days button:focus-visible,.kdays button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.kdays button{background:#fff;color:var(--k-ink);border-color:var(--k-line);font-size:14px;min-height:54px;border-radius:16px}.kdays button.on{background:var(--k-acc);border-color:var(--k-acc);color:#fff}.kdays button.done:not(.on){border-color:var(--k-teal);color:var(--k-teal)}
+.daytitle{font-weight:700;font-size:15px;color:var(--muted);margin:2px 0 0}
+.rankc{background:var(--surface);border-radius:22px;padding:16px;margin:4px 0 14px;box-shadow:0 2px 0 rgba(0,0,0,.04)}
+.rk-top{display:flex;align-items:center;gap:12px}.rk-badge{width:48px;height:48px;flex:none;border-radius:14px;background:var(--olive);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+.rk-name{font-weight:800;font-size:22px;line-height:1.1}.rk-sub{font-size:14px;color:var(--muted)}.rk-xp{margin-inline-start:auto;font-weight:700;color:var(--muted);white-space:nowrap}
+.rk-bar{height:12px;border-radius:6px;background:var(--chip);margin-top:12px;overflow:hidden}.rk-bar i{display:block;height:100%;background:var(--olive);border-radius:6px}
+.rk-next{font-size:14px;color:var(--muted);margin-top:6px}.bh{margin:6px 0 8px;font-size:17px}
+.badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px}.bdg{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center;background:var(--surface);border-radius:16px;padding:10px 12px;opacity:.55}
+.bdg.on{opacity:1;box-shadow:inset 0 0 0 2px var(--olive)}.bi{grid-row:span 2;width:38px;height:38px;border-radius:50%;background:var(--chip);display:flex;align-items:center;justify-content:center;font-size:18px}.bdg.on .bi{background:var(--olive);color:#fff}
+.bn{font-weight:800;font-size:15px;line-height:1.2}.bd{font-size:12.5px;color:var(--muted);line-height:1.25}
+#toast{position:fixed;left:50%;bottom:calc(var(--navh,90px) + 16px);transform:translate(-50%,20px);background:#1f2937;color:#fff;padding:12px 18px;border-radius:16px;font-weight:700;font-size:16px;opacity:0;transition:.25s;z-index:45;max-width:90vw;text-align:center;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}
+.lbrk{display:inline-block;margin-inline-start:6px;font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--chip);color:var(--muted);vertical-align:1px}
+.knav{display:none;position:fixed;inset-inline:0;bottom:0;z-index:8;background:#fff;border-top:2px solid var(--k-line);padding:6px 6px calc(12px + env(safe-area-inset-bottom));justify-content:center}
+body.kids .knav{display:flex}
+.knav .in{display:flex;width:100%;max-width:560px}
+.knav button{all:unset;cursor:pointer;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;min-height:58px;color:var(--k-muted);font-weight:700;font-size:15px}
+.knav button .ico{border-radius:999px;padding:5px 18px;display:flex}.knav button svg{width:26px;height:26px;stroke:currentColor}
+.knav button.on{color:var(--k-acc);font-weight:800}.knav button.on .ico{background:var(--k-acc);color:#fff}
+@media (max-width:400px){.knav button{font-size:13px}.knav button .ico{padding:5px 12px}}
+@media (max-width:340px){.knav{padding-left:2px;padding-right:2px}.knav button{font-size:11.5px}.knav button .ico{padding:4px 8px}.knav button .lb{padding:0}}
+.kin{animation:kin .25s ease-out}@keyframes kin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:360px){.kopts{grid-template-columns:1fr}.kq{font-size:21px}}
+@media (prefers-reduced-motion:reduce){.kin,.oages.need{animation:none}}
+#boot{position:fixed;inset:0;z-index:60;background:#f3f4f6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .25s}
+#boot.out{opacity:0;pointer-events:none}.bootlogo{width:76px;height:76px;border-radius:22px;background:#111827;display:flex;align-items:center;justify-content:center}
+.bootspin{width:30px;height:30px;border-radius:50%;border:3px solid #d1d5db;border-top-color:#111827;animation:bspin .8s linear infinite}@keyframes bspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.bootspin{animation-duration:2.4s}}
+.demob{position:fixed;bottom:76px;left:10px;z-index:9999;background:#7c2d12;color:#fff;font:800 12px/1 system-ui,sans-serif;letter-spacing:.12em;padding:6px 12px;border-radius:999px;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#intro{position:fixed;inset:0;z-index:60;background:var(--page);display:none;flex-direction:column;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
+#intro.on{display:flex}#intro .itop{width:100%;max-width:440px;display:flex;justify-content:space-between;align-items:center}
+#intro .ilang{display:flex;gap:4px}#intro .ilang button,#intro .iskip{all:unset;cursor:pointer;padding:8px 12px;border-radius:999px;font-weight:700;font-size:14px;color:var(--muted)}
+#intro .ilang button.on{background:var(--surface);color:var(--ink)}#intro .iskip{text-decoration:underline}
+#intro .ibody{flex:1;width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;touch-action:pan-y}
+#intro .iart{width:200px;height:200px;border-radius:40px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:28px;box-shadow:0 8px 24px rgba(60,40,10,.12)}
+#intro h2{font-size:26px;line-height:1.2;margin:0 0 12px;color:var(--ink)}#intro p{font-size:17px;line-height:1.5;color:var(--muted);margin:0;max-width:360px}
+#intro .islide{animation:iin .3s ease both}@keyframes iin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+#intro[dir=rtl] .islide{animation-name:iinr}@keyframes iinr{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+#intro .idots{display:flex;gap:8px;margin:18px 0}#intro .idots i{width:8px;height:8px;border-radius:99px;background:var(--track);transition:width .2s}#intro .idots i.on{width:24px;background:var(--olive)}
+#intro .inext{width:100%;max-width:440px;justify-content:center}
+@media (prefers-reduced-motion:reduce){#intro .islide{animation:none}}
+.mbtn{display:none!important}
+.oprof .pchips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 2px}.oprof .pchip{display:inline-flex;align-items:center;background:var(--soft);border:2px solid var(--line);border-radius:999px;overflow:hidden}
+.oprof .pchip.on{border-color:var(--olive);background:#e3ecd9}.oprof .pchip button{all:unset;cursor:pointer;padding:8px 12px;font-weight:700;font-size:15px}
+.oprof .pchip .pdel{padding:8px 10px 8px 4px;color:var(--muted)}.oprof .padd{all:unset;cursor:pointer;padding:8px 12px;border-radius:999px;border:2px dashed var(--track);font-weight:700;font-size:15px;color:var(--olive)}
+.oprof button:focus-visible{outline:3px solid var(--olive);outline-offset:2px}.oprof{margin-bottom:6px}
+header .langs{display:none!important}
+#gear.named{width:auto;padding:0 14px 0 10px;gap:6px;border-radius:999px;display:inline-flex;align-items:center}.hname{font-weight:700;font-size:15px;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.opts button,.kopts button{-webkit-tap-highlight-color:transparent}
+#gameov{position:fixed;inset:0;z-index:70;background:#e9dcc4}#gameov iframe{border:0;width:100%;height:100%;display:block}
+.endbtns .gmis{background:#7a5a2a}
+</style>
+</head>
+<body>
+<div id="boot" aria-busy="true" aria-label="Loading"><div class="bootlogo"><svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" aria-hidden="true"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></div><div class="bootspin"></div></div>
+<header>
+  <div class="hrow"><div class="ttl"><button class="mbtn" id="mBtn" aria-label="menu" aria-expanded="false" aria-haspopup="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><span class="logo"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#fdf6ea" stroke-width="2.4" stroke-linecap="round"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></span><div><span class="heb" id="heb"></span><h1 id="h1"></h1></div></div>
+    <div class="hact"><div class="langs"><button data-l="es">ES</button><button data-l="en">EN</button><button data-l="he">עב</button></div><button class="gear" id="gear" aria-label="settings"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="hname" id="hname"></span></button></div></div>
+  <div class="weekbar"><select id="week" aria-label="week"></select><select id="lvl" aria-label="level"></select><span class="cur" id="curTag"></span></div><div id="days" style="display:none"></div>
+  <p class="sub" id="sub"></p>
+</header>
+
+<div class="score" id="scorebar"><button class="arr" id="prev" aria-label="prev"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><span class="pts"><b id="sc">0</b> <span id="lp"></span></span><span id="tot" hidden></span><div class="bar" id="pbar" title=""><i class="g" id="pg"></i><i class="r" id="prd"></i><b class="mk" id="pmk"></b></div><span><span id="an">0</span></span><span id="la" hidden></span><button class="arr" id="next" aria-label="next"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+<main>
+  <section class="view" id="v-quiz"><div id="quiz"></div></section>
+  <section class="view" id="v-dash"></section>
+  <section class="view" id="v-lb"></section>
+  <section class="view" id="v-print"><div class="prtools"><div class="tabs prm"><button data-pm="q"></button><button data-pm="a"></button></div><button class="btn" id="doPrint"></button><span class="note" id="prNote" style="margin:0;flex-basis:100%"></span></div><div id="printSheet"></div></section>
+</main>
+<nav><div class="in">
+<button data-v="quiz"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="12" height="16" rx="2"/><path d="M8 9h6M8 13h4"/><path d="M19 7v13a2 2 0 0 1-2 2H9"/></svg></span><span class="lb"></span></button>
+<button data-v="dash"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="lb"></span></button>
+<button data-v="lb"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg></span><span class="lb"></span></button>
+<button class="gbtn" data-g="1"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><span class="lb gl"></span></button>
+<button data-v="print"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg></span><span class="lb"></span></button>
+</div></nav>
+<div id="kids"></div>
+<div class="knav"><div class="in">
+<button data-k="play"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span><span class="lb"></span></button>
+<button data-k="stk"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h10l4 4v14H5z"/><path d="M15 3v4h4"/></svg></span><span class="lb"></span></button>
+<button data-k="lb"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg></span><span class="lb"></span></button>
+<button class="gbtn" data-g="1"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span><span class="lb gl"></span></button>
+<button data-k="print"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg></span><span class="lb"></span></button>
+</div></div>
+<div id="gameov" hidden><iframe id="gameif" title="Journey through the Torah" allow="fullscreen"></iframe></div>
+<div id="intro" role="dialog" aria-modal="true" aria-labelledby="iTitle"><div class="itop"><div class="ilang"><button data-il="es">ES</button><button data-il="en">EN</button><button data-il="he">עב</button></div><button class="iskip" id="iSkip"></button></div>
+<div class="ibody" id="iBody"></div><div class="idots" id="iDots"></div><button class="btn inext" id="iNext"></button></div>
+<div class="modal" id="onb"><div class="onb" role="dialog" aria-modal="true" aria-labelledby="oTitle"><button class="oX" id="oX" aria-label="close">×</button><span class="logo big"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#fdf6ea" stroke-width="2.4" stroke-linecap="round"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></span>
+<h2 id="oTitle"></h2><div class="oprof" id="oProf"></div><span class="lbl" id="oNameL"></span><div class="onames"><input id="oName" maxlength="30" autocomplete="given-name"><input id="oLast" maxlength="30" autocomplete="family-name"></div><p class="hint" id="oUser"></p><p class="hint" id="oNote"></p>
+<span class="lbl" id="oAgeL"></span><div class="oages" id="oAges"><button data-age="8"><span class="oai">🧒</span><span class="oat" data-t="kid"></span></button><button data-age="13"><span class="oai">🧑</span><span class="oat" data-t="adult"></span></button></div><p class="hint" id="oAgeN"></p><span class="lbl" id="oSndL"></span><div class="olangs osnd"><button data-snd="1"></button><button data-snd="0"></button></div><span class="lbl" id="oLangL"></span><div class="olangs"><button data-ol="es">Español</button><button data-ol="en">English</button><button data-ol="he">עברית</button></div>
+<button class="btn" id="oGo"></button><button class="link" id="oCancel"></button><button class="link" id="oTour"></button></div></div>
+<div class="modal" id="modal"><div><p id="mq"></p><button class="btn ghost" id="mn"></button><button class="btn" id="my" style="background:var(--bad);color:#fff"></button></div></div>
+<script>
+const UI={
+ es:{prWarnT:"La versión para imprimir muestra todas las respuestas.",prWarn:"Si la abres antes de terminar el quiz, tus puntos de esta parashá no contarán en la clasificación. Podrás seguir respondiendo como práctica.",prGo:"Ver de todas formas",practice:"Práctica",lvlLabel:"Nivel",prog:"Progresivo",all:"Todas",lv:{1:"Fácil",2:"Medio",3:"Difícil"},unlocked:n=>`¡Desbloqueaste el nivel ${n}!`,byLevel:"Por nivel",welcome:"¡Bienvenido!",askName:"¿Cómo te llamas?",namePh:"Tu nombre",askLang:"Idioma",start:"Empezar",settings:"Ajustes",save:"Guardar",nameNote:"En la clasificación solo se ve tu nombre y la inicial de tu apellido.",prev:"← Anterior",next:"Siguiente →",seeAns:"Ver la explicación ↻",seeQ:"↻ Ver la pregunta",cont:"Seguir respondiendo",left:n=>`Te faltan ${n} preguntas por responder.`,dir:"ltr",app:"Quiz de la Parashá",sub:(n,r)=>`${n} preguntas sobre <bdi dir="rtl">${r}</bdi>: versículos, Rashí, comentaristas, Midrash y Talmud.`,
+  nav:{quiz:"Quiz",dash:"Progreso",lb:"Ranking",print:"Imprimir"},cur:"Esta semana",qn:"Pregunta",pts:"Puntos",ans:"respondidas",ok:"¡Correcto!",no:"No exactamente.",src:"Fuente",
+  again:"Borrar mis respuestas de esta semana",confirm:"¿Borrar tus respuestas de esta parashá?",yes:"Sí, borrar",cancel:"Cancelar",toLb:"Ver la clasificación",
+  m:["Una buena excusa para volver a estudiar la parashá.","Muy bien. Quedan algunas cosas para repasar antes de Shabat.","¡Excelente! Conoces muy bien la parashá."],
+  dTotal:"Puntos totales",dWeeks:"Parashiot completas",dAcc:"Aciertos",dRank:"Tu lugar",of:"de",dHist:"Por parashá",dNone:"Todavía no respondiste ninguna pregunta.",
+  lbTotal:"Total",lbWeek:"Esta parashá",lbName:"Nombre",lbPts:"Puntos",lbWk:"Parashiot",lbEmpty:"Todavía nadie aparece en la clasificación.",you:"(tú)",someone:"Participante",
+  localOnly:"Tu progreso se guarda solo en este navegador. Para aparecer en la clasificación y sincronizar entre dispositivos, pide acceso de colaborador (Contributor).",
+  syncing:"Tu progreso se guarda en tu cuenta.",empty:"Todavía no hay parashiot cargadas.",
+  print:"Descargar PDF",prNote:"Se descarga una hoja a dos columnas con las respuestas; ábrela y se abrirá el diálogo de impresión.",prFail:"No se pudo descargar el archivo.",
+  pointsRule:"Fácil 5 puntos, medio 10 y difícil 15, más 20 de bono por completar la parashá. En modo progresivo recibes cada día 10 preguntas que van de fácil a difícil; al terminarlas puedes pedir 10 más."},
+ en:{prWarnT:"The print version shows every answer.",prWarn:"If you open it before finishing the quiz, your points for this parsha won't count on the leaderboard. You can still answer for practice.",prGo:"Open anyway",practice:"Practice",lvlLabel:"Level",prog:"Progressive",all:"All",lv:{1:"Easy",2:"Medium",3:"Hard"},unlocked:n=>`You unlocked ${n}!`,byLevel:"By level",welcome:"Welcome!",askName:"What's your name?",namePh:"Your name",askLang:"Language",start:"Start",settings:"Settings",save:"Save",nameNote:"The leaderboard only shows your first name and last initial.",prev:"← Previous",next:"Next →",seeAns:"See the explanation ↻",seeQ:"↻ See the question",cont:"Keep answering",left:n=>`You have ${n} questions left to answer.`,dir:"ltr",app:"Parsha Quiz",sub:(n,r)=>`${n} questions on <bdi dir="rtl">${r}</bdi>: the verses, Rashi, the commentators, Midrash and Talmud.`,
+  nav:{quiz:"Quiz",dash:"Progress",lb:"Ranking",print:"Print"},cur:"This week",qn:"Question",pts:"Score",ans:"answered",ok:"Correct!",no:"Not quite.",src:"Source",
+  again:"Clear my answers for this week",confirm:"Clear your answers for this parsha?",yes:"Yes, clear",cancel:"Cancel",toLb:"See the leaderboard",
+  m:["A great reason to study the parsha again.","Well done. A few more things to review before Shabbat.","Excellent! You know the parsha very well."],
+  dTotal:"Total points",dWeeks:"Parshiot completed",dAcc:"Accuracy",dRank:"Your rank",of:"of",dHist:"By parsha",dNone:"You haven't answered any questions yet.",
+  lbTotal:"All time",lbWeek:"This parsha",lbName:"Name",lbPts:"Points",lbWk:"Parshiot",lbEmpty:"No one is on the leaderboard yet.",you:"(you)",someone:"Participant",
+  localOnly:"Your progress is saved only in this browser. To appear on the leaderboard and sync across devices, ask for Contributor access.",
+  syncing:"Your progress is saved to your account.",empty:"No parshiot have been added yet.",
+  print:"Download PDF",prNote:"Downloads a two-column sheet with the answers; open it and the print dialog will appear.",prFail:"The file couldn't be downloaded.",
+  pointsRule:"Easy 5 points, medium 10, hard 15, plus a 20-point bonus for finishing the parsha. In progressive mode you get 10 questions a day that go from easy to hard; when you finish, you can ask for 10 more."},
+ he:{prWarnT:"גרסת ההדפסה מציגה את כל התשובות.",prWarn:"אם תפתחו אותה לפני שתסיימו את החידון, הנקודות שלכם בפרשה זו לא ייספרו בטבלת המובילים. אפשר להמשיך לענות לתרגול.",prGo:"לפתוח בכל זאת",practice:"תרגול",lvlLabel:"רמה",prog:"הדרגתי",all:"הכול",lv:{1:"קל",2:"בינוני",3:"קשה"},unlocked:n=>`פתחת את רמת ${n}!`,byLevel:"לפי רמה",welcome:"ברוכים הבאים!",askName:"איך קוראים לך?",namePh:"השם שלך",askLang:"שפה",start:"מתחילים",settings:"הגדרות",save:"שמירה",nameNote:"בטבלת המובילים מופיעים רק השם הפרטי והאות הראשונה של שם המשפחה.",prev:"→ הקודמת",next:"הבאה ←",seeAns:"להסבר ↻",seeQ:"↻ חזרה לשאלה",cont:"להמשיך לענות",left:n=>`נשארו לך עוד ${n} שאלות.`,dir:"rtl",app:"חידון פרשת השבוע",sub:(n,r)=>`${n} שאלות על ${r}: פסוקים, רש״י, מפרשים, מדרש ותלמוד.`,
+  nav:{quiz:"חידון",dash:"התקדמות",lb:"דירוג",print:"הדפסה"},cur:"השבוע",qn:"שאלה",pts:"ניקוד",ans:"נענו",ok:"נכון!",no:"לא בדיוק.",src:"מקור",
+  again:"למחוק את התשובות שלי לפרשה זו",confirm:"למחוק את התשובות שלך לפרשה זו?",yes:"כן, למחוק",cancel:"ביטול",toLb:"לטבלת המובילים",
+  m:["סיבה טובה ללמוד שוב את הפרשה.","יפה מאוד. נשארו כמה דברים לחזור עליהם לפני שבת.","מצוין! אתם מכירים היטב את הפרשה."],
+  dTotal:"סך הנקודות",dWeeks:"פרשות שהושלמו",dAcc:"דיוק",dRank:"המקום שלך",of:"מתוך",dHist:"לפי פרשה",dNone:"עדיין לא ענית על אף שאלה.",
+  lbTotal:"כל הזמנים",lbWeek:"פרשה זו",lbName:"שם",lbPts:"נקודות",lbWk:"פרשות",lbEmpty:"עדיין אין משתתפים בטבלה.",you:"(את/ה)",someone:"משתתף",
+  localOnly:"ההתקדמות שלך נשמרת רק בדפדפן הזה. כדי להופיע בטבלה ולסנכרן בין מכשירים, בקשו הרשאת Contributor.",
+  syncing:"ההתקדמות שלך נשמרת בחשבון שלך.",empty:"עדיין לא נוספו פרשות.",
+  print:"הורדת PDF",prNote:"יורד דף בשני טורים עם התשובות; פתחו אותו וחלון ההדפסה ייפתח.",prFail:"לא ניתן היה להוריד את הקובץ.",
+  pointsRule:"קל 5 נקודות, בינוני 10 וקשה 15, ועוד בונוס של 20 על השלמת הפרשה. במצב הדרגתי מקבלים בכל יום 10 שאלות מקל לקשה; בסיום אפשר לבקש עוד 10."}
+};
+const BOOK={es:{},en:{},he:{}};
+/* demo mode: ?demo=true (or #demo) shows placeholder content, keeps its own local progress, never touches the server */
+const DEMO=(()=>{try{const q=new URLSearchParams(location.search);const v=(q.get("demo")||"").toLowerCase();return v==="true"||v==="1"||q.has("demo")&&v===""||/(^#|&)demo(=true|=1)?($|&)/i.test(location.hash)}catch(e){return false}})();
+const PER=10,BONUS=20,LS=DEMO?"parasha-demo-v1":"parasha-app-v1";
+/* several profiles on one device (e.g. each family member). The active one is mirrored in LS, which is what the app boots from.
+   On the server, profile p0 is the account's own document; the others travel inside it as "subs" and show as separate leaderboard rows. */
+const GT={es:{nav:"Misiones",cta:"🎮 Jugar la misión de la semana"},en:{nav:"Missions",cta:"🎮 Play this week’s mission"},he:{nav:"משימות",cta:"🎮 למשימה של השבוע"}};
+const LSP=LS+":profiles";
+let PROF=(()=>{try{const p=JSON.parse(localStorage.getItem(LSP)||"null");if(p&&p.list&&typeof p.list==="object"&&p.list[p.active])return p}catch(e){}return null})();
+if(!PROF){let o={};try{o=JSON.parse(localStorage.getItem(LS)||"null")||{}}catch(e){}PROF={active:"p0",list:{p0:o}};try{localStorage.setItem(LSP,JSON.stringify(PROF))}catch(e){}}
+try{if(PROF.active!=="p0")localStorage.setItem(LS,JSON.stringify(PROF.list[PROF.active]||{}))}catch(e){}
+function myId(){return PROF.active==="p0"?uid:(uid?uid+"~"+PROF.active:null)}
+function savePROF(){try{localStorage.setItem(LSP,JSON.stringify(PROF))}catch(e){}}
+function switchProfile(pid){if(!PROF.list[pid]||pid===PROF.active)return;const go=()=>{PROF.active=pid;savePROF();try{localStorage.setItem(LS,JSON.stringify(PROF.list[pid]))}catch(e){}location.reload()};const w=persistNow();Promise.race([w,sleep(1500)]).then(go,go)}
+function addProfile(){const ids=Object.keys(PROF.list);if(ids.length>=8)return;lsSet();let n=1;while(PROF.list["p"+n])n++;const pid="p"+n;PROF.list[pid]={lang:ST.lang,sound:ST.sound,onboarded:false,introSeen:true,weeks:{}};PROF.active=pid;savePROF();try{localStorage.setItem(LS,JSON.stringify(PROF.list[pid]))}catch(e){}location.reload()}
+function deleteProfile(pid){if(pid==="p0"||pid===PROF.active||!PROF.list[pid])return;delete PROF.list[pid];savePROF();persist();renderProfiles()}
+function demoWeek(){const id="demo",ic={dot:'<circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="4" fill="#d9a441" fill-opacity=".2" stroke="#f3dfb0"/>',star:'<path d="M24 9l4.5 9.2 10.1 1.5-7.3 7.1 1.7 10.1L24 32.1l-9 4.8 1.7-10.1-7.3-7.1 10.1-1.5z"/>',sq:'<rect x="12" y="12" width="24" height="24" rx="5"/><path d="M18 24h12" stroke="#f3dfb0"/>'},ik=Object.keys(ic);
+  const L={es:["Fácil","Medio","Difícil"],en:["Easy","Medium","Hard"],he:["קל","בינוני","קשה"]};
+  const Q=[],K=[];let n=0;
+  for(let d=1;d<=7;d++)for(let l=1;l<=3;l++)for(let j=1;j<=10;j++){n++;const a=(n*7+d)%4;
+    const mk=(lg,q,o,e,s)=>({q,o:o.map((x,i)=>i===a?x+" ✓":x),e,s});
+    Q.push({day:d,d:l,i:ik[n%3],a,t:{
+      es:mk("es",`Pregunta de prueba ${j} · día ${d} · ${L.es[l-1]}`,["Opción A","Opción B","Opción C","Opción D"],`Explicación de prueba de la pregunta ${j} del día ${d}. Aquí va el texto que explica la respuesta.`,"Fuente de prueba"),
+      en:mk("en",`Test question ${j} · day ${d} · ${L.en[l-1]}`,["Option A","Option B","Option C","Option D"],`Test explanation for question ${j} of day ${d}. This is where the text explaining the answer goes.`,"Test source"),
+      he:mk("he",`שאלת ניסיון ${j} · יום ${d} · ${L.he[l-1]}`,["אפשרות א","אפשרות ב","אפשרות ג","אפשרות ד"],`הסבר ניסיון לשאלה ${j} של יום ${d}. כאן יופיע הטקסט שמסביר את התשובה.`,"מקור לדוגמה")}})}
+  const col=["#fde68a","#bfdbfe","#bbf7d0","#fecaca","#ddd6fe","#fed7aa","#a5f3fc"];
+  for(let d=1;d<=7;d++)for(let j=1;j<=10;j++){const a=(d+j)%4;const mk=(q,o,e)=>({q,o:o.map((x,i)=>i===a?x+" ✓":x),e,s:""});
+    K.push({day:d,a,i:ik[j%3],img:`<rect width="320" height="160" fill="${col[d-1]}"/><rect y="118" width="320" height="42" fill="#e8c27a"/><g transform="translate(160 70)"><circle r="30" fill="#fff" stroke="#7c2d12" stroke-width="3"/><text y="11" text-anchor="middle" font-size="30" font-weight="900" fill="#7c2d12" font-family="sans-serif">${j}</text></g><text x="12" y="24" font-size="14" font-weight="800" fill="#7c2d12" font-family="sans-serif">DEMO · ${d}</text>`,
+      t:{es:mk(`Pregunta de prueba para niños ${j} (día ${d})`,["Uno","Dos","Tres","Cuatro"],"¿Sabías que…? Este es un dato de prueba."),en:mk(`Kids test question ${j} (day ${d})`,["One","Two","Three","Four"],"Did you know…? This is a test fact."),he:mk(`שאלת ניסיון לילדים ${j} (יום ${d})`,["אחת","שתיים","שלוש","ארבע"],"הידעתם? זו עובדה לדוגמה.")}})}
+  const t=new Date(todayISO()+"T12:00:00");t.setDate(t.getDate()+((6-t.getDay()+7)%7));const sh=t.toISOString().slice(0,10);
+  const meta={id,order:0,shabbat:sh,heb:"פרשת ניסיון",name:{es:"Parashá de prueba",en:"Test parsha",he:"פרשת ניסיון"},range:"דוגמה",n:Q.length,key:Q.map(q=>q.a),lv:Q.map(q=>q.d),dy:Q.map(q=>q.day),kn:K.length,kkey:K.map(k=>k.a),kdy:K.map(k=>k.day)};
+  return {meta,full:{...meta,icons:ic,Q,K}}}
+function demoScores(){const nm=[["Sara","M","sara.m"],["David","K","david.k"],["Rivka","L","rivka.l"],["Moshe","B","moshe.b"],["Lea","S","lea.s"]];const o={};
+  nm.forEach(([f,l,u],i)=>{const pts=900-i*170;o["demo"+i]={name:f+" "+l+".",username:u+(i+1),kids:false,points:pts,completed:3-Math.min(i,3),rank:Math.max(0,3-i),badges:4-i,weeks:{demo:{points:pts/3|0,correct:20-i*3,answered:30}}}});
+  [["Noa","T","noa.t"],["Ari","G","ari.g"],["Yael","R","yael.r"]].forEach(([f,l,u],i)=>{o["demok"+i]={name:f+" "+l+".",username:u+(i+1),kids:true,stars:30-i*8}});return o}
+let ST={lang:"es",view:"quiz",weeks:{},pos:{},front:false,level:"prog",unlockMsg:"",name:"",first:"",last:"",user:"",sound:true,onboarded:false,age:null,kview:"play",kpos:{},kshow:false};      // weeks[id] = {answers:{n:k}}
+let WEEKS=[],FULL={},W=null,currentId=null,lbMode="total";
+let db=null,user=null,uid=null,myRef=null,canWrite=false,scores={},names={},saveChain=Promise.resolve();
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function lsGet(){try{return JSON.parse(localStorage.getItem(LS)||"null")}catch(e){return null}}
+function lsSet(){try{const o=({lang:ST.lang,weeks:ST.weeks,level:ST.level,name:ST.name,first:ST.first,last:ST.last,user:ST.user,sound:ST.sound,dsel:ST.dsel||{},onboarded:ST.onboarded,introSeen:!!ST.introSeen,age:ST.age,kpos:ST.kpos});localStorage.setItem(LS,JSON.stringify(o));PROF.list[PROF.active]=o;savePROF()}catch(e){}}
+function U(){return UI[ST.lang]}
+function T(q){return q.t[ST.lang]||q.t.es}
+function ic(w,k){const inner=(w.icons&&w.icons[k])||"";return `<svg viewBox="0 0 48 48" fill="none" stroke="#d9a441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`}
+function wName(w){return (w.name&&(w.name[ST.lang]||w.name.es))||w.id}
+function today(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function pickCurrent(){if(!WEEKS.length)return null;const t=today();const up=WEEKS.filter(w=>w.shabbat>=t);return (up.length?up[0]:WEEKS[WEEKS.length-1]).id}
+const LVW={1:5,2:10,3:15};
+const NX10={es:"Siguientes 10 preguntas",en:"Next 10 questions",he:"עוד 10 שאלות"};
+const NXL={es:n=>`Seguir con el nivel ${n}`,en:n=>`Go on to ${n}`,he:n=>`להמשיך לרמה ${n}`};
+function lvOf(w){return w.lv||(w.Q||[]).map(q=>q.d||2)}
+/* ---------- daily aliyot: questions tagged day 1–7 (Sunday → Shabbat) ---------- */
+const DAYN={es:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],en:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],he:["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","שבת"]};
+const DAYL={es:{al:n=>`Aliyá ${n}`,opens:d=>`Se abre el ${["domingo","lunes","martes","miércoles","jueves","viernes","sábado"][d-1]}`,dayDone:"¡Terminaste la aliyá de hoy!",next:"Siguiente aliyá",soon:"Las preguntas de esta parashá se abren el domingo."},
+ en:{al:n=>`Aliyah ${n}`,opens:d=>`Opens on ${["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Shabbat"][d-1]}`,dayDone:"You finished today’s aliyah!",next:"Next aliyah",soon:"This parsha’s questions open on Sunday."},
+ he:{al:n=>["ראשון","שני","שלישי","רביעי","חמישי","שישי","שביעי"][n-1],opens:d=>`ייפתח ביום ${["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"][d-1]}`,dayDone:"סיימת את העלייה של היום!",next:"לעלייה הבאה",soon:"השאלות של הפרשה ייפתחו ביום ראשון."}};
+function DL(){return DAYL[ST.lang]||DAYL.es}
+function dayArr(w){const f=FULL[w.id];return w.dy||(f&&f.Q&&f.Q.some(q=>q.day)?f.Q.map(q=>q.day||1):null)}
+function kdayArr(w){const f=FULL[w.id];return w.kdy||(f&&f.K&&f.K.some(q=>q.day)?f.K.map(q=>q.day||1):null)}
+function hasDays(w){return !!(w&&dayArr(w))}
+function todayISO(){const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
+function openDay(w){if(DEMO||!hasDays(w))return 7;const sun=new Date(w.shabbat+"T12:00:00");sun.setDate(sun.getDate()-6);const t=new Date(todayISO()+"T12:00:00");const d=Math.round((t-sun)/864e5)+1;return Math.max(0,Math.min(7,d>=6?7:d))}
+function curDay(w){w=w||W;if(!hasDays(w))return 0;ST.dsel=ST.dsel||{};const o=openDay(w);let d=ST.dsel[w.id];if(!(d>=1&&d<=o))d=DEMO?new Date().getDay()+1:Math.max(1,Math.min(o,todayNum(w)));return d}
+function todayNum(w){const sun=new Date(w.shabbat+"T12:00:00");sun.setDate(sun.getDate()-6);const t=new Date(todayISO()+"T12:00:00");return Math.round((t-sun)/864e5)+1}
+function dayIdx(w,day){const a=dayArr(w);return a?a.map((d,i)=>d===day?i:-1).filter(i=>i>=0):null}
+function dayDone(w,day){const ix=dayIdx(w,day),a=ansOf(w.id);return ix&&ix.length&&ix.every(i=>i in a)}
+function renderDays(){const box=$("days");if(!box)return;if(!isKids()&&hasDays(W)){const dh=daysHTML(false);if(box.__h!==dh){box.innerHTML=dh;box.__h=dh}box.style.display="";box.querySelectorAll("button[data-day]").forEach(b=>b.onclick=()=>pickDay(+b.dataset.day))}else{box.innerHTML="";box.__h="";box.style.display="none"}}
+function daysHTML(kids){const o=openDay(W),c=curDay(W),N=DAYN[ST.lang]||DAYN.es;let h=`<div class="${kids?"kdays":"days"}" role="tablist">`;
+  for(let d=1;d<=7;d++){const lock=d>o,on=d===c,done=kids?kDayDone(W,d):dayDone(W,d);
+    h+=`<button data-day="${d}" role="tab" aria-selected="${on}" class="${on?"on":""} ${done?"done":""}" ${lock?`disabled title="${esc(DL().opens(d))}"`:""}><span class="dn">${N[d-1]}</span><span class="dl">${lock?"🔒":done?"✓":d}</span></button>`}
+  return h+`</div>`}
+function pickDay(d){if(!W||d>openDay(W))return;ST.dsel=ST.dsel||{};ST.dsel[W.id]=d;ST.front=true;ST.kshow=false;lsSet();if(isKids())renderKids(true);else{renderDays();renderQuiz("turn-in");stats()}}
+function weekStats(w,ans){ans=ans||{};const key=w.key||(w.Q||[]).map(q=>q.a),lv=lvOf(w);let c=0,a=0,pts=0;const by={1:{c:0,a:0,t:0},2:{c:0,a:0,t:0},3:{c:0,a:0,t:0}};
+  lv.forEach(d=>{if(by[d])by[d].t++});
+  for(const k in ans){if(!(k in key))continue;a++;const d=lv[k]||2;if(by[d])by[d].a++;if(ans[k]===key[k]){c++;pts+=LVW[d]||10;if(by[d])by[d].c++}}
+  const total=w.n||key.length,complete=a===total&&total>0;return {correct:c,answered:a,total,complete,by,points:pts+(complete?BONUS:0),max:lv.reduce((x,d)=>x+(LVW[d]||10),0)+BONUS}}
+function wstats(w){const rec=ST.weeks[w.id]||{};const s=weekStats(w,rec.answers);if(rec.printed){s.points=0;s.practice=true}return s}
+function summary(){const out={weeks:{},total:0,correct:0,answered:0,completed:0};
+  for(const w of WEEKS){const s=wstats(w);if(!s.answered&&!s.practice)continue;out.weeks[w.id]=s;out.total+=s.points;out.correct+=s.correct;out.answered+=s.answered;if(s.complete)out.completed++}return out}
+let needSync=false;
+/* ---------- adult ranks (XP = points earned) and badges ---------- */
+const RANKS=[0,100,300,700,1500,3000,6000];
+const RANKN={es:[["Talmid","Alumno"],["Shoel","El que pregunta"],["Lamdán","Estudioso"],["Bekí","Conocedor"],["Jajam","Sabio"],["Talmid Jajam","Erudito"],["Gaón","Genio de la Torá"]],
+ en:[["Talmid","Student"],["Sho’el","Asker"],["Lamdan","Learner"],["Baki","Expert"],["Chacham","Sage"],["Talmid Chacham","Scholar"],["Ga’on","Torah genius"]],
+ he:[["תלמיד",""],["שואל",""],["למדן",""],["בקי",""],["חכם",""],["תלמיד חכם",""],["גאון",""]]};
+const BADGES=[
+ {id:"first",ic:"✦",t:{es:["Primer paso","Tu primera respuesta correcta"],en:["First step","Your first correct answer"],he:["צעד ראשון","תשובה נכונה ראשונה"]}},
+ {id:"aliyah",ic:"①",t:{es:["Aliyá completa","Responde todas las preguntas de un día"],en:["Full aliyah","Answer every question of one day"],he:["עלייה שלמה","ענית על כל שאלות היום"]}},
+ {id:"perfect",ic:"★",t:{es:["Día perfecto","10 de 10 en una aliyá"],en:["Perfect day","10 out of 10 in one aliyah"],he:["יום מושלם","10 מתוך 10 בעלייה"]}},
+ {id:"week",ic:"✡",t:{es:["Parashá completa","Termina todas las preguntas de una parashá"],en:["Whole parsha","Finish every question in a parsha"],he:["פרשה שלמה","סיימת את כל שאלות הפרשה"]}},
+ {id:"hard10",ic:"◆",t:{es:["Mefaresh","10 preguntas difíciles correctas"],en:["Mefaresh","10 hard questions right"],he:["מפרש","10 שאלות קשות נכונות"]}},
+ {id:"sharp",ic:"◎",t:{es:["Puntería","90% de aciertos en 30 respuestas o más"],en:["Sharp","90% right over 30+ answers"],he:["קולע","90% הצלחה ב־30 תשובות ומעלה"]}},
+ {id:"weeks3",ic:"Ⅲ",t:{es:["Constante","Completa 3 parashiot"],en:["Steady","Complete 3 parshiot"],he:["מתמיד","השלמת 3 פרשות"]}},
+ {id:"century",ic:"Ⅽ",t:{es:["Centenario","100 respuestas correctas"],en:["Century","100 correct answers"],he:["מאה","100 תשובות נכונות"]}}];
+function xpRank(xp){let r=0;while(r<RANKS.length-1&&xp>=RANKS[r+1])r++;return r}
+function myBadges(){const got=new Set();let correct=0,answered=0,hard=0,weeks=0;
+  for(const w of WEEKS){const a=ansOf(w.id),key=w.key||[],lv=w.lv||[],dy=w.dy,prc=(ST.weeks[w.id]||{}).printed;if(prc)continue;
+    const st=wstats(w);if(st.complete){got.add("week");weeks++}
+    for(const k in a){answered++;if(a[k]===key[k]){correct++;if(lv[k]===3)hard++}}
+    if(dy){for(let d=1;d<=7;d++){const ix=dy.map((x,i)=>x===d?i:-1).filter(i=>i>=0);if(!ix.length)continue;if(ix.every(i=>i in a)){got.add("aliyah");if(ix.every(i=>a[i]===key[i]))got.add("perfect")}}}
+    else if(st.complete){got.add("aliyah");if(st.correct===st.total)got.add("perfect")}}
+  if(correct>=1)got.add("first");if(hard>=10)got.add("hard10");if(answered>=30&&correct/answered>=.9)got.add("sharp");if(weeks>=3)got.add("weeks3");if(correct>=100)got.add("century");return got}
+const RKT={es:{lvl:"Nivel",next:n=>`Faltan ${n} puntos para el siguiente nivel`,top:"¡Llegaste al nivel más alto!",badges:"Insignias",up:"¡Subiste de nivel!",newB:"¡Nueva insignia!"},
+ en:{lvl:"Level",next:n=>`${n} more points to the next level`,top:"You reached the highest level!",badges:"Badges",up:"Level up!",newB:"New badge!"},
+ he:{lvl:"דרגה",next:n=>`עוד ${n} נקודות לדרגה הבאה`,top:"הגעת לדרגה הגבוהה ביותר!",badges:"תגים",up:"עלית דרגה!",newB:"תג חדש!"}};
+function rankCard(){const L=ST.lang,T=RKT[L]||RKT.es,xp=summary().total,r=xpRank(xp),N=(RANKN[L]||RANKN.es)[r],lo=RANKS[r],hi=RANKS[r+1],pct=hi?Math.round((xp-lo)/(hi-lo)*100):100,B=myBadges();
+  return `<div class="rankc"><div class="rk-top"><span class="rk-badge">${r+1}</span><div><div class="rk-name">${esc(N[0])}</div>${N[1]?`<div class="rk-sub">${esc(N[1])}</div>`:""}</div><span class="rk-xp">${xp} ${U().lbPts.toLowerCase()}</span></div>
+   <div class="rk-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><div class="rk-next">${hi?T.next(hi-xp):T.top}</div></div>
+   <h3 class="bh">${T.badges} · ${B.size}/${BADGES.length}</h3><div class="badges">${BADGES.map(b=>{const t=b.t[L]||b.t.es,on=B.has(b.id);return `<div class="bdg ${on?"on":""}" title="${esc(t[1])}"><span class="bi" aria-hidden="true">${on?b.ic:"🔒"}</span><span class="bn">${esc(t[0])}</span><span class="bd">${esc(t[1])}</span></div>`}).join("")}</div>`}
+let lastRank=null,lastBadges=null;
+function checkLevelUp(){if(isKids()||!WEEKS.length)return;const r=xpRank(summary().total),B=myBadges(),T=RKT[ST.lang]||RKT.es;
+  if(lastRank!==null&&r>lastRank){toast(`${T.up} ${(RANKN[ST.lang]||RANKN.es)[r][0]}`);setTimeout(()=>sfx("level"),600)}
+  else if(lastBadges!==null){for(const id of B)if(!lastBadges.has(id)){const b=BADGES.find(x=>x.id===id);toast(`${T.newB} ${b.ic} ${(b.t[ST.lang]||b.t.es)[0]}`);setTimeout(()=>sfx("level"),600);break}}
+  lastRank=r;lastBadges=B}
+function toast(msg){let t=$("toast");if(!t){t=document.createElement("div");t.id="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2600)}
+function persist(){lsSet();if(DEMO){try{const sm=summary(),kt=kTotals();uid="demo-me";scores[myId()]={name:dispName(ST.first||ST.name,ST.last,isKids()),username:ST.user||"",kids:isKids(),stars:kt.stars,points:sm.total,completed:sm.completed,rank:xpRank(sm.total),badges:myBadges().size,weeks:{demo:{points:(sm.weeks.demo||{}).points||0,correct:(sm.weeks.demo||{}).correct||0}}}}catch(e){}return}if(!myRef||!canWrite)return;if(!WEEKS.length){needSync=true;return}const own=buildBody();let body,subs={};
+  if(PROF.active==="p0")body=own;else{body=withSnap(PROF.list.p0||{},buildBody);subs[PROF.active]=own}
+  for(const pid in PROF.list){if(pid==="p0"||pid===PROF.active)continue;const sn=PROF.list[pid];if(!sn||!sn.onboarded)continue;subs[pid]=withSnap(sn,buildBody)}
+  if(subs[PROF.active]&&!ST.onboarded)delete subs[PROF.active];body.subs=subs;
+  saveChain=saveChain.then(()=>myRef.set(body)).catch(e=>{if(e&&e.code==="invalid_argument"){canWrite=false;renderNotes()}});}
+function persistNow(){persist();return saveChain.catch(()=>{})}
+function withSnap(sn,fn){const ks=["weeks","name","first","last","user","age","lang","sound"],keep={};ks.forEach(k=>keep[k]=ST[k]);try{ST.weeks=sn.weeks||{};ST.name=sn.name||"";ST.first=sn.first||"";ST.last=sn.last||"";ST.user=sn.user||"";ST.age=typeof sn.age==="number"?(sn.age<13?8:13):null;if(sn.lang)ST.lang=sn.lang;return fn()}finally{ks.forEach(k=>ST[k]=keep[k])}}
+function buildBody(){const sm=summary();
+  const kt=kTotals(),_xp=summary().total;const body={sound:!!ST.sound,rank:xpRank(_xp),badges:myBadges().size,name:dispName(ST.first||ST.name,ST.last,isKids()).slice(0,40),username:ST.user||"",lang:ST.lang,kids:isKids(),age:ST.age,stars:kt.stars,points:sm.total,completed:sm.completed,correct:sm.correct,answered:sm.answered,updated:Date.now(),weeks:{}};
+  for(const id in ST.weeks){const ka=ST.weeks[id].kans||{};const s=sm.weeks[id]||((ST.weeks[id].printed||Object.keys(ka).length||Object.keys(ST.weeks[id].kst||{}).length)?{points:0,correct:0,answered:0,complete:false}:null);if(!s)continue;body.weeks[id]={answers:{...ST.weeks[id].answers},kans:{...ka},kst:{...(ST.weeks[id].kst||{})},kdone:!!ST.weeks[id].kdone,kprinted:!!ST.weeks[id].kprinted,printed:!!ST.weeks[id].printed,qf:{...(ST.weeks[id].qf||{})},kf:{...(ST.weeks[id].kf||{})},kmig:!!ST.weeks[id].kmig,points:s.points,correct:s.correct,answered:s.answered,complete:s.complete}}
+  return body}
+
+/* ---------- rendering ---------- */
+function renderChrome(){const u=U();{const hn=$("hname");if(hn){const n=ST.onboarded?safeName(dispName(ST.first||ST.name,ST.last,isKids())):"";hn.textContent=n;$("gear").classList.toggle("named",!!n)}}setTimeout(renderDays,0);document.documentElement.lang=ST.lang;document.documentElement.dir=u.dir;
+  document.querySelectorAll(".langs button").forEach(b=>b.classList.toggle("on",b.dataset.l===ST.lang));
+  document.querySelectorAll(".gbtn .gl").forEach(x=>x.textContent=(GT[ST.lang]||GT.es).nav);document.querySelectorAll("nav button[data-v]").forEach(b=>{b.querySelector(".lb").textContent=u.nav[b.dataset.v];b.classList.toggle("on",b.dataset.v===ST.view)});
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+ST.view));document.body.classList.toggle("quizmode",ST.view==="quiz");
+  $("scorebar").style.display=ST.view==="quiz"&&W?"flex":"none";
+  $("h1").textContent=u.app;document.title=W?`${u.app}: ${wName(W)}`:u.app;
+  $("heb").textContent=W?W.heb:"";$("sub").innerHTML=W?u.sub(W.Q.length,esc(W.range))+" "+u.pointsRule:"";
+  const sel=$("week");sel.innerHTML=WEEKS.map(w=>`<option value="${esc(w.id)}">${esc(wName(w))}${w.id===currentId?" ★":""}</option>`).join("");if(W)sel.value=W.id;sel.style.display=WEEKS.length?"":"none";
+  $("lvl").innerHTML=["prog","1","2","3","all"].map(k=>`<option value="${k}">${u.lvlLabel}: ${k==="prog"?u.prog:k==="all"?u.all:u.lv[+k]}</option>`).join("");$("lvl").value=ST.level||"prog";$("curTag").textContent=u.cur;$("curTag").style.display="none";
+  $("lp").textContent="pts";$("la").textContent=u.ans;$("doPrint").textContent=u.print;$("prNote").textContent=u.prNote;}
+function ansOf(id){return (ST.weeks[id]||{}).answers||{}}
+function unlockedLv(){const a=ansOf(W.id),lv=lvOf(W),ix=hasDays(W)?dayIdx(W,curDay()):lv.map((_,i)=>i);let L=1;while(L<3&&ix.every(i=>lv[i]!==L||(i in a)))L++;return L}
+/* progressive mode: each day is split into sets of ~10 that mix levels and get harder (easy → medium → hard).
+   Set 1 takes the first 40% of the day's easy, 30% of medium, 30% of hard; set 2 the next slice; set 3 the rest. */
+const PB={1:[0,.4,.7,1],2:[0,.3,.7,1],3:[0,.3,.6,1]};
+function baseIdx(){if(hasDays(W)){const o=openDay(W);return o<1?[]:dayIdx(W,curDay())}return W.Q.map((q,i)=>i)}
+function progSets(){const lv=lvOf(W),ix=baseIdx(),out=[[],[],[]];for(const L of [1,2,3]){const li=ix.filter(i=>lv[i]===L),n=li.length;for(let j=0;j<3;j++)out[j].push(...li.slice(Math.floor(n*PB[L][j]),Math.floor(n*PB[L][j+1])))}return out.filter(x=>x.length)}
+function dkey(){return W.id+(hasDays(W)?":d"+curDay():"")}
+function curSet(){const S=progSets(),a=ansOf(W.id);ST.pset=ST.pset||{};const k=dkey();let j=ST.pset[k];if(!(j>=0&&j<S.length)){j=S.findIndex(x=>x.some(i=>!(i in a)));if(j<0)j=S.length-1;if(j<0)j=0;ST.pset[k]=j}return j}
+function seq(){const lv=lvOf(W),m=ST.level||"prog";let idx=W.Q.map((q,i)=>i);if(hasDays(W)){const o=openDay(W);idx=o<1?[]:dayIdx(W,curDay())}
+  if(m==="1"||m==="2"||m==="3")return idx.filter(i=>lv[i]===+m);
+  if(m==="prog"){const S=progSets();return (S[curSet()]||[]).slice()}
+  return idx}
+function pkey(){const m=ST.level||"prog";return W.id+":"+m+(hasDays(W)?":d"+curDay():"")+(m==="prog"?":s"+curSet():"")}
+function firstOpen(after){const S=seq(),a=ansOf(W.id);for(let k=0;k<S.length;k++){const j=(after+1+k)%S.length;if(!(S[j] in a))return j}return -1}
+function posOf(){const S=seq(),a=ansOf(W.id);let p=ST.pos[pkey()];if(p==null){p=0;while(p<S.length&&(S[p] in a))p++}if(p>=S.length&&S.some(q=>!(q in a))){p=S.findIndex(q=>!(q in a))}return Math.max(0,Math.min(S.length,p))}
+function lvName(d){return U().lv[d]}
+function renderQuiz(anim){ttsStop();const u=U(),box=$("quiz");if(!W){box.innerHTML=`<div class="empty">${u.empty}</div>`;return}
+  const S=seq(),n=S.length,a=ansOf(W.id),p=posOf();ST.pos[pkey()]=p;const L=ST.lang==="he"?"אבגד":"ABCD";let card;
+  if(hasDays(W)&&openDay(W)<1){box.innerHTML=`<div class="empty">${DL().soon}</div>`;return}
+  if(p===n&&hasDays(W)&&n){const key=W.key||W.Q.map(q=>q.a),c=S.filter(i=>a[i]===key[i]).length,cd=curDay(),more=cd<openDay(W),r=c/n;
+    const lm=ST.level||"prog",one1=lm==="1"||lm==="2"||lm==="3",allDone=dayDone(W,cd),pmore=lm==="prog"&&curSet()<progSets().length-1;card=`<div class="face endcard"><div class="endbig">${c} / ${n}</div><div class="endpts">${esc(DL().al(cd))}${one1?" · "+lvName(+lm):lm==="prog"&&progSets().length>1?" · "+(curSet()+1)+" / "+progSets().length:""}</div><p>${allDone?DL().dayDone+" ":""}${u.m[r>=.85?2:r>=.5?1:0]}</p>
+      <div class="endbtns"><button class="btn gmis" id="goMission">${(GT[ST.lang]||GT.es).cta}</button>${one1&&+lm<3?`<button class="btn" id="nextLv">${NXL[ST.lang](lvName(+lm+1))}</button>`:""}${pmore?`<button class="btn" id="nextSet">${NX10[ST.lang]}</button>`:""}${more?`<button class="btn${one1&&+lm<3||pmore?" ghost":""}" id="nextDay">${DL().next}</button>`:`<button class="btn${one1&&+lm<3||pmore?" ghost":""}" id="toLb">${u.toLb}</button>`}</div></div>`}
+  else if(p===n){const s=wstats(W),m=ST.level||"prog",one=m==="1"||m==="2"||m==="3",b=one?s.by[+m]:null,left=S.filter(i=>!(i in a)).length;
+    const ratio=one?(b.t?b.c/b.t:0):(s.total?s.correct/s.total:0);
+    card=`<div class="face endcard"><div class="endbig">${one?b.c+" / "+b.t:s.correct+" / "+s.total}</div><div class="endpts">${one?lvName(+m)+" · ":""}${s.practice?u.practice:s.points+" "+u.lbPts.toLowerCase()}</div>
+      <p>${left?u.left(left):u.m[ratio>=.85?2:ratio>=.5?1:0]}</p>
+      <div class="endbtns">${left?`<button class="btn" id="goFirst">${u.cont}</button>`:`<button class="btn" id="toLb">${u.toLb}</button>`}${s.answered?`<button class="btn ghost" id="reset">${u.again}</button>`:""}</div></div>`}
+  else{const qi=S[p],x=W.Q[qi],t=T(x),done=qi in a,k=a[qi],showBack=done&&!ST.front,d=lvOf(W)[qi];SAY={q:sayQ(t),e:plain(t.o[x.a])+". "+plain(t.e)};
+    if(showBack){card=`<div class="face back">${ST.unlockMsg?`<div class="unlock">${ST.unlockMsg}</div>`:""}<div class="vrow"><div class="verdict ${k===x.a?"vok":"vbad"}">${k===x.a?u.ok+((ST.weeks[W.id]||{}).printed?"":" +"+LVW[d]):u.no}</div>${ttsBtn("e")}</div>
+        <div class="corr"><span class="l">${L[x.a]}</span>${t.o[x.a]}</div><div class="expl">${t.e}</div><div class="src">${u.src}: ${t.s}</div>
+        <div class="backbtns"><button class="link" id="toFront">${u.seeQ}</button><button class="btn" id="next2">${p===n-1?"★":u.next}</button></div></div>`}
+    else{const opts=t.o.map((o,i)=>`<button data-k="${i}" ${done?"disabled":""} class="${done&&i===x.a?"right":""} ${done&&i===k&&k!==x.a?"wrong":""}"><span class="l">${L[i]}</span>${o}</button>`).join("");
+      card=`<div class="face front"><div class="fhead"><span class="art sm">${ic(W,x.i)}</span><span class="num">${u.qn} ${p+1} / ${n}</span><span class="lvb l${d}">${lvName(d)}</span>${ttsBtn("q")}</div>
+        <p class="q">${t.q}</p>${x.v?`<div class="pasuk">${x.v.map(v=>`<p lang="he" dir="rtl">${v.t}</p><span class="ref" dir="rtl">${v.r}</span>`).join("")}</div>`:""}
+        <div class="opts ${t.o.every(o=>o.replace(/<[^>]+>/g,"").length<=48)?"grid2":""}">${opts}</div>${done?`<button class="link" id="toBack">${u.seeAns}</button>`:""}</div>`}}
+  box.innerHTML=`<div class="fc ${anim||""}">${card}</div>`;
+  $("prev").disabled=p===0;$("next").disabled=p>=n||(p===n-1&&firstOpen(p)<0&&false);
+  box.querySelectorAll(".opts button").forEach(b=>b.onclick=()=>pick(S[p],+b.dataset.k));
+  const on=(id,f)=>{const e=$(id);if(e)e.onclick=f};
+  on("next2",()=>go(p+1));on("toBack",()=>turn(false));on("toFront",()=>turn(true));
+  on("toLb",()=>{lbMode="week";setView("lb")});on("nextDay",()=>pickDay(curDay()+1));on("nextSet",()=>{ST.pset=ST.pset||{};ST.pset[dkey()]=curSet()+1;ST.front=false;renderQuiz("in-next");window.scrollTo({top:0})});on("nextLv",()=>{ST.level=String(+(ST.level)+1);const sl=$("lvl");if(sl)sl.value=ST.level;ST.front=false;ST.unlockMsg="";lsSet();renderQuiz("in-next");window.scrollTo({top:0})});on("goFirst",()=>{const a2=ansOf(W.id),S2=seq();let i=0;while(i<S2.length&&(S2[i] in a2))i++;go(i)});
+  on("reset",()=>{$("mq").textContent=u.confirm;$("my").textContent=u.yes;$("mn").textContent=u.cancel;$("modal").style.display="flex"});
+  fit();stats();}
+function turn(front){const f=document.querySelector(".fc");if(!f){ST.front=front;renderQuiz();return}f.classList.add("turn-out");setTimeout(()=>{ST.front=front;renderQuiz("turn-in")},170)}
+function go(i){if(!W)return;const n=seq().length;i=Math.max(0,Math.min(n,i));const old=posOf();if(i>=n){const f=firstOpen(old);if(f>=0)i=f}if(i===old)return;ST.pos[pkey()]=i;ST.front=true;ST.unlockMsg="";renderQuiz(i>old?"in-next":"in-prev");window.scrollTo({top:0})}
+function pick(qi,k){const w=ST.weeks[W.id]||(ST.weeks[W.id]={answers:{}});if(qi in w.answers)return;const before=unlockedLv();w.answers[qi]=k;w.qf=w.qf||{};w.qf[qi]=qfp(W.Q[qi]);ST.front=false;persist();
+  const after=unlockedLv();ST.unlockMsg="";
+  const x=W.Q[qi],st=weekStats(W,w.answers);sfx("tap");setTimeout(()=>sfx(k===x.a?"right":"wrong"),90);
+  if(st.complete)setTimeout(()=>sfx("done"),480);else if(ST.unlockMsg)setTimeout(()=>sfx("level"),480);
+  ST.front=false;renderQuiz("turn-in");setTimeout(checkLevelUp,350)}
+function fit(){const f=document.querySelector(".fc .face");if(!f)return;const r=f.getBoundingClientRect();const bn=(document.querySelector("body > nav")||{offsetHeight:70}).offsetHeight;const vh=(window.visualViewport&&visualViewport.height)||window.innerHeight;
+  f.style.minHeight=Math.max(300,vh-(r.top+window.scrollY)-bn-32)+"px"}
+window.addEventListener("resize",()=>{if(ST.view==="quiz")fit()});
+function navPad(){const n=document.querySelector(isKids()?".knav":"body > nav");if(n&&n.offsetHeight)document.documentElement.style.setProperty("--navh",n.getBoundingClientRect().height+"px")}
+function menuSet(open){const b=document.querySelector(isKids()?"#kMenu":"#mBtn");document.body.classList.toggle("mopen",!!open);document.querySelectorAll(".mbtn").forEach(x=>x.setAttribute("aria-expanded",open?"true":"false"));if(open&&b){document.documentElement.style.setProperty("--mtop",(b.getBoundingClientRect().bottom+8)+"px");const f=document.querySelector(isKids()?".knav button.on,.knav button":"nav button.on,nav button");if(f)setTimeout(()=>f.focus(),30)}}
+document.addEventListener("click",e=>{const t=e.target;if(t.closest&&t.closest(".mbtn")){menuSet(!document.body.classList.contains("mopen"));return}if(!document.body.classList.contains("mopen"))return;if(t.closest&&t.closest("nav button,.knav button")){setTimeout(()=>menuSet(false),0);return}if(!(t.closest&&t.closest("nav,.knav")))menuSet(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("mopen")){menuSet(false);const b=document.querySelector(isKids()?"#kMenu":"#mBtn");if(b)b.focus()}});
+window.addEventListener("scroll",()=>{if(document.body.classList.contains("mopen"))menuSet(false)},{passive:true});
+navPad();window.addEventListener("resize",navPad);if(window.visualViewport)visualViewport.addEventListener("resize",navPad);try{new ResizeObserver(navPad).observe(document.querySelector("body > nav"))}catch(e){}
+document.addEventListener("keydown",e=>{if(isKids()||ST.view!=="quiz"||!W||$("modal").style.display==="flex"||$("onb").style.display==="flex")return;if(e.target&&/INPUT|SELECT/.test(e.target.tagName))return;const rtl=ST.lang==="he";
+  if(e.key==="ArrowRight")go(posOf()+(rtl?-1:1));else if(e.key==="ArrowLeft")go(posOf()+(rtl?1:-1));
+  else if(/^[1-4]$/.test(e.key)){const S=seq(),p=posOf();if(p<S.length&&!(S[p] in ansOf(W.id)))pick(S[p],+e.key-1)}});
+(function(){let sx=null,sy=null;document.addEventListener("touchstart",e=>{if(isKids()||ST.view!=="quiz")return;const t=e.touches[0];sx=t.clientX;sy=t.clientY},{passive:true});
+  document.addEventListener("touchend",e=>{if(sx==null)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;sx=null;
+    if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*2){const rtl=ST.lang==="he";go(posOf()+((dx<0)!==rtl?1:-1))}},{passive:true})})();
+function stats(){if(!W)return;const s=wstats(W),S=seq(),a=ansOf(W.id),key=W.key||W.Q.map(q=>q.a);
+  let c=0,an=0;S.forEach(i=>{if(i in a){an++;if(a[i]===key[i])c++}});const n=S.length||1,p=Math.min(posOf(),n);
+  $("sc").textContent=s.practice?U().practice:s.points;$("tot").textContent=s.max;$("an").textContent=an+"/"+S.length;
+  $("pg").style.width=(c/n*100)+"%";$("prd").style.width=((an-c)/n*100)+"%";
+  $("pmk").style.insetInlineStart=`calc(${(p+.5)/n*100}% - 2px)`;$("pmk").style.display=p<S.length?"":"none";}
+function rows(mode){const list=[];for(const id in scores){const d=scores[id]||{};if(d.kids===true)continue;let p,wk;
+    if(mode==="week"){const x=d.weeks&&W&&d.weeks[W.id];if(!x)continue;p=Number(x.points)||0;wk=Number(x.correct)||0}else{p=Number(d.points)||0;wk=Number(d.completed)||0}
+    if(p<=0&&!(mode==="week"))continue;list.push({id,p,wk})}
+  list.sort((a,b)=>b.p-a.p||b.wk-a.wk);return list}
+function myRank(){const r=rows("total");const i=r.findIndex(x=>x.id===myId());return i<0?null:[i+1,r.length]}
+function renderDash(){const u=U(),v=$("v-dash"),sm=summary();
+  const acc=sm.answered?Math.round(sm.correct/sm.answered*100)+"%":"–";const rk=myRank();
+  let h=`<div class="note syncNote"></div>${rankCard()}<div class="stats">
+   <div class="stat"><div class="k">${u.dTotal}</div><div class="v">${sm.total}</div></div>
+   <div class="stat"><div class="k">${u.dWeeks}</div><div class="v">${sm.completed}</div><div class="s">${u.of} ${WEEKS.length}</div></div>
+   <div class="stat"><div class="k">${u.dAcc}</div><div class="v">${acc}</div><div class="s">${sm.correct}/${sm.answered}</div></div>
+   <div class="stat"><div class="k">${u.dRank}</div><div class="v">${rk?"#"+rk[0]:"–"}</div><div class="s">${rk?u.of+" "+rk[1]:""}</div></div></div>
+   `;
+  const LB={1:{c:0,a:0},2:{c:0,a:0},3:{c:0,a:0}};for(const w of WEEKS){const st=wstats(w);for(const d of [1,2,3]){LB[d].c+=st.by[d].c;LB[d].a+=st.by[d].a}}
+  h+=`<div class="panel" style="margin-bottom:12px"><h2 class="sec">${u.byLevel}</h2>`+[1,2,3].map(d=>`<div class="wk" style="cursor:default"><span class="nm"><span class="lvb l${d}">${u.lv[d]}</span></span><span class="track"><i style="width:${LB[d].a?LB[d].c/LB[d].a*100:0}%"></i></span><span class="pt">${LB[d].a?Math.round(LB[d].c/LB[d].a*100)+"%":"–"} · ${LB[d].c}/${LB[d].a}</span></div>`).join("")+`</div>`;
+  h+=`<div class="panel"><h2 class="sec">${u.dHist}</h2>`;
+  if(!WEEKS.length)h+=`<div class="empty">${u.empty}</div>`;
+  for(const w of [...WEEKS].reverse()){const s=wstats(w);
+    h+=`<div class="wk" data-w="${esc(w.id)}"><span class="nm">${esc(wName(w))}${w.id===currentId?" ★":""}</span><span class="track"><u style="width:${s.answered/s.total*100}%"></u><i style="width:${s.correct/s.total*100}%"></i></span><span class="pt">${s.practice?u.practice:s.points} · ${s.correct}/${s.total}</span></div>`}
+  h+=`</div>`;v.innerHTML=h;v.querySelectorAll(".wk").forEach(e=>e.onclick=()=>{setWeek(e.dataset.w);setView("quiz")});renderNotes();}
+async function renderLb(){const u=U(),v=$("v-lb"),r=rows(lbMode);
+  let h=`<div class="note syncNote"></div><div class="tabs"><button data-m="total" class="${lbMode==="total"?"on":""}">${u.lbTotal}</button><button data-m="week" class="${lbMode==="week"?"on":""}">${u.lbWeek}${W?": "+esc(wName(W)):""}</button></div>`;
+  if(!r.length)h+=`<div class="empty">${u.lbEmpty}</div>`;
+  else{h+=`<table class="lb"><tr><th>#</th><th>${u.lbName}</th><th class="n">${u.lbPts}</th><th class="n">${lbMode==="week"?"✓":u.lbWk}</th></tr>`;
+    r.slice(0,100).forEach((x,i)=>{h+=`<tr class="${x.id===myId()?"me":""}"><td><span class="medal ${i<3?"m"+(i+1):""}">${i+1}</span></td><td class="nm" data-id="${esc(x.id)}"></td><td class="n">${x.p}</td><td class="n">${x.wk}</td></tr>`});h+="</table>"}
+  v.innerHTML=h;v.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{lbMode=b.dataset.m;renderLb()});renderNotes();
+  const fill=ps=>v.querySelectorAll("td.nm").forEach(td=>{td.textContent="";const id=td.dataset.id,p=ps[id];const own=scores[id]&&typeof scores[id].name==="string"?maskName(safeName(scores[id].name)):"";td.textContent=(own||maskName(safeName(p&&p.name))||u.someone)+(id===myId()?" "+u.you:"");const un=scores[id]&&typeof scores[id].username==="string"?maskUser(safeName(scores[id].username)):"";const rr=scores[id]&&Number.isInteger(scores[id].rank)?Math.max(0,Math.min(6,scores[id].rank)):null;if(rr!==null){const sp=document.createElement("span");sp.className="lbrk";sp.textContent=(RANKN[ST.lang]||RANKN.es)[rr][0];td.appendChild(sp)}if(un){const sm=document.createElement("small");sm.className="un";sm.textContent="@"+un;td.appendChild(sm)}});
+  fill({});/* names stored with each score show right away; account names (only for real account ids) fill in if they arrive */
+  const ids=r.slice(0,100).map(x=>x.id).filter(id=>id.indexOf("~")<0);if(user&&user.profiles&&ids.length){try{const ps=await Promise.race([user.profiles(ids),sleep(2500).then(()=>null)]);if(ps&&v.isConnected)fill(ps)}catch(e){}}}
+const DEMON={es:"Modo demo: preguntas y clasificación de prueba. Tu progreso aquí no se guarda en tu cuenta ni cuenta en la clasificación real.",en:"Demo mode: test questions and a sample leaderboard. Progress here isn’t saved to your account or the real leaderboard.",he:"מצב הדגמה: שאלות וטבלה לדוגמה. ההתקדמות כאן לא נשמרת בחשבון ולא נספרת בטבלה האמיתית."};
+function renderNotes(){document.querySelectorAll(".syncNote").forEach(n=>n.textContent=DEMO?(DEMON[ST.lang]||DEMON.es):myRef&&canWrite?U().syncing:U().localOnly)}
+function sheetHTML(w,lang,withAns){const u=UI[lang],dir=u.dir,LL=lang==="he"?"אבגד":"ABCD";
+  const lvA=lvOf(w);let num=0;const DY=dayArr(w),GK=DY?[1,2,3,4,5,6,7]:[1,2,3],GO=DY||lvA;const cards=GK.map(d=>{const qs=w.Q.map((x,i)=>[x,i]).filter(([x,i])=>GO[i]===d);if(!qs.length)return "";return `<h2 class="lvh">${DY?esc((DAYL[lang]||DAYL.es).al(d)):u.lv[d]} · ${qs.length}</h2>`+qs.map(([x])=>{const n=num++;const t=x.t[lang]||x.t.es;return `<div class="c"><div class="h"><span class="ic">${ic(w,x.i)}</span><div><div class="n">${u.qn} ${n+1}</div><div class="q">${t.q}</div></div></div>${x.v?`<div class="p">${x.v.map(v=>`<div dir="rtl">${v.t}</div><div class="r" dir="rtl">${v.r}</div>`).join("")}</div>`:""}${withAns?`<div class="a"><b>${t.o[x.a]}.</b> ${t.e}<div class="s">${u.src}: ${t.s}</div></div>`:`<div class="o">${t.o.map((o,j)=>`<div>${LL[j]}. ${o}</div>`).join("")}</div>`}</div>`}).join("")}).join("");
+  return `<!DOCTYPE html><html lang="${lang}" dir="${dir}"><head><meta charset="utf-8"><title>${esc(u.app)}: ${esc(w.name[lang]||w.name.es)}</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>@page{size:letter;margin:10mm}*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-family:Inter,sans-serif;color:#000;margin:0;padding:10mm}
+@media print{body{padding:0}}h1{font-family:"Frank Ruhl Libre",serif;font-size:17pt;margin:0}.hb{float:${dir==="rtl"?"left":"right"};font-family:"Frank Ruhl Libre",serif;font-size:12pt}
+.sub{font-size:8.5pt;color:#333;border-bottom:1.2pt solid #000;padding-bottom:4pt;margin:1pt 0 6pt}.cols{column-count:2;column-gap:14pt;column-rule:.5pt solid #ddd}
+.c{border-bottom:.5pt solid #ccc;padding:4pt 0 5pt}.h{display:flex;gap:6pt;break-after:avoid;break-inside:avoid}.ic{flex:0 0 22pt;height:22pt;border:.6pt solid #999;border-radius:4pt;display:flex;align-items:center;justify-content:center}
+.ic svg{width:17pt;height:17pt}.ic svg *{stroke:#4a3b1c!important}.ic svg [fill="#f3dfb0"],.ic svg text{fill:#4a3b1c!important}.n{font-size:6.8pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.q{font-family:"Frank Ruhl Libre",serif;font-size:9.6pt;line-height:1.3}.p{margin:3pt 0 0;padding:2pt 6pt;border:.5pt dashed #bbb;border-radius:3pt;font-family:"Frank Ruhl Libre",serif;font-size:10.8pt;line-height:1.45;text-align:right;break-after:avoid}
+.p>div{break-inside:avoid}.r{font-size:7pt;color:#555}.a{margin:3pt 0 0;padding:3pt 6pt;border-${dir==="rtl"?"right":"left"}:1.2pt solid #b08a3e;background:#faf6ec;font-size:8.3pt;line-height:1.35;orphans:3;widows:3}
+.s{font-size:7.3pt;color:#555;margin-top:1pt}.o{margin:3pt 0 0;font-size:8.6pt;line-height:1.35}.o div{padding-inline-start:4pt}.lvh{column-span:all;font-family:"Frank Ruhl Libre",serif;font-size:12.5pt;margin:8pt 0 2pt;padding:2pt 6pt;background:#efe2ca;border-radius:3pt;break-after:avoid}bdi{font-family:"Frank Ruhl Libre",serif}</style></head>
+<body><span class="hb">${w.heb}</span><h1>${esc(u.app)}: ${esc(w.name[lang]||w.name.es)}</h1><div class="sub">${u.sub(w.Q.length,esc(w.range))}</div><div class="cols">${cards}</div>
+<script>window.addEventListener("load",()=>setTimeout(()=>{try{window.print()}catch(e){}},600))<\/script></body></html>`}
+let prMode="q";
+function renderPrint(){const box=$("printSheet");document.querySelectorAll(".prm button").forEach(b=>{b.textContent=b.dataset.pm==="q"?PRT[ST.lang].q:PRT[ST.lang].a;b.classList.toggle("on",b.dataset.pm===prMode)});$("prNote").textContent=prMode==="q"?PRT[ST.lang].qNote:U().prNote;if(!W){box.innerHTML=`<div class="empty">${U().empty}</div>`;return}const u=U(),lvA=lvOf(W),LL=ST.lang==="he"?"אבגד":"ABCD";let num=0;
+  const DY=dayArr(W),GK=DY?[1,2,3,4,5,6,7]:[1,2,3],GO=DY||lvA;box.innerHTML=GK.map(d=>{const qs=W.Q.map((x,i)=>[x,i]).filter(([x,i])=>GO[i]===d);if(!qs.length)return "";return `<h2 class="sec">${DY?esc(DL().al(d)):`<span class="lvb l${d}">${u.lv[d]}</span>`} · ${qs.length}</h2>`+qs.map(([x])=>{const n=num++;const t=T(x);return `<div class="card"><div class="top"><div class="art">${ic(W,x.i)}</div><div><div class="num">${u.qn} ${n+1}</div><p class="q">${t.q}</p></div></div>${x.v?`<div class="pasuk">${x.v.map(v=>`<p lang="he" dir="rtl">${v.t}</p><span class="ref" dir="rtl">${v.r}</span>`).join("")}</div>`:""}${prMode==="a"?`<div class="ans show"><b>${t.o[x.a]}.</b> ${t.e}<span class="src">${u.src}: ${t.s}</span></div>`:`<div class="popts">${t.o.map((o,j)=>`<span><i>${LL[j]}</i>${o}</span>`).join("")}</div>`}</div>`}).join("")}).join("");}
+function renderAll(){document.body.classList.toggle("kids",isKids());if(isKids()){renderKids();return}renderChrome();renderQuiz();if(ST.view==="dash")renderDash();if(ST.view==="lb")renderLb();if(ST.view==="print")renderPrint();}
+function setView(v){if(v===ST.view&&$("v-"+v)&&$("v-"+v).classList.contains("on")){window.scrollTo({top:0,behavior:"smooth"});return}ttsStop();ST.view=v;renderChrome();if(v==="dash")renderDash();if(v==="lb")renderLb();if(v==="print")renderPrint();if(v==="quiz")renderQuiz();window.scrollTo({top:0})}
+/* answers are keyed by position; a fingerprint of each answered question's text lets us
+   detect when a week file is edited or reordered, and move (or drop) stale answers */
+function qfp(x){const t=((x&&x.t&&(x.t.es||x.t.en))||{}).q||"";let h=0;for(let i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))|0;return (h>>>0).toString(36)}
+/* weeks whose kids questions were reordered: old answers saved without a fingerprint are dropped once */
+const KMIG={"vayishlach-5787":{n:70}};
+function fixMap(list,ans,fps,extra,mig){const out={},ofp={},oex={};const byfp={};list.forEach((x,i)=>{const f=qfp(x);(byfp[f]=byfp[f]||[]).push(i)});
+  for(const k in ans){let i=+k,f=fps&&fps[k];
+    if(f){if(!list[i]||qfp(list[i])!==f){const c=byfp[f]||[];i=c.find(j=>!(j in out));if(i==null)continue}}
+    else if(mig)continue
+    if(!list[i]||(i in out))continue;out[i]=ans[k];ofp[i]=qfp(list[i]);if(extra&&extra[k])oex[i]=1}
+  return {a:out,f:ofp,x:oex}}
+function fixRec(w){const r=ST.weeks[w.id];if(!r)return false;const b=JSON.stringify([r.answers,r.kans,r.kst,r.qf,r.kf]);
+  if(w.Q){const m=fixMap(w.Q,r.answers||{},r.qf,null,null);r.answers=m.a;r.qf=m.f}
+  if(w.K){const mg=KMIG[w.id];const legacy=mg&&w.K.length===mg.n&&!r.kmig?mg:null;const m=fixMap(w.K,r.kans||{},r.kf,r.kst||{},legacy);r.kans=m.a;r.kf=m.f;r.kst=m.x;r.kmig=1;
+    if(legacy){for(const k in ST.kpos)if(k.indexOf(w.id)===0)delete ST.kpos[k]}}
+  return JSON.stringify([r.answers,r.kans,r.kst,r.qf,r.kf])!==b}
+async function loadWeek(id){if(FULL[id])return FULL[id];const r=await fetch("weeks/"+encodeURIComponent(id)+".json");if(!r.ok)throw new Error("load");const d=await r.json();const meta=WEEKS.find(w=>w.id===id)||{};FULL[id]={...d,...meta,Q:d.Q,K:d.K,icons:d.icons};if(fixRec(FULL[id])){lsSet();setTimeout(()=>persist(),0)}return FULL[id]}
+async function setWeek(id){try{W=await loadWeek(id)}catch(e){}renderAll()}
+
+function guessLang(){const ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(x=>String(x).toLowerCase());
+  let tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}
+  if(tz==="Asia/Jerusalem"||ls[0].startsWith("he")||ls[0].startsWith("iw"))return "he";
+  if(ls[0].startsWith("es"))return "es";if(ls[0].startsWith("en"))return "en";
+  if(/^America\/(Mexico|Monterrey|Merida|Cancun|Chihuahua|Tijuana|Hermosillo|Mazatlan|Bogota|Lima|Santiago|Argentina|Buenos_Aires|Caracas|Montevideo|Asuncion|La_Paz|Guayaquil|Panama|Costa_Rica|Guatemala|El_Salvador|Tegucigalpa|Managua|Havana|Santo_Domingo|Puerto_Rico)/.test(tz)||tz==="Europe/Madrid")return "es";
+  for(const l of ls){const b=l.slice(0,2);if(b==="he"||b==="iw")return "he";if(b==="es")return "es";if(b==="en")return "en"}return "en"}
+let oLang="es",oAge=null;
+let LOGO0=null;function onbTheme(){const o=$("onb"),kid=ST.onboarded&&oAge!=null&&oAge<13;o.classList.toggle("first",!ST.onboarded);o.classList.toggle("kid",kid);
+  const lg=o.querySelector(".logo.big");if(LOGO0==null)LOGO0=lg.innerHTML;const want=kid?sheepSVG(56):LOGO0;if(lg.dataset.k!==String(kid)){lg.innerHTML=want;lg.dataset.k=String(kid)}}
+function openOnb(){const u=UI[oLang];$("oTitle").textContent=ST.onboarded?u.settings:u.welcome;$("oNameL").textContent=NM[oLang].ask;$("oNote").classList.remove("oneed");$("oName").placeholder=NM[oLang].first;$("oLast").placeholder=NM[oLang].last;userPreview();$("oNote").textContent=u.nameNote;
+  $("oLangL").textContent=u.askLang;renderProfiles();$("oTour").textContent=(IT[oLang]||IT.es).tour;$("oSndL").textContent=SND[oLang].t;document.querySelectorAll(".osnd button").forEach(b=>{b.textContent=b.dataset.snd==="1"?SND[oLang].on:SND[oLang].off;b.classList.toggle("on",(b.dataset.snd==="1")===!!ST.sound)});const ku=KU[oLang];if(oAge!=null&&oAge<13)$("oNote").textContent=ku.kidName;$("oAgeL").textContent=ku.askAge;document.querySelectorAll("#oAges .oat").forEach(e=>e.textContent=e.dataset.t==="kid"?ku.kidL:ku.adultL);$("oAgeN").textContent=ku.ageNote;$("oAgeN").classList.remove("oneed");document.querySelectorAll("#oAges button").forEach(b=>b.classList.toggle("on",oAge!=null&&((+b.dataset.age<13)===(oAge<13))));onbTheme();$("oX").style.display=ST.onboarded?"flex":"none";$("oCancel").style.display=ST.onboarded?"block":"none";$("oCancel").textContent=u.cancel;$("oGo").textContent=ST.onboarded?u.save:u.start;document.querySelectorAll(".olangs:not(.osnd) button").forEach(b=>b.classList.toggle("on",b.dataset.ol===oLang));
+  $("onb").setAttribute("dir",u.dir);$("onb").style.display="flex";}
+document.querySelectorAll(".olangs:not(.osnd) button").forEach(b=>b.onclick=()=>{oLang=b.dataset.ol;openOnb()});
+document.querySelectorAll(".osnd button").forEach(b=>b.onclick=()=>{ST.sound=b.dataset.snd==="1";lsSet();document.querySelectorAll(".osnd button").forEach(x=>x.classList.toggle("on",x===b));if(ST.sound)sfx("right")});
+document.querySelectorAll("#oAges button").forEach(b=>b.onclick=()=>{oAge=+b.dataset.age;document.querySelectorAll("#oAges button").forEach(x=>x.classList.toggle("on",x===b));$("oAgeN").textContent=KU[oLang].ageNote;$("oAgeN").classList.remove("oneed");$("oNote").textContent=oAge<13?KU[oLang].kidName:UI[oLang].nameNote;onbTheme();
+  if(ST.onboarded&&ST.age!==oAge){const was=isKids();ST.age=oAge;if(was!==isKids()){ST.kview="play";ST.view="quiz";ST.kshow=false}renderAll();persist()}});
+$("oGo").onclick=()=>{if(oAge==null){const g=$("oAges");g.classList.remove("need");void g.offsetWidth;g.classList.add("need");$("oAgeN").textContent=KU[oLang].ageNeed;$("oAgeN").classList.add("oneed");return}
+  const fn=cap($("oName").value.trim().replace(/\s+/g," ").slice(0,30)),ln=cap($("oLast").value.trim().replace(/\s+/g," ").slice(0,30));
+  const bad=(msg,el)=>{$("oNote").textContent=msg;$("oNote").classList.add("oneed");el.focus()};
+  if(!fn||slugPart(fn).length<2)return bad(NM[oLang].needFirst,$("oName"));if(!ln||slugPart(ln).length<1)return bad(NM[oLang].needLast,$("oLast"));
+  if(badName(fn)||badName(ln)||badName(fn+ln))return bad(KU[oLang].badName,badName(fn)?$("oName"):$("oLast"));
+  const wasKids=isKids();ST.first=fn;ST.last=ln;ST.name=fn+" "+ln;ST.user=makeUser(fn,ln,oAge<13);ST.lang=oLang;ST.age=oAge;ST.onboarded=true;if(wasKids!==isKids()){ST.kview="play";ST.view="quiz"}window.__mustFinish=false;$("onb").style.display="none";renderAll();persist();window.scrollTo({top:0})};
+$("oName").onkeydown=$("oLast").onkeydown=e=>{if(e.key==="Enter")$("oGo").click()};
+$("oName").oninput=$("oLast").oninput=()=>{if($("oNote").classList.contains("oneed")){$("oNote").classList.remove("oneed");$("oNote").textContent=oAge!=null&&oAge<13?KU[oLang].kidName:UI[oLang].nameNote}userPreview()};
+function userPreview(){const f=$("oName").value,l=$("oLast").value;$("oUser").textContent=slugPart(f).length>=2&&slugPart(l).length>=1?NM[oLang].user+" \u2066@"+makeUser(f,l,oAge!=null&&oAge<13)+"\u2069":""}
+function closeOnb(){if(!ST.onboarded||window.__mustFinish)return;$("onb").style.display="none"}
+$("oX").onclick=closeOnb;$("oCancel").onclick=closeOnb;
+$("onb").addEventListener("click",e=>{if(e.target===$("onb"))closeOnb()});
+$("modal").addEventListener("click",e=>{if(e.target===$("modal"))$("modal").style.display="none"});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeOnb();$("modal").style.display="none"}});
+$("gear").onclick=()=>{oLang=ST.lang;oAge=ST.age;$("oName").value=ST.first||ST.name||"";$("oLast").value=ST.last||"";openOnb()};
+/* ---------- events ---------- */
+document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>{if(ST.lang===b.dataset.l)return;ST.lang=b.dataset.l;renderAll();persist()});
+document.querySelectorAll("nav button[data-v]").forEach(b=>b.onclick=()=>{const v=b.dataset.v;
+  if(v==="print")prMode="q";setView(v)});
+document.querySelectorAll(".prm button").forEach(b=>b.onclick=()=>{const m=b.dataset.pm;if(m===prMode)return;
+  if(m==="a"&&W){const rec=ST.weeks[W.id]||{},st=weekStats(W,rec.answers);
+    if(!rec.printed&&!st.complete){const u=U();$("mq").innerHTML=`<b>${u.prWarnT}</b><br>${u.prWarn}`;$("my").textContent=u.prGo;$("mn").textContent=u.cancel;
+      modalAct=()=>{(ST.weeks[W.id]||(ST.weeks[W.id]={answers:{}})).printed=true;persist();prMode="a";renderPrint()};$("modal").style.display="flex";return}}
+  prMode=m;renderPrint()});
+$("week").onchange=e=>setWeek(e.target.value);
+$("lvl").onchange=e=>{ST.level=e.target.value;ST.front=false;ST.unlockMsg="";lsSet();renderQuiz();if(ST.view==="print")renderPrint()};
+$("prev").onclick=()=>go(posOf()-1);$("next").onclick=()=>go(posOf()+1);
+$("pbar").onclick=e=>{if(!W||ST.view!=="quiz")return;const r=e.currentTarget.getBoundingClientRect();let f=(e.clientX-r.left)/r.width;if(ST.lang==="he")f=1-f;go(Math.floor(Math.max(0,Math.min(.999,f))*W.Q.length))};
+$("mn").onclick=()=>{modalAct=null;$("modal").style.display="none"};
+let modalAct=null;
+$("my").onclick=()=>{if(modalAct){$("modal").style.display="none";const f=modalAct;modalAct=null;f();return}$("modal").style.display="none";if(W){const pr=!!(ST.weeks[W.id]||{}).printed;ST.weeks[W.id]={answers:{},printed:pr};for(const k in ST.pos)if(k.startsWith(W.id+":"))delete ST.pos[k];persist();renderQuiz()}};
+$("doPrint").onclick=async()=>{if(!W)return;const ok=await downloadSheet(W,ST.lang,prMode==="a"?"a":"q",()=>sheetHTML(W,ST.lang,prMode==="a"),$("doPrint"));if(!ok)$("prNote").textContent=U().prFail};
+
+
+/* ---------- PDF downloads: pre-made PDFs live in weeks/pdf/<id>-<lang>-<kind>.pdf ---------- */
+async function saveBlob(blob,fn){try{const dl=window.claude&&await window.claude.use("downloads");if(dl){await dl.save({filename:fn,data:blob});return true}}catch(e){if(e&&e.code==="declined")return true}
+  try{const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);return true}catch(e){return false}}
+async function downloadSheet(w,lang,kind,htmlFallback,btn){const fn=`${(w.name.en||w.id).replace(/[^\w-]+/g,"-")}-${lang}-${{q:"questions",a:"answers",kq:"kids",ka:"kids-answers"}[kind]}.pdf`;
+  const old=btn&&btn.textContent;if(btn){btn.disabled=true;btn.textContent="…"}
+  try{const r=await fetch(`weeks/pdf/${w.id}-${lang}-${kind}.pdf`);if(r.ok){const b=await r.blob();if(b.size>500){await saveBlob(new Blob([b],{type:"application/pdf"}),fn);return true}}}catch(e){}
+  finally{if(btn){btn.disabled=false;btn.textContent=old}}
+  return saveBlob(new Blob([htmlFallback()],{type:"text/html"}),fn.replace(/\.pdf$/,".html"))}
+const PRT={es:{q:"Solo preguntas",a:"Con respuestas",qNote:"Se descarga un PDF a dos columnas solo con las preguntas y sus opciones. No afecta tus puntos."},
+ en:{q:"Questions only",a:"With answers",qNote:"Downloads a two-column PDF with just the questions and options. It doesn’t affect your points."},
+ he:{q:"שאלות בלבד",a:"עם תשובות",qNote:"יורד קובץ PDF בשני טורים עם השאלות והאפשרויות בלבד. זה לא משפיע על הנקודות שלך."}};
+const NM={es:{ask:"¿Cómo te llamas?",first:"Nombre",last:"Apellido",user:"Tu usuario:",needFirst:"Escribe tu nombre.",needLast:"Escribe tu apellido.",needTitle:"Completa tu perfil"},
+ en:{ask:"What’s your name?",first:"First name",last:"Last name",user:"Your username:",needFirst:"Please enter your first name.",needLast:"Please enter your last name.",needTitle:"Complete your profile"},
+ he:{ask:"איך קוראים לך?",first:"שם פרטי",last:"שם משפחה",user:"שם המשתמש שלך:",needFirst:"כתבו את השם הפרטי.",needLast:"כתבו את שם המשפחה.",needTitle:"השלימו את הפרופיל"}};
+const SND={es:{t:"Sonidos",on:"🔊 Sí",off:"🔇 No"},en:{t:"Sounds",on:"🔊 On",off:"🔇 Off"},he:{t:"צלילים",on:"🔊 כן",off:"🔇 לא"}};
+/* ---------- sound effects (synthesized, no files) ---------- */
+let AC=null;
+function sfxCtx(){if(!ST.sound)return null;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state!=="running")AC.resume();return AC}catch(e){return null}}
+/* iPhone: play sounds as media so the silent switch doesn't mute them, and unlock audio on the first touch */
+try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
+let sfxUnlocked=false;
+function silentWav(){const n=800,b=new Uint8Array(44+n),v=new DataView(b.buffer),w=(o,t)=>{for(let i=0;i<t.length;i++)b[o+i]=t.charCodeAt(i)};w(0,"RIFF");v.setUint32(4,36+n,true);w(8,"WAVEfmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,8000,true);v.setUint32(28,8000,true);v.setUint16(32,1,true);v.setUint16(34,8,true);w(36,"data");v.setUint32(40,n,true);b.fill(128,44);let s="";b.forEach(x=>s+=String.fromCharCode(x));return "data:audio/wav;base64,"+btoa(s)}
+function sfxUnlock(){if(sfxUnlocked||!ST.sound)return;sfxUnlocked=true;try{const a=new Audio(silentWav());a.setAttribute("playsinline","");a.volume=0.01;const pr=a.play();if(pr&&pr.catch)pr.catch(()=>{})}catch(e){}
+  const c=sfxCtx();if(c){try{const src=c.createBufferSource();src.buffer=c.createBuffer(1,1,22050);src.connect(c.destination);src.start(0)}catch(e){}}}
+["pointerdown","touchstart","keydown"].forEach(ev=>document.addEventListener(ev,sfxUnlock,{capture:true,passive:true}));
+function tone(c,f,t0,d,type,vol,f2){const o=c.createOscillator(),g=c.createGain();o.type=type||"sine";o.frequency.setValueAtTime(f,t0);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t0+d);
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(vol||0.16,t0+0.012);g.gain.exponentialRampToValueAtTime(0.0001,t0+d);o.connect(g).connect(c.destination);o.start(t0);o.stop(t0+d+0.02)}
+function soft(c,f,t0,d,vol,f2){const o=c.createOscillator(),o2=c.createOscillator(),g=c.createGain(),lp=c.createBiquadFilter(),lfo=c.createOscillator(),lg=c.createGain();
+  o.type="sine";o2.type="triangle";o.frequency.setValueAtTime(f,t0);o2.frequency.setValueAtTime(f/2,t0);if(f2){o.frequency.linearRampToValueAtTime(f2,t0+d);o2.frequency.linearRampToValueAtTime(f2/2,t0+d)}
+  lfo.frequency.value=7;lg.gain.value=f*0.012;lfo.connect(lg);lg.connect(o.frequency);lp.type="lowpass";lp.frequency.value=1400;
+  g.gain.setValueAtTime(0.0001,t0);g.gain.exponentialRampToValueAtTime(vol,t0+0.03);g.gain.setValueAtTime(vol,t0+d*0.6);g.gain.exponentialRampToValueAtTime(0.0001,t0+d);
+  o.connect(lp);o2.connect(lp);lp.connect(g).connect(c.destination);[o,o2,lfo].forEach(x=>{x.start(t0);x.stop(t0+d+0.03)})}
+function sfx(name){const c=sfxCtx();if(!c)return;const t=c.currentTime+0.01;
+  if(name==="tap"){tone(c,620,t,0.05,"triangle",0.18,520)}
+  else if(name==="right"){tone(c,880,t,0.14,"sine",0.26);tone(c,1318.5,t+0.09,0.28,"sine",0.26)}
+  else if(name==="wrong"){soft(c,392,t,0.16,0.14);soft(c,311.1,t+0.17,0.32,0.14,293.7)}
+  else if(name==="sticker"){tone(c,1567.98,t+0.3,0.09,"square",0.07);tone(c,2093,t+0.37,0.16,"sine",0.14)}
+  else if(name==="level"){[523.25,659.25,783.99,1046.5].forEach((f,i)=>tone(c,f,t+i*0.09,0.18,"sine",0.2))}
+  else if(name==="done"){[523.25,659.25,783.99].forEach((f,i)=>tone(c,f,t+i*0.11,0.16,"triangle",0.22));tone(c,1046.5,t+0.36,0.55,"triangle",0.24);tone(c,1318.5,t+0.36,0.55,"sine",0.12)}}
+/* ---------- name filter ---------- */
+const BAD_SUB=["puta","puto","pendej","cabron","chinga","verga","mierda","culero","maricon","marica","pinche","coño","cono","zorra","imbecil","estupid","mamon","mamada","ojete","panocha","follar","polla","malparid","gilipoll","hijueputa","huevon","guevon","weon",
+ "fuck","fuk","shit","bitch","cunt","asshole","bastard","slut","whore","nigg","retard","penis","vagina","porn","rape","dildo","boob","tits","wank","jerkoff","motherf",
+ "nazi","hitler",
+ "זונה","שרמוטה","מניאק","מזדיין","לזיין","זיון","כוסית","כוסאמ","בןזונה","קוקסינל","מטומטם","נאצי","היטלר","חרא"];
+const BAD_WORD=["culo","pito","joto","coger","perra","idiota","tonto","tonta","caca","pedo","nalga","teta","tetas","sexo","sex","dick","cock","pussy","fag","ass","damn","hell","kill","idiot","stupid","dumb","poop","butt",
+ "כוס","זין","הומו","דביל","אידיוט","טמבל","מפגר","פיפי","קקי","תחת"];
+function normName(n){let x=String(n||"").toLowerCase().normalize("NFD").replace(/[̀-֑ͯ-ׇ]/g,"");
+  x=x.replace(/[0@4]/g,m=>({"0":"o","@":"a","4":"a"}[m])).replace(/[1!|]/g,"i").replace(/3/g,"e").replace(/[5$]/g,"s").replace(/7/g,"t");
+  x=x.replace(/[ךםןףץ]/g,m=>({"ך":"כ","ם":"מ","ן":"נ","ף":"פ","ץ":"צ"}[m]));return x}
+function badName(n){const x=normName(n);if(!x.trim())return false;const joined=x.replace(/[^a-zñא-ת]/g,"").replace(/(.)\1+/g,"$1");
+  const words=x.split(/[^a-zñא-ת]+/).filter(Boolean);
+  const fin=w=>w.replace(/[ךםןףץ]/g,"");
+  if(BAD_SUB.some(b=>{const bb=normName(b).replace(/(.)\1+/g,"$1");return joined.includes(bb)}))return true;
+  if(BAD_WORD.some(b=>{const bb=normName(b);return words.some(w=>w===bb||w.replace(/(.)\1+/g,"$1")===bb.replace(/(.)\1+/g,"$1"))}))return true;
+  return false}
+function slugPart(x){return String(x||"").toLowerCase().normalize("NFD").replace(/[̀-֑ͯ-ׇ]/g,"").replace(/ñ/g,"n").replace(/[^a-z0-9א-ת]+/g,"")}
+function takenUsers(){const t=new Set();for(const pid in PROF.list){if(pid===PROF.active)continue;const u=PROF.list[pid]&&PROF.list[pid].user;if(typeof u==="string"&&u)t.add(u.toLowerCase())}for(const id in scores){if(id===myId())continue;const u=scores[id]&&scores[id].username;if(typeof u==="string")t.add(u.toLowerCase())}return t}
+function makeUser(first,last,kid){const f=slugPart(first).slice(0,16)||"user",l=slugPart(last);const base=f+"."+l.slice(0,1);
+  const T=takenUsers();if(ST.user&&ST.user.replace(/\d+$/,"")===base&&!T.has(ST.user))return ST.user;let u=base,i=2;while(T.has(u)){u=base+i;i++}return u}
+function dispName(first,last,kid){first=String(first||"").trim();last=String(last||"").trim();if(!last)return first;return first+" "+last.charAt(0).toUpperCase()+"."}
+function cap(w){return String(w).replace(/(^|[\s-])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase())}
+function maskName(n){const w=String(n||"").trim().split(/\s+/).filter(Boolean);if(w.length<2)return w[0]||"";const l=w[w.length-1].replace(/\.$/,"");return w[0]+" "+l.charAt(0).toUpperCase()+"."}
+function maskUser(u){const m=String(u||"").match(/^([^.]+)\.(.)\D*(\d*)$/);return m?m[1]+"."+m[2]+m[3]:String(u||"")}
+function safeName(n){n=String(n||"").slice(0,40).trim();return badName(n)?"":n}
+/* ---------- text to speech ---------- */
+const TTS_ICON='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor" fill-opacity=".15"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>';
+const TTSL={es:"Escuchar",en:"Listen",he:"להאזנה"},TTSV={es:"es-MX",en:"en-US",he:"he-IL"};
+let SAY={},sayKey=null;
+/* Voice is turned off until a better voice (e.g. ElevenLabs) is connected: set TTS_ON=true to bring the buttons back. */
+const TTS_ON=false;
+function ttsOK(){return TTS_ON&&"speechSynthesis" in window&&typeof SpeechSynthesisUtterance!=="undefined"}
+if(!ttsOK())document.documentElement.classList.add("no-tts");
+function ttsBtn(k){return `<button class="tts" data-say="${k}" aria-label="${TTSL[ST.lang]}" title="${TTSL[ST.lang]}">${TTS_ICON}</button>`}
+function plain(h){if(ST.lang!=="he")h=String(h).replace(/<bdi[^>]*>[\s\S]*?<\/bdi>/g,"");const d=document.createElement("div");d.innerHTML=h;return (d.textContent||"").replace(/\s+/g," ").trim()}
+function sayQ(t){const L=ST.lang==="he"?"אבגד":"ABCD";return plain(t.q)+" … "+t.o.map((o,i)=>L[i]+": "+plain(o)).join(". ")+"."}
+function ttsStop(){try{if(ttsOK())speechSynthesis.cancel()}catch(e){}sayKey=null;document.querySelectorAll(".tts.on").forEach(b=>b.classList.remove("on"))}
+function ttsSpeak(k){if(!ttsOK()||!SAY[k])return;const was=sayKey===k;ttsStop();if(was)return;
+  const u=new SpeechSynthesisUtterance(SAY[k]),L=TTSV[ST.lang]||"es-MX";u.lang=L;const vs=speechSynthesis.getVoices()||[];const pre=ST.lang;
+  const v=vs.find(x=>x.lang&&x.lang.replace("_","-")===L)||vs.find(x=>x.lang&&x.lang.toLowerCase().startsWith(pre==="he"?"he":pre))||(pre==="he"?vs.find(x=>x.lang&&x.lang.toLowerCase().startsWith("iw")):null);if(v)u.voice=v;
+  u.rate=isKids()?0.9:1;sayKey=k;document.querySelectorAll(`.tts[data-say="${k}"]`).forEach(b=>b.classList.add("on"));
+  u.onend=u.onerror=()=>{if(sayKey===k){sayKey=null;document.querySelectorAll(".tts.on").forEach(b=>b.classList.remove("on"))}};speechSynthesis.speak(u)}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".tts");if(b){e.preventDefault();e.stopPropagation();ttsSpeak(b.dataset.say)}},true);
+try{if(ttsOK())speechSynthesis.getVoices()}catch(e){}
+/* ---------- kids mode ---------- */
+const AGES=[[6,"6–7"],[8,"8–9"],[10,"10–12"],[13,"13+"]];
+const KSTAR=5;
+const KU={
+ es:{nav:{play:"Jugar",stk:"Stickers",lb:"Ranking",print:"Imprimir"},prQ:"Solo preguntas",prA:"Con respuestas",printNoteA:"Con las respuestas al final, para revisar en familia.",prWarnT:"¡Ojo! Así verás todas las respuestas.",prWarn:"Si las ves antes de terminar, ya no ganarás stickers ni estrellas en esta parashá. Podrás seguir jugando para practicar.",prGo:"Ver respuestas",practice:"Práctica",lbT:"Ranking de estrellas",lbSub:"Solo niños y niñas. ¡Cada respuesta correcta suma estrellas!",lbEmpty:"Todavía nadie tiene estrellas. ¡Sé el primero!",someone:"Jugador",you:"(tú)",badName:"Ese nombre no se puede usar. Elige otro, por favor.",kidName:"En el ranking de niños solo se ve tu nombre y la inicial de tu apellido.",keyT:"Respuestas",sheetHint:"Encierra en un círculo la respuesta correcta. ¡Y colorea los dibujos!",nameLine:"Nombre:",askAge:"¿Quién va a jugar?",kidL:"Niño o niña (menos de 13)",adultL:"Adulto (13 o más)",ageNote:"El modo niños tiene preguntas más cortas, dibujos y stickers.",ageNeed:"Elige quién va a jugar para empezar.",
+  hi:n=>n?`¡Hola, ${n}!`:"¡Hola!",qOf:(i,n)=>`Pregunta ${i} de ${n}`,
+  great:["¡Muy bien!","¡Excelente!","¡Genial!","¡Bravo!"],almost:"¡Casi!",answerWas:"La respuesta es:",plus:`+${KSTAR} estrellas`,know:"¿SABÍAS QUE…?",
+  newSt:"¡Nuevo sticker!",next:"Siguiente pregunta",finish:"¡Terminé!",done:"¡Terminaste la parashá!",doneSub:(c,n)=>`Acertaste ${c} de ${n}`,
+  again:"Jugar otra vez",seeSt:"Ver mis stickers",noK:"Esta semana todavía no hay preguntas para niños.",album:"Mis stickers",
+  missing:n=>n?`¡Te faltan ${n}!`:"¡Los tienes todos!",stars:"estrellas",weeksDone:"parashiot completas",stickersTot:"stickers en total",
+  lana:"¡Lana está orgullosa de ti!",lanaHi:"Soy Lana, la oveja de Yaakov.",printT:"Hoja para imprimir",printBtn:"Descargar PDF",
+  printNote:"Preguntas con dibujos para responder en papel, sin respuestas.",ans:"Respuesta",resetQ:"¿Jugar otra vez esta parashá? Tus stickers y estrellas se quedan contigo.",yes:"¡Jugar otra vez!",stOf:(c,n)=>`${c} de ${n}`},
+ en:{nav:{play:"Play",stk:"Stickers",lb:"Ranking",print:"Print"},prQ:"Questions only",prA:"With answers",printNoteA:"With the answers at the end, to check together as a family.",prWarnT:"Heads up! This shows all the answers.",prWarn:"If you see them before you finish, you won’t earn stickers or stars for this parsha anymore. You can keep playing for practice.",prGo:"Show answers",practice:"Practice",lbT:"Star ranking",lbSub:"Kids only. Every right answer adds stars!",lbEmpty:"No one has stars yet. Be the first!",someone:"Player",you:"(you)",badName:"That name can’t be used. Please choose another one.",kidName:"The kids’ ranking only shows your first name and last initial.",keyT:"Answers",sheetHint:"Circle the right answer. Then color in the pictures!",nameLine:"Name:",askAge:"Who’s playing?",kidL:"Kid (under 13)",adultL:"Adult (13+)",ageNote:"Kids mode has shorter questions, drawings and stickers.",ageNeed:"Choose who’s playing to start.",
+  hi:n=>n?`Hi, ${n}!`:"Hi!",qOf:(i,n)=>`Question ${i} of ${n}`,
+  great:["Great job!","Excellent!","Awesome!","Well done!"],almost:"Almost!",answerWas:"The answer is:",plus:`+${KSTAR} stars`,know:"DID YOU KNOW…?",
+  newSt:"New sticker!",next:"Next question",finish:"I’m done!",done:"You finished the parsha!",doneSub:(c,n)=>`You got ${c} of ${n} right`,
+  again:"Play again",seeSt:"See my stickers",noK:"There are no kids’ questions for this week yet.",album:"My stickers",
+  missing:n=>n?`${n} more to go!`:"You have them all!",stars:"stars",weeksDone:"parshiot finished",stickersTot:"stickers in all",
+  lana:"Lana is proud of you!",lanaHi:"I’m Lana, Yaakov’s sheep.",printT:"Printable sheet",printBtn:"Download PDF",
+  printNote:"Picture questions to answer on paper, without the answers.",ans:"Answer",resetQ:"Play this parsha again? You keep all your stickers and stars.",yes:"Play again!",stOf:(c,n)=>`${c} of ${n}`},
+ he:{nav:{play:"משחק",stk:"מדבקות",lb:"דירוג",print:"הדפסה"},prQ:"שאלות בלבד",prA:"עם תשובות",printNoteA:"עם התשובות בסוף, לבדוק יחד עם המשפחה.",prWarnT:"שימו לב! כך רואים את כל התשובות.",prWarn:"אם תראו אותן לפני שתסיימו, לא תקבלו יותר מדבקות וכוכבים בפרשה הזאת. אפשר להמשיך לשחק לתרגול.",prGo:"להציג תשובות",practice:"תרגול",lbT:"דירוג כוכבים",lbSub:"רק לילדים. כל תשובה נכונה מוסיפה כוכבים!",lbEmpty:"עוד אין לאף אחד כוכבים. היו הראשונים!",someone:"שחקן",you:"(את/ה)",badName:"אי אפשר להשתמש בשם הזה. בחרו שם אחר, בבקשה.",kidName:"בדירוג הילדים מופיעים רק השם הפרטי והאות הראשונה של שם המשפחה.",keyT:"תשובות",sheetHint:"הקיפו בעיגול את התשובה הנכונה. ואפשר לצבוע את הציורים!",nameLine:"שם:",askAge:"מי משחק?",kidL:"ילד או ילדה (עד גיל 12)",adultL:"מבוגר (13 ומעלה)",ageNote:"במצב ילדים יש שאלות קצרות, ציורים ומדבקות.",ageNeed:"בחרו מי משחק כדי להתחיל.",
+  hi:n=>n?`שלום, ${n}!`:"שלום!",qOf:(i,n)=>`שאלה ${i} מתוך ${n}`,
+  great:["כל הכבוד!","מצוין!","יופי!","אלופים!"],almost:"כמעט!",answerWas:"התשובה היא:",plus:`+${KSTAR} כוכבים`,know:"הידעת?",
+  newSt:"מדבקה חדשה!",next:"לשאלה הבאה",finish:"סיימתי!",done:"סיימת את הפרשה!",doneSub:(c,n)=>`ענית נכון על ${c} מתוך ${n}`,
+  again:"לשחק שוב",seeSt:"למדבקות שלי",noK:"עדיין אין שאלות לילדים השבוע.",album:"המדבקות שלי",
+  missing:n=>n?`נשארו עוד ${n}!`:"אספת את כולן!",stars:"כוכבים",weeksDone:"פרשות שהושלמו",stickersTot:"מדבקות בסך הכול",
+  lana:"לנה גאה בך!",lanaHi:"אני לנה, הכבשה של יעקב.",printT:"דף להדפסה",printBtn:"הורדת PDF",
+  printNote:"שאלות עם ציורים לענות על הדף, בלי תשובות.",ans:"תשובה",resetQ:"לשחק שוב בפרשה? המדבקות והכוכבים נשארים אצלך.",yes:"לשחק שוב!",stOf:(c,n)=>`${c} מתוך ${n}`}};
+function KT(){return KU[ST.lang]||KU.es}
+function isKids(){return typeof ST.age==="number"&&ST.age<13}
+function kansOf(id){return (ST.weeks[id]||{}).kans||{}}
+function kkeyOf(w){return w.kkey||((FULL[w.id]&&FULL[w.id].K)||w.K||[]).map(q=>q.a)}
+function kStats(w){const key=kkeyOf(w),a=kansOf(w.id);let c=0,n=0;for(const k in a){if(!(k in key))continue;n++;if(a[k]===key[k])c++}const t=key.length;return {c,a:n,t,complete:t>0&&n===t,stars:c*KSTAR}}
+function kEarned(w){const r=ST.weeks[w.id]||{},key=kkeyOf(w),a=r.kans||{},e={...(r.kst||{})};if(!r.kprinted)for(const k in a)if(k in key&&a[k]===key[k])e[k]=1;return e}
+function kTotals(){let stars=0,stk=0,done=0;for(const w of WEEKS){const n=Object.keys(kEarned(w)).length;stars+=n*KSTAR;stk+=n;if(kStats(w).complete||(ST.weeks[w.id]||{}).kdone)done++}return {stars,stk,done}}
+const STK_COL=["#c2410c","#0f766e","#6d28d9"];
+function sheepSVG(size,cheer){const mouth=cheer?'<ellipse cx="60" cy="73" rx="6" ry="7" fill="#7a2e2e"/>':'<path d="M52 72q8 7 16 0" stroke="#3a2a1a" stroke-width="3" fill="none" stroke-linecap="round"/>';
+  const arms=cheer?'<path d="M22 70l-14-22M98 70l14-22" stroke="#4a3b2e" stroke-width="7" stroke-linecap="round"/>':'';
+  return `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 120 120">${arms}<g fill="#fff" stroke="#e8dccb" stroke-width="2"><circle cx="34" cy="62" r="20"/><circle cx="86" cy="62" r="20"/><circle cx="60" cy="44" r="24"/><circle cx="44" cy="86" r="20"/><circle cx="76" cy="86" r="20"/><circle cx="60" cy="72" r="26"/></g><rect x="44" y="100" width="8" height="16" rx="4" fill="#4a3b2e"/><rect x="68" y="100" width="8" height="16" rx="4" fill="#4a3b2e"/><ellipse cx="34" cy="54" rx="11" ry="6" fill="#4a3b2e" transform="rotate(-25 34 54)"/><ellipse cx="86" cy="54" rx="11" ry="6" fill="#4a3b2e" transform="rotate(25 86 54)"/><ellipse cx="60" cy="64" rx="20" ry="22" fill="#4a3b2e"/><circle cx="52" cy="60" r="5" fill="#fff"/><circle cx="68" cy="60" r="5" fill="#fff"/><circle cx="53" cy="61" r="2.6" fill="#1b1b1b"/><circle cx="69" cy="61" r="2.6" fill="#1b1b1b"/><circle cx="46" cy="70" r="3.5" fill="#ff9aa8" opacity=".8"/><circle cx="74" cy="70" r="3.5" fill="#ff9aa8" opacity=".8"/><g transform="translate(0,-2)">${mouth}</g></svg>`}
+function kIcon(w,k){return `<svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">${(w.icons&&w.icons[k])||""}</svg>`}
+function kScene(x){return `<svg aria-hidden="true" viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">${x.img||""}</svg>`}
+const STAR='<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z" fill="#fff"/></svg>';
+function kTop(){const k=KT(),t=kTotals();
+  const opts=WEEKS.map(w=>`<option value="${esc(w.id)}">${esc(wName(w))}${w.id===currentId?" ★":""}</option>`).join("");
+  return `<div class="ktop"><button class="mbtn kmb" id="kMenu" aria-label="menu" aria-expanded="false" aria-haspopup="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><button class="kme" id="kMe" aria-label="${esc(U().settings)}"><span class="kav">${sheepSVG(46)}</span><span class="khi">${esc(k.hi(safeName(ST.first||(ST.name||"").split(" ")[0])))}</span></button><span class="kstar">${STAR}<span>${t.stars}</span></span></div>
+  ${WEEKS.length>1?`<div class="kweek"><select id="kWeek" aria-label="week">${opts}</select></div>`:""}`}
+function kSeq(){if(!W||!W.K)return [];const kd=kdayArr(W);if(!kd||!hasDays(W))return W.K.map((_,i)=>i);if(openDay(W)<1)return [];const d=curDay();return kd.map((x,i)=>x===d?i:-1).filter(i=>i>=0)}
+function kDayDone(w,d){const kd=kdayArr(w),a=kansOf(w.id);if(!kd)return false;const ix=kd.map((x,i)=>x===d?i:-1).filter(i=>i>=0);return ix.length>0&&ix.every(i=>i in a)}
+function kkey2(){return W.id+(hasDays(W)&&kdayArr(W)?":d"+curDay():"")}
+function kSeqLen(){return kSeq().length}
+function kPos(){if(!W)return 0;const S=kSeq(),n=S.length,a=kansOf(W.id);let p=ST.kpos[kkey2()];if(p==null){p=0;while(p<n&&(S[p] in a))p++}return Math.max(0,Math.min(n,p))}
+function kPath(p){const a=kansOf(W.id),key=kkeyOf(W),S=kSeq();return `<div class="kpath" aria-hidden="true">${S.map((gi,i)=>`<i class="${gi in a?(a[gi]===key[gi]?"ok":"no"):(i===p?"cur":"")}"></i>`).join("")}</div>`}
+function renderKids(anim){ttsStop();const k=KT(),box=$("kids");document.documentElement.lang=ST.lang;document.documentElement.dir=U().dir;
+  document.querySelectorAll(".knav button[data-k]").forEach(b=>{b.querySelector(".lb").textContent=k.nav[b.dataset.k];b.classList.toggle("on",b.dataset.k===ST.kview)});document.querySelectorAll(".knav .gbtn .gl").forEach(x=>x.textContent=(GT[ST.lang]||GT.es).nav);
+  document.title=W?`${U().app}: ${wName(W)}`:U().app;
+  const top=kTop();let h="";
+  if(ST.kview==="stk")h+=kAlbum();else if(ST.kview==="lb")h+=kLb();else if(ST.kview==="print")h+=kPrint();else h+=kPlay();
+  {const nh=`${top}<div class="${anim?"kin":""}">${h}</div>`;if(anim||box.__h!==nh){box.innerHTML=nh;box.__h=nh}}
+  const on=(id,f)=>{const e=$(id);if(e)e.onclick=f};
+  on("kMe",()=>$("gear").click());
+  const ws=$("kWeek");if(ws){if(W)ws.value=W.id;ws.onchange=e=>{ST.kshow=false;setWeek(e.target.value)}}
+  box.querySelectorAll(".kopts button").forEach(b=>b.onclick=()=>kPick(+b.dataset.q,+b.dataset.k));
+  on("kNext",()=>{ST.kshow=false;ST.kpos[kkey2()]=kPos()+1;lsSet();renderKids(true);window.scrollTo({top:0})});
+  on("kNextDay",()=>pickDay(curDay()+1));
+  box.querySelectorAll(".kdays button[data-day]").forEach(b=>b.onclick=()=>pickDay(+b.dataset.day));
+  on("kAgain",()=>{$("mq").textContent=k.resetQ;$("my").textContent=k.yes;$("mn").textContent=U().cancel;modalAct=()=>{const r=ST.weeks[W.id];if(r){r.kst=kEarned(W);if(hasDays(W)&&kdayArr(W)){kSeq().forEach(i=>delete r.kans[i])}else r.kans={}}ST.kpos[kkey2()]=0;ST.kshow=false;persist();renderKids(true)};$("modal").style.display="flex"});
+  on("kToSt",()=>kView("stk"));
+  on("kDl",kDownload);
+  box.querySelectorAll(".kpm button").forEach(b=>b.onclick=()=>{const m=b.dataset.kpm;if(m===kprMode)return;
+    if(m==="a"&&W){const r=ST.weeks[W.id]||{},st=kStats(W);if(!r.kprinted&&!st.complete&&!r.kdone){$("mq").innerHTML=`<b>${k.prWarnT}</b><br>${k.prWarn}`;$("my").textContent=k.prGo;$("mn").textContent=U().cancel;
+      modalAct=()=>{const w=ST.weeks[W.id]||(ST.weeks[W.id]={answers:{}});w.kst=kEarned(W);w.kprinted=true;persist();kprMode="a";renderKids()};$("modal").style.display="flex";return}}
+    kprMode=m;renderKids()});
+  box.querySelectorAll("[data-klb]").forEach(b=>b.onclick=()=>{ST.klb=b.dataset.klb;renderKids()});}
+function kView(v){if(v===ST.kview&&!ST.kshow){window.scrollTo({top:0,behavior:"smooth"});return}if(v==="print")kprMode="q";ST.kview=v;ST.kshow=false;renderKids(false);window.scrollTo({top:0})}
+function kPlay(){const k=KT(),L=ST.lang==="he"?"אבגד":"ABCD";
+  if(!W)return `<div class="kempty">${esc(U().empty)}</div>`;
+  if(!W.K||!W.K.length)return `<div class="kempty">${sheepSVG(90)}<br>${k.noK}</div>`;
+  const days=hasDays(W)&&kdayArr(W),dh=days?daysHTML(true):"";
+  if(days&&openDay(W)<1)return `${dh}<div class="kempty">${sheepSVG(90)}<br>${DL().soon}</div>`;
+  const S=kSeq(),n=S.length,a=kansOf(W.id),p=kPos(),key=kkeyOf(W),prc=(ST.weeks[W.id]||{}).kprinted,cd=days?curDay():0,more=days&&cd<openDay(W);
+  if(p>=n){const c=S.filter(gi=>a[gi]===key[gi]).length;return `${dh}${kPath(-1)}<div class="kwin">${confetti()}${sheepSVG(110,true)}<h2>${days?DL().dayDone:k.done}</h2><span class="kplus">${k.doneSub(c,n)} · ${c*KSTAR} ⭐</span></div>
+    ${more?`<button class="kbtn" id="kNextDay">${DL().next}</button>`:""}<button class="kbtn alt" id="kToSt">${k.seeSt}</button><button class="kbtn ghost" id="kAgain">${k.again}</button>`}
+  const gi=S[p],x=W.K[gi],t=x.t[ST.lang]||x.t.es,done=gi in a;SAY={q:sayQ(t),e:(a[gi]===x.a?"":k.answerWas+" "+plain(t.o[x.a])+". ")+plain(t.e)};
+  const head=`${dh}${kPath(p)}<span class="kqn">${days?esc(DL().al(cd))+" · ":""}${k.qOf(p+1,n)} · ${esc(wName(W))}${prc?` · <b>${k.practice}</b>`:""}</span>`;
+  if(done&&ST.kshow){const ok=a[gi]===x.a,col=STK_COL[gi%3];
+    return `${head}
+    <div class="kwin">${ok?confetti():""}${sheepSVG(ok?100:84,ok)}<h2>${ok?k.great[gi%k.great.length]:k.almost}</h2>${ok?`<span class="kplus">${prc?k.practice:k.plus}</span>`:`<span class="kans">${k.answerWas} ${t.o[x.a]}</span>`}</div>
+    <div class="kcard"><div class="ktagrow"><span class="ktag">${k.know}</span>${ttsBtn("e")}</div><p class="kfact">${t.e}</p><span class="ksrc">${t.s}</span></div>
+    ${ok&&!prc?`<div class="kcard"><div class="kstk"><span class="kst big" style="color:${col}">${kIcon(W,x.i)}</span><div><div class="kans">${k.newSt}</div><div class="ksrc">${k.stOf(Object.keys(kEarned(W)).length,W.K.length)}</div></div></div></div>`:""}
+    <button class="kbtn" id="kNext">${p===n-1?k.finish:k.next}</button>`}
+  const opts=t.o.map((o,i)=>`<button data-q="${gi}" data-k="${i}" ${done?"disabled":""} class="${done&&i===x.a?"right":""} ${done&&i===a[gi]&&a[gi]!==x.a?"wrong":""}"><span class="l">${L[i]}</span><span>${o}</span></button>`).join("");
+  const one=t.o.some(o=>o.replace(/<[^>]+>/g,"").length>18);
+  return `${head}
+  <div class="kcard"><div class="kscene">${kScene(x)}</div><div class="kqrow"><p class="kq">${t.q}</p>${ttsBtn("q")}</div>${x.v?x.v.map(v=>`<p class="kv" lang="he" dir="rtl">${v.t}</p>`).join(""):""}</div>
+  <div class="kopts ${one?"one":""}">${opts}</div>${done?`<button class="kbtn" id="kNext">${p===n-1?k.finish:k.next}</button>`:""}`}
+function confetti(){const C=["#c2410c","#0f766e","#6d28d9","#eab308","#db2777"];let s="";for(let i=0;i<12;i++){const x=12+i*29,y=8+(i*37)%50;s+=`<rect x="${x}" y="${y}" width="9" height="14" rx="2" fill="${C[i%5]}" transform="rotate(${(i*47)%90-45} ${x} ${y})"/>`}return `<svg class="kconf" aria-hidden="true" viewBox="0 0 360 70" preserveAspectRatio="none">${s}</svg>`}
+function kPick(p,k){if(!W)return;const w=ST.weeks[W.id]||(ST.weeks[W.id]={answers:{}});w.kans=w.kans||{};if(p in w.kans)return;w.kans[p]=k;w.kf=w.kf||{};w.kf[p]=qfp(W.K[p]);w.kmig=1;if(k===W.K[p].a&&!w.kprinted){w.kst=w.kst||{};w.kst[p]=1}if(Object.keys(w.kans).length>=W.K.length)w.kdone=true;ST.kpos[kkey2()]=kSeq().indexOf(p);persist();
+  const x=W.K[p],ok=k===x.a;sfx("tap");setTimeout(()=>{sfx(ok?"right":"wrong");if(ok&&!w.kprinted)sfx("sticker")},90);if(kSeq().every(i=>i in w.kans))setTimeout(()=>sfx("done"),700);
+  ST.kshow=true;renderKids(true);window.scrollTo({top:0})}
+function kAlbum(){const k=KT(),t=kTotals();let h=`<h2 class="kh1">${k.album}</h2>`;
+  if(W&&W.K&&W.K.length){const E=kEarned(W),s={c:Object.keys(E).length,t:W.K.length};
+    h+=`<span class="ksub">${esc(wName(W))} · ${k.stOf(s.c,s.t)} · ${k.missing(s.t-s.c)}</span><div class="kcard"><div class="kgrid">`+W.K.map((x,i)=>{const got=!!E[i];
+      return `<div><span class="kst ${got?"":"off"}" style="${got?`color:${STK_COL[i%3]};--r:${[-6,4,-3,7,-5,3,-4,6,-2,5][i%10]}deg`:""}">${got?kIcon(W,x.i):'<svg aria-hidden="true" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 18a6 6 0 1 1 8 5.6c-1.4.6-2 1.6-2 3v1.4M24 34v.5"/></svg>'}</span><span>${got?esc(stName(x)):"???"}</span></div>`}).join("")+`</div></div>`}
+  else h+=`<div class="kempty">${k.noK}</div>`;
+  h+=`<div class="krow"><div class="kbox"><b>${t.stars}</b><span>⭐ ${k.stars}</span></div><div class="kbox"><b>${t.stk}</b><span>${k.stickersTot}</span></div></div>
+  <div class="kcard" style="margin-top:12px"><div class="kstk"><span style="line-height:0">${sheepSVG(56)}</span><div><div class="kans">${t.done} ${k.weeksDone}</div><div class="ksrc">${t.stk?k.lana:k.lanaHi}</div></div></div></div>`;
+  return h}
+function kRows(){const out=[];for(const id in scores){const d=scores[id]||{};if(d.kids!==true)continue;const st=Number(d.stars)||0;if(st<=0&&id!==myId())continue;out.push({id,st,nm:typeof d.name==="string"?d.name:"",un:typeof d.username==="string"?d.username:""})}
+  if(uid&&!out.some(r=>r.id===uid)&&isKids()){const t=kTotals();if(t.stars>0)out.push({id:uid,st:t.stars,nm:ST.name||""})}
+  out.forEach(r=>{if(r.id===uid){r.st=kTotals().stars;r.nm=dispName(ST.first||ST.name,ST.last,true)||r.nm;r.un=ST.user||r.un}});out.sort((a,b)=>b.st-a.st);return out}
+function kLb(){const k=KT(),r=kRows();let h=`<h2 class="kh1">${k.lbT}</h2><span class="ksub">${k.lbSub}</span>`;
+  if(!r.length)return h+`<div class="kempty">${sheepSVG(80)}<br>${k.lbEmpty}</div>`;
+  const M=["#eab308","#9ca3af","#c2410c"];
+  h+=`<div class="kcard klb">`+r.slice(0,50).map((x,i)=>`<div class="klr ${x.id===myId()?"me":""}"><span class="kmed" style="${i<3?`background:${M[i]};color:#fff`:""}">${i+1}</span><span class="knm">${esc(maskName(safeName(x.nm))||k.someone)}${x.id===myId()?` <small>${k.you}</small>`:""}${x.un&&safeName(x.un)?`<small class="un">@${esc(maskUser(x.un))}</small>`:""}</span><span class="kst2">⭐ ${x.st}</span></div>`).join("")+`</div>`;
+  return h}
+function stName(x){const t=x.t[ST.lang]||x.t.es;return t.o[x.a].replace(/<[^>]+>/g,"")}
+let kprMode="q";
+function kPrint(){const k=KT(),L=ST.lang==="he"?"אבגד":"ABCD";if(!W||!W.K||!W.K.length)return `<div class="kempty">${k.noK}</div>`;
+  const withA=kprMode==="a";
+  return `<h2 class="kh1">${k.printT}</h2><div class="kpm"><button data-kpm="q" class="${withA?"":"on"}">${k.prQ}</button><button data-kpm="a" class="${withA?"on":""}">${k.prA}</button></div><p class="ksub" style="margin:8px 0 0">${withA?k.printNoteA:k.printNote}</p><button class="kbtn" id="kDl">${k.printBtn}</button>`+
+   W.K.map((x,i)=>{const t=x.t[ST.lang]||x.t.es;const hd=x.day&&(i===0||W.K[i-1].day!==x.day)?`<h2 class="kh1" style="font-size:19px;margin:18px 0 6px">${(DAYL[ST.lang]||DAYL.es).al(x.day)}</h2>`:"";return hd+`<div class="kcard"><div class="kscene">${kScene(x)}</div><p class="kq">${i+1}. ${t.q}</p><div class="kpo">${t.o.map((o,j)=>`<span><i>${L[j]}</i>${o}</span>`).join("")}</div></div>`}).join("")+
+   (withA?`<div class="kcard kkey"><span class="ktag">${k.keyT}</span>${W.K.map((x,i)=>{const t=x.t[ST.lang]||x.t.es;return `<p class="kfact"><b>${i+1}. ${L[x.a]} · ${t.o[x.a]}.</b> ${t.e}</p>`}).join("")}</div>`:"")}
+function kidsSheetHTML(w,lang,withAns){const k=KU[lang],u=UI[lang],L=lang==="he"?"אבגד":"ABCD",C=["#c2410c","#0f766e","#6d28d9"];
+  const cards=w.K.map((x,i)=>{const t=x.t[lang]||x.t.es;const hd=x.day&&(i===0||w.K[i-1].day!==x.day)?`<h2 style="font-size:16px;margin:12px 0 4px;break-after:avoid">${(DAYL[lang]||DAYL.es).al(x.day)}</h2>`:"";return hd+`<div class="c" style="border-color:${C[i%3]}"><div class="pic"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid slice">${x.img||""}</svg></div><div><p class="q"><span class="n" style="background:${C[i%3]}">${i+1}</span>${t.q}</p><div class="o">${t.o.map((o,j)=>`<span><i>${L[j]}</i>${o}</span>`).join("")}</div></div></div>`}).join("");
+  const key=w.K.map((x,i)=>{const t=x.t[lang]||x.t.es;return `<p><b>${i+1}. ${L[x.a]} · ${t.o[x.a]}.</b> ${t.e}</p>`}).join("");
+  return `<!DOCTYPE html><html lang="${lang}" dir="${u.dir}"><head><meta charset="utf-8"><title>${esc(u.app)}: ${esc(w.name[lang]||w.name.es)}</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Varela+Round&display=swap" rel="stylesheet">
+<style>@page{size:letter;margin:10mm}*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-family:"Baloo 2","Varela Round",sans-serif;color:#2b1d0e;margin:0;padding:10mm;background:#fff}@media print{body{padding:0}}
+.hd{display:flex;align-items:center;gap:4mm;background:#fff4dc;border-radius:6mm;padding:3mm 5mm;margin:0 0 4mm}.hd h1{margin:0;font-size:22pt;line-height:1.05}.hd p{margin:1mm 0 0;font-size:11pt}
+.name{margin-inline-start:auto;font-size:11pt;border-bottom:1.2pt dashed #5c4630;min-width:40mm;padding-bottom:1mm}
+.c{display:grid;grid-template-columns:58mm 1fr;gap:4mm;align-items:start;border:2pt solid;border-radius:6mm;padding:3mm;margin:0 0 3.5mm;break-inside:avoid}
+.pic{border-radius:4mm;overflow:hidden;line-height:0}.pic svg{width:58mm;height:29mm;display:block}
+.q{margin:0;font-weight:800;font-size:12.5pt;line-height:1.25}.n{display:inline-flex;align-items:center;justify-content:center;width:7mm;height:7mm;border-radius:50%;color:#fff;font-size:10pt;margin-inline-end:2mm;vertical-align:1pt}
+.o{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 3mm;margin-top:2mm;font-size:11pt;font-weight:600}.o span{display:flex;align-items:center;gap:2mm}.o i{flex:none;font-style:normal;width:6.5mm;height:6.5mm;border:1.2pt solid #2b1d0e;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:9pt}
+.key{break-before:page;border:2pt dashed #5c4630;border-radius:6mm;padding:4mm 5mm}.key h2{margin:0 0 2mm;font-size:16pt}.key p{margin:0 0 2mm;font-size:10.5pt;line-height:1.35}</style></head>
+<body><div class="hd">${sheepSVG(64)}<div><h1>${esc(u.app)}: ${esc(w.name[lang]||w.name.es)}</h1><p>${k.sheetHint}</p></div><span class="name">${k.nameLine}</span></div>${cards}
+${withAns?`<div class="key"><h2>${k.keyT}</h2>${key}</div>`:""}
+<script>window.addEventListener("load",()=>setTimeout(()=>{try{window.print()}catch(e){}},600))<\/script></body></html>`}
+async function kDownload(){if(!W||!W.K)return;await downloadSheet(W,ST.lang,kprMode==="a"?"ka":"kq",()=>kidsSheetHTML(W,ST.lang,kprMode==="a"),$("kDl"))}
+document.querySelectorAll(".knav button[data-k]").forEach(b=>b.onclick=()=>kView(b.dataset.k));
+
+/* ---------- start ---------- */
+(function(){const l=lsGet();if(l){if(UI[l.lang])ST.lang=l.lang;if(["prog","1","2","3","all"].includes(l.level))ST.level=l.level;if(typeof l.name==="string")ST.name=l.name.slice(0,40);if(typeof l.first==="string")ST.first=l.first.slice(0,30);if(typeof l.last==="string")ST.last=l.last.slice(0,30);if(typeof l.user==="string")ST.user=l.user.slice(0,40);if(typeof l.sound==="boolean")ST.sound=l.sound;if(l.dsel&&typeof l.dsel==="object"){ST.dsel={};for(const k in l.dsel){const v=+l.dsel[k];if(v>=1&&v<=7)ST.dsel[k]=v}}ST.onboarded=!!l.onboarded;ST.introSeen=!!l.introSeen||ST.onboarded;if(typeof l.age==="number")ST.age=l.age<13?8:13;if(l.kpos&&typeof l.kpos==="object")for(const k in l.kpos){const v=+l.kpos[k];if(v>=0&&v<100)ST.kpos[k]=v}if(l.weeks&&typeof l.weeks==="object")for(const id in l.weeks){const a=l.weeks[id]&&l.weeks[id].answers;if(a&&typeof a==="object"){const c={};for(const k in a){const v=+a[k];if(v>=0&&v<4)c[+k]=v}const ka=l.weeks[id].kans,kc={};if(ka&&typeof ka==="object")for(const k in ka){const v=+ka[k];if(v>=0&&v<4)kc[+k]=v}const ks=l.weeks[id].kst,kk={};if(ks&&typeof ks==="object")for(const k in ks)if(+k>=0&&+k<100)kk[+k]=1;const fpo=o=>{const r={};if(o&&typeof o==="object")for(const k in o)if(typeof o[k]==="string"&&o[k].length<12)r[+k]=o[k];return r};ST.weeks[id]={answers:c,kans:kc,kst:kk,qf:fpo(l.weeks[id].qf),kf:fpo(l.weeks[id].kf),kmig:!!l.weeks[id].kmig,kdone:!!l.weeks[id].kdone,kprinted:!!l.weeks[id].kprinted,printed:!!l.weeks[id].printed}}}}
+  else{ST.lang=guessLang()}
+  if(ST.onboarded&&ST.age==null)ST.age=13;
+  const h=(location.hash||"").slice(1);if(["quiz","dash","lb"].includes(h))ST.view=h;})();
+renderAll();
+let profReady;const profPromise=new Promise(r=>profReady=r);let weeksReady;const weeksPromise=new Promise(r=>weeksReady=r);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function decideProfile(){
+  if(!ST.onboarded&&!ST.introSeen){showIntro(()=>decideProfile());return}
+  if(!ST.onboarded){oLang=ST.lang;oAge=ST.age;$("oName").value=ST.first||ST.name||"";$("oLast").value=ST.last||"";openOnb()}
+  else if(ST.last&&ST.user&&ST.user.replace(/\d+$/,"")!==slugPart(ST.first||"").slice(0,16)+"."+slugPart(ST.last).slice(0,1)){ST.user=makeUser(ST.first,ST.last,isKids());lsSet();needSync=true}
+  else if(!ST.last||!ST.user){ST.onboarded=false;oLang=ST.lang;oAge=ST.age;$("oName").value=ST.first||(ST.name||"").split(" ")[0]||"";$("oLast").value="";openOnb();ST.onboarded=true;$("oTitle").textContent=NM[ST.lang].needTitle;$("oX").style.display="none";$("oCancel").style.display="none";$("onb").classList.remove("first");window.__mustFinish=true}}
+/* first-visit introduction: what you can do in the app */
+const ISV=(p,inner)=>`<svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="#4f6b3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const IART=[ISV(0,'<path d="M24 12c-4-3-10-4-16-3v27c6-1 12 0 16 3 4-3 10-4 16-3V9c-6-1-12 0-16 3z"/><path d="M24 12v27"/><path d="M12 17h7M12 22h7M29 17h7M29 22h7" stroke="#b5562f"/>'),
+ ISV(0,'<rect x="6" y="10" width="36" height="30" rx="4"/><path d="M6 18h36M15 6v8M33 6v8"/>'+[0,1,2,3,4,5,6].map(i=>`<rect x="${9+(i%4)*8.4}" y="${22+Math.floor(i/4)*8}" width="5.5" height="5" rx="1.2" ${i===2?'fill="#b5562f" stroke="#b5562f"':''}/>`).join("")),
+ ISV(0,'<rect x="8" y="6" width="32" height="36" rx="5"/><path d="M14 15h20"/><rect x="13" y="21" width="22" height="6" rx="2"/><rect x="13" y="30" width="22" height="6" rx="2" stroke="#b5562f"/><path d="M29 33l2 2 3-4" stroke="#b5562f"/>'),
+ ISV(0,'<path d="M16 8h16v10a8 8 0 0 1-16 0z"/><path d="M16 11h-5a5 5 0 0 0 5 7M32 11h5a5 5 0 0 1-5 7"/><path d="M24 26v7M17 40h14l-2-7H19z"/><path d="M24 11l1.6 3.2 3.4.5-2.5 2.4.6 3.4-3.1-1.6-3.1 1.6.6-3.4-2.5-2.4 3.4-.5z" stroke="#b5562f"/>'),
+ ISV(0,'<circle cx="16" cy="14" r="5"/><circle cx="33" cy="18" r="4"/><path d="M7 38c0-6 4-11 9-11s9 5 9 11M26 38c0-5 3-9 7-9s7 4 7 9"/><path d="M38 6l1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" stroke="#b5562f"/>')];
+const IT={es:{skip:"Saltar",next:"Siguiente",go:"Empezar",tour:"Ver la introducción",s:[
+  ["Bienvenido a Quiz de la Parashá","Cada semana, preguntas para conocer la parashá a fondo: el texto, Rashí, los comentaristas, el Midrash y el Talmud."],
+  ["Una aliyá cada día","Del domingo al viernes se abre una aliyá nueva cada día; el viernes se abren las dos últimas. Elige fácil, medio o difícil: 10 preguntas en cada nivel."],
+  ["Responde y aprende","Elige una respuesta y ve al instante si acertaste, con la explicación y su fuente."],
+  ["Suma puntos y sube de rango","Gana puntos, consigue insignias y compite con los demás en la clasificación. Sigue tu avance en “Mi progreso”."],
+  ["Para toda la familia","Los menores de 13 tienen su propio modo, con dibujos y stickers. En español, English y ⁨עברית⁩, y puedes imprimir el quiz para la mesa de Shabat."]]},
+ en:{skip:"Skip",next:"Next",go:"Get started",tour:"See the introduction",s:[
+  ["Welcome to Quiz de la Parashá","Every week, questions to really get to know the parsha: the text, Rashi, the commentators, the Midrash and the Talmud."],
+  ["One aliyah a day","From Sunday to Friday a new aliyah opens each day; on Friday the last two open together. Pick easy, medium or hard: 10 questions at every level."],
+  ["Answer and learn","Pick an answer and see right away if you got it, with the explanation and its source."],
+  ["Earn points and rank up","Earn points, collect badges and compete with others on the leaderboard. Track how you’re doing in “My progress”."],
+  ["For the whole family","Kids under 13 get their own mode, with drawings and stickers. In Español, English and ⁨עברית⁩, and you can print the quiz for the Shabbat table."]]},
+ he:{skip:"דלגו",next:"הבא",go:"מתחילים",tour:"להציג את ההיכרות",s:[
+  ["ברוכים הבאים לחידון הפרשה","בכל שבוע, שאלות להכיר את הפרשה לעומק: הפסוקים, רש״י, המפרשים, המדרש והתלמוד."],
+  ["עלייה בכל יום","מיום ראשון עד שישי נפתחת בכל יום עלייה חדשה, וביום שישי נפתחות שתי האחרונות. בחרו קל, בינוני או קשה: 10 שאלות בכל רמה."],
+  ["עונים ולומדים","בוחרים תשובה ורואים מיד אם צדקתם, עם ההסבר והמקור."],
+  ["צוברים נקודות ומתקדמים","צוברים נקודות, אוספים תגים ומתחרים עם אחרים בטבלה. את ההתקדמות שלכם רואים ב״ההתקדמות שלי״."],
+  ["לכל המשפחה","לילדים מתחת לגיל 13 יש מצב משלהם, עם ציורים ומדבקות. בעברית, Español ו‑English, ואפשר להדפיס את החידון לשולחן השבת."]]}};
+let iStep=0,iDone=null;
+function iRender(){const t=IT[ST.lang]||IT.es,el=$("intro"),sl=t.s[iStep];el.setAttribute("dir",ST.lang==="he"?"rtl":"ltr");el.lang=ST.lang;
+  $("iBody").innerHTML=`<div class="islide"><div class="iart" style="margin-inline:auto">${IART[iStep]}</div><h2 id="iTitle">${esc(sl[0])}</h2><p>${esc(sl[1])}</p></div>`;
+  $("iDots").innerHTML=t.s.map((_,i)=>`<i class="${i===iStep?"on":""}"></i>`).join("");$("iDots").setAttribute("aria-label",(iStep+1)+" / "+t.s.length);
+  $("iNext").textContent=iStep===t.s.length-1?t.go:t.next;$("iSkip").textContent=t.skip;$("iSkip").style.visibility=iStep===t.s.length-1?"hidden":"visible";
+  document.querySelectorAll("#intro .ilang button").forEach(b=>b.classList.toggle("on",b.dataset.il===ST.lang))}
+function showIntro(done){iStep=0;iDone=done||null;$("intro").classList.add("on");iRender();setTimeout(()=>$("iNext").focus(),50)}
+function closeIntro(){$("intro").classList.remove("on");ST.introSeen=true;lsSet();const d=iDone;iDone=null;if(d)d()}
+$("iNext").onclick=()=>{sfx("tap");if(iStep>=IT.es.s.length-1)closeIntro();else{iStep++;iRender()}};
+$("iSkip").onclick=()=>closeIntro();
+$("oTour").onclick=()=>showIntro(null);
+document.querySelectorAll("#intro .ilang button").forEach(b=>b.onclick=()=>{ST.lang=b.dataset.il;oLang=ST.lang;lsSet();iRender();renderAll()});
+(()=>{let x0=null;const b=$("iBody");b.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});b.addEventListener("touchend",e=>{if(x0==null)return;let dx=e.changedTouches[0].clientX-x0;x0=null;if(ST.lang==="he")dx=-dx;if(dx<-40&&iStep<IT.es.s.length-1){iStep++;iRender()}else if(dx>40&&iStep>0){iStep--;iRender()}},{passive:true})})();
+document.addEventListener("keydown",e=>{if(!$("intro").classList.contains("on"))return;if(e.key==="Escape")closeIntro();else if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const fw=(e.key==="ArrowRight")!==(ST.lang==="he");if(fw&&iStep<IT.es.s.length-1)iStep++;else if(!fw&&iStep>0)iStep--;iRender()}});
+const PRF={es:{t:"Perfiles en este dispositivo",add:"Agregar perfil",del:n=>`¿Borrar el perfil de ${n}? Su progreso se borrará de este dispositivo y de la clasificación.`,new:"Nuevo perfil",hint:"Cada persona de la familia puede tener su propio perfil, nivel y progreso."},
+ en:{t:"Profiles on this device",add:"Add profile",del:n=>`Delete ${n}’s profile? Their progress will be removed from this device and the leaderboard.`,new:"New profile",hint:"Each family member can have their own profile, level and progress."},
+ he:{t:"פרופילים במכשיר הזה",add:"הוספת פרופיל",del:n=>`למחוק את הפרופיל של ${n}? ההתקדמות תימחק מהמכשיר ומהטבלה.`,new:"פרופיל חדש",hint:"לכל אחד במשפחה יכול להיות פרופיל, רמה והתקדמות משלו."}};
+function renderProfiles(){const el=$("oProf");if(!el)return;const t=PRF[oLang]||PRF[ST.lang]||PRF.es,ids=Object.keys(PROF.list).sort((a,b)=>+a.slice(1)-+b.slice(1));
+  const firstRun=ids.length===1&&!ST.onboarded;if(firstRun||DEMO&&ids.length===1&&!ST.onboarded){el.innerHTML="";return}
+  el.innerHTML=`<span class="lbl">${esc(t.t)}</span><div class="pchips">`+ids.map(pid=>{const sn=PROF.list[pid]||{},act=pid===PROF.active;const nm=sn.onboarded&&(sn.first||sn.name)?dispName(sn.first||sn.name,sn.last,(sn.age||13)<13):t.new;
+    return `<span class="pchip${act?" on":""}"><button data-pid="${pid}" ${act?'aria-current="true"':""}><span aria-hidden="true">${(sn.age||13)<13?"🧒":"🧑"}</span> ${esc(safeName(nm))}</button>${!act&&pid!=="p0"?`<button class="pdel" data-del="${pid}" aria-label="${esc(t.del(nm))}">×</button>`:""}</span>`}).join("")+
+    (ids.length<8?`<button class="padd" id="pAdd">+ ${esc(t.add)}</button>`:"")+`</div><p class="hint">${esc(t.hint)}</p>`;
+  el.querySelectorAll("[data-pid]").forEach(b=>b.onclick=()=>switchProfile(b.dataset.pid));
+  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{const sn=PROF.list[b.dataset.del]||{};if(confirm(t.del(sn.first||sn.name||t.new)))deleteProfile(b.dataset.del)});
+  const a=$("pAdd");if(a)a.onclick=addProfile}
+/* 3D missions game: loaded only when opened */
+function openGame(m){const f=$("gameif"),q=(DEMO?"demo&":"")+(m?"m="+encodeURIComponent(m):"");f.src="game/index.html?v=1795450640"+(q?"#"+q:"");$("gameov").hidden=false;document.body.style.overflow="hidden"}
+function closeGame(){$("gameov").hidden=true;$("gameif").src="about:blank";document.body.style.overflow=""}
+addEventListener("message",e=>{if(e.data&&e.data.type==="closeGame")closeGame()});
+const weekMission=()=>W?String(W.id).replace(/-\d+$/,""):"";
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".gbtn,#goMission");if(!b)return;openGame(b.id==="goMission"?weekMission():"")});
+function hideBoot(){const b=$("boot");if(!b||b.classList.contains("out"))return;b.classList.add("out");b.setAttribute("aria-busy","false");setTimeout(()=>b.remove(),300)}
+(async()=>{const complete=ST.onboarded&&ST.last&&ST.user;
+  if(!complete)await Promise.race([profPromise,sleep(3000)]);
+  await Promise.race([weeksPromise,sleep(4000)]);
+  decideProfile();hideBoot()})();
+setTimeout(hideBoot,8000);
+(async()=>{
+  try{if(DEMO){const dw=demoWeek();WEEKS=[dw.meta];FULL.demo=dw.full;currentId="demo";W=dw.full;scores=demoScores();throw 0}const r=await fetch("weeks/index.json");const idx=await r.json();
+    WEEKS=(idx.weeks||[]).filter(w=>w&&w.id&&w.shabbat&&Array.isArray(w.key)).sort((a,b)=>a.shabbat<b.shabbat?-1:1);
+    currentId=pickCurrent();const h=(location.hash||"").slice(1);const start=WEEKS.find(w=>w.id===h)?h:currentId;if(start)W=await loadWeek(start);}catch(e){}
+  if(DEMO){persist();if(!document.querySelector(".demob"))document.body.insertAdjacentHTML("beforeend",'<div class="demob" role="status">DEMO</div>')}renderAll();weeksReady();if(!isKids()){lastRank=xpRank(summary().total);lastBadges=myBadges()}if(needSync&&WEEKS.length){needSync=false;persist()}
+})();
+(async()=>{
+  const cl=window.claude;if(DEMO||!cl||!cl.use){profReady();return}
+  try{[db,user]=await Promise.all([cl.use("db"),cl.use("user")])}catch(e){}
+  if(!db){profReady();renderNotes();return}
+  try{uid=user?await user.id():null}catch(e){}
+  if(uid){myRef=db.doc("scores/"+uid);let cw=null;try{cw=user.can?await user.can("data.write"):null}catch(e){}canWrite=cw!==false}
+  db.collection("scores").onSnapshot(snap=>{scores={};snap.docs.forEach(d=>{const x=d.data();scores[d.id]=x;if(x&&x.subs&&typeof x.subs==="object")for(const pid in x.subs){if(/^p\d{1,2}$/.test(pid)&&x.subs[pid]&&typeof x.subs[pid]==="object")scores[d.id+"~"+pid]=x.subs[pid]}});if(ST.user&&ST.last&&takenUsers().has(ST.user.toLowerCase())){ST.user=makeUser(ST.first,ST.last,isKids());persist()}
+    if(isKids()){if(ST.kview==="lb")renderKids()}else{if(ST.view==="lb")renderLb();if(ST.view==="dash")renderDash()}},()=>{});
+  if(myRef){try{const s=await myRef.get();if(s.exists){const d0=s.data()||{};if(d0.subs&&typeof d0.subs==="object"){let add=false;for(const pid in d0.subs){const x=d0.subs[pid];if(!/^p\d{1,2}$/.test(pid)||PROF.list[pid]||!x||typeof x.name!=="string")continue;const m=x.name.trim().match(/^(.*\S)\s+(\S)\.?$/);PROF.list[pid]={lang:UI[x.lang]?x.lang:ST.lang,sound:x.sound!==false,onboarded:true,introSeen:true,name:x.name.slice(0,40),first:m?m[1].slice(0,30):x.name.slice(0,30),last:m?m[2]:"",user:typeof x.username==="string"?x.username.slice(0,40):"",age:x.age<13?8:13,weeks:x.weeks&&typeof x.weeks==="object"?x.weeks:{}};add=true}if(add){savePROF();renderProfiles()}}}
+    if(s.exists&&PROF.active==="p0"){const d=s.data()||{};let changed=false;
+      if(d.weeks&&typeof d.weeks==="object")for(const id in d.weeks){const a=d.weeks[id]&&d.weeks[id].answers||{};const cur=ST.weeks[id]||(ST.weeks[id]={answers:{}});if(d.weeks[id]&&d.weeks[id].printed&&!cur.printed){cur.printed=true;changed=true}
+        const dqf=d.weeks[id]&&d.weeks[id].qf||{},dkf=d.weeks[id]&&d.weeks[id].kf||{};cur.qf=cur.qf||{};cur.kf=cur.kf||{};for(const k in a){const v=+a[k];if(!(k in cur.answers)&&v>=0&&v<4){cur.answers[+k]=v;if(typeof dqf[k]==="string")cur.qf[+k]=dqf[k];changed=true}}
+        const ka=d.weeks[id]&&d.weeks[id].kans||{};cur.kans=cur.kans||{};const fromMig=d.weeks[id]&&d.weeks[id].kmig;for(const k in ka){const v=+ka[k];if(!(k in cur.kans)&&v>=0&&v<4){if(!fromMig&&cur.kmig&&!dkf[k]&&KMIG[id])continue;cur.kans[+k]=v;if(typeof dkf[k]==="string")cur.kf[+k]=dkf[k];changed=true}}const ks=d.weeks[id]&&d.weeks[id].kst||{};cur.kst=cur.kst||{};for(const k in ks){if(!fromMig&&cur.kmig&&KMIG[id])continue;if(!(k in cur.kst)&&+k>=0&&+k<100){cur.kst[+k]=1;changed=true}}if(d.weeks[id]&&d.weeks[id].kdone&&!cur.kdone){cur.kdone=true;changed=true}if(d.weeks[id]&&d.weeks[id].kprinted&&!cur.kprinted){cur.kprinted=true;changed=true}}
+      if(!lsGet()&&UI[d.lang])ST.lang=d.lang;if(typeof d.username==="string"&&!ST.user&&ST.last)ST.user=d.username;
+      if(typeof d.name==="string"&&d.name&&typeof d.age==="number"&&typeof d.username==="string"&&d.username&&(!ST.onboarded||!ST.last||!ST.user)){
+        const m=d.name.trim().match(/^(.*\S)\s+(\S)\.?$/);ST.first=m?m[1].slice(0,30):d.name.slice(0,30);ST.last=m?m[2]:(ST.last||"");ST.name=d.name.slice(0,40);ST.user=d.username.slice(0,40);ST.age=d.age<13?8:13;if(typeof d.sound==="boolean")ST.sound=d.sound;
+        if(ST.last){ST.onboarded=true;window.__mustFinish=false;$("onb").style.display="none";$("oX").style.display="";$("oCancel").style.display=""}changed=true}for(const fid in FULL)if(fixRec(FULL[fid]))changed=true;lsSet();if(changed)renderAll();}
+    if(Object.keys(ST.weeks).length)persist();}catch(e){}}
+  profReady();renderNotes();
+})();
+</script>
+</body>
+</html>
+
+</body></html>

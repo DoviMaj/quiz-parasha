@@ -1,0 +1,755 @@
+{
+ "id": "toldot",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Toldot: two stories",
+  "es": "Toldot: dos historias",
+  "he": "תולדות: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the others.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar las otras.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את האחרים."
+  },
+  "paths": [
+   {
+    "id": "wells",
+    "who": "yitzchak",
+    "name": {
+     "en": "Yitzchak’s wells",
+     "es": "Los pozos de Itzjak",
+     "he": "בארות יצחק"
+    },
+    "tag": {
+     "en": "Sow, harvest and dig — and don’t give up when others quarrel.",
+     "es": "Siembra, cosecha y cava, y no te rindas cuando otros discuten.",
+     "he": "זרעו, קצרו וחפרו — ואל תוותרו כשאחרים רבים."
+    },
+    "outro": {
+     "en": "Yitzchak didn’t fight over the wells — he kept digging until there was room for everyone. In the end even Avimelech came to make peace with him.",
+     "es": "Itzjak no peleó por los pozos: siguió cavando hasta que hubo espacio para todos. Al final hasta Avimélej vino a hacer las paces con él.",
+     "he": "יצחק לא נלחם על הבארות — הוא המשיך לחפור עד שהיה מקום לכולם. ובסוף גם אבימלך בא לכרות עמו ברית."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "A hundredfold harvest",
+       "es": "Una cosecha al céntuplo",
+       "he": "מאה שערים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "There was a famine. Hashem told Yitzchak: “Do not go down to Mitzrayim. Live in this land, and I will be with you.”",
+         "es": "Hubo hambre. Hashem le dijo a Itzjak: “No bajes a Mitzráyim. Vive en esta tierra, y Yo estaré contigo”.",
+         "he": "ויהי רעב בארץ… ״אל תרד מצרימה… גור בארץ הזאת ואהיה עמך ואברכך.״"
+        },
+        "src": "בראשית כו:א–ג"
+       },
+       {
+        "t": {
+         "en": "Yitzchak sowed in that land, and that year he reaped a hundred times what he planted — Hashem blessed him. Harvest the sheaves!",
+         "es": "Itzjak sembró en esa tierra, y ese año cosechó cien veces lo que plantó: Hashem lo bendijo. ¡Cosecha las gavillas!",
+         "he": "ויזרע יצחק בארץ ההוא, וימצא בשנה ההוא מאה שערים, ויברכהו ה׳. קצרו את העמרים!"
+        },
+        "src": "בראשית כו:יב"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        20
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": -14,
+         "z": 4,
+         "sprite": "scenery/wheat",
+         "h": 2
+        },
+        {
+         "t": "person",
+         "x": 14,
+         "z": -6,
+         "sprite": "scenery/wheat",
+         "h": 2
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Harvest the <b>sheaves</b> — a hundredfold!",
+          "es": "Cosecha las <b>gavillas</b>: ¡al céntuplo!",
+          "he": "קצרו את <b>העמרים</b> — מאה שערים!"
+         },
+         "at": [
+          0,
+          0
+         ],
+         "r": 4,
+         "tapg": {
+          "img": "scenery/sheaf",
+          "n": 5,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "A hundredfold!",
+           "es": "¡Al céntuplo!",
+           "he": "מאה שערים!"
+          }
+         },
+         "limit": 60
+        }
+       ],
+       "player": {
+        "sprite": "yitzchak",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "The wells",
+       "es": "Los pozos",
+       "he": "הבארות"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "The Plishtim had stopped up the wells that Avraham’s servants dug. Yitzchak dug them again and gave them the same names his father had given.",
+         "es": "Los filisteos habían tapado los pozos que cavaron los siervos de Avraham. Itzjak los volvió a cavar y les dio los mismos nombres que su padre.",
+         "he": "וישב יצחק ויחפר את בארת המים אשר חפרו בימי אברהם אביו, ויסתמום פלשתים… ויקרא להן שמות כשמת אשר קרא להן אביו."
+        },
+        "src": "בראשית כו:יח"
+       },
+       {
+        "ask": {
+         "en": "The shepherds of Gerar shout: “The water is ours!” What does Yitzchak do?",
+         "es": "Los pastores de Guerar gritan: “¡El agua es nuestra!”. ¿Qué hace Itzjak?",
+         "he": "רועי גרר צועקים: ״לנו המים!״ מה עושה יצחק?"
+        },
+        "options": [
+         {
+          "e": "🕊️",
+          "label": {
+           "en": "Move on and dig a new well",
+           "es": "Seguir adelante y cavar un pozo nuevo",
+           "he": "להמשיך הלאה ולחפור באר חדשה"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yitzchak chose peace — and kept digging.",
+             "es": "Itzjak eligió la paz, y siguió cavando.",
+             "he": "יצחק בחר בשלום — והמשיך לחפור."
+            }
+           }
+          ],
+          "middah": "shalom"
+         },
+         {
+          "e": "⚔️",
+          "label": {
+           "en": "Fight for the well",
+           "es": "Pelear por el pozo",
+           "he": "להילחם על הבאר"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yitzchak didn’t fight. He moved on and dug again, until there was room for everyone.",
+             "es": "Itzjak no peleó. Siguió adelante y volvió a cavar, hasta que hubo espacio para todos.",
+             "he": "יצחק לא נלחם. הוא המשיך הלאה וחפר שוב, עד שהיה מקום לכולם."
+            }
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.88,
+         0.72,
+         0.5
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "player": {
+        "robe": [
+         0.55,
+         0.45,
+         0.25
+        ],
+        "sprite": "yitzchak",
+        "h": 3.2
+       },
+       "start": [
+        0,
+        80
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": -5,
+         "z": 86
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Go to the <b>first new well</b>, in the valley.",
+          "es": "Ve al <b>primer pozo nuevo</b>, en el valle.",
+          "he": "לכו אל <b>הבאר החדשה הראשונה</b>, בעמק."
+         },
+         "at": [
+          -16,
+          30
+         ],
+         "r": 5,
+         "objects": [
+          {
+           "t": "well",
+           "x": -16,
+           "z": 30,
+           "reveal": 1
+          },
+          {
+           "t": "person",
+           "x": -12,
+           "z": 26,
+           "c": [
+            0.5,
+            0.3,
+            0.2
+           ]
+          },
+          {
+           "t": "person",
+           "x": -19,
+           "z": 25,
+           "c": [
+            0.45,
+            0.3,
+            0.25
+           ]
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "Yitzchak’s servants dug in the valley and found a well of fresh water. The shepherds of Gerar argued: “The water is ours!” He called it Esek — “quarrel.”",
+            "es": "Los siervos de Itzjak cavaron en el valle y encontraron un pozo de agua fresca. Los pastores de Guerar discutieron: “¡El agua es nuestra!”. Lo llamó Ések: “disputa”.",
+            "he": "ויחפרו עבדי יצחק בנחל וימצאו שם באר מים חיים. ויריבו רעי גרר עם רעי יצחק לאמר: ״לנו המים.״ ויקרא שם הבאר עשק."
+           },
+           "src": "בראשית כו:יט–כ"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "They quarreled there. Dig <b>another well</b>.",
+          "es": "Allí hubo pelea. Cava <b>otro pozo</b>.",
+          "he": "שם רבו. חפרו <b>באר אחרת</b>."
+         },
+         "at": [
+          16,
+          -15
+         ],
+         "r": 5,
+         "objects": [
+          {
+           "t": "well",
+           "x": 16,
+           "z": -15,
+           "reveal": 1
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "They dug another well, and argued about it too. He called it Sitnah.",
+            "es": "Cavaron otro pozo, y también discutieron por él. Lo llamó Sitná.",
+            "he": "ויחפרו באר אחרת ויריבו גם עליה, ויקרא שמה שטנה."
+           },
+           "src": "בראשית כו:כא"
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Move on and dig a <b>third well</b>.",
+          "es": "Sigue adelante y cava un <b>tercer pozo</b>.",
+          "he": "המשיכו הלאה וחפרו <b>באר שלישית</b>."
+         },
+         "at": [
+          -6,
+          -70
+         ],
+         "r": 6,
+         "objects": [
+          {
+           "t": "well",
+           "x": -6,
+           "z": -70,
+           "reveal": 1
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "“Now Hashem has made room for us, and we will be fruitful in the land.” He called it Rechovot.",
+            "es": "“Ahora Hashem nos ha dado espacio, y prosperaremos en la tierra”. Lo llamó Rejovot.",
+            "he": "ויקרא שמה רחבות ויאמר: ״כי עתה הרחיב ה׳ לנו ופרינו בארץ.״"
+           },
+           "w": "yitzchak",
+           "src": "בראשית כו:כב"
+          }
+         ]
+        }
+       ]
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Avimelech came to Yitzchak: “We have clearly seen that Hashem is with you. Let there be a covenant between us.”",
+         "es": "Avimélej vino a Itzjak: “Hemos visto claramente que Hashem está contigo. Que haya un pacto entre nosotros”.",
+         "he": "ואבימלך הלך אליו מגרר… ויאמרו: ״ראו ראינו כי היה ה׳ עמך… ונכרתה ברית עמך.״"
+        },
+        "w": "avimelech",
+        "src": "בראשית כו:כו–כח"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "twins",
+    "who": "yaakov",
+    "name": {
+     "en": "Yaakov and Esav",
+     "es": "Yaakov y Esav",
+     "he": "יעקב ועשו"
+    },
+    "tag": {
+     "en": "A bowl of red stew, two goat kids, and a blessing.",
+     "es": "Un plato de guiso rojo, dos cabritos y una bendición.",
+     "he": "נזיד אדום, שני גדיי עזים וברכה."
+    },
+    "outro": {
+     "en": "Yaakov received the blessing and had to flee to his uncle Lavan in Charan. The journey continues in Vayetzei!",
+     "es": "Yaakov recibió la bendición y tuvo que huir a casa de su tío Laván en Jarán. ¡El viaje sigue en Vayetzé!",
+     "he": "יעקב קיבל את הברכה ונאלץ לברוח אל לבן אחי אמו בחרן. המסע ממשיך בפרשת ויצא!"
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "The red stew",
+       "es": "El guiso rojo",
+       "he": "הנזיד האדום"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Esav became a skilled hunter, a man of the field; Yaakov was a simple man who stayed in the tents. Rashi: the tents of Torah learning.",
+         "es": "Esav fue un cazador hábil, hombre del campo; Yaakov era un hombre sencillo que se quedaba en las tiendas. Rashi: las tiendas del estudio de Torá.",
+         "he": "ויהי עשו איש ידע ציד איש שדה, ויעקב איש תם ישב אהלים. רש״י: אהלו של שם ואהלו של עבר."
+        },
+        "src": "בראשית כה:כז; רש״י"
+       },
+       {
+        "t": {
+         "en": "Yaakov was cooking a stew when Esav came in from the field, exhausted.",
+         "es": "Yaakov cocinaba un guiso cuando Esav llegó del campo, agotado.",
+         "he": "ויזד יעקב נזיד, ויבא עשו מן השדה והוא עיף."
+        },
+        "src": "בראשית כה:כט"
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        22
+       ],
+       "objects": [
+        {
+         "t": "tent",
+         "x": 8,
+         "z": 26
+        },
+        {
+         "t": "tent",
+         "x": 14,
+         "z": 24
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Fetch the <b>lentils</b> from the storehouse.",
+          "es": "Trae las <b>lentejas</b> del almacén.",
+          "he": "הביאו <b>עדשים</b> מהמחסן."
+         },
+         "at": [
+          -14,
+          0
+         ],
+         "r": 3.5,
+         "limit": 18,
+         "objects": [
+          {
+           "t": "person",
+           "x": -16,
+           "z": -2,
+           "sprite": "scenery/silo",
+           "h": 3.4
+          },
+          {
+           "t": "person",
+           "x": -12,
+           "z": 1,
+           "sprite": "scenery/baskets",
+           "h": 1.3
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Go back to the <b>tent</b> — Esav is coming from the field!",
+          "es": "Vuelve a la <b>tienda</b>: ¡Esav viene del campo!",
+          "he": "חזרו אל <b>האהל</b> — עשו בא מן השדה!"
+         },
+         "at": [
+          10,
+          22
+         ],
+         "r": 4,
+         "talk": [
+          {
+           "t": {
+            "en": "“Please give me some of this red, red stuff — I am exhausted!”",
+            "es": "“¡Dame por favor de eso rojo, de eso rojo, que estoy agotado!”",
+            "he": "״הלעיטני נא מן האדם האדם הזה, כי עיף אנכי.״"
+           },
+           "w": "esav",
+           "src": "בראשית כה:ל"
+          },
+          {
+           "t": {
+            "en": "“Sell me your birthright today.”",
+            "es": "“Véndeme hoy tu primogenitura”.",
+            "he": "״מכרה כיום את בכרתך לי.״"
+           },
+           "w": "yaakov",
+           "src": "בראשית כה:לא"
+          },
+          {
+           "t": {
+            "en": "“I am going to die anyway — what is this birthright to me?”",
+            "es": "“De todos modos voy a morir, ¿para qué me sirve la primogenitura?”",
+            "he": "״הנה אנכי הולך למות, ולמה זה לי בכרה?״"
+           },
+           "w": "esav",
+           "src": "בראשית כה:לב"
+          },
+          {
+           "t": {
+            "en": "Esav ate, drank, got up and left — Esav despised the birthright.",
+            "es": "Esav comió, bebió, se levantó y se fue: Esav despreció la primogenitura.",
+            "he": "ויאכל וישת ויקם וילך, ויבז עשו את הבכרה."
+           },
+           "src": "בראשית כה:לד"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 12,
+           "z": 19,
+           "sprite": "scenery/campfire",
+           "h": 1.6
+          },
+          {
+           "t": "person",
+           "x": 16,
+           "z": 14,
+           "sprite": "esav",
+           "h": 3.2
+          }
+         ],
+         "par": 7
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Two goat kids",
+       "es": "Dos cabritos",
+       "he": "שני גדיי עזים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yitzchak was old and his eyes were dim. He asked Esav to hunt and prepare tasty food, so he could bless him.",
+         "es": "Itzjak era anciano y sus ojos se habían debilitado. Le pidió a Esav que cazara y le preparara comida sabrosa, para bendecirlo.",
+         "he": "ויהי כי זקן יצחק ותכהין עיניו… ״וצא השדה וצודה לי ציד, ועשה לי מטעמים… בעבור תברכך נפשי.״"
+        },
+        "src": "בראשית כז:א–ד"
+       },
+       {
+        "t": {
+         "en": "“Go to the flock and bring me two good goat kids, and I will make them into tasty food for your father.”",
+         "es": "“Ve al rebaño y tráeme dos buenos cabritos, y los prepararé como comida sabrosa para tu padre”.",
+         "he": "״לך נא אל הצאן וקח לי משם שני גדיי עזים טבים, ואעשה אתם מטעמים לאביך.״"
+        },
+        "w": "rivkah",
+        "src": "בראשית כז:ט"
+       }
+      ],
+      "game": {
+       "type": "herd",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "animal": "goat",
+       "n": 2,
+       "every": 99,
+       "pen": {
+        "x": 0,
+        "z": -24,
+        "r": 5.6,
+        "gap": 0.45,
+        "style": "fence"
+       },
+       "objects": [],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       },
+       "par": 30
+      }
+     },
+     {
+      "title": {
+       "en": "The blessing",
+       "es": "La bendición",
+       "he": "הברכה"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "“My father.”",
+         "es": "“Padre mío”.",
+         "he": "״אבי.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית כז:יח"
+       },
+       {
+        "t": {
+         "en": "“Hineni. Who are you, my son?”",
+         "es": "“Hineni. ¿Quién eres, hijo mío?”",
+         "he": "״הנני, מי אתה בני?״"
+        },
+        "w": "yitzchak",
+        "src": "בראשית כז:יח"
+       },
+       {
+        "t": {
+         "en": "“The voice is the voice of Yaakov, but the hands are the hands of Esav.”",
+         "es": "“La voz es la voz de Yaakov, pero las manos son las manos de Esav”.",
+         "he": "״הקל קול יעקב והידים ידי עשו.״"
+        },
+        "w": "yitzchak",
+        "src": "בראשית כז:כב"
+       },
+       {
+        "t": {
+         "en": "“May G-d give you of the dew of the heavens and the richness of the earth, plenty of grain and wine.”",
+         "es": "“Que D-os te dé del rocío de los cielos y de la riqueza de la tierra, abundancia de trigo y vino”.",
+         "he": "״ויתן לך האלקים מטל השמים ומשמני הארץ, ורב דגן ותירש.״"
+        },
+        "w": "yitzchak",
+        "src": "בראשית כז:כח"
+       },
+       {
+        "t": {
+         "en": "Esav hated Yaakov because of the blessing. Rivkah told Yaakov: “Flee to Lavan my brother, to Charan.”",
+         "es": "Esav odió a Yaakov por la bendición. Rivká le dijo a Yaakov: “Huye a casa de Laván, mi hermano, a Jarán”.",
+         "he": "וישטם עשו את יעקב על הברכה… ״ועתה בני שמע בקלי, וקום ברח לך אל לבן אחי חרנה.״"
+        },
+        "src": "בראשית כז:מא–מג"
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 420,
+       "obstacles": [
+        "rock",
+        "stone"
+       ],
+       "runner": "yaakov",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "pile"
+       ],
+       "goalSprite": "scenery/city_gate"
+      }
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "avimelech": {
+    "en": "Avimelech",
+    "es": "Avimélej",
+    "he": "אבימלך"
+   },
+   "yitzchak": {
+    "en": "Yitzchak",
+    "es": "Itzjak",
+    "he": "יצחק"
+   },
+   "rivkah": {
+    "en": "Rivkah",
+    "es": "Rivká",
+    "he": "רבקה"
+   },
+   "yaakov": {
+    "en": "Yaakov",
+    "es": "Yaakov",
+    "he": "יעקב"
+   },
+   "esav": {
+    "en": "Esav",
+    "es": "Esav",
+    "he": "עשו"
+   }
+  }
+ }
+}

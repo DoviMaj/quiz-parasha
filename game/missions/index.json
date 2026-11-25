@@ -1,0 +1,507 @@
+{
+ "year": "5787",
+ "nodes": [
+  {
+   "id": "bereshit",
+   "name": {
+    "es": "Bereshit",
+    "en": "Bereshit",
+    "he": "בראשית"
+   },
+   "shabbat": "2026-10-10",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "noach",
+   "name": {
+    "es": "Noaj",
+    "en": "Noach",
+    "he": "נח"
+   },
+   "shabbat": "2026-10-17",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "lech-lecha",
+   "name": {
+    "es": "Lej Lejá",
+    "en": "Lech Lecha",
+    "he": "לך לך"
+   },
+   "shabbat": "2026-10-24",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "vayera",
+   "name": {
+    "es": "Vayerá",
+    "en": "Vayera",
+    "he": "וירא"
+   },
+   "shabbat": "2026-10-31",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "chayei-sara",
+   "name": {
+    "es": "Jayé Sará",
+    "en": "Chayei Sarah",
+    "he": "חיי שרה"
+   },
+   "shabbat": "2026-11-07",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "toldot",
+   "name": {
+    "es": "Toldot",
+    "en": "Toldot",
+    "he": "תולדות"
+   },
+   "shabbat": "2026-11-14",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "vayetzei",
+   "name": {
+    "es": "Vayetzé",
+    "en": "Vayetze",
+    "he": "ויצא"
+   },
+   "shabbat": "2026-11-21",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "vayishlach",
+   "name": {
+    "es": "Vayishlaj",
+    "en": "Vayishlach",
+    "he": "וישלח"
+   },
+   "shabbat": "2026-11-28",
+   "book": "Bereshit",
+   "type": "story"
+  },
+  {
+   "id": "vayeshev",
+   "name": {
+    "es": "Vayéshev",
+    "en": "Vayeshev",
+    "he": "וישב"
+   },
+   "shabbat": "2026-12-05",
+   "book": "Bereshit",
+   "type": "story",
+   "preview": true
+  },
+  {
+   "id": "miketz",
+   "name": {
+    "es": "Miketz",
+    "en": "Miketz",
+    "he": "מקץ"
+   },
+   "shabbat": "2026-12-12",
+   "book": "Bereshit"
+  },
+  {
+   "id": "vayigash",
+   "name": {
+    "es": "Vayigash",
+    "en": "Vayigash",
+    "he": "ויגש"
+   },
+   "shabbat": "2026-12-19",
+   "book": "Bereshit"
+  },
+  {
+   "id": "vayechi",
+   "name": {
+    "es": "Vayejí",
+    "en": "Vayechi",
+    "he": "ויחי"
+   },
+   "shabbat": "2026-12-26",
+   "book": "Bereshit"
+  },
+  {
+   "id": "shemot",
+   "name": {
+    "es": "Shemot",
+    "en": "Shemot",
+    "he": "שמות"
+   },
+   "shabbat": "2027-01-02",
+   "book": "Shemot"
+  },
+  {
+   "id": "vaera",
+   "name": {
+    "es": "Vaerá",
+    "en": "Vaera",
+    "he": "וארא"
+   },
+   "shabbat": "2027-01-09",
+   "book": "Shemot"
+  },
+  {
+   "id": "bo",
+   "name": {
+    "es": "Bo",
+    "en": "Bo",
+    "he": "בא"
+   },
+   "shabbat": "2027-01-16",
+   "book": "Shemot"
+  },
+  {
+   "id": "beshalach",
+   "name": {
+    "es": "Beshalaj",
+    "en": "Beshalach",
+    "he": "בשלח"
+   },
+   "shabbat": "2027-01-23",
+   "book": "Shemot",
+   "type": "story"
+  },
+  {
+   "id": "yitro",
+   "name": {
+    "es": "Yitró",
+    "en": "Yitro",
+    "he": "יתרו"
+   },
+   "shabbat": "2027-01-30",
+   "book": "Shemot"
+  },
+  {
+   "id": "mishpatim",
+   "name": {
+    "es": "Mishpatim",
+    "en": "Mishpatim",
+    "he": "משפטים"
+   },
+   "shabbat": "2027-02-06",
+   "book": "Shemot"
+  },
+  {
+   "id": "terumah",
+   "name": {
+    "es": "Terumá",
+    "en": "Terumah",
+    "he": "תרומה"
+   },
+   "shabbat": "2027-02-13",
+   "book": "Shemot",
+   "type": "story"
+  },
+  {
+   "id": "tetzaveh",
+   "name": {
+    "es": "Tetzavé",
+    "en": "Tetzaveh",
+    "he": "תצוה"
+   },
+   "shabbat": "2027-02-20",
+   "book": "Shemot"
+  },
+  {
+   "id": "ki-tisa",
+   "name": {
+    "es": "Ki Tisá",
+    "en": "Ki Tisa",
+    "he": "כי תשא"
+   },
+   "shabbat": "2027-02-27",
+   "book": "Shemot"
+  },
+  {
+   "id": "vayakhel",
+   "name": {
+    "es": "Vayakhel",
+    "en": "Vayakhel",
+    "he": "ויקהל"
+   },
+   "shabbat": "2027-03-06",
+   "book": "Shemot"
+  },
+  {
+   "id": "pekudei",
+   "name": {
+    "es": "Pekudé",
+    "en": "Pekudei",
+    "he": "פקודי"
+   },
+   "shabbat": "2027-03-13",
+   "book": "Shemot"
+  },
+  {
+   "id": "vayikra",
+   "name": {
+    "es": "Vayikrá",
+    "en": "Vayikra",
+    "he": "ויקרא"
+   },
+   "shabbat": "2027-03-20",
+   "book": "Vayikra"
+  },
+  {
+   "id": "tzav",
+   "name": {
+    "es": "Tzav",
+    "en": "Tzav",
+    "he": "צו"
+   },
+   "shabbat": "2027-03-27",
+   "book": "Vayikra"
+  },
+  {
+   "id": "shmini",
+   "name": {
+    "es": "Sheminí",
+    "en": "Shemini",
+    "he": "שמיני"
+   },
+   "shabbat": "2027-04-03",
+   "book": "Vayikra"
+  },
+  {
+   "id": "tazria",
+   "name": {
+    "es": "Tazría",
+    "en": "Tazria",
+    "he": "תזריע"
+   },
+   "shabbat": "2027-04-10",
+   "book": "Vayikra"
+  },
+  {
+   "id": "metzora",
+   "name": {
+    "es": "Metzorá",
+    "en": "Metzora",
+    "he": "מצורע"
+   },
+   "shabbat": "2027-04-17",
+   "book": "Vayikra"
+  },
+  {
+   "id": "achrei-mot",
+   "name": {
+    "es": "Ajaré Mot",
+    "en": "Achrei Mot",
+    "he": "אחרי מות"
+   },
+   "shabbat": "2027-05-01",
+   "book": "Vayikra"
+  },
+  {
+   "id": "kedoshim",
+   "name": {
+    "es": "Kedoshim",
+    "en": "Kedoshim",
+    "he": "קדושים"
+   },
+   "shabbat": "2027-05-08",
+   "book": "Vayikra"
+  },
+  {
+   "id": "emor",
+   "name": {
+    "es": "Emor",
+    "en": "Emor",
+    "he": "אמור"
+   },
+   "shabbat": "2027-05-15",
+   "book": "Vayikra"
+  },
+  {
+   "id": "behar",
+   "name": {
+    "es": "Behar",
+    "en": "Behar",
+    "he": "בהר"
+   },
+   "shabbat": "2027-05-22",
+   "book": "Vayikra"
+  },
+  {
+   "id": "bechukotai",
+   "name": {
+    "es": "Bejukotai",
+    "en": "Bechukotai",
+    "he": "בחקתי"
+   },
+   "shabbat": "2027-05-29",
+   "book": "Vayikra"
+  },
+  {
+   "id": "bamidbar",
+   "name": {
+    "es": "Bamidbar",
+    "en": "Bamidbar",
+    "he": "במדבר"
+   },
+   "shabbat": "2027-06-05",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "nasso",
+   "name": {
+    "es": "Nasó",
+    "en": "Nasso",
+    "he": "נשא"
+   },
+   "shabbat": "2027-06-19",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "behaalotcha",
+   "name": {
+    "es": "Behaalotejá",
+    "en": "Behaalotecha",
+    "he": "בהעלותך"
+   },
+   "shabbat": "2027-06-26",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "shlach",
+   "name": {
+    "es": "Shelaj",
+    "en": "Shelach",
+    "he": "שלח"
+   },
+   "shabbat": "2027-07-03",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "korach",
+   "name": {
+    "es": "Kóraj",
+    "en": "Korach",
+    "he": "קרח"
+   },
+   "shabbat": "2027-07-10",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "chukat-balak",
+   "name": {
+    "es": "Jukat-Balak",
+    "en": "Chukat-Balak",
+    "he": "חקת-בלק"
+   },
+   "shabbat": "2027-07-17",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "pinchas",
+   "name": {
+    "es": "Pinjás",
+    "en": "Pinchas",
+    "he": "פינחס"
+   },
+   "shabbat": "2027-07-24",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "matot-masei",
+   "name": {
+    "es": "Matot-Masé",
+    "en": "Matot-Masei",
+    "he": "מטות-מסעי"
+   },
+   "shabbat": "2027-07-31",
+   "book": "Bamidbar"
+  },
+  {
+   "id": "devarim",
+   "name": {
+    "es": "Devarim",
+    "en": "Devarim",
+    "he": "דברים"
+   },
+   "shabbat": "2027-08-07",
+   "book": "Devarim"
+  },
+  {
+   "id": "vaetchanan",
+   "name": {
+    "es": "Vaetjanán",
+    "en": "Vaetchanan",
+    "he": "ואתחנן"
+   },
+   "shabbat": "2027-08-14",
+   "book": "Devarim"
+  },
+  {
+   "id": "eikev",
+   "name": {
+    "es": "Ekev",
+    "en": "Eikev",
+    "he": "עקב"
+   },
+   "shabbat": "2027-08-21",
+   "book": "Devarim"
+  },
+  {
+   "id": "reeh",
+   "name": {
+    "es": "Reé",
+    "en": "Re’eh",
+    "he": "ראה"
+   },
+   "shabbat": "2027-08-28",
+   "book": "Devarim"
+  },
+  {
+   "id": "shoftim",
+   "name": {
+    "es": "Shoftim",
+    "en": "Shoftim",
+    "he": "שופטים"
+   },
+   "shabbat": "2027-09-04",
+   "book": "Devarim"
+  },
+  {
+   "id": "ki-teitzei",
+   "name": {
+    "es": "Ki Tetzé",
+    "en": "Ki Teitzei",
+    "he": "כי תצא"
+   },
+   "shabbat": "2027-09-11",
+   "book": "Devarim"
+  },
+  {
+   "id": "ki-tavo",
+   "name": {
+    "es": "Ki Tavó",
+    "en": "Ki Tavo",
+    "he": "כי תבוא"
+   },
+   "shabbat": "2027-09-18",
+   "book": "Devarim"
+  },
+  {
+   "id": "nitzavim-vayeilech",
+   "name": {
+    "es": "Nitzavim-Vayélej",
+    "en": "Nitzavim-Vayeilech",
+    "he": "נצבים-וילך"
+   },
+   "shabbat": "2027-09-25",
+   "book": "Devarim"
+  }
+ ]
+}

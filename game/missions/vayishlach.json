@@ -1,0 +1,1068 @@
+{
+ "id": "vayishlach",
+ "type": "story",
+ "scene": {
+  "ground": [
+   0.62,
+   0.66,
+   0.4
+  ],
+  "sky": [
+   0.6,
+   0.75,
+   0.92
+  ],
+  "fog": [
+   0.82,
+   0.86,
+   0.8
+  ],
+  "hills": 1.4
+ },
+ "title": {
+  "en": "Vayishlach: two stories",
+  "es": "Vayishlaj: dos historias",
+  "he": "וישלח: שני סיפורים"
+ },
+ "intro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "outro": {
+  "en": "",
+  "es": "",
+  "he": ""
+ },
+ "q": [],
+ "story": {
+  "intro": {
+   "en": "The same parashah, seen through different people. Choose whose story to follow — then come back and try the other one.",
+   "es": "La misma parashá, vista por distintas personas. Elige qué historia seguir, y después vuelve a probar la otra.",
+   "he": "אותה פרשה, דרך עיניהם של אנשים שונים. בחרו בעקבות מי תלכו — ואחר כך חזרו לנסות את הסיפור השני."
+  },
+  "paths": [
+   {
+    "id": "esav",
+    "who": "yaakov",
+    "name": {
+     "en": "Meeting Esav",
+     "es": "El encuentro con Esav",
+     "he": "המפגש עם עשו"
+    },
+    "tag": {
+     "en": "Gift, prayer — and a night wrestling until dawn.",
+     "es": "Regalo, oración, y una noche de lucha hasta el amanecer.",
+     "he": "דורון, תפלה — ולילה של מאבק עד עלות השחר."
+    },
+    "outro": {
+     "en": "Yaakov prepared with gifts, prayer and readiness to fight — and Esav ran to greet him and hugged him.",
+     "es": "Yaakov se preparó con regalos, oración y disposición a luchar, y Esav corrió a recibirlo y lo abrazó.",
+     "he": "יעקב התכונן בדורון, בתפלה ובמלחמה — ועשו רץ לקראתו ויחבקהו."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Four hundred men",
+       "es": "Cuatrocientos hombres",
+       "he": "ארבע מאות איש"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov sent messengers ahead to Esav his brother. Rashi: real angels.",
+         "es": "Yaakov envió mensajeros delante de él a Esav, su hermano. Rashí: ángeles de verdad.",
+         "he": "וישלח יעקב מלאכים לפניו אל עשו אחיו. רש״י: מלאכים ממש."
+        },
+        "src": "בראשית לב:ד; רש״י"
+       },
+       {
+        "t": {
+         "en": "Now race back to Yaakov’s camp with the news about Esav!",
+         "es": "¡Ahora corre de vuelta al campamento de Yaakov con la noticia sobre Esav!",
+         "he": "עכשיו רוצו בחזרה למחנה יעקב עם החדשות על עשו!"
+        }
+       }
+      ],
+      "game": {
+       "type": "run",
+       "scene": {
+        "ground": [
+         0.8,
+         0.66,
+         0.46
+        ],
+        "sky": [
+         0.62,
+         0.74,
+         0.9
+        ],
+        "fog": [
+         0.93,
+         0.84,
+         0.68
+        ],
+        "hills": 1.0
+       },
+       "walls": "canyon",
+       "goal": 420,
+       "runner": "angel",
+       "pickup": false,
+       "low": [
+        "rock",
+        "bush"
+       ],
+       "tall": [
+        "boulder",
+        "camel"
+       ],
+       "goalSprite": "scenery/tent_light",
+       "side": [
+        "scenery/palm",
+        "scenery/acacia"
+       ]
+      },
+      "after": [
+       {
+        "t": {
+         "en": "“We came to your brother Esav — and he is coming to meet you, with four hundred men.”",
+         "es": "“Fuimos a ver a tu hermano Esav, y él viene a tu encuentro con cuatrocientos hombres”.",
+         "he": "״באנו אל אחיך אל עשו, וגם הלך לקראתך וארבע מאות איש עמו.״"
+        },
+        "src": "בראשית לב:ז"
+       },
+       {
+        "t": {
+         "en": "Yaakov was very afraid. Rashi: he prepared himself in three ways — with a gift, with prayer, and with readiness to fight.",
+         "es": "Yaakov tuvo mucho miedo. Según Rashí, se preparó de tres maneras: con un regalo, con oración y con disposición a luchar.",
+         "he": "ויירא יעקב מאד. רש״י: התקין עצמו לשלשה דברים — לדורון, לתפלה ולמלחמה."
+        },
+        "src": "בראשית לב:ח; רש״י לב:ט"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Get ready",
+       "es": "Prepárate",
+       "he": "ההכנות"
+      },
+      "choose": {
+       "mode": "all",
+       "title": {
+        "en": "Prepare in three ways",
+        "es": "Prepárate de tres maneras",
+        "he": "התכוננו בשלוש דרכים"
+       },
+       "options": [
+        {
+         "e": "🎁",
+         "label": {
+          "en": "A gift: send the flocks",
+          "es": "Un regalo: enviar los rebaños",
+          "he": "דורון: לשלוח את העדרים"
+         },
+         "fmt": "herd",
+         "chapters": [
+          {
+           "title": null,
+           "talk": [
+            {
+             "t": {
+              "en": "He prepared a gift for Esav: goats, sheep, camels, cows and donkeys, each flock separate.",
+              "es": "Preparó un regalo para Esav: cabras, ovejas, camellos, vacas y burros, cada rebaño por separado.",
+              "he": "ויקח… מנחה לעשו אחיו: עזים… רחלים… גמלים… פרות… אתנת… עדר עדר לבדו."
+             },
+             "src": "בראשית לב:יד–יז"
+            }
+           ],
+           "game": {
+            "type": "herd",
+            "scene": {
+             "ground": [
+              0.88,
+              0.72,
+              0.5
+             ],
+             "sky": [
+              0.62,
+              0.74,
+              0.9
+             ],
+             "fog": [
+              0.93,
+              0.84,
+              0.68
+             ],
+             "hills": 1.0
+            },
+            "animal": "mixed",
+            "n": 14,
+            "pen": {
+             "x": 0,
+             "z": -26,
+             "r": 6.2,
+             "gap": 0.42,
+             "style": "fence"
+            },
+            "every": 4,
+            "objects": [
+             {
+              "t": "tent",
+              "x": -9,
+              "z": -38
+             },
+             {
+              "t": "tent",
+              "x": -3,
+              "z": -41
+             },
+             {
+              "t": "tent",
+              "x": 4,
+              "z": -40
+             },
+             {
+              "t": "tent",
+              "x": 10,
+              "z": -37
+             }
+            ],
+            "player": {
+             "sprite": "yaakov",
+             "h": 3.2
+            }
+           }
+          }
+         ],
+         "middah": "shalom"
+        },
+        {
+         "e": "🙏",
+         "label": {
+          "en": "Prayer",
+          "es": "Oración",
+          "he": "תפלה"
+         },
+         "fmt": "tap",
+         "chapters": [
+          {
+           "title": null,
+           "talk": [
+            {
+             "t": {
+              "en": "“I am too small for all the kindness and truth You have done for Your servant… Save me, please, from my brother Esav.”",
+              "es": "“No soy digno de toda la bondad y la verdad que has hecho con Tu siervo… Sálvame, por favor, de mi hermano Esav”.",
+              "he": "״קטנתי מכל החסדים ומכל האמת אשר עשית את עבדך… הצילני נא מיד אחי מיד עשו.״"
+             },
+             "w": "yaakov",
+             "src": "בראשית לב:יא–יב"
+            }
+           ],
+           "game": {
+            "type": "tap",
+            "img": "yaakov",
+            "n": 4,
+            "speed": 0.9,
+            "zone": 0.22,
+            "text": {
+             "en": "Pray with all your heart!",
+             "es": "¡Reza con todo el corazón!",
+             "he": "התפללו בכל הלב!"
+            },
+            "hint": {
+             "en": "Each good tap is one more word of the prayer.",
+             "es": "Cada toque preciso es una palabra más de la oración.",
+             "he": "כל הקשה מדויקת היא עוד מילה בתפלה."
+            },
+            "done": {
+             "en": "Amen!",
+             "es": "¡Amén!",
+             "he": "אמן!"
+            }
+           }
+          }
+         ],
+         "middah": "emunah"
+        },
+        {
+         "e": "⛺",
+         "label": {
+          "en": "Split the camp in two",
+          "es": "Dividir el campamento en dos",
+          "he": "לחצות את המחנה לשנים"
+         },
+         "fmt": "explore",
+         "chapters": [
+          {
+           "title": null,
+           "talk": [
+            {
+             "t": {
+              "en": "“If Esav comes to one camp and attacks it, the camp that is left will escape.”",
+              "es": "“Si Esav llega a un campamento y lo ataca, el campamento que quede podrá escapar”.",
+              "he": "״אם יבוא עשו אל המחנה האחת והכהו, והיה המחנה הנשאר לפליטה.״"
+             },
+             "w": "yaakov",
+             "src": "בראשית לב:ט"
+            }
+           ],
+           "game": {
+            "type": "explore",
+            "scene": {
+             "ground": [
+              0.62,
+              0.66,
+              0.4
+             ],
+             "sky": [
+              0.6,
+              0.75,
+              0.92
+             ],
+             "fog": [
+              0.82,
+              0.86,
+              0.8
+             ],
+             "hills": 1.4
+            },
+            "start": [
+             0,
+             20
+            ],
+            "objects": [],
+            "steps": [
+             {
+              "text": {
+               "en": "Lead half the camp to the <b>second camp</b> across the field.",
+               "es": "Lleva la mitad del campamento al <b>segundo campamento</b>, al otro lado del campo.",
+               "he": "הובילו חצי מהמחנה אל <b>המחנה השני</b> מעבר לשדה."
+              },
+              "at": [
+               22,
+               -26
+              ],
+              "r": 5,
+              "limit": 30,
+              "objects": [
+               {
+                "t": "tent",
+                "x": 25,
+                "z": -30
+               },
+               {
+                "t": "tent",
+                "x": 19,
+                "z": -32
+               }
+              ],
+              "npc": [
+               {
+                "t": "person",
+                "x": -3,
+                "z": 16,
+                "sprite": "sheep",
+                "h": 1.6,
+                "follow": "start"
+               },
+               {
+                "t": "person",
+                "x": 3,
+                "z": 16,
+                "sprite": "camel",
+                "h": 3.2,
+                "follow": "start"
+               }
+              ]
+             }
+            ],
+            "player": {
+             "sprite": "yaakov",
+             "h": 3.2
+            }
+           }
+          }
+         ],
+         "middah": "gevurah"
+        }
+       ]
+      }
+     },
+     {
+      "title": {
+       "en": "Wrestling until dawn",
+       "es": "Lucha hasta el amanecer",
+       "he": "ויאבק איש עמו"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov was left alone, and a man wrestled with him until dawn. Rashi: it was Esav’s angel.",
+         "es": "Yaakov se quedó solo, y un hombre luchó con él hasta el amanecer. Rashí: era el ángel de Esav.",
+         "he": "ויותר יעקב לבדו, ויאבק איש עמו עד עלות השחר. רש״י: שרו של עשו."
+        },
+        "src": "בראשית לב:כה; רש״י"
+       }
+      ],
+      "game": {
+       "type": "tap",
+       "img": "angel",
+       "n": 5,
+       "speed": 1.15,
+       "zone": 0.2,
+       "text": {
+        "en": "Hold on until dawn!",
+        "es": "¡Resiste hasta el amanecer!",
+        "he": "החזיקו מעמד עד עלות השחר!"
+       },
+       "hint": {
+        "en": "Every good tap brings dawn one hour closer.",
+        "es": "Cada toque preciso acerca el amanecer una hora.",
+        "he": "כל הקשה מדויקת מקרבת את עלות השחר בשעה."
+       },
+       "done": {
+        "en": "Dawn!",
+        "es": "¡Amanecer!",
+        "he": "עלה השחר!"
+       },
+       "night": 1
+      },
+      "after": [
+       {
+        "t": {
+         "en": "“Let me go, for dawn has come.”",
+         "es": "“Déjame ir, porque ya amanece”.",
+         "he": "״שלחני כי עלה השחר.״"
+        },
+        "w": "angel",
+        "src": "בראשית לב:כז"
+       },
+       {
+        "t": {
+         "en": "“I will not let you go unless you bless me.”",
+         "es": "“No te dejaré ir si no me bendices”.",
+         "he": "״לא אשלחך כי אם ברכתני.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לב:כז"
+       },
+       {
+        "t": {
+         "en": "“Your name will no longer be Yaakov, but Yisrael — for you have struggled with angels and with men, and you have won.”",
+         "es": "“Ya no te llamarás Yaakov, sino Israel, porque luchaste con ángeles y con hombres, y venciste”.",
+         "he": "״לא יעקב יאמר עוד שמך כי אם ישראל, כי שרית עם אלקים ועם אנשים ותוכל.״"
+        },
+        "w": "angel",
+        "src": "בראשית לב:כט"
+       }
+      ]
+     },
+     {
+      "title": {
+       "en": "Brothers",
+       "es": "Hermanos",
+       "he": "אחים"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "Yaakov looked up and saw Esav coming with four hundred men. He set the maids and their children first, Leah and her children after them, and Rachel and Yosef last.",
+         "es": "Yaakov alzó la vista y vio venir a Esav con cuatrocientos hombres. Puso primero a las siervas y sus hijos, después a Leá y sus hijos, y al final a Rajel y a Yosef.",
+         "he": "וישא יעקב עיניו וירא והנה עשו בא ועמו ארבע מאות איש. וישם את השפחות ואת ילדיהן ראשנה, ואת לאה וילדיה אחרנים, ואת רחל ואת יוסף אחרנים."
+        },
+        "src": "בראשית לג:א–ב"
+       },
+       {
+        "ask": {
+         "en": "Esav is close. How does Yaakov greet him?",
+         "es": "Esav ya está cerca. ¿Cómo lo saluda Yaakov?",
+         "he": "עשו כבר קרוב. איך יעקב מקבל את פניו?"
+        },
+        "options": [
+         {
+          "e": "🙇",
+          "label": {
+           "en": "Bow down humbly",
+           "es": "Inclinarse con humildad",
+           "he": "להשתחוות בענוה"
+          },
+          "middah": "anavah",
+          "reply": [
+           {
+            "t": {
+             "en": "As he came near his brother, Yaakov bowed to the ground seven times.",
+             "es": "Al acercarse a su hermano, Yaakov se inclinó hasta el suelo siete veces.",
+             "he": "וישתחו ארצה שבע פעמים עד גשתו עד אחיו."
+            },
+            "src": "בראשית לג:ג"
+           }
+          ]
+         },
+         {
+          "e": "🧍",
+          "label": {
+           "en": "Stand tall and wait",
+           "es": "Quedarse erguido y esperar",
+           "he": "לעמוד זקוף ולחכות"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov did not wait: he bowed to the ground seven times as he came near his brother.",
+             "es": "Yaakov no esperó: se inclinó hasta el suelo siete veces al acercarse a su hermano.",
+             "he": "יעקב לא חיכה: הוא השתחוה ארצה שבע פעמים עד גשתו עד אחיו."
+            },
+            "src": "בראשית לג:ג"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        22
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": 10,
+         "z": -34,
+         "sprite": "scenery/hill",
+         "h": 7
+        },
+        {
+         "t": "person",
+         "x": -14,
+         "z": -10,
+         "sprite": "scenery/acacia",
+         "h": 5
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Walk ahead of your family to meet <b>Esav</b> — keep them all behind you.",
+          "es": "Camina delante de tu familia al encuentro de <b>Esav</b>; que todos vayan detrás de ti.",
+          "he": "לכו לפני המשפחה לקראת <b>עשו</b> — וכולם אחריכם."
+         },
+         "at": [
+          0,
+          -26
+         ],
+         "r": 4,
+         "talk": [
+          {
+           "t": {
+            "en": "Esav ran to meet him, hugged him, and they wept.",
+            "es": "Esav corrió a su encuentro, lo abrazó, y lloraron.",
+            "he": "וירץ עשו לקראתו ויחבקהו… ויבכו."
+           },
+           "src": "בראשית לג:ד"
+          },
+          {
+           "t": {
+            "en": "“I have plenty, my brother. Keep what is yours.”",
+            "es": "“Tengo mucho, hermano mío. Quédate con lo tuyo”.",
+            "he": "״יש לי רב אחי, יהי לך אשר לך.״"
+           },
+           "w": "esav",
+           "src": "בראשית לג:ט"
+          },
+          {
+           "t": {
+            "en": "“Please take my gift… for G-d has been gracious to me, and I have everything.”",
+            "es": "“Acepta, por favor, mi regalo… porque D-os me ha favorecido, y tengo de todo”.",
+            "he": "״קח נא את ברכתי… כי חנני אלקים וכי יש לי כל.״"
+           },
+           "w": "yaakov",
+           "src": "בראשית לג:יא"
+          },
+          {
+           "t": {
+            "en": "Yaakov urged him, and Esav took the gift.",
+            "es": "Yaakov insistió, y Esav aceptó el regalo.",
+            "he": "ויפצר בו ויקח."
+           },
+           "src": "בראשית לג:יא"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": 0,
+           "z": -30,
+           "sprite": "esav",
+           "h": 3.2
+          }
+         ],
+         "par": 8,
+         "npc": [
+          {
+           "t": "person",
+           "x": -2,
+           "z": 26,
+           "sprite": "bilhah",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 2,
+           "z": 26,
+           "sprite": "zilpah",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 0,
+           "z": 29,
+           "sprite": "leah",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": -1.5,
+           "z": 32,
+           "sprite": "rachel",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 1.5,
+           "z": 32,
+           "sprite": "yosef",
+           "h": 3.2,
+           "follow": "start"
+          }
+         ],
+         "limit": 45
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "beitel",
+    "who": "scenery/altar",
+    "name": {
+     "en": "Back to Beit El",
+     "es": "De vuelta a Beit El",
+     "he": "חזרה לבית אל"
+    },
+    "tag": {
+     "en": "Keep the promise from the dream: build an altar where it all began.",
+     "es": "Cumple la promesa del sueño: construye un altar donde todo empezó.",
+     "he": "קיימו את נדר החלום: בנו מזבח במקום שבו הכל התחיל."
+    },
+    "outro": {
+     "en": "At Beit El, G-d blessed Yaakov again and confirmed his new name: Yisrael.",
+     "es": "En Beit El, D-os volvió a bendecir a Yaakov y confirmó su nuevo nombre: Israel.",
+     "he": "בבית אל ברך אלקים את יעקב שוב, ואישר את שמו החדש: ישראל."
+    },
+    "chapters": [
+     {
+      "title": {
+       "en": "Go up to Beit El",
+       "es": "Sube a Beit El",
+       "he": "עלה בית אל"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "G-d said to Yaakov: “Get up, go up to Beit El and live there, and make an altar there to the G-d who appeared to you when you fled from Esav your brother.”",
+         "es": "D-os le dijo a Yaakov: “Levántate, sube a Beit El y vive allí, y haz allí un altar al D-os que se te apareció cuando huías de Esav, tu hermano”.",
+         "he": "ויאמר אלקים אל יעקב: ״קום עלה בית אל ושב שם, ועשה שם מזבח לאל הנראה אליך בברחך מפני עשו אחיך.״"
+        },
+        "src": "בראשית לה:א"
+       },
+       {
+        "t": {
+         "en": "“Remove the foreign gods among you, purify yourselves and change your clothes.”",
+         "es": "“Quiten los dioses extraños que hay entre ustedes, purifíquense y cámbiense la ropa”.",
+         "he": "״הסרו את אלהי הנכר אשר בתככם, והטהרו והחליפו שמלתיכם.״"
+        },
+        "w": "yaakov",
+        "src": "בראשית לה:ב"
+       },
+       {
+        "t": {
+         "en": "They gave Yaakov all the foreign gods they had, and the earrings in their ears.",
+         "es": "Le dieron a Yaakov todos los dioses extraños que tenían, y los aretes de sus orejas.",
+         "he": "ויתנו אל יעקב את כל אלהי הנכר אשר בידם ואת הנזמים אשר באזניהם."
+        },
+        "src": "בראשית לה:ד"
+       },
+       {
+        "ask": {
+         "en": "What does Yaakov do with the idols?",
+         "es": "¿Qué hace Yaakov con los ídolos?",
+         "he": "מה עושה יעקב עם הפסילים?"
+        },
+        "options": [
+         {
+          "e": "🌳",
+          "label": {
+           "en": "Hide them away for good",
+           "es": "Esconderlos para siempre",
+           "he": "להטמין אותם לתמיד"
+          },
+          "middah": "emunah",
+          "reply": [
+           {
+            "t": {
+             "en": "Yaakov hid them under the terebinth tree near Shechem.",
+             "es": "Yaakov los escondió bajo el terebinto que está junto a Shjem.",
+             "he": "ויטמן אתם יעקב תחת האלה אשר עם שכם."
+            },
+            "src": "בראשית לה:ד"
+           }
+          ]
+         },
+         {
+          "e": "🎒",
+          "label": {
+           "en": "Keep the pretty earrings",
+           "es": "Guardar los aretes bonitos",
+           "he": "לשמור את העגילים היפים"
+          },
+          "reply": [
+           {
+            "t": {
+             "en": "Nothing was kept: Yaakov hid the idols and the earrings together under the terebinth near Shechem.",
+             "es": "No se guardó nada: Yaakov escondió los ídolos y los aretes juntos bajo el terebinto junto a Shjem.",
+             "he": "דבר לא נשאר: יעקב הטמין את הכל יחד תחת האלה אשר עם שכם."
+            },
+            "src": "בראשית לה:ד"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "game": {
+       "type": "explore",
+       "scene": {
+        "ground": [
+         0.62,
+         0.66,
+         0.4
+        ],
+        "sky": [
+         0.6,
+         0.75,
+         0.92
+        ],
+        "fog": [
+         0.82,
+         0.86,
+         0.8
+        ],
+        "hills": 1.4
+       },
+       "start": [
+        0,
+        24
+       ],
+       "objects": [
+        {
+         "t": "person",
+         "x": 14,
+         "z": 0,
+         "sprite": "scenery/olive",
+         "h": 5
+        },
+        {
+         "t": "person",
+         "x": -16,
+         "z": 8,
+         "sprite": "scenery/fig",
+         "h": 4.5
+        }
+       ],
+       "steps": [
+        {
+         "text": {
+          "en": "Lead your family up to <b>Beit El</b> — no more delay, keep the promise!",
+          "es": "Guía a tu familia hasta <b>Beit El</b>, ¡sin más demora, cumple la promesa!",
+          "he": "הובילו את המשפחה אל <b>בית אל</b> — בלי עיכוב, קיימו את הנדר!"
+         },
+         "at": [
+          -12,
+          -40
+         ],
+         "r": 6,
+         "limit": 50,
+         "npc": [
+          {
+           "t": "person",
+           "x": -3,
+           "z": 26,
+           "sprite": "leah",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 0,
+           "z": 26,
+           "sprite": "rachel",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 3,
+           "z": 26,
+           "sprite": "yosef",
+           "h": 3.2,
+           "follow": "start"
+          },
+          {
+           "t": "person",
+           "x": 6,
+           "z": 26,
+           "sprite": "brothers",
+           "h": 3.2,
+           "follow": "start"
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "They traveled, and a terror from G-d fell on the cities around them, so no one chased after the sons of Yaakov.",
+            "es": "Viajaron, y un temor de D-os cayó sobre las ciudades de alrededor, y nadie persiguió a los hijos de Yaakov.",
+            "he": "ויסעו, ויהי חתת אלקים על הערים אשר סביבותיהם, ולא רדפו אחרי בני יעקב."
+           },
+           "src": "בראשית לה:ה"
+          },
+          {
+           "t": {
+            "en": "Yaakov came to Luz — that is Beit El — he and all the people with him.",
+            "es": "Yaakov llegó a Luz, que es Beit El, él y toda la gente que estaba con él.",
+            "he": "ויבא יעקב לוזה… הוא בית אל, הוא וכל העם אשר עמו."
+           },
+           "src": "בראשית לה:ו"
+          }
+         ],
+         "objects": [
+          {
+           "t": "person",
+           "x": -6,
+           "z": -50,
+           "sprite": "scenery/stone_pile",
+           "h": 3
+          },
+          {
+           "t": "person",
+           "x": -22,
+           "z": -46,
+           "sprite": "scenery/hill",
+           "h": 8
+          }
+         ]
+        },
+        {
+         "text": {
+          "en": "Lay the <b>stones</b> of the altar.",
+          "es": "Coloca las <b>piedras</b> del altar.",
+          "he": "סדרו את <b>אבני</b> המזבח."
+         },
+         "at": [
+          -12,
+          -40
+         ],
+         "r": 6,
+         "tapg": {
+          "img": "scenery/altar",
+          "n": 3,
+          "speed": 0.95,
+          "zone": 0.22,
+          "done": {
+           "en": "The altar is built!",
+           "es": "¡El altar está construido!",
+           "he": "המזבח נבנה!"
+          }
+         }
+        },
+        {
+         "text": {
+          "en": "Gather everyone at the new <b>altar</b>.",
+          "es": "Reúne a todos junto al nuevo <b>altar</b>.",
+          "he": "אספו את כולם אל <b>המזבח</b> החדש."
+         },
+         "at": [
+          -12,
+          -47
+         ],
+         "r": 3.5,
+         "objects": [
+          {
+           "t": "altar",
+           "x": -12,
+           "z": -49
+          }
+         ],
+         "talk": [
+          {
+           "t": {
+            "en": "He built an altar there and called the place El Beit El (“G-d of Beit El”), because there G-d had appeared to him.",
+            "es": "Construyó allí un altar y llamó al lugar “El Beit El” (“D-os de Beit El”), porque allí D-os se le había aparecido.",
+            "he": "ויבן שם מזבח, ויקרא למקום אל בית אל, כי שם נגלו אליו האלקים."
+           },
+           "src": "בראשית לה:ז"
+          }
+         ]
+        }
+       ],
+       "player": {
+        "sprite": "yaakov",
+        "h": 3.2
+       }
+      }
+     },
+     {
+      "title": {
+       "en": "Yisrael",
+       "es": "Israel",
+       "he": "ישראל"
+      },
+      "talk": [
+       {
+        "t": {
+         "en": "G-d appeared to Yaakov again and blessed him. He said to him: “Your name is Yaakov; you will no longer be called Yaakov, but Yisrael will be your name.”",
+         "es": "D-os se le apareció de nuevo a Yaakov y lo bendijo. Le dijo: “Tu nombre es Yaakov; ya no te llamarás Yaakov, sino que Israel será tu nombre”.",
+         "he": "וירא אלקים אל יעקב עוד… ויברך אתו. ויאמר לו אלקים: ״שמך יעקב, לא יקרא שמך עוד יעקב כי אם ישראל יהיה שמך.״"
+        },
+        "src": "בראשית לה:ט–י"
+       },
+       {
+        "t": {
+         "en": "“A nation and a community of nations will come from you, and kings will come from you.”",
+         "es": "“Una nación y una comunidad de naciones saldrán de ti, y reyes saldrán de ti”.",
+         "he": "״גוי וקהל גוים יהיה ממך, ומלכים מחלציך יצאו.״"
+        },
+        "src": "בראשית לה:יא"
+       },
+       {
+        "t": {
+         "en": "Now Yaakov wants to mark the place where G-d spoke with him.",
+         "es": "Ahora Yaakov quiere marcar el lugar donde D-os habló con él.",
+         "he": "עכשיו יעקב רוצה לסמן את המקום שבו דבר אתו אלקים."
+        }
+       }
+      ],
+      "game": {
+       "type": "tap",
+       "img": "scenery/stone_pile",
+       "n": 4,
+       "speed": 1.05,
+       "zone": 0.2,
+       "text": {
+        "en": "Set up the stone monument and pour oil on it!",
+        "es": "¡Levanta el monumento de piedra y derrama aceite sobre él!",
+        "he": "הציבו את מצבת האבן ויצקו עליה שמן!"
+       },
+       "hint": {
+        "en": "Each good tap raises a stone; the last one pours the oil.",
+        "es": "Cada toque preciso levanta una piedra; el último derrama el aceite.",
+        "he": "כל הקשה מדויקת מקימה אבן; האחרונה יוצקת את השמן."
+       },
+       "done": {
+        "en": "The monument stands!",
+        "es": "¡El monumento está en pie!",
+        "he": "המצבה עומדת!"
+       }
+      },
+      "after": [
+       {
+        "t": {
+         "en": "Yaakov set up a stone monument where G-d had spoken with him, poured a drink-offering on it, and poured oil on it.",
+         "es": "Yaakov levantó un monumento de piedra donde D-os había hablado con él, derramó sobre él una libación y derramó aceite sobre él.",
+         "he": "ויצב יעקב מצבה במקום אשר דבר אתו, מצבת אבן… ויצק עליה שמן."
+        },
+        "src": "בראשית לה:יד"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "cast": {
+   "yaakov": {
+    "en": "Yaakov",
+    "es": "Yaakov",
+    "he": "יעקב"
+   },
+   "esav": {
+    "en": "Esav",
+    "es": "Esav",
+    "he": "עשו"
+   },
+   "angel": {
+    "en": "The man",
+    "es": "El hombre",
+    "he": "האיש"
+   },
+   "leah": {
+    "en": "Leah",
+    "es": "Leá",
+    "he": "לאה"
+   },
+   "rachel": {
+    "en": "Rachel",
+    "es": "Rajel",
+    "he": "רחל"
+   },
+   "yosef": {
+    "en": "Yosef",
+    "es": "Yosef",
+    "he": "יוסף"
+   },
+   "bilhah": {
+    "en": "Bilhah",
+    "es": "Bilhá",
+    "he": "בלהה"
+   },
+   "zilpah": {
+    "en": "Zilpah",
+    "es": "Zilpá",
+    "he": "זלפה"
+   },
+   "brothers": {
+    "en": "Yaakov’s sons",
+    "es": "Los hijos de Yaakov",
+    "he": "בני יעקב"
+   }
+  }
+ }
+}
