@@ -13,14 +13,14 @@
   const rnd = (a, b) => a + Math.random() * (b - a), shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]] } return a };
   const css = document.createElement("style"); css.textContent = `
 .mg{position:fixed;inset:0;z-index:22;display:flex;flex-direction:column;background:linear-gradient(rgba(30,20,10,.45),rgba(30,20,10,.25));touch-action:none;user-select:none;-webkit-user-select:none}
-.mg-top{margin:max(10px,env(safe-area-inset-top)) 10px 0;background:var(--surface,#fdf6ea);border-radius:18px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.mg-top{margin:max(10px,env(safe-area-inset-top)) 10px 0;background:var(--surface,#fffcf6);border-radius:18px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .mg-top b{display:block;font-size:15px;line-height:1.3}.mg-top b b{display:inline}
-.mg-row{display:flex;align-items:center;gap:10px;margin-top:6px}.mg-prog{font-weight:900;font-size:16px;color:#b5562f;min-width:54px;white-space:nowrap}
-.mg-time{flex:1;height:10px;border-radius:999px;background:#eadbbd;overflow:hidden;direction:ltr;visibility:hidden}.mg-time i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#b5562f,#e0a000);border-radius:999px}
+.mg-row{display:flex;align-items:center;gap:10px;margin-top:6px}.mg-prog{font-weight:900;font-size:16px;color:#2c5a8a;min-width:54px;white-space:nowrap}
+.mg-time{flex:1;height:10px;border-radius:999px;background:#e7dfcf;overflow:hidden;direction:ltr;visibility:hidden}.mg-time i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#2c5a8a,#e0a000);border-radius:999px}
 .mg-stage{position:relative;flex:1;margin:8px 10px max(10px,env(safe-area-inset-bottom));border-radius:18px;overflow:hidden;background:linear-gradient(#cfe6f2,#f3e6c8 60%,#d9c08f)}
 .mg-stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .mg-hint{position:absolute;z-index:6;left:50%;bottom:calc(max(10px,env(safe-area-inset-bottom)) + 18px);transform:translateX(-50%);background:rgba(46,42,36,.88);color:#fff;border-radius:999px;padding:8px 16px;font-weight:700;font-size:14px;transition:opacity .6s;pointer-events:none;max-width:88vw;text-align:center}
-.mg-btn{all:unset;cursor:pointer;position:absolute;left:12px;right:12px;bottom:12px;background:#b5562f;color:#fff;font-weight:900;font-size:18px;border-radius:16px;padding:14px;text-align:center;box-shadow:0 3px 0 #7a3d12}
+.mg-btn{all:unset;cursor:pointer;position:absolute;left:12px;right:12px;bottom:12px;background:#2c5a8a;color:#fff;font-weight:900;font-size:18px;border-radius:16px;padding:14px;text-align:center;box-shadow:0 3px 0 #1f4269}
 .mg-btn:active{transform:translateY(2px);box-shadow:none}
 .mg-item{position:absolute;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.3));cursor:pointer;transition:transform .15s}
 .mg-bins{position:absolute;left:8px;right:8px;bottom:8px;display:flex;gap:8px}
@@ -33,7 +33,7 @@
 .mark-speckles{background-image:radial-gradient(#4a3a2a 0 2.5px,transparent 3px);background-size:13px 13px}
 .mark-stripes{background:repeating-linear-gradient(115deg,#4a3a2a 0 4px,transparent 4px 13px)}
 .mg-grid{position:absolute;inset:10px;display:grid;gap:8px}
-.mg-mem{border-radius:14px;background:linear-gradient(135deg,#b5562f,#e0a000);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.2);transition:transform .25s;font-size:26px;color:#fff}
+.mg-mem{border-radius:14px;background:linear-gradient(135deg,#2c5a8a,#e0a000);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.2);transition:transform .25s;font-size:26px;color:#fff}
 .mg-mem img{max-width:78%;max-height:78%;display:none}.mg-mem.up{background:#fff}.mg-mem.up img{display:block}.mg-mem.ok{background:#eef3e6;outline:3px solid #4f6b3a}
 .mg-tray{position:absolute;left:0;right:0;bottom:0;height:88px;background:rgba(255,255,255,.7);display:flex;gap:6px;align-items:center;justify-content:center;padding:6px;overflow-x:auto}
 .mg-tray img{height:70px;touch-action:none;cursor:grab;filter:drop-shadow(0 3px 4px rgba(0,0,0,.3))}
@@ -78,7 +78,7 @@
       g.clearRect(0, 0, W, H); g.fillStyle = "rgba(255,255,255,.5)"; g.fillRect(0, y - 30, W, 60);
       draw(g, cfg.img || "miriam", W * .5, H - 84, Math.min(H * .38, 170), .9);
       g.lineWidth = 6; g.strokeStyle = flash > 0 ? "#e0a000" : "#5a4e3c"; g.beginPath(); g.arc(tx, y, 30 + flash * 30, 0, 7); g.stroke(); flash = Math.max(0, flash - dt);
-      for (const n of notes) { if (n.hit || n.miss) continue; const x = tx + (n.at - t) * sp; if (x > W + 40) continue; g.fillStyle = "#b5562f"; g.beginPath(); g.arc(x, y, 22, 0, 7); g.fill(); g.fillStyle = "#f3dfb0"; g.beginPath(); g.arc(x, y, 12, 0, 7); g.fill() }
+      for (const n of notes) { if (n.hit || n.miss) continue; const x = tx + (n.at - t) * sp; if (x > W + 40) continue; g.fillStyle = "#2c5a8a"; g.beginPath(); g.arc(x, y, 22, 0, 7); g.fill(); g.fillStyle = "#f3dfb0"; g.beginPath(); g.arc(x, y, 12, 0, 7); g.fill() }
       if (fxT > 0) { fxT -= dt; g.fillStyle = "#2e2a24"; g.font = "900 22px system-ui"; g.textAlign = "center"; g.fillText(fx, tx, y - 46) }
       if (hits >= need) return o.win(Math.max(.4, 1 - acc * .06));
       if (notes.every(n => n.hit || n.miss)) o.lose(`${hits}/${need} ${T().hits}. ${T().tryAgain}`) }) };
@@ -175,7 +175,7 @@
       if (cfg.walls) { g.fillStyle = "rgba(44,95,148,.85)"; g.fillRect(0, 0, W * cfg.walls, H); g.fillRect(W * (1 - cfg.walls), 0, W * cfg.walls, H); g.fillStyle = "rgba(255,255,255,.25)"; for (let y = 0; y < H; y += 26) { g.fillRect(W * cfg.walls - 6, y, 6, 14); g.fillRect(W * (1 - cfg.walls), y + 13, 6, 14) } }
       for (const p of obs) draw(g, p.k, p.x, p.y + p.r, p.r * 2.2);
       const [sx, sy] = S(), [gx, gy] = G(); g.fillStyle = "#4f6b3a"; g.beginPath(); g.arc(sx, sy, 14, 0, 7); g.fill(); draw(g, cfg.goal || "scenery/oasis", gx, gy + 34, 70);
-      if (pts.length > 1) { g.strokeStyle = "#b5562f"; g.lineWidth = 7; g.lineCap = g.lineJoin = "round"; g.setLineDash([2, 12]); g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke(); g.setLineDash([]) }
+      if (pts.length > 1) { g.strokeStyle = "#2c5a8a"; g.lineWidth = 7; g.lineCap = g.lineJoin = "round"; g.setLineDash([2, 12]); g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke(); g.setLineDash([]) }
       let wx = sx, wy = sy; if (walk >= 0) { walk += dt * 90; let d = walk, i = 1; for (; i < pts.length; i++) { const s = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); if (d <= s) { const f = d / s; wx = pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * f; wy = pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * f; break } d -= s }
         if (i >= pts.length) return o.win(Math.max(.4, 1 - tries * .15)) }
       draw(g, cfg.walker || "bnei_yisrael", wx, wy + 8, 56) }) };
