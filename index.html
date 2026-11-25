@@ -396,10 +396,10 @@ header.hdr{max-width:none;margin:0;padding:12px max(16px,calc((100% - 728px)/2))
 .days7 .day:disabled{cursor:default;opacity:.75}
 .hprog{display:flex;flex-direction:column;gap:6px}
 .hpl{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
-.hsegs{display:flex;gap:4px;cursor:pointer}
-.hsegs i{flex:1;height:20px;border-block:7px solid transparent;border-radius:10px;background:#e2d1b1;background-clip:padding-box}
-.hsegs i.ok{background:var(--olive);background-clip:padding-box}
-.hsegs i.cur{background:var(--terra);background-clip:padding-box}
+.hsegs{display:flex;gap:4px;cursor:pointer;padding:7px 0}
+.hsegs i{flex:1;display:block;height:6px!important;margin:0!important;padding:0!important;border:0!important;border-radius:3px;background:#e2d1b1;box-shadow:none!important;transform:none!important}
+.hsegs i.ok{background:var(--olive)}
+.hsegs i.cur{background:var(--terra)}
 .qnav{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
 .qnav button{all:unset;cursor:pointer;min-height:44px;padding:0 4px;font-size:15px;font-weight:500;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
 .qnav button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
@@ -529,6 +529,8 @@ html:has(#v-dash.on),html:has(#v-lb.on),body:has(#v-dash.on),body:has(#v-lb.on){
 #wz .wz-sub{margin:0;font-size:15px;color:var(--muted);line-height:1.5}
 #wz .wz-hd{display:flex;flex-direction:column;gap:8px;margin-top:28px}
 #wz .wz-ft{margin-top:auto;padding-top:12px;display:flex;flex-direction:column;gap:6px;position:sticky;bottom:0;background:var(--surface)}
+#wz .wz-ft{box-shadow:0 -12px 14px -8px rgba(46,42,36,.14)}
+#wz .wz-cnt{direction:ltr;unicode-bidi:isolate}
 #wz .wz-pri{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;border-radius:16px;background:var(--olive);color:#fff;min-height:56px;display:flex;align-items:center;justify-content:center;font:600 17px Rubik,sans-serif;transition:background .2s,transform .15s}
 #wz .wz-pri:active{transform:scale(.98)}
 #wz .wz-pri[aria-disabled=true]{background:var(--line);color:var(--muted);cursor:default}
