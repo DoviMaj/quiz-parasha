@@ -13,7 +13,7 @@
       var auth = A.getAuth(app);
       await auth.authStateReady();
       if (!auth.currentUser) await A.signInAnonymously(auth);
-      return { F: F, fs: F.getFirestore(app), uid: auth.currentUser.uid };
+      return { F: F, A: A, auth: auth, fs: F.getFirestore(app), uid: auth.currentUser.uid };
     })());
   }
   function wrapSnap(s) { return { id: s.id, exists: s.exists(), data: function () { return s.data(); } }; }
@@ -81,5 +81,39 @@
     b.onclick = function () { if (canPush) subscribe(b).catch(function (e) { console.warn(e); }); else { localStorage.setItem("bell-hidden", "1"); b.remove(); } };
     document.body.appendChild(b);
   }
-  addEventListener("load", function () { bell().catch(function () {}); });
+  /* ---- Google sign-in: links the anonymous account, so scores and the leaderboard entry
+     follow you to other devices. Signing in on a 2nd device switches to the Google account's id. ---- */
+  var G = {
+    es: { in: "Guardar progreso con Google", out: "Cerrar sesión" },
+    en: { in: "Save progress with Google", out: "Sign out" },
+    he: { in: "שמירת התקדמות עם Google", out: "התנתקות" }
+  };
+  async function google() {
+    var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
+    var b = document.createElement("button");
+    b.style.cssText = "position:fixed;top:10px;inset-inline-end:10px;z-index:9999;padding:6px 12px;border:1px solid #ccc;border-radius:16px;background:#fff;color:#1b2a4a;font:600 12px system-ui,sans-serif;opacity:.92";
+    b.dir = lang() === "he" ? "rtl" : "ltr";
+    if (u.isAnonymous) {
+      if (localStorage.getItem("google-hidden")) return;
+      b.textContent = "G · " + g.in;
+      b.onclick = async function () {
+        var p = new A.GoogleAuthProvider();
+        try { await A.linkWithPopup(u, p); }
+        catch (e) {
+          if (e.code === "auth/credential-already-in-use") await A.signInWithCredential(x.auth, A.GoogleAuthProvider.credentialFromError(e));
+          else if (e.code === "auth/popup-closed-by-user" || e.code === "auth/cancelled-popup-request") return;
+          else { console.warn(e); return; }
+        }
+        location.reload();
+      };
+    } else {
+      b.textContent = (u.displayName || u.email || "") .split(" ")[0] + " · " + g.out;
+      b.onclick = async function () { await A.signOut(x.auth); location.reload(); };
+    }
+    document.body.appendChild(b);
+  }
+  addEventListener("load", function () {
+    bell().catch(function () {});
+    if (C.firebase) google().catch(function (e) { console.warn(e); });
+  });
 })();
