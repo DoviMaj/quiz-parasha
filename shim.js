@@ -75,7 +75,7 @@
     if (!canPush && !(ios && !standalone)) return;
     if (localStorage.getItem("bell-hidden")) return;
     var b = document.createElement("button");
-    b.style.cssText = "position:fixed;bottom:14px;inset-inline-start:14px;z-index:9999;max-width:calc(100% - 28px);padding:10px 14px;border:0;border-radius:22px;background:#1b2a4a;color:#fff;font:600 14px system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25)";
+    b.style.cssText = "position:fixed;bottom:76px;inset-inline-start:12px;z-index:9999;max-width:calc(100% - 28px);padding:10px 14px;border:0;border-radius:22px;background:#1b2a4a;color:#fff;font:600 14px system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25)";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     b.textContent = canPush ? t.on : t.ios;
     b.onclick = function () { if (canPush) subscribe(b).catch(function (e) { console.warn(e); }); else { localStorage.setItem("bell-hidden", "1"); b.remove(); } };
@@ -91,7 +91,7 @@
   async function google() {
     var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
     var b = document.createElement("button");
-    b.style.cssText = "position:fixed;top:10px;inset-inline-end:10px;z-index:9999;padding:6px 12px;border:1px solid #ccc;border-radius:16px;background:#fff;color:#1b2a4a;font:600 12px system-ui,sans-serif;opacity:.92";
+    b.style.cssText = "position:fixed;bottom:124px;inset-inline-start:12px;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:9999;padding:6px 12px;border:1px solid #ccc;border-radius:16px;background:#fff;color:#1b2a4a;font:600 12px system-ui,sans-serif;opacity:.92";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     if (u.isAnonymous) {
       if (localStorage.getItem("google-hidden")) return;
