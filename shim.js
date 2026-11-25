@@ -62,7 +62,10 @@
     var reg = await navigator.serviceWorker.ready;
     var sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64(C.vapidPublic) });
     var x = await init();
-    await x.F.setDoc(x.F.doc(x.fs, "push/" + await hash(sub.endpoint)), { sub: JSON.parse(JSON.stringify(sub)), lang: lang(), at: Date.now() });
+    var pd = { sub: JSON.parse(JSON.stringify(sub)), lang: lang(), at: Date.now() };
+    var gu = x.auth.currentUser;
+    if (gu && !gu.isAnonymous && gu.email) pd.email = gu.email.toLowerCase(); /* lets reviewers get the "draft to review" push */
+    await x.F.setDoc(x.F.doc(x.fs, "push/" + await hash(sub.endpoint)), pd);
     btn.textContent = t.done; setTimeout(function () { btn.remove(); }, 2500);
   }
   async function bell() {
@@ -86,13 +89,40 @@
     var c = document.getElementById("oAcctC") || document.body;
     c.appendChild(b);
   }
+  /* ---- content review: window.quizReview() -> Promise<{weekId, name:{es,en,he}, pending, due} | null>.
+     null unless Google-signed-in with a roles/{email} doc and a draft in status "review". One cached check, no network for anyone else. ---- */
+  var RV_MOCK = location.hostname === "localhost" && /[?&]mockreview=1\b/.test(location.search); /* test hook, localhost only */
+  var rvP;
+  window.quizReview = function () {
+    return rvP || (rvP = (async function () {
+      if (RV_MOCK) return { weekId: "vayishlach-5787", name: { es: "Vayishlaj", en: "Vayishlach", he: "וישלח" }, pending: 67, due: "thu" };
+      if (!C.firebase) return null;
+      var x = await init(), u = x.auth.currentUser;
+      if (!u || u.isAnonymous || !u.email) return null;
+      var F = x.F, em = u.email.toLowerCase();
+      if (!(await F.getDoc(F.doc(x.fs, "roles/" + em))).exists()) return null;
+      var q = await F.getDocs(F.query(F.collection(x.fs, "drafts"), F.where("status", "==", "review")));
+      if (q.empty) return null;
+      var d = q.docs[0].data(), total = ((d.counts || {}).adult || 0) + ((d.counts || {}).kids || 0);
+      return { weekId: d.id, name: d.name, pending: Math.max(0, total - (((d.marked || {})[u.uid]) || 0)), due: "thu" };
+    })().catch(function () { return null; }));
+  };
+  function reviewRow(g) {
+    var a = document.createElement("a");
+    a.id = "rvRow"; a.href = "review.html";
+    a.style.cssText = "color:var(--terra,#b5562f);font-weight:600;text-decoration:none";
+    a.innerHTML = "<span></span><span class='rvn' style='font-weight:500;color:var(--muted)'></span>";
+    a.firstChild.textContent = g.rev + " ›";
+    place(a);
+    window.quizReview().then(function (r) { if (r) a.lastChild.textContent = r.pending + " " + g.pend; });
+  }
   function mask(e) { var i = e.indexOf("@"); return i > 0 ? e[0] + "••••" + e.slice(i) : e; }
   /* ---- Google sign-in: links the anonymous account, so scores and the leaderboard entry
      follow you to other devices. Signing in on a 2nd device switches to the Google account's id. ---- */
   var G = {
-    es: { in: "Guardar progreso con Google", out: "Cerrar sesión" },
-    en: { in: "Save progress with Google", out: "Sign out" },
-    he: { in: "שמירת התקדמות עם Google", out: "התנתקות" }
+    es: { in: "Guardar progreso con Google", out: "Cerrar sesión", rev: "Revisión de contenido", pend: "pendientes" },
+    en: { in: "Save progress with Google", out: "Sign out", rev: "Content review", pend: "pending" },
+    he: { in: "שמירת התקדמות עם Google", out: "התנתקות", rev: "סקירת תוכן", pend: "ממתינות" }
   };
   async function google() {
     var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
@@ -118,11 +148,18 @@
       r.innerHTML = "<span style='color:var(--muted)'>Google</span><span dir='ltr' style='font-weight:500'></span>";
       r.lastChild.textContent = mask(u.email || u.displayName || "");
       place(r);
+      /* editors (roles/{email} exists) get a link to the review page */
+      try {
+        if ((await x.F.getDoc(x.F.doc(x.fs, "roles/" + String(u.email || "").toLowerCase()))).exists()) {
+          reviewRow(g);
+        }
+      } catch (e) { /* no role / rules deny: no link */ }
     }
     place(b);
   }
   addEventListener("load", function () {
     bell().catch(function () {});
+    if (RV_MOCK) reviewRow(G[lang()] || G.es);
     if (C.firebase) google().catch(function (e) { console.warn(e); });
   });
 })();

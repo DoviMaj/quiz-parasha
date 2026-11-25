@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="config.js?v=3"></script>
-<script src="shim.js?v=6"></script>
+<script src="shim.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=David+Libre:wght@500;700&family=Frank+Ruhl+Libre:wght@500;700&family=Baloo+2:wght@500;600;700;800&family=Varela+Round&display=swap" rel="stylesheet">
 <style>
@@ -1498,6 +1498,30 @@ el.addEventListener("click",e=>{const a=e.target.closest("[data-a]");if(!a){if(S
 el.addEventListener("input",e=>{if(e.target.id==="wzF"||e.target.id==="wzL")upName()});
 el.addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.id==="wzF"||e.target.id==="wzL")){e.preventDefault();if(e.target.id==="wzF")$("wzL").focus();else if(nameOk())go(4,1)}else if(e.key==="Escape"&&S.menu){S.menu=false;$("wzMenu").hidden=true}});
 window.startWizard=function(from){S.step=from||0;S.start=S.step;S.dir=1;S.first=ST.first||(ST.name||"").split(" ")[0]||"";S.last=ST.last||"";S.age=null;S.committed=false;S.menu=false;el.classList.add("on");render(false)};
+/* content review entry points (banner on the adult Quiz screen, dot on the settings button). Data: shim.js window.quizReview() */
+(function(){
+var R=null,T={es:{b:"Borrador de {n} para revisar",p:"{c} pendientes",d:"hasta el jueves",go:"Revisar",x:"Cerrar"},en:{b:"{n} draft to review",p:"{c} pending",d:"until Thursday",go:"Review",x:"Close"},he:{b:"טיוטת {n} לסקירה",p:"{c} ממתינות",d:"עד יום חמישי",go:"לסקירה",x:"סגירה"}};
+var st=document.createElement("style");st.textContent="#gear{position:relative}#rvDot{position:absolute;top:-2px;inset-inline-end:-2px;width:13px;height:13px;border-radius:50%;background:#b5562f;border:2px solid #fdf6ea}#rvBanner{margin:10px 12px 0;background:#fff;border:1px solid #e2d1b1;border-radius:16px;padding:10px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}#rvBanner .t{flex:1 1 120px;min-width:0;font-size:14px;line-height:1.4;color:#2e2a24}#rvBanner .t b{font-weight:600;display:block}#rvBanner .t span{color:#5a4e3c;font-size:13px}#rvBanner a{background:#b5562f;color:#fff;border-radius:12px;min-height:44px;padding:0 16px;display:inline-flex;align-items:center;font-weight:600;font-size:15px;text-decoration:none}#rvBanner button{all:unset;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#5a4e3c;font-size:18px}";document.head.appendChild(st);
+function kids(){try{return isKids()}catch(e){return true}}
+function lg(){try{return T[ST.lang]?ST.lang:"es"}catch(e){return "es"}}
+function today(){return new Date().toISOString().slice(0,10)+"|"+R.weekId}
+function gone(){try{return localStorage.getItem("rv-dismiss")===today()}catch(e){return false}}
+function paint(){
+  var show=!!R&&!kids(),g=document.getElementById("gear"),dot=document.getElementById("rvDot"),row=document.getElementById("rvRow"),b=document.getElementById("rvBanner");
+  if(show&&g&&!dot){dot=document.createElement("i");dot.id="rvDot";g.appendChild(dot)}else if(!show&&dot)dot.remove();
+  if(row)row.style.display=show?"":"none";
+  if(!(show&&!gone())){if(b)b.remove();return}
+  var l=lg(),t=T[l],nm=(R.name&&(R.name[l]||R.name.es))||R.weekId,sig=l+"|"+R.pending+"|"+nm;
+  if(b&&b.dataset.sig===sig)return;
+  if(!b){b=document.createElement("div");b.id="rvBanner";var h=document.getElementById("v-quiz");h.insertBefore(b,h.firstChild)}
+  b.dataset.sig=sig;b.dir=l==="he"?"rtl":"ltr";b.innerHTML="";
+  var d=document.createElement("div");d.className="t";var s1=document.createElement("b"),s2=document.createElement("span");
+  s1.textContent=t.b.replace("{n}",nm);s2.textContent=t.p.replace("{c}",R.pending)+" · "+t.d;d.append(s1,s2);
+  var a=document.createElement("a");a.href="review.html#"+encodeURIComponent(R.weekId);a.textContent=t.go;
+  var x=document.createElement("button");x.setAttribute("aria-label",t.x);x.textContent="✕";x.onclick=function(){try{localStorage.setItem("rv-dismiss",today())}catch(e){}b.remove()};
+  b.append(d,a,x);
+}
+addEventListener("load",function(){if(!window.quizReview)return;window.quizReview().then(function(r){R=r;if(R)setInterval(paint,1500);paint()})});
 })();
 </script>
 </body></html>

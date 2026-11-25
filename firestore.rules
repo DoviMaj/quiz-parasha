@@ -9,7 +9,108 @@ service cloud.firestore {
     }
     // push subscriptions: write-only from clients, read by the weekly sender (admin)
     match /push/{id} {
-      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['sub','lang','at']);
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['sub','lang','at','email'])
+                                      && (!('email' in request.resource.data) || (google() && request.resource.data.email == me()));
+    }
+
+    // ---- content review: Google sign-in (verified email) AND a roles/{email} doc ----
+    // roles/{lowercase email} = {role: 'admin'|'approver'|'reviewer', addedBy, at}
+    function google() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && request.auth.token.email_verified == true;
+    }
+    function me() { return request.auth.token.email.lower(); }
+    function hasRole() { return google() && exists(/databases/$(db)/documents/roles/$(me())); }
+    function role() { return get(/databases/$(db)/documents/roles/$(me())).data.role; }
+    function isEditor() { return hasRole() && role() in ['reviewer', 'approver', 'admin']; }
+    function isApprover() { return hasRole() && role() in ['approver', 'admin']; }
+    function isAdmin() { return hasRole() && role() == 'admin'; }
+
+    match /roles/{email} {
+      // own doc for anyone signed in with Google; admins read (list) all
+      allow get: if google() && me() == email;
+      allow read: if isAdmin();
+      // admins manage users, but never delete or demote themselves (the last admin can't lock out)
+      allow create: if isAdmin() && validRole();
+      allow update: if isAdmin() && validRole() && (email != me() || request.resource.data.role == 'admin');
+      allow delete: if isAdmin() && email != me();
+
+      function validRole() {
+        return email == email.lower()
+          && request.resource.data.keys().hasOnly(['role', 'addedBy', 'at'])
+          && request.resource.data.role in ['admin', 'approver', 'reviewer']
+          && request.resource.data.addedBy == me()
+          && request.resource.data.at is number;
+      }
+    }
+
+    match /drafts/{weekId} {
+      allow read: if isEditor();
+      // only an approver/admin may approve (review -> approved), touching only these fields
+      allow update: if isApprover()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'approvedBy', 'approvedName', 'approvedAt'])
+        && resource.data.status == 'review'
+        && request.resource.data.status == 'approved'
+        && request.resource.data.approvedBy == me()
+        && request.resource.data.approvedAt is number
+        && request.resource.data.get('approvedName', '') is string
+        && request.resource.data.get('approvedName', '').size() < 80;
+
+      // reviewers publish how many items they have marked (cheap badge for the quiz app); own key only
+      allow update: if isEditor()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['marked'])
+        && request.resource.data.marked.diff(resource.data.get('marked', {})).affectedKeys().hasOnly([request.auth.uid])
+        && request.resource.data.marked[request.auth.uid] is int
+        && request.resource.data.marked[request.auth.uid] >= 0 && request.resource.data.marked[request.auth.uid] <= 1000;
+
+      // one doc per weekday: {day, Q:[...], K:[...]} (Admin SDK writes)
+      match /days/{n} {
+        allow read: if isEditor();
+      }
+
+      // per question: marks {uid: 'ok'|'change'}, names {uid: name}, reply (Claude changed it), last {by, uid, at}
+      match /threads/{itemKey} {
+        allow read: if isEditor();
+        allow create: if isEditor()
+          && request.resource.data.keys().hasOnly(['marks', 'names', 'last'])
+          && request.resource.data.get('marks', {}).keys().hasOnly([request.auth.uid])
+          && request.resource.data.get('names', {}).keys().hasOnly([request.auth.uid])
+          && validMark() && validLast();
+        // own mark/name only; a client may clear `reply` (asking for a change again) but never set it
+        allow update: if isEditor()
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['marks', 'names', 'reply', 'last'])
+          && request.resource.data.get('marks', {}).diff(resource.data.get('marks', {})).affectedKeys().hasOnly([request.auth.uid])
+          && request.resource.data.get('names', {}).diff(resource.data.get('names', {})).affectedKeys().hasOnly([request.auth.uid])
+          && (!('reply' in request.resource.data) || request.resource.data.reply == resource.data.get('reply', null))
+          && validMark() && validLast();
+
+        function validMark() {
+          return request.resource.data.get('marks', {}).get(request.auth.uid, 'ok') in ['ok', 'change']
+            && request.resource.data.get('names', {}).get(request.auth.uid, 'x') is string
+            && request.resource.data.get('names', {}).get(request.auth.uid, 'x').size() < 80;
+        }
+        function validLast() {
+          return !('last' in request.resource.data)
+            || (request.resource.data.last.keys().hasOnly(['by', 'uid', 'at'])
+                && request.resource.data.last.by == 'human'
+                && request.resource.data.last.uid == request.auth.uid
+                && request.resource.data.last.at is number);
+        }
+
+        // messages: create-only, only as yourself; nobody edits or deletes anyone's message
+        match /messages/{id} {
+          allow read: if isEditor();
+          allow create: if isEditor()
+            && request.resource.data.keys().hasOnly(['uid', 'name', 'text', 'at', 'by', 'kind'])
+            && (!('kind' in request.resource.data) || request.resource.data.kind in ['hint', 'fact', 'lang', 'typo', 'other'])
+            && request.resource.data.uid == request.auth.uid
+            && request.resource.data.by == 'human'
+            && request.resource.data.name is string && request.resource.data.name.size() < 80
+            && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() < 2000
+            && request.resource.data.at is number;
+        }
+      }
     }
   }
 }
