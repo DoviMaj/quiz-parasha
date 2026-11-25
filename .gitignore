@@ -3,3 +3,5 @@
 .sdk.json
 .fbid
 node_modules/
+.vercel
+.env*

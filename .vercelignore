@@ -1,0 +1,7 @@
+.sa.json
+.vapid.json
+.sdk.json
+.fbid
+.env*
+node_modules
+tools/*.py*

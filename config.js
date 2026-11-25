@@ -7,5 +7,5 @@ window.QUIZ_CFG = {
   "authDomain": "quiz-parasha-32110.firebaseapp.com",
   "messagingSenderId": "698401077148"
  },
- "vapidPublic": "BIjtEkjZzM1sZx2-iA8ffuj3SxXwomp9JQuoR_4LskK3V8Sc35B3lpz-DesBZu4VLqdiYHAKy8Mjua0g1-LgNq4"
+ "vapidPublic": "BCFENQcMOFdkSHMyOguDpVhRAJM9cegTWmiUcFpM2NZK4XLFEs63zP46rrt_yMDUZFfdxIEkuR08hwrkAtvx57Y"
 };
