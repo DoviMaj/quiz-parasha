@@ -434,7 +434,9 @@ header.hdr{max-width:none;margin:0;padding:12px max(16px,calc((100% - 728px)/2))
 .wkp button.on{background:#f6e0d5;border-color:var(--terra);color:var(--terra);font-weight:600}
 .wkp button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 
-#gameov{position:fixed;inset:0;z-index:70;background:#e9dcc4}#gameov iframe{border:0;width:100%;height:100%;display:block}
+#gameov{position:fixed;inset:0;z-index:70;background:#e9dcc4}
+body.gameon>nav,body.gameon .knav{z-index:71}
+body.gameon nav button[data-v].on,body.gameon .knav button:not(.gbtn).on{color:var(--muted);font-weight:500}body.gameon nav button[data-v].on .ico,body.gameon .knav button:not(.gbtn).on .ico{background:none;color:inherit}#gameov iframe{border:0;width:100%;height:100%;display:block}
 .endbtns .gmis{background:#7a5a2a}
 
 #onb.first .osaved{display:none}
@@ -1232,8 +1234,10 @@ function renderProfiles(){const el=$("oProf");if(!el)return;const t=PRF[oLang]||
   el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{const sn=PROF.list[b.dataset.del]||{};if(confirm(t.del(sn.first||sn.name||t.new)))deleteProfile(b.dataset.del)});
   const a=$("pAdd");if(a)a.onclick=addProfile}
 /* 3D missions game: loaded only when opened */
-function openGame(m){const f=$("gameif"),q=(DEMO?"demo&":"")+(m?"m="+encodeURIComponent(m):"");f.src="game/index.html?v=1795450710"+(q?"#"+q:"");$("gameov").hidden=false;document.body.style.overflow="hidden"}
-function closeGame(){$("gameov").hidden=true;$("gameif").src="about:blank";document.body.style.overflow=""}
+function openGame(m){const f=$("gameif"),q=(DEMO?"demo&":"")+(m?"m="+encodeURIComponent(m):"");f.src="game/index.html?v=1795450710"+(q?"#"+q:"");const nv=document.querySelector(document.body.classList.contains("kids")?".knav":"body>nav");$("gameov").style.bottom=(nv&&nv.offsetHeight||0)+"px";$("gameov").hidden=false;document.body.style.overflow="hidden";document.body.classList.add("gameon");document.querySelectorAll(".gbtn").forEach(x=>x.classList.add("on"))}
+function closeGame(){if($("gameov").hidden)return;$("gameov").hidden=true;$("gameif").src="about:blank";document.body.style.overflow="";document.body.classList.remove("gameon");document.querySelectorAll(".gbtn").forEach(x=>x.classList.remove("on"))}
+/* missions keeps the navbar: any other tab closes it */
+document.addEventListener("click",e=>{const t=e.target.closest&&e.target.closest("nav button,.knav button");if(t&&!t.classList.contains("gbtn"))closeGame()},true);
 addEventListener("message",e=>{if(e.data&&e.data.type==="closeGame")closeGame()});
 const weekMission=()=>W?String(W.id).replace(/-\d+$/,""):"";
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest(".gbtn,#goMission");if(!b)return;openGame(b.id==="goMission"?weekMission():"")});
