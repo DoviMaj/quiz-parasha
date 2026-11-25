@@ -108,7 +108,7 @@ service cloud.firestore {
                 && request.resource.data.last.at is number);
         }
 
-        // messages: create-only, only as yourself; nobody edits or deletes anyone's message
+        // messages: create as yourself; edit or delete only your own human messages (never Claude's, never others')
         match /messages/{id} {
           allow read: if isEditor();
           allow create: if isEditor()
@@ -119,6 +119,11 @@ service cloud.firestore {
             && request.resource.data.name is string && request.resource.data.name.size() < 80
             && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() < 2000
             && request.resource.data.at is number;
+          allow update: if isEditor() && resource.data.uid == request.auth.uid && resource.data.by == 'human'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['text', 'editedAt'])
+            && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() < 2000
+            && request.resource.data.editedAt is number;
+          allow delete: if isEditor() && resource.data.uid == request.auth.uid && resource.data.by == 'human';
         }
       }
     }
