@@ -75,17 +75,18 @@
     if (!canPush && !(ios && !standalone)) return;
     if (localStorage.getItem("bell-hidden")) return;
     var b = document.createElement("button");
-    b.className = "btn ghost"; b.style.cssText = "width:100%;box-sizing:border-box;margin-top:8px;white-space:normal";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     b.textContent = canPush ? t.on : t.ios;
     b.onclick = function () { if (canPush) subscribe(b).catch(function (e) { console.warn(e); }); else { localStorage.setItem("bell-hidden", "1"); b.remove(); } };
     place(b);
   }
   /* buttons live inside the profile/settings dialog (#onb), above its main button */
+  /* rows go in the Ajustes "Cuenta" card (#oAcctC); fallback: before the main button */
   function place(b) {
-    var go = document.getElementById("oGo");
-    if (go) go.parentNode.insertBefore(b, go); else document.body.appendChild(b);
+    var c = document.getElementById("oAcctC") || document.body;
+    c.appendChild(b);
   }
+  function mask(e) { var i = e.indexOf("@"); return i > 0 ? e[0] + "••••" + e.slice(i) : e; }
   /* ---- Google sign-in: links the anonymous account, so scores and the leaderboard entry
      follow you to other devices. Signing in on a 2nd device switches to the Google account's id. ---- */
   var G = {
@@ -96,7 +97,6 @@
   async function google() {
     var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
     var b = document.createElement("button");
-    b.className = "btn ghost"; b.style.cssText = "width:100%;box-sizing:border-box;margin-top:8px;white-space:normal";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     if (u.isAnonymous) {
       if (localStorage.getItem("google-hidden")) return;
@@ -112,8 +112,12 @@
         location.reload();
       };
     } else {
-      b.textContent = (u.displayName || u.email || "") .split(" ")[0] + " · " + g.out;
+      b.textContent = g.out;
       b.onclick = async function () { await A.signOut(x.auth); location.reload(); };
+      var r = document.createElement("div");
+      r.innerHTML = "<span style='color:var(--muted)'>Google</span><span dir='ltr' style='font-weight:500'></span>";
+      r.lastChild.textContent = mask(u.email || u.displayName || "");
+      place(r);
     }
     place(b);
   }

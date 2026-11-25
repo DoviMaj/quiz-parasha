@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <script src="config.js?v=3"></script>
-<script src="shim.js?v=5"></script>
+<script src="shim.js?v=6"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=David+Libre:wght@500;700&family=Frank+Ruhl+Libre:wght@500;700&family=Baloo+2:wght@500;600;700;800&family=Varela+Round&display=swap" rel="stylesheet">
 <style>
@@ -312,9 +312,50 @@ body.kids .knav{display:flex}
 .oprof .pchip.on{border-color:var(--olive);background:#e3ecd9}.oprof .pchip button{all:unset;cursor:pointer;padding:8px 12px;font-weight:700;font-size:15px}
 .oprof .pchip .pdel{padding:8px 10px 8px 4px;color:var(--muted)}.oprof .padd{all:unset;cursor:pointer;padding:8px 12px;border-radius:999px;border:2px dashed var(--track);font-weight:700;font-size:15px;color:var(--olive)}
 .oprof button:focus-visible{outline:3px solid var(--olive);outline-offset:2px}.oprof{margin-bottom:6px}
-#onb .onb h2{position:absolute;top:calc(18px + env(safe-area-inset-top));left:72px;right:72px;height:60px;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none}
 .oprof .pchips{margin-bottom:12px}
 .oprof .hint{margin-top:8px}
+/* ---- Ajustes A: grouped list, saves on close (settings only; first-run keeps its look) ---- */
+.ohead{display:flex;align-items:center;gap:12px}.ohead h2{flex:1;margin:0}
+#onb .ohead .oX{position:static;flex:0 0 auto}
+.ogrp{display:flex;flex-direction:column;gap:8px}
+.ofl{font-size:14px;color:var(--muted)}
+.onames label{display:flex;flex-direction:column;gap:4px;min-width:0}
+#onb:not(.first) .onb{text-align:start;gap:20px}
+#onb:not(.first) .ohead .logo{display:none}
+#onb:not(.first) .ohead h2{font-size:30px;text-align:start}
+#onb:not(.first) .ogrp>.lbl,#onb:not(.first) .oprof>.lbl{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 4px}
+#onb:not(.first) .ocard{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+#onb:not(.first) .onames{display:flex;flex-direction:column;gap:0}
+#onb:not(.first) .onames label{flex-direction:row;align-items:center;gap:12px;padding:0 16px;min-height:52px}
+#onb:not(.first) .onames label+label{border-top:1px solid var(--line)}
+#onb:not(.first) .onames .ofl{width:84px;flex:0 0 84px}
+#onb:not(.first) .onames input{flex:1;border:0;background:transparent;padding:14px 0;font-size:16px;border-radius:0}
+#onb:not(.first) .hint{margin:0 4px;text-align:start}
+#onb:not(.first) .oages{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--tile);border-radius:14px;padding:4px}
+#onb:not(.first) .oages button{border:0!important;border-radius:11px;background:transparent;min-height:56px;box-shadow:none}
+#onb:not(.first) .oages button.on{background:#fffaf0;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+#onb:not(.first) .oages .oai{display:none}
+#onb:not(.first) .oages .oat{font-size:15px;font-weight:600;display:flex;flex-direction:column;align-items:center;line-height:1.25}
+#onb:not(.first) .oages .oat small{font-size:12px;font-weight:400;color:var(--muted)}
+.orow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+.orow+.orow{border-top:1px solid var(--line)}.orow.ocol{flex-direction:column;align-items:stretch}
+#onb:not(.first) .orow .ofl{font-size:15px;color:var(--ink)}
+#onb:not(.first) .opref .olangs{gap:4px;background:var(--tile);border-radius:12px;padding:4px}
+#onb:not(.first) .opref .olangs button{padding:10px 6px;border-radius:9px;border:0;background:transparent;font-size:15px}
+#onb:not(.first) .opref .olangs button.on{background:var(--olive);color:#fff}
+#onb:not(.first) .opref .osnd{width:150px}
+.oacct .ocard>*{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box;padding:0 16px;min-height:52px;font-size:15px}
+.oacct .ocard>*+*{border-top:1px solid var(--line)}
+.oacct .ocard button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;width:100%;padding:0 16px;min-height:52px;font-weight:600;color:var(--terra,#b5562f)}
+.oacct:has(.ocard:empty){display:none}
+.osaved{margin:0;display:flex;justify-content:center;gap:6px;font-size:13px;font-weight:500;color:var(--olive)}
+#onb:not(.first) #oGo,#onb:not(.first) #oCancel{display:none!important}
+#onb.first .opref .lbl#oPrefL,#onb.first .oacct,#onb.first .osaved{display:none}
+#onb.first .orow{padding:0;flex-direction:column;align-items:stretch}#onb.first .ocard{display:flex;flex-direction:column;gap:12px}#onb.first .orow+.orow{border:0}
+#onb.first .orow .ofl{font-weight:600;font-size:16px;color:inherit}
+.oat small{display:block;font-weight:400;font-size:.85em}
+#onb.first .onames{display:grid;grid-template-columns:1fr 1fr}#onb.first .onames .ofl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
 header .langs{display:none!important}
 #gear.named{width:auto;padding:0 14px 0 10px;gap:6px;border-radius:999px;display:inline-flex;align-items:center}.hname{font-weight:700;font-size:15px;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .opts button,.kopts button{-webkit-tap-highlight-color:transparent}
@@ -356,9 +397,14 @@ header .langs{display:none!important}
 <div id="gameov" hidden><iframe id="gameif" title="Journey through the Torah" allow="fullscreen"></iframe></div>
 <div id="intro" role="dialog" aria-modal="true" aria-labelledby="iTitle"><div class="itop"><div class="ilang"><button data-il="es">ES</button><button data-il="en">EN</button><button data-il="he">עב</button></div><button class="iskip" id="iSkip"></button></div>
 <div class="ibody" id="iBody"></div><div class="idots" id="iDots"></div><button class="btn inext" id="iNext"></button></div>
-<div class="modal" id="onb"><div class="onb" role="dialog" aria-modal="true" aria-labelledby="oTitle"><button class="oX" id="oX" aria-label="close">×</button><span class="logo big"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#fdf6ea" stroke-width="2.4" stroke-linecap="round"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></span>
-<h2 id="oTitle"></h2><div class="oprof" id="oProf"></div><span class="lbl" id="oNameL"></span><div class="onames"><input id="oName" maxlength="30" autocomplete="given-name"><input id="oLast" maxlength="30" autocomplete="family-name"></div><p class="hint" id="oUser"></p><p class="hint" id="oNote"></p>
-<span class="lbl" id="oAgeL"></span><div class="oages" id="oAges"><button data-age="8"><span class="oai">🧒</span><span class="oat" data-t="kid"></span></button><button data-age="13"><span class="oai">🧑</span><span class="oat" data-t="adult"></span></button></div><p class="hint" id="oAgeN"></p><span class="lbl" id="oSndL"></span><div class="olangs osnd"><button data-snd="1"></button><button data-snd="0"></button></div><span class="lbl" id="oLangL"></span><div class="olangs"><button data-ol="es">Español</button><button data-ol="en">English</button><button data-ol="he">עברית</button></div>
+<div class="modal" id="onb"><div class="onb" role="dialog" aria-modal="true" aria-labelledby="oTitle">
+<div class="ohead"><span class="logo big"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#fdf6ea" stroke-width="2.4" stroke-linecap="round"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></span><h2 id="oTitle"></h2><button class="oX" id="oX" aria-label="close">×</button></div>
+<div class="oprof" id="oProf"></div>
+<section class="ogrp"><span class="lbl" id="oNameL"></span><div class="onames ocard"><label><span class="ofl" id="oFirstL"></span><input id="oName" maxlength="30" autocomplete="given-name"></label><label><span class="ofl" id="oLastL"></span><input id="oLast" maxlength="30" autocomplete="family-name"></label></div><p class="hint" id="oUser"></p><p class="hint" id="oNote"></p></section>
+<section class="ogrp"><span class="lbl" id="oAgeL"></span><div class="oages" id="oAges"><button data-age="8"><span class="oai">🧒</span><span class="oat" data-t="kid"></span></button><button data-age="13"><span class="oai">🧑</span><span class="oat" data-t="adult"></span></button></div><p class="hint" id="oAgeN"></p></section>
+<section class="ogrp opref"><span class="lbl" id="oPrefL"></span><div class="ocard"><div class="orow ocol"><span class="ofl" id="oLangL"></span><div class="olangs"><button data-ol="es">Español</button><button data-ol="en">English</button><button data-ol="he">עברית</button></div></div><div class="orow"><span class="ofl" id="oSndL"></span><div class="olangs osnd"><button data-snd="1"></button><button data-snd="0"></button></div></div></div></section>
+<section class="ogrp oacct"><span class="lbl" id="oAcctL"></span><div class="ocard" id="oAcctC"></div></section>
+<p class="osaved" id="oSaved"></p>
 <button class="btn" id="oGo"></button><button class="link" id="oCancel"></button><button class="link" id="oTour"></button></div></div>
 <div class="modal" id="modal"><div><p id="mq"></p><button class="btn ghost" id="mn"></button><button class="btn" id="my" style="background:var(--bad);color:#fff"></button></div></div>
 <script>
@@ -698,7 +744,7 @@ $("oGo").onclick=()=>{if(oAge==null){const g=$("oAges");g.classList.remove("need
 $("oName").onkeydown=$("oLast").onkeydown=e=>{if(e.key==="Enter")$("oGo").click()};
 $("oName").oninput=$("oLast").oninput=()=>{if($("oNote").classList.contains("oneed")){$("oNote").classList.remove("oneed");$("oNote").textContent=oAge!=null&&oAge<13?KU[oLang].kidName:UI[oLang].nameNote}userPreview()};
 function userPreview(){const f=$("oName").value,l=$("oLast").value;$("oUser").textContent=slugPart(f).length>=2&&slugPart(l).length>=1?NM[oLang].user+" \u2066@"+makeUser(f,l,oAge!=null&&oAge<13)+"\u2069":""}
-function closeOnb(){if(!ST.onboarded||window.__mustFinish)return;$("onb").style.display="none"}
+function closeOnb(){if(!ST.onboarded||window.__mustFinish||$("onb").style.display==="none")return;$("oGo").click()}
 $("oX").onclick=closeOnb;$("oCancel").onclick=closeOnb;
 $("onb").addEventListener("click",e=>{if(e.target===$("onb"))closeOnb()});
 $("modal").addEventListener("click",e=>{if(e.target===$("modal"))$("modal").style.display="none"});
@@ -1052,4 +1098,12 @@ setTimeout(hideBoot,8000);
 </body>
 </html>
 
+<script>
+(function(){const T={es:{f:"Nombre",l:"Apellido",p:"Preferencias",s:"Los cambios se guardan solos",a:"Cuenta"},en:{f:"First name",l:"Last name",p:"Preferences",s:"Changes are saved automatically",a:"Account"},he:{f:"שם פרטי",l:"שם משפחה",p:"העדפות",s:"השינויים נשמרים אוטומטית",a:"חשבון"}};
+const orig=openOnb;openOnb=function(){orig.apply(this,arguments);const t=T[oLang]||T.es;
+  $("oFirstL").textContent=t.f;$("oLastL").textContent=t.l;$("oPrefL").textContent=t.p;$("oAcctL").textContent=t.a;
+  $("oSaved").innerHTML='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'+esc(t.s);
+  document.querySelectorAll("#oAges .oat").forEach(e=>{const m=e.textContent.match(/^(.*?)\s*\((.+)\)\s*$/);if(m)e.innerHTML=esc(m[1])+"<small>"+esc(m[2])+"</small>"});
+  document.dispatchEvent(new Event("onb-open"))};})();
+</script>
 </body></html>
