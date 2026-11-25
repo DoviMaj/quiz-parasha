@@ -75,11 +75,16 @@
     if (!canPush && !(ios && !standalone)) return;
     if (localStorage.getItem("bell-hidden")) return;
     var b = document.createElement("button");
-    b.style.cssText = "position:fixed;bottom:76px;inset-inline-start:12px;z-index:9999;max-width:calc(100% - 28px);padding:10px 14px;border:0;border-radius:22px;background:#1b2a4a;color:#fff;font:600 14px system-ui,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.25)";
+    b.className = "btn ghost"; b.style.cssText = "width:100%;margin-top:8px";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     b.textContent = canPush ? t.on : t.ios;
     b.onclick = function () { if (canPush) subscribe(b).catch(function (e) { console.warn(e); }); else { localStorage.setItem("bell-hidden", "1"); b.remove(); } };
-    document.body.appendChild(b);
+    place(b);
+  }
+  /* buttons live inside the profile/settings dialog (#onb), above its main button */
+  function place(b) {
+    var go = document.getElementById("oGo");
+    if (go) go.parentNode.insertBefore(b, go); else document.body.appendChild(b);
   }
   /* ---- Google sign-in: links the anonymous account, so scores and the leaderboard entry
      follow you to other devices. Signing in on a 2nd device switches to the Google account's id. ---- */
@@ -91,7 +96,7 @@
   async function google() {
     var x = await init(), A = x.A, u = x.auth.currentUser, g = G[lang()] || G.es;
     var b = document.createElement("button");
-    b.style.cssText = "position:fixed;bottom:124px;inset-inline-start:12px;box-shadow:0 2px 8px rgba(0,0,0,.18);z-index:9999;padding:6px 12px;border:1px solid #ccc;border-radius:16px;background:#fff;color:#1b2a4a;font:600 12px system-ui,sans-serif;opacity:.92";
+    b.className = "btn ghost"; b.style.cssText = "width:100%;margin-top:8px";
     b.dir = lang() === "he" ? "rtl" : "ltr";
     if (u.isAnonymous) {
       if (localStorage.getItem("google-hidden")) return;
@@ -110,7 +115,7 @@
       b.textContent = (u.displayName || u.email || "") .split(" ")[0] + " · " + g.out;
       b.onclick = async function () { await A.signOut(x.auth); location.reload(); };
     }
-    document.body.appendChild(b);
+    place(b);
   }
   addEventListener("load", function () {
     bell().catch(function () {});
