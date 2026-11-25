@@ -73,17 +73,27 @@ service cloud.firestore {
       match /threads/{itemKey} {
         allow read: if isEditor();
         allow create: if isEditor()
-          && request.resource.data.keys().hasOnly(['marks', 'names', 'last'])
+          && request.resource.data.keys().hasOnly(['marks', 'names', 'last', 'verified'])
           && request.resource.data.get('marks', {}).keys().hasOnly([request.auth.uid])
           && request.resource.data.get('names', {}).keys().hasOnly([request.auth.uid])
-          && validMark() && validLast();
+          && validMark() && validLast() && validVerified();
         // own mark/name only; a client may clear `reply` (asking for a change again) but never set it
         allow update: if isEditor()
-          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['marks', 'names', 'reply', 'last'])
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['marks', 'names', 'reply', 'last', 'verified'])
           && request.resource.data.get('marks', {}).diff(resource.data.get('marks', {})).affectedKeys().hasOnly([request.auth.uid])
           && request.resource.data.get('names', {}).diff(resource.data.get('names', {})).affectedKeys().hasOnly([request.auth.uid])
           && (!('reply' in request.resource.data) || request.resource.data.reply == resource.data.get('reply', null))
-          && validMark() && validLast();
+          && validMark() && validLast() && validVerified();
+
+        // verified = {by: uid, at: ms}: set once someone checked an estimated source on Sefaria; own uid only,
+        // and an existing value written by someone else must stay untouched
+        function validVerified() {
+          return !('verified' in request.resource.data)
+            || request.resource.data.verified == resource.data.get('verified', null)
+            || (request.resource.data.verified.keys().hasOnly(['by', 'at'])
+                && request.resource.data.verified.by == request.auth.uid
+                && request.resource.data.verified.at is number);
+        }
 
         function validMark() {
           return request.resource.data.get('marks', {}).get(request.auth.uid, 'ok') in ['ok', 'change']

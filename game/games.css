@@ -1,5 +1,5 @@
-:root{--olive:#4f6b3a;--terra:#b5562f;--ink:#2e2a24;--surface:#fdf6ea;--line:#e2d1b1}
-*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#e9dcc4;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+:root{--olive:#4f6b3a;--terra:#2c5a8a;--ink:#2e2a24;--surface:#fffcf6;--line:#e2d8c5}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#f6f1e7;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
 canvas{display:block;width:100%;height:100%;touch-action:none}
 .hud{position:fixed;top:max(10px,env(safe-area-inset-top));left:10px;right:10px;display:flex;justify-content:space-between;gap:8px;pointer-events:none;z-index:5}
 .pill{background:rgba(253,246,234,.93);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);white-space:nowrap}
@@ -16,7 +16,7 @@ a.pill{pointer-events:auto;text-decoration:none;color:var(--ink)}
 .card .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);margin-bottom:4px}
 .opts{display:grid;gap:8px}
 .opts button,.go{all:unset;cursor:pointer;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:700;font-size:16px}
-.opts button.ok{background:#e3ecd9;border-color:var(--olive)}.opts button.bad{background:#f6e0d5;border-color:var(--terra)}
+.opts button.ok{background:#e3ecd9;border-color:var(--olive)}.opts button.bad{background:#e2ebf5;border-color:var(--terra)}
 .go{display:block;text-align:center;background:var(--olive);color:#fff;border-color:var(--olive);margin-top:12px}
 button:focus-visible,a:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
 .err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;font-weight:700}
