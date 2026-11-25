@@ -360,6 +360,60 @@ header .langs{display:none!important}
 
 #onb.first .osaved{display:none}
 #onb.first .ohead h2{font-size:30px}
+
+/* adult Progreso / Ranking: shared header + cards (scoped) */
+body:has(#v-dash.on)>header,body:has(#v-lb.on)>header{display:none}
+html:has(#v-dash.on),html:has(#v-lb.on),body:has(#v-dash.on),body:has(#v-lb.on){background:#f4ecdc}
+.rkp .lbrk{display:none}
+#v-dash.on,#v-lb.on{margin:-6px -14px 0;font-family:Rubik,system-ui,sans-serif}
+.pghd{background:#fdf6ea;border-bottom:1px solid #e2d1b1;padding:16px;display:flex;flex-direction:column;gap:14px}
+.pghr{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pgt{display:flex;flex-direction:column;min-height:44px;justify-content:center;min-width:0}.pgt>span{font-size:14px;color:#5a4e3c;font-weight:500}
+.pghd h1{margin:0;font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1.05}
+.pgr{display:flex;align-items:center;gap:8px}
+.pgp{background:#e3ecd9;color:#4f6b3a;border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;white-space:nowrap}
+.pgav{all:unset;box-sizing:border-box;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#4f6b3a;color:#fff;font:600 14px Rubik,sans-serif;display:flex;align-items:center;justify-content:center;position:relative}
+.pgav::after{content:"";position:absolute;inset:-2px}
+.pgav:focus-visible,.pgtabs button:focus-visible,.pgw:focus-visible{outline:3px solid #2e2a24;outline-offset:2px}
+.pgbody{display:flex;flex-direction:column;gap:18px;padding:18px 16px 0;max-width:760px;margin:0 auto}
+.pgcard{background:#fff;border:1px solid #e2d1b1;border-radius:16px}
+.pgstats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pgstats .pgcard{padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.pgstats b{font-family:"Baloo 2",sans-serif;font-size:26px;font-weight:800;line-height:1.1}.pgstats span{font-size:13px;color:#5a4e3c}
+.pgsec{display:flex;flex-direction:column;gap:8px}
+.pgsh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 4px}.pgsh span{font-size:13px;color:#5a4e3c}
+.pgsh h2{margin:0;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5a4e3c}
+.pgdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;align-items:end;padding:12px 8px 10px}
+.pgd{display:flex;flex-direction:column;align-items:center;gap:4px}.pgdp{font-size:11px;font-weight:600;color:#5a4e3c;min-height:14px}
+.pgbar{width:14px;border-radius:4px 4px 0 0;background:#efe2ca}.pgbar.on{background:#4f6b3a}
+.pgdot{width:28px;height:28px;border-radius:50%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#6f604a;border:1.5px dashed #b8a682}
+.pgdot.done{background:#4f6b3a;color:#fff;border:0}.pgdot.now{background:#b5562f;color:#fff;border:0}
+.pgdl{font-size:11px;color:#5a4e3c;font-weight:500}.pgdl.now{color:#b5562f;font-weight:600}
+.pglv{padding:14px;display:flex;flex-direction:column;gap:12px}.pglr{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}.pglr span:first-child{font-weight:500}.pglr span:last-child{color:#5a4e3c}
+.pgtr{height:8px;border-radius:4px;background:#efe2ca;overflow:hidden}.pgtr i{display:block;height:100%;border-radius:4px;background:#4f6b3a}
+.pgwks{overflow:hidden}.pgw{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:60px;border-bottom:1px solid #efe2ca;cursor:pointer}.pgw:last-child{border-bottom:0}
+.pgbg{width:40px;height:40px;border-radius:50%;flex:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#6f604a;border:1.5px dashed #b8a682}
+.pgbg.done{background:#4f6b3a;color:#fff;border:0}.pgbg.now{background:#fdf6ea;color:#b5562f;border:3px solid #b5562f}
+.pgwi{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.pgwi b{font-size:16px;font-weight:600}.pgwi span{font-size:13px;color:#5a4e3c}
+.pgwp{font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800}
+.pgtabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;background:#e9dcc4;border-radius:12px;padding:4px}
+.pgtabs button{all:unset;box-sizing:border-box;text-align:center;cursor:pointer;border-radius:9px;min-height:44px;display:flex;align-items:center;justify-content:center;font:500 15px Rubik,sans-serif;color:#5a4e3c}
+.pgtabs button.on{background:#fdf6ea;color:#2e2a24;font-weight:600;box-shadow:0 1px 3px rgba(46,42,36,.18)}
+.rkpod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:end}
+.rkp{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.rkp .rki{width:48px;height:48px;font-size:16px;background:#fff;border:2px solid #e2d1b1}.rkp.me .rki{background:#4f6b3a;color:#fff;border-color:#4f6b3a}
+.rkp .rkn{font-size:14px;font-weight:600;text-align:center;max-width:100%;overflow-wrap:anywhere}
+.rkb{width:100%;border-radius:14px 14px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#e9dcc4;color:#2e2a24}
+.rkp.p2 .rkb{background:#d4c09c}.rkp.p1 .rkb{background:#b5562f;color:#fff}
+.rkb b{font-family:"Baloo 2",sans-serif;font-size:22px;font-weight:800;line-height:1}.rkb span{font-size:13px;font-weight:600}
+.rki{border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:600;background:#f4ecdc;color:#2e2a24}
+.rklist{overflow:hidden}.rkr{display:flex;align-items:center;gap:10px;padding:8px 14px;min-height:60px;border-bottom:1px solid #efe2ca;background:#fff}.rkr:last-child{border-bottom:0}.rkr.me{background:#e3ecd9}
+.rkr .rki{width:36px;height:36px;font-size:13px}.rkr.me .rki{background:#4f6b3a;color:#fff}
+.rkpl{width:28px;text-align:center;font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800;color:#5a4e3c}
+.rkw{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}.rkr .rkn{font-size:15px;font-weight:600}.rks{font-size:12px;color:#5a4e3c}
+.rkpt{font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800}
+.rkstick{position:fixed;inset-inline:12px;bottom:calc(var(--navh,70px) + 8px);max-width:736px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid #4f6b3a;box-shadow:0 4px 14px rgba(46,42,36,.22);z-index:7}.rkstick[hidden]{display:none}
+.rkrule{margin:0 4px;font-size:13px;color:#5a4e3c;line-height:1.45}
 </style>
 </head>
 <body>
@@ -654,28 +708,56 @@ function rows(mode){const list=[];for(const id in scores){const d=scores[id]||{}
     if(p<=0&&!(mode==="week"))continue;list.push({id,p,wk})}
   list.sort((a,b)=>b.p-a.p||b.wk-a.wk);return list}
 function myRank(){const r=rows("total");const i=r.findIndex(x=>x.id===myId());return i<0?null:[i+1,r.length]}
-function renderDash(){const u=U(),v=$("v-dash"),sm=summary();
+const PG={es:{prof:"Perfil y ajustes",pts:"pts",week:"Esta semana",days:n=>`${n} de 7 días`,place:"Tu lugar",part:n=>`${n} participantes`,going:"En curso",done:"Completa",rule:"Fácil 5, medio 10 y difícil 15 puntos, más 20 por completar la parashá.",parts:"parashiot"},
+ en:{prof:"Profile and settings",pts:"pts",week:"This week",days:n=>`${n} of 7 days`,place:"Your place",part:n=>`${n} participants`,going:"In progress",done:"Complete",rule:"Easy 5, medium 10 and hard 15 points, plus 20 for finishing the parsha.",parts:"parshiot"},
+ he:{prof:"פרופיל והגדרות",pts:"נק׳",week:"השבוע",days:n=>`${n} מתוך 7 ימים`,place:"המקום שלך",part:n=>`${n} משתתפים`,going:"בתהליך",done:"הושלמה",rule:"קל 5, בינוני 10 וקשה 15 נקודות, ועוד 20 על השלמת הפרשה.",parts:"פרשות"}};
+function pgIni(n){const w=String(n||"").trim().split(/\s+/).filter(Boolean).slice(0,2);return w.map(x=>[...x][0].toUpperCase()).join("")||"?"}
+function pgHead(sub,title,extra){const P=PG[ST.lang]||PG.es;return `<div class="pghd"><div class="pghr"><div class="pgt">${sub?`<span>${sub}</span>`:""}<h1>${title}</h1></div><div class="pgr"><span class="pgp">${summary().total} ${P.pts}</span><button class="pgav" aria-label="${P.prof}">${esc(pgIni(ST.first?ST.first+" "+(ST.last||""):ST.name))}</button></div></div>${extra||""}</div>`}
+function pgBind(v){const b=v.querySelector(".pgav");if(b)b.onclick=()=>$("gear").click()}
+function pgWeek(w,u,P){if(!w||!dayArr(w))return "";
+  const a=ansOf(w.id),key=w.key||(w.Q||[]).map(q=>q.a),lv=lvOf(w),dy=dayArr(w),N=DAYN[ST.lang]||DAYN.es,pts=[0,0,0,0,0,0,0];
+  for(const k in a){if(a[k]===key[k]&&dy[k]>=1&&dy[k]<=7)pts[dy[k]-1]+=LVW[lv[k]]||10}
+  const mx=Math.max(1,...pts),tn=todayNum(w);let nd=0,h="";
+  for(let d=1;d<=7;d++){const dn=dayDone(w,d),td=d===tn&&!dn;if(dn)nd++;
+    h+=`<div class="pgd"><span class="pgdp">${pts[d-1]||""}</span><span class="pgbar${pts[d-1]?" on":""}" style="height:${pts[d-1]?6+Math.round(pts[d-1]/mx*54):6}px"></span><span class="pgdot${dn?" done":td?" now":""}">${dn?"✓":d}</span><span class="pgdl${td?" now":""}">${N[d-1]}</span></div>`}
+  return `<div class="pgsec"><div class="pgsh"><h2>${P.week} · ${esc(wName(w))}</h2><span>${P.days(nd)}</span></div><div class="pgcard pgdays">${h}</div></div>`}
+function renderDash(){const u=U(),P=PG[ST.lang]||PG.es,v=$("v-dash"),sm=summary();
   const acc=sm.answered?Math.round(sm.correct/sm.answered*100)+"%":"–";const rk=myRank();
-  let h=`<div class="note syncNote"></div>${rankCard()}<div class="stats">
-   <div class="stat"><div class="k">${u.dTotal}</div><div class="v">${sm.total}</div></div>
-   <div class="stat"><div class="k">${u.dWeeks}</div><div class="v">${sm.completed}</div><div class="s">${u.of} ${WEEKS.length}</div></div>
-   <div class="stat"><div class="k">${u.dAcc}</div><div class="v">${acc}</div><div class="s">${sm.correct}/${sm.answered}</div></div>
-   <div class="stat"><div class="k">${u.dRank}</div><div class="v">${rk?"#"+rk[0]:"–"}</div><div class="s">${rk?u.of+" "+rk[1]:""}</div></div></div>
-   `;
+  let h=pgHead("",u.nav.dash)+`<div class="pgbody"><div class="pgstats">
+   <div class="pgcard"><b>${sm.total}</b><span>${u.dTotal}</span></div>
+   <div class="pgcard"><b>${rk?"#"+rk[0]:"–"}</b><span>${rk?P.place+" · "+u.of+" "+rk[1]:P.place}</span></div>
+   <div class="pgcard"><b>${acc}</b><span>${u.dAcc} (${sm.correct} ${u.of} ${sm.answered})</span></div>
+   <div class="pgcard"><b>${sm.completed}</b><span>${u.dWeeks} ${u.of} ${WEEKS.length}</span></div></div>`;
+  h+=pgWeek(W,u,P);
   const LB={1:{c:0,a:0},2:{c:0,a:0},3:{c:0,a:0}};for(const w of WEEKS){const st=wstats(w);for(const d of [1,2,3]){LB[d].c+=st.by[d].c;LB[d].a+=st.by[d].a}}
-  h+=`<div class="panel" style="margin-bottom:12px"><h2 class="sec">${u.byLevel}</h2>`+[1,2,3].map(d=>`<div class="wk" style="cursor:default"><span class="nm"><span class="lvb l${d}">${u.lv[d]}</span></span><span class="track"><i style="width:${LB[d].a?LB[d].c/LB[d].a*100:0}%"></i></span><span class="pt">${LB[d].a?Math.round(LB[d].c/LB[d].a*100)+"%":"–"} · ${LB[d].c}/${LB[d].a}</span></div>`).join("")+`</div>`;
-  h+=`<div class="panel"><h2 class="sec">${u.dHist}</h2>`;
+  h+=`<div class="pgsec"><div class="pgsh"><h2>${u.byLevel}</h2></div><div class="pgcard pglv">`+[1,2,3].map(d=>`<div><div class="pglr"><span>${u.lv[d]}</span><span>${LB[d].c} ${u.of} ${LB[d].a}</span></div><div class="pgtr"><i style="width:${LB[d].a?LB[d].c/LB[d].a*100:0}%"></i></div></div>`).join("")+`</div></div>`;
+  h+=`<div class="pgsec"><div class="pgsh"><h2>${u.dHist}</h2></div><div class="pgcard pgwks">`;
   if(!WEEKS.length)h+=`<div class="empty">${u.empty}</div>`;
-  for(const w of [...WEEKS].reverse()){const s=wstats(w);
-    h+=`<div class="wk" data-w="${esc(w.id)}"><span class="nm">${esc(wName(w))}${w.id===currentId?" ★":""}</span><span class="track"><u style="width:${s.answered/s.total*100}%"></u><i style="width:${s.correct/s.total*100}%"></i></span><span class="pt">${s.practice?u.practice:s.points} · ${s.correct}/${s.total}</span></div>`}
-  h+=`</div>`;v.innerHTML=h;v.querySelectorAll(".wk").forEach(e=>e.onclick=()=>{setWeek(e.dataset.w);setView("quiz")});renderNotes();}
-async function renderLb(){const u=U(),v=$("v-lb"),r=rows(lbMode);
-  let h=`<div class="note syncNote"></div><div class="tabs"><button data-m="total" class="${lbMode==="total"?"on":""}">${u.lbTotal}</button><button data-m="week" class="${lbMode==="week"?"on":""}">${u.lbWeek}${W?": "+esc(wName(W)):""}</button></div>`;
+  WEEKS.map((w,i)=>[w,i]).reverse().forEach(([w,i])=>{const s=wstats(w),cur=w.id===currentId;
+    h+=`<div class="pgw" role="button" tabindex="0" data-w="${esc(w.id)}"><span class="pgbg${s.complete?" done":cur?" now":""}">${s.complete?"✓":i+1}</span><span class="pgwi"><b>${esc(wName(w))}</b><span>${s.practice?u.practice:(s.complete?P.done:s.answered?P.going:"–")+" · "+s.correct+" "+u.of+" "+s.total}</span></span><span class="pgwp">${s.practice?"":s.points}</span></div>`});
+  h+=`</div></div>${rankCard()}<div class="note syncNote"></div></div>`;
+  v.innerHTML=h;pgBind(v);v.querySelectorAll(".pgw").forEach(e=>{const go=()=>{setWeek(e.dataset.w);setView("quiz")};e.onclick=go;e.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();go()}}});renderNotes();}
+let lbIO=null;
+async function renderLb(){const u=U(),P=PG[ST.lang]||PG.es,v=$("v-lb"),r=rows(lbMode),me=myId(),tot=W?(W.n||(W.key||W.Q||[]).length):0;
+  if(lbIO){lbIO.disconnect();lbIO=null}
+  const tabs=`<div class="pgtabs" role="tablist">${[["total",u.lbTotal],["week",u.lbWeek]].map(([m,t])=>`<button role="tab" data-m="${m}" aria-selected="${lbMode===m}" class="${lbMode===m?"on":""}">${t}</button>`).join("")}</div>`;
+  const sub=x=>lbMode==="week"?`${x.wk} ${u.of} ${tot}`:`${x.wk} ${P.parts}`;
+  const item=(x,i,cls,inner)=>`<div class="rkit ${cls}${x.id===me?" me":""}" data-id="${esc(x.id)}" data-sub="${esc(sub(x))}"${x.id===me?" data-me":""}>${inner}</div>`;
+  let h=pgHead(r.length?P.part(r.length):"",u.nav.lb,tabs)+`<div class="pgbody">`;
   if(!r.length)h+=`<div class="empty">${u.lbEmpty}</div>`;
-  else{h+=`<table class="lb"><tr><th>#</th><th>${u.lbName}</th><th class="n">${u.lbPts}</th><th class="n">${lbMode==="week"?"✓":u.lbWk}</th></tr>`;
-    r.slice(0,100).forEach((x,i)=>{h+=`<tr class="${x.id===myId()?"me":""}"><td><span class="medal ${i<3?"m"+(i+1):""}">${i+1}</span></td><td class="nm" data-id="${esc(x.id)}"></td><td class="n">${x.p}</td><td class="n">${x.wk}</td></tr>`});h+="</table>"}
-  v.innerHTML=h;v.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{lbMode=b.dataset.m;renderLb()});renderNotes();
-  const fill=ps=>v.querySelectorAll("td.nm").forEach(td=>{td.textContent="";const id=td.dataset.id,p=ps[id];const own=scores[id]&&typeof scores[id].name==="string"?maskName(safeName(scores[id].name)):"";td.textContent=(own||maskName(safeName(p&&p.name))||u.someone)+(id===myId()?" "+u.you:"");const un=scores[id]&&typeof scores[id].username==="string"?maskUser(safeName(scores[id].username)):"";const rr=scores[id]&&Number.isInteger(scores[id].rank)?Math.max(0,Math.min(6,scores[id].rank)):null;if(rr!==null){const sp=document.createElement("span");sp.className="lbrk";sp.textContent=(RANKN[ST.lang]||RANKN.es)[rr][0];td.appendChild(sp)}if(un){const sm=document.createElement("small");sm.className="un";sm.textContent="@"+un;td.appendChild(sm)}});
+  else{const pod=[1,0,2].filter(i=>i<r.length),ht=[84,64,52];
+    h+=`<div class="rkpod">`+pod.map(i=>item(r[i],i,"rkp p"+(i+1),`<span class="rki"></span><span class="rkn"></span><div class="rkb" style="height:${ht[i]}px"><b>${i+1}</b><span>${r[i].p} ${P.pts}</span></div>`)).join("")+`</div>`;
+    if(r.length>3)h+=`<div class="pgcard rklist">`+r.slice(3,100).map((x,k)=>item(x,k+3,"rkr",`<b class="rkpl">${k+4}</b><span class="rki"></span><span class="rkw"><span class="rkn"></span><span class="rks"></span></span><b class="rkpt">${x.p}</b>`)).join("")+`</div>`;
+    const mi=r.findIndex(x=>x.id===me);
+    if(mi>=0)h+=`<div class="rkstick" hidden>`+item(r[mi],mi,"rkr",`<b class="rkpl">${mi+1}</b><span class="rki"></span><span class="rkw"><span class="rkn"></span><span class="rks"></span></span><b class="rkpt">${r[mi].p}</b>`)+`</div>`}
+  h+=`<p class="rkrule">${esc(u.nameNote)} ${P.rule}</p><div class="note syncNote"></div></div>`;
+  v.innerHTML=h;pgBind(v);v.querySelectorAll(".pgtabs button").forEach(b=>b.onclick=()=>{lbMode=b.dataset.m;renderLb()});renderNotes();
+  const st=v.querySelector(".rkstick"),mine=v.querySelector(".rkp[data-me],.rklist [data-me]");
+  if(st){if(mine&&window.IntersectionObserver){lbIO=new IntersectionObserver(e=>{st.hidden=e[0].isIntersecting},{rootMargin:"0px 0px -"+(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--navh"))||70)+"px 0px"});lbIO.observe(mine)}else st.hidden=false}
+  const fill=ps=>v.querySelectorAll(".rkit").forEach(el=>{const id=el.dataset.id,p=ps[id],sc=scores[id]||{};const nm=(typeof sc.name==="string"?maskName(safeName(sc.name)):"")||maskName(safeName(p&&p.name))||u.someone;
+    const n=el.querySelector(".rkn");n.textContent=nm+(id===me?" "+u.you:"");el.querySelector(".rki").textContent=pgIni(nm);
+    const rr=Number.isInteger(sc.rank)?Math.max(0,Math.min(6,sc.rank)):null;if(rr!==null){const sp=document.createElement("span");sp.className="lbrk";sp.textContent=(RANKN[ST.lang]||RANKN.es)[rr][0];n.appendChild(sp)}
+    const s=el.querySelector(".rks");if(s){const un=typeof sc.username==="string"?maskUser(safeName(sc.username)):"";s.textContent=el.dataset.sub+(un?" · @"+un:"")}});
   fill({});/* names stored with each score show right away; account names (only for real account ids) fill in if they arrive */
   const ids=r.slice(0,100).map(x=>x.id).filter(id=>id.indexOf("~")<0);if(user&&user.profiles&&ids.length){try{const ps=await Promise.race([user.profiles(ids),sleep(2500).then(()=>null)]);if(ps&&v.isConnected)fill(ps)}catch(e){}}}
 const DEMON={es:"Modo demo: preguntas y clasificación de prueba. Tu progreso aquí no se guarda en tu cuenta ni cuenta en la clasificación real.",en:"Demo mode: test questions and a sample leaderboard. Progress here isn’t saved to your account or the real leaderboard.",he:"מצב הדגמה: שאלות וטבלה לדוגמה. ההתקדמות כאן לא נשמרת בחשבון ולא נספרת בטבלה האמיתית."};
