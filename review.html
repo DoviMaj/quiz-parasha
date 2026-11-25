@@ -167,6 +167,37 @@ label.l{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:60
  .ov{align-items:center;padding:24px}
  .box h1{font-size:30px}
 }
+/* ---- team screen ---- */
+.tlogo,.tnav,.tfin,.tph2,.tpcap,.tt2,.tpd{display:none}
+.tp{flex-wrap:wrap}
+.tpc{display:flex;align-items:center;gap:10px;min-width:0;flex:1 1 150px}
+.tpn{display:flex;flex-direction:column;gap:2px}
+.tt1{display:flex;flex-direction:column}
+.tpa{display:flex;align-items:center;gap:4px}
+.tpa .btn{white-space:nowrap}
+.rolebtn.hi{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media (min-width:900px){
+ .tmh{padding-inline:max(24px,calc((100% - 1600px)/2))!important;flex-wrap:wrap}
+ .tmh .tbk,.tmh .tt1{display:none}
+ .tlogo{display:flex;width:36px;height:36px;border:0;border-radius:10px;background:var(--blue,#2c5a8a);color:#fff;align-items:center;justify-content:center;padding:0}
+ .tlogo svg{stroke:#fff}
+ .tnav{display:flex;gap:4px;flex:1 1 auto}
+ .tnav button{border:0;background:transparent;color:var(--mut);min-height:44px;padding:0 14px;border-radius:12px;font-size:15px;font-weight:500}
+ .tnav button[aria-current]{background:#e2ebf5;color:#1f4269;font-weight:600}
+ .tfin{display:flex;align-items:center;border:0;border-radius:12px;background:var(--ink);color:#fff;min-height:44px;padding:0 16px;font-size:15px;font-weight:600}
+ .wrap.team{max-width:1600px;width:100%;margin:0 auto;box-sizing:border-box;padding:24px 24px 40px;gap:20px;flex-direction:row;flex-wrap:wrap;align-items:flex-start}
+ .tside{flex:1 1 320px;display:flex;flex-direction:column;gap:16px}
+ .tt2{display:flex;flex-direction:column;gap:2px}
+ .tmain{flex:999 1 560px;min-width:0}
+ .tph{display:none}
+ .tpcap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid #eee9df;font-size:17px}
+ .tp{display:grid;grid-template-columns:minmax(0,2fr) minmax(130px,1fr) minmax(0,.8fr) 190px;gap:12px;padding:10px 18px}
+ .tpc{gap:12px}
+ .tph2{min-height:0;padding:10px 18px;font-size:13px;font-weight:600;color:var(--mut);background:#fffdf9}
+ .tpd{display:block}
+ .tp .tpa{justify-content:flex-end}
+}
+/* ---- end team screen ---- */
 </style>
 </head>
 <body>
@@ -195,7 +226,7 @@ es: {
  fT:"Aprobar", fOnly:"Solo los aprobadores pueden aprobar.", fGo:"Aprobar y publicar en la app", fGoS:"Claude lo publica en cuanto lo apruebes.", fMiss:"Faltan {n} cosas para aprobar", fRet:"Devolver a Claude con una nota", fNote:"Nota para Claude…", fSent:"Nota enviada",
  c1:"Todo revisado", c1o:"Todos los ítems tienen “Bien”.", c1b:"{n} ítems todavía sin revisar.", c2:"Cambios confirmados", c2o:"Todos los cambios están confirmados.", c2b:"{n} cambios pendientes de aplicar o confirmar.",
  c3:"Comentarios cerrados", c3o:"No quedan hilos abiertos.", c3b:"{n} hilos esperan respuesta.", see:"Ver", approved:"Aprobada por {n}", published:"Publicada",
- tT:"Revisores", tCount:"{n} personas · {m} pueden aprobar", tInv:"Invitar a alguien", tMail:"Correo", tRole:"Rol", tAdd:"Invitar", tRem:"Quitar", tYou:"Tú", admin:"Dueño", approver:"Aprobador", reviewer:"Revisor", tBad:"Correo no válido", tAsk:"¿Quitar a {e}?", tTeam:"Equipo", tCopy:"Copiar enlace", tCopied:"¡Copiado!",
+ tT:"Revisores", tAdded:"Añadido", tWho:"Persona", tNavR:"Revisar", tCount:"{n} personas · {m} pueden aprobar", tInv:"Invitar a alguien", tMail:"Correo", tRole:"Rol", tAdd:"Invitar", tRem:"Quitar", tYou:"Tú", admin:"Dueño", approver:"Aprobador", reviewer:"Revisor", tBad:"Correo no válido", tAsk:"¿Quitar a {e}?", tTeam:"Equipo", tCopy:"Copiar enlace", tCopied:"¡Copiado!",
  tHelpR:"Revisa y comenta. No puede aprobar la semana.", tHelpA:"Revisa, comenta y además puede dar la aprobación final.", tHelpD:"Todo lo anterior, y además administra a las personas.",
  tFoot:"Después de invitar, copia el enlace y mándalo por WhatsApp o correo. La persona entra con su cuenta de Google y ya puede revisar. Toca el rol de alguien para cambiarlo.",
  noDraft:"Todavía no hay borradores.", loading:"Cargando…", err:"No se pudo guardar. Revisa tu conexión.", lang:"Idioma",
@@ -216,7 +247,7 @@ en: {
  fT:"Approve", fOnly:"Only approvers can approve.", fGo:"Approve and publish to the app", fGoS:"Claude publishes it as soon as you approve.", fMiss:"{n} things left to approve", fRet:"Send back to Claude with a note", fNote:"Note for Claude…", fSent:"Note sent",
  c1:"Everything reviewed", c1o:"Every item is marked “Good”.", c1b:"{n} items still unreviewed.", c2:"Changes confirmed", c2o:"All changes are confirmed.", c2b:"{n} changes waiting to be applied or confirmed.",
  c3:"Comments closed", c3o:"No open threads.", c3b:"{n} threads await a reply.", see:"View", approved:"Approved by {n}", published:"Published",
- tT:"Reviewers", tCount:"{n} people · {m} can approve", tInv:"Invite someone", tMail:"Email", tRole:"Role", tAdd:"Invite", tRem:"Remove", tYou:"You", admin:"Owner", approver:"Approver", reviewer:"Reviewer", tBad:"Invalid email", tAsk:"Remove {e}?", tTeam:"Team", tCopy:"Copy link", tCopied:"Copied!",
+ tT:"Reviewers", tAdded:"Added", tWho:"Person", tNavR:"Review", tCount:"{n} people · {m} can approve", tInv:"Invite someone", tMail:"Email", tRole:"Role", tAdd:"Invite", tRem:"Remove", tYou:"You", admin:"Owner", approver:"Approver", reviewer:"Reviewer", tBad:"Invalid email", tAsk:"Remove {e}?", tTeam:"Team", tCopy:"Copy link", tCopied:"Copied!",
  tHelpR:"Reviews and comments. Cannot approve the week.", tHelpA:"Reviews, comments and can also give the final approval.", tHelpD:"Everything above, plus manages people.",
  tFoot:"After inviting, copy the link and send it by WhatsApp or email. They sign in with their Google account and can review. Tap someone’s role to change it.",
  noDraft:"No drafts yet.", loading:"Loading…", err:"Could not save. Check your connection.", lang:"Language",
@@ -237,7 +268,7 @@ he: {
  fT:"אישור", fOnly:"רק מאשרים יכולים לאשר.", fGo:"לאשר ולפרסם באפליקציה", fGoS:"Claude יפרסם מיד לאחר האישור.", fMiss:"חסרים {n} דברים לאישור", fRet:"להחזיר ל-Claude עם הערה", fNote:"הערה ל-Claude…", fSent:"ההערה נשלחה",
  c1:"הכול נסקר", c1o:"כל הפריטים מסומנים ״בסדר״.", c1b:"{n} פריטים טרם נסקרו.", c2:"שינויים אושרו", c2o:"כל השינויים אושרו.", c2b:"{n} שינויים ממתינים ליישום או לאישור.",
  c3:"הערות סגורות", c3o:"אין שרשורים פתוחים.", c3b:"{n} שרשורים ממתינים לתשובה.", see:"הצג", approved:"אושר על ידי {n}", published:"פורסם",
- tT:"סוקרים", tCount:"{n} אנשים · {m} יכולים לאשר", tInv:"להזמין מישהו", tMail:"דוא״ל", tRole:"תפקיד", tAdd:"הזמנה", tRem:"הסרה", tYou:"אתם", admin:"בעלים", approver:"מאשר", reviewer:"סוקר", tBad:"כתובת לא תקינה", tAsk:"להסיר את {e}?", tTeam:"צוות", tCopy:"העתקת קישור", tCopied:"הועתק!",
+ tT:"סוקרים", tAdded:"נוסף", tWho:"אדם", tNavR:"סקירה", tCount:"{n} אנשים · {m} יכולים לאשר", tInv:"להזמין מישהו", tMail:"דוא״ל", tRole:"תפקיד", tAdd:"הזמנה", tRem:"הסרה", tYou:"אתם", admin:"בעלים", approver:"מאשר", reviewer:"סוקר", tBad:"כתובת לא תקינה", tAsk:"להסיר את {e}?", tTeam:"צוות", tCopy:"העתקת קישור", tCopied:"הועתק!",
  tHelpR:"סוקר ומגיב. לא יכול לאשר את השבוע.", tHelpA:"סוקר, מגיב, ויכול גם לתת את האישור הסופי.", tHelpD:"כל האמור לעיל, וגם מנהל את האנשים.",
  tFoot:"לאחר ההזמנה, העתיקו את הקישור ושלחו בוואטסאפ או במייל. האדם נכנס עם חשבון Google ויכול לסקור. לחצו על התפקיד כדי לשנות אותו.",
  noDraft:"אין טיוטות עדיין.", loading:"טוען…", err:"השמירה נכשלה. בדקו את החיבור.", lang:"שפה",
@@ -611,15 +642,21 @@ function teamHtml() {
   const me = S.user.email, rs = [...S.roles].sort((a, b) => (a.role === "admin" ? 0 : 1) - (b.role === "admin" ? 0 : 1) || a.email.localeCompare(b.email));
   const can = rs.filter(r => r.role !== "reviewer").length, valid = !badEmail(S.newEmail.trim());
   const help = { reviewer: "tHelpR", approver: "tHelpA", admin: "tHelpD" }[S.newRole];
-  const people = rs.map(r => { const self = r.email === me;
-    return `<div class="tp" dir="ltr"><span class="av" style="width:40px;height:40px;font-size:14px;background:${colr(r.email)}">${esc(ini(r.email))}</span>
- <span class="grow" style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;overflow:hidden;text-overflow:ellipsis">${esc(r.email.split("@")[0])}</span><span class="sub" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r.email)}${self ? " · " + t("tYou") : ""}</span></span>
- ${self ? `<span class="sub" style="font-weight:600">${t(r.role)}</span>` : `<select class="rolebtn" data-a="setrole" data-v="${esc(r.email)}" aria-label="${esc(r.email)}">${["admin", "approver", "reviewer"].map(x => `<option value="${x}"${r.role === x ? " selected" : ""}>${t(x)}</option>`).join("")}</select>
- <button class="btn ghost" data-a="copy" style="min-height:44px;font-size:13px">${S.copied === r.email ? t("tCopied") : t("tCopy")}</button>
- <button class="ic" data-a="delrole" data-v="${esc(r.email)}" aria-label="${t("tRem")} ${esc(r.email)}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button>`}</div>`; }).join("");
-  return `<header class="hd" style="flex-direction:row;align-items:center;gap:12px"><button class="ic" data-a="team" aria-label="${t("bk")}" style="border:1px solid var(--line);background:#fff;border-radius:14px">${svg('<path d="M15 6l-6 6 6 6"/>', 20)}</button>
- <div class="grow" style="display:flex;flex-direction:column"><h1 class="ttl" style="margin:0;font-size:24px">${t("tT")}</h1><span class="sub">${t("tCount", { n: rs.length, m: can })}</span></div>${langSw()}</header>
- <div class="wrap team" style="padding-bottom:40px">
+  const cnt = t("tCount", { n: rs.length, m: can }), loc = { es: "es", en: "en", he: "he-IL" }[UI];
+  const people = rs.map(r => { const self = r.email === me, d = r.at > 1e11 ? new Date(r.at).toLocaleDateString(loc, { day: "numeric", month: "short", year: "numeric" }) : "";
+    return `<div class="tp"><span class="grow tpc"><span class="av" style="width:40px;height:40px;font-size:14px;background:${colr(r.email)}">${esc(ini(r.email))}</span>
+ <span class="tpn" style="min-width:0"><span style="font-weight:600;overflow:hidden;text-overflow:ellipsis">${esc(r.email.split("@")[0])}</span><span class="sub" dir="ltr" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:start">${esc(r.email)}${self ? " · " + t("tYou") : ""}</span></span></span>
+ ${self ? `<span class="sub tpr" style="font-weight:600">${t(r.role)}</span>` : `<select class="rolebtn tpr${r.role === "reviewer" ? "" : " hi"}" data-a="setrole" data-v="${esc(r.email)}" aria-label="${esc(r.email)}">${["admin", "approver", "reviewer"].map(x => `<option value="${x}"${r.role === x ? " selected" : ""}>${t(x)}</option>`).join("")}</select>`}
+ <span class="sub tpd">${d}</span>
+ <span class="tpa">${self ? "" : `<button class="btn ghost" data-a="copy" style="min-height:44px;font-size:13px">${S.copied === r.email ? t("tCopied") : t("tCopy")}</button>
+ <button class="ic" data-a="delrole" data-v="${esc(r.email)}" aria-label="${t("tRem")} ${esc(r.email)}">${svg('<path d="M6 6l12 12M18 6L6 18"/>', 18)}</button>`}</span></div>`; }).join("");
+  return `<header class="hd tmh" style="flex-direction:row;align-items:center;gap:12px"><button class="ic tbk" data-a="team" aria-label="${t("bk")}" style="border:1px solid var(--line);background:#fff;border-radius:14px">${svg('<path d="M15 6l-6 6 6 6"/>', 20)}</button>
+ <button class="tlogo" data-a="team" aria-label="${t("tNavR")}">${svg('<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>', 20)}</button>
+ <div class="grow tt1"><h1 class="ttl" style="margin:0;font-size:24px">${t("tT")}</h1><span class="sub">${cnt}</span></div>
+ <nav class="tnav"><button data-a="team">${t("tNavR")}</button><button aria-current="page">${t("tT")}</button></nav>${langSw()}
+ <button class="tfin" data-a="tfinal">${t("approvalBtn")}</button></header>
+ <div class="wrap team" style="padding-bottom:40px"><aside class="tside">
+ <div class="tt2"><h1 class="ttl" style="margin:0;font-size:30px">${t("tT")}</h1><span class="sub" style="font-size:14px">${cnt}</span></div>
  <form class="card" data-a="inv" style="padding:14px;display:flex;flex-direction:column;gap:12px"><h2 style="margin:0;font-size:16px;font-weight:600">${t("tInv")}</h2>
   <label class="l">${t("tMail")}<input id="ne" type="email" dir="ltr" autocomplete="off" placeholder="name@gmail.com" value="${esc(S.newEmail)}" style="border:1.5px solid var(--line);border-radius:12px;background:#fff;min-height:48px;padding:0 12px;font-size:16px;width:100%"></label>
   <div role="radiogroup" aria-label="${t("tRole")}" style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px;font-weight:600">${t("tRole")}</span>
@@ -627,8 +664,9 @@ function teamHtml() {
    <span class="sub" style="line-height:1.4">${t(help)}</span></div>
   ${S.err ? `<span class="sub" style="color:var(--terd)">${esc(S.err)}</span>` : ""}
   <button type="submit" class="btn" style="min-height:50px;justify-content:center;border:0;${valid ? "background:var(--grn);color:#fff" : "background:var(--line);color:var(--mut)"}">${t("tAdd")}</button></form>
- <div style="display:flex;flex-direction:column;gap:8px"><h2 class="h2">${t("tTeam")}</h2><div class="card">${people}</div></div>
- <p class="sub" style="margin:0 4px;line-height:1.5">${t("tFoot")}</p></div>`;
+ <p class="sub" style="margin:0 4px;line-height:1.5">${t("tFoot")}</p></aside>
+ <main class="tmain"><h2 class="h2 tph">${t("tTeam")}</h2><div class="card"><div class="tpcap"><b>${t("tTeam")}</b><span class="sub">${cnt}</span></div>
+ <div class="tp tph2" aria-hidden="true"><span class="tpc">${t("tWho")}</span><span class="tpr">${t("tRole")}</span><span class="tpd">${t("tAdded")}</span><span class="tpa"></span></div>${people}</div></main></div>`;
 }
 
 /* ---------- live data ---------- */
@@ -664,7 +702,7 @@ document.addEventListener("input", e => { const i = e.target.id; if (i === "cm")
 document.addEventListener("change", e => {
   const a = e.target.dataset.a;
   if (a === "draft") { pickDraft(e.target.value); render(); }
-  else if (a === "setrole") go(() => B.putRole(e.target.dataset.v, e.target.value, S.user));
+  else if (a === "setrole" && e.target.dataset.v !== S.user.email) go(() => B.putRole(e.target.dataset.v, e.target.value, S.user));
 });
 addEventListener("resize", () => render());
 document.addEventListener("submit", e => {
@@ -697,6 +735,7 @@ document.addEventListener("click", e => {
   else if (a === "full") S.full[v] = !S.full[v];
   else if (a === "team") S.team = !S.team;
   else if (a === "final") S.final = true;
+  else if (a === "tfinal") { S.team = false; S.final = true; }
   else if (a === "closef") S.final = false;
   else if (a === "see") { S.final = false; S.team = false; S.flt = v; S.open = null; }
   else if (a === "sheet") { S.sheet = v; if (v === "chg") { S.kind = null; S.chgText = ""; } }
@@ -712,7 +751,7 @@ document.addEventListener("click", e => {
   else if (a === "retnote") { const txt = S.note.trim(); if (txt) go(async () => { await B.addMsg(S.id, "_general", meObj(), txt); S.note = ""; S.sent = true; render(); }); }
   else if (a === "nrole") S.newRole = v;
   else if (a === "copy") { const row = b.closest(".tp"); const em = row && row.querySelector(".sub").textContent.split(" ")[0]; try { navigator.clipboard.writeText(location.origin + location.pathname); } catch (x) {} S.copied = em; setTimeout(() => { S.copied = ""; render(); }, 1800); }
-  else if (a === "delrole") { if (confirm(t("tAsk", { e: v }))) go(() => B.delRole(v)); }
+  else if (a === "delrole" && v !== S.user.email) { if (confirm(t("tAsk", { e: v }))) go(() => B.delRole(v)); }
   render();
 });
 
