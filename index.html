@@ -495,6 +495,99 @@ html:has(#v-dash.on),html:has(#v-lb.on),body:has(#v-dash.on),body:has(#v-lb.on){
 .rkpt{font-family:"Baloo 2",sans-serif;font-size:18px;font-weight:800}
 .rkstick{position:fixed;inset-inline:12px;bottom:calc(var(--navh,70px) + 8px);max-width:736px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid #4f6b3a;box-shadow:0 4px 14px rgba(46,42,36,.22);z-index:7}.rkstick[hidden]{display:none}
 .rkrule{margin:0 4px;font-size:13px;color:#5a4e3c;line-height:1.45}
+#wz{position:fixed;inset:0;z-index:70;background:var(--surface);display:none;justify-content:center;color:var(--ink);font-family:Rubik,system-ui,sans-serif;overflow:hidden}
+#wz.on{display:flex}
+#wz *{box-sizing:border-box}
+#wz .wzin{width:100%;max-width:440px;height:100%;display:flex;flex-direction:column;padding:max(16px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom));position:relative}
+#wz .wzh{display:flex;align-items:center;gap:12px;min-height:44px;position:relative;z-index:3}
+#wz .wzh .sp{flex:1}
+#wz .wzb>*{flex-shrink:0}
+#wz .wzb{flex:1;display:flex;flex-direction:column;min-height:0;overflow-y:auto;overflow-x:hidden;animation:wzin .3s cubic-bezier(.2,.8,.2,1) both;padding:0 2px}
+#wz .wzb.fw{--wx:28px}#wz .wzb.bk{--wx:-28px}
+#wz[dir=rtl] .wzb.fw{--wx:-28px}#wz[dir=rtl] .wzb.bk{--wx:28px}
+@keyframes wzin{from{opacity:0;transform:translateX(var(--wx,0))}to{opacity:1;transform:none}}
+#wz .wzbk,#wz .wzskip{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:44px;font:500 15px Rubik,sans-serif;color:var(--muted)}
+#wz .wzbk{width:44px;height:44px;flex:none;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+#wz[dir=rtl] .wzbk svg{transform:scaleX(-1)}
+#wz .wzskip{padding:0 6px}
+#wz button:focus-visible,#wz input:focus-visible{outline:3px solid #f6e0d5;outline-offset:1px}
+#wz .wzchip{all:unset;cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:999px;min-height:44px;padding:0 12px;display:flex;align-items:center;gap:6px;font:600 14px Rubik,sans-serif;color:var(--ink)}
+#wz .wzmenu{position:absolute;top:50px;inset-inline-end:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(60,40,10,.15);padding:4px;display:flex;flex-direction:column;animation:wzin .2s ease-out both;--wx:0}
+#wz .wzmenu[hidden]{display:none}
+#wz .wzmenu button{all:unset;cursor:pointer;min-height:44px;padding:0 16px;border-radius:10px;font:500 15px Rubik,sans-serif;display:flex;align-items:center}
+#wz .wzmenu button.on{background:var(--ok-bg);font-weight:600}
+#wz .wz-bar{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#wz .wz-bar i{height:6px;border-radius:3px;background:var(--line);overflow:hidden;display:block}
+#wz .wz-bar i.d{background:var(--olive)}
+#wz .wz-bar i.c::after{content:"";display:block;height:100%;background:var(--terra);transform-origin:left;animation:wzfill .4s ease-out both}
+#wz[dir=rtl] .wz-bar i.c::after{transform-origin:right}
+@keyframes wzfill{from{transform:scaleX(0)}to{transform:none}}
+#wz .wz-cnt{width:44px;font-size:13px;color:var(--muted);text-align:end}
+#wz h1{margin:0;font:800 32px/1.1 'Baloo 2',sans-serif}
+#wz h1.sm{font-size:30px}
+#wz .wz-eyb{font-size:14px;font-weight:600;color:var(--terra)}
+#wz .wz-sub{margin:0;font-size:15px;color:var(--muted);line-height:1.5}
+#wz .wz-hd{display:flex;flex-direction:column;gap:8px;margin-top:28px}
+#wz .wz-ft{margin-top:auto;padding-top:12px;display:flex;flex-direction:column;gap:6px;position:sticky;bottom:0;background:var(--surface)}
+#wz .wz-pri{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;border-radius:16px;background:var(--olive);color:#fff;min-height:56px;display:flex;align-items:center;justify-content:center;font:600 17px Rubik,sans-serif;transition:background .2s,transform .15s}
+#wz .wz-pri:active{transform:scale(.98)}
+#wz .wz-pri[aria-disabled=true]{background:var(--line);color:var(--muted);cursor:default}
+#wz .wz-ghost{all:unset;cursor:pointer;align-self:center;min-height:44px;display:flex;align-items:center;padding:0 12px;font:500 15px Rubik,sans-serif;color:var(--muted)}
+#wz .wz-fld{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+#wz .wz-fld input{font:500 18px Rubik,sans-serif;color:var(--ink);border:2px solid var(--line);border-radius:14px;background:#fff;min-height:56px;padding:0 16px;width:100%;transition:border-color .2s,box-shadow .2s}
+#wz .wz-fld input::placeholder{color:#8a7a5c;font-weight:400}
+#wz .wz-fld input:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 4px #f6e0d5}
+#wz .wz-pv{margin-top:20px;background:var(--soft);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+#wz .wz-pv .wz-av{width:40px;height:40px;border-radius:50%;background:var(--olive);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;flex:none}
+#wz .wz-pv small{display:block;font-size:13px;color:var(--muted)}#wz .wz-pv b{font-size:16px;font-weight:600}
+#wz .wz-card{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:14px;width:100%;min-height:96px;padding:14px 16px;border-radius:18px;border:1.5px solid var(--line);background:#fff;transition:background .2s,border-color .2s}
+#wz .wz-card.on{border:2px solid var(--olive);background:var(--ok-bg);animation:wzsel .3s ease-out}
+@keyframes wzsel{0%{transform:scale(1)}45%{transform:scale(1.025)}100%{transform:scale(1)}}
+#wz .wz-card .wz-tx{flex:1;display:flex;flex-direction:column;gap:3px}
+#wz .wz-card .wz-tx b{font-size:19px;font-weight:600}#wz .wz-card .wz-tx span{font-size:14px;color:var(--muted);line-height:1.4}
+#wz .wz-card .wz-rd{width:24px;height:24px;border-radius:50%;border:2px solid #b8a682;background:#fff;flex:none;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+#wz .wz-card .wz-rd svg{opacity:0;transform:scale(.3)}
+#wz .wz-card.on .wz-rd{background:var(--olive);border-color:var(--olive)}
+#wz .wz-card.on .wz-rd svg{animation:wzchk .3s ease-out .05s both}
+@keyframes wzchk{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.2)}100%{opacity:1;transform:none}}
+#wz .wz-opt{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+#wz .wz-opt .wz-tx{flex:1;display:flex;flex-direction:column;gap:2px}#wz .wz-opt .wz-tx b{font-size:16px;font-weight:600}#wz .wz-opt .wz-tx span{font-size:13px;color:var(--muted)}
+#wz .wz-sw{all:unset;cursor:pointer;width:52px;height:32px;border-radius:999px;background:#b8a682;position:relative;flex:none;transition:background .2s}
+#wz .wz-sw i{position:absolute;top:3px;inset-inline-start:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s ease-out}
+#wz .wz-sw[aria-checked=true]{background:var(--olive)}
+#wz .wz-sw[aria-checked=true] i{transform:translateX(20px)}
+#wz[dir=rtl] .wz-sw[aria-checked=true] i{transform:translateX(-20px)}
+#wz .wz-gbt{all:unset;cursor:pointer;text-align:center;border:1.5px solid var(--ink);border-radius:12px;background:#fff;min-height:48px;font:600 15px Rubik,sans-serif;color:var(--ink)}
+#wz .wz-ring{transform-origin:50% 10%;animation:wzring 1.2s ease-in-out .3s 2}
+@keyframes wzring{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}30%{transform:rotate(8deg)}40%{transform:rotate(-5deg)}}
+#wz .wzart{margin-top:18px;background:var(--soft);border-radius:28px;padding:22px 16px}
+#wz .wz-t1{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+#wz .wz-t1 p{margin:0;font-size:16px;color:var(--muted);line-height:1.5}
+#wz .wz-dots{display:flex;gap:6px;justify-content:center;margin-bottom:14px}
+#wz .wz-dots i{width:8px;height:8px;border-radius:4px;background:var(--line)}#wz .wz-dots i.on{width:22px;background:var(--terra)}
+#wz .wz-rise{animation:wzrise .4s cubic-bezier(.2,.8,.2,1) both}
+#wz .wz-pop{animation:wzpop .4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wzrise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes wzpop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:none}}
+@keyframes wzfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wzglow{0%,100%{box-shadow:0 0 0 0 rgba(181,86,47,.45)}50%{box-shadow:0 0 0 8px rgba(181,86,47,0)}}
+#wz .wz-flt{animation:wzrise .4s cubic-bezier(.2,.8,.2,1) both,wzfloat 3s ease-in-out .6s infinite}
+#wz .wz-today{animation:wzpop .4s cubic-bezier(.2,.8,.2,1) both,wzglow 1.8s ease-in-out 1s infinite}
+@keyframes wzright{to{background:#e3ecd9;border-color:#4f6b3a}}
+#wz .wz-right{animation:wzrise .35s cubic-bezier(.2,.8,.2,1) both,wzright .3s ease 1s forwards}
+#wz .rchk{opacity:0;animation:wzchk .35s cubic-bezier(.2,.8,.2,1) 1.1s forwards}
+@keyframes wzup{0%{opacity:0;transform:translateY(8px)}20%{opacity:1}80%{opacity:1;transform:translateY(-22px)}100%{opacity:0;transform:translateY(-30px)}}
+#wz .wz-plus{opacity:0;animation:wzup 1.4s ease-out 1.2s forwards}
+@keyframes wzgrow{from{transform:scaleY(0)}to{transform:none}}
+#wz .wz-grow{transform-origin:bottom;animation:wzgrow .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wzdraw{to{stroke-dashoffset:0}}
+#wz .wz-draw{stroke-dasharray:220;stroke-dashoffset:220;animation:wzdraw .9s ease-out .3s forwards}
+#wz .wz-dk{stroke-dasharray:40;stroke-dashoffset:40;animation:wzdraw .4s ease-out .35s forwards}
+@keyframes wztw{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(12deg)}}
+#wz .wz-tw{animation:wzpop .4s cubic-bezier(.2,.8,.2,1) both,wztw 1.6s ease-in-out 1s infinite}
+#wz .wz-conf{position:absolute;top:0;width:10px;height:14px;border-radius:3px;opacity:0;pointer-events:none;animation:wzfall 1.8s cubic-bezier(.3,.6,.5,1) forwards}
+@keyframes wzfall{0%{opacity:0;transform:translateY(-40px) rotate(0)}10%{opacity:1}100%{opacity:0;transform:translateY(520px) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){#wz *,#wz *::after{animation:none!important;transition:none!important}#wz .rchk{opacity:1}#wz .wz-plus,#wz .wz-conf{display:none}#wz .wz-draw,#wz .wz-dk{stroke-dashoffset:0}#wz .wz-right{background:#e3ecd9;border-color:#4f6b3a}#wz .wz-card.on .wz-rd svg{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -532,6 +625,7 @@ html:has(#v-dash.on),html:has(#v-lb.on),body:has(#v-dash.on),body:has(#v-lb.on){
 <div id="gameov" hidden><iframe id="gameif" title="Journey through the Torah" allow="fullscreen"></iframe></div>
 <div id="intro" role="dialog" aria-modal="true" aria-labelledby="iTitle"><div class="itop"><div class="ilang"><button data-il="es">ES</button><button data-il="en">EN</button><button data-il="he">עב</button></div><button class="iskip" id="iSkip"></button></div>
 <div class="ibody" id="iBody"></div><div class="idots" id="iDots"></div><button class="btn inext" id="iNext"></button></div>
+<div id="wz" role="dialog" aria-modal="true" aria-labelledby="wzT"></div>
 <div class="modal" id="onb"><div class="onb" role="dialog" aria-modal="true" aria-labelledby="oTitle">
 <div class="ohead"><span class="logo big"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#fdf6ea" stroke-width="2.4" stroke-linecap="round"><path d="M17 44L21 4M31 44L27 4"/><path d="M18 36h12M18.8 28h10.4M19.6 20h8.8M20.4 12h7.2"/></svg></span><h2 id="oTitle"></h2><button class="oX" id="oX" aria-label="close">×</button></div>
 <div class="oprof" id="oProf"></div>
@@ -1179,6 +1273,7 @@ renderAll();
 let profReady;const profPromise=new Promise(r=>profReady=r);let weeksReady;const weeksPromise=new Promise(r=>weeksReady=r);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function decideProfile(){
+  if(!ST.onboarded&&window.startWizard){window.startWizard(ST.introSeen?3:0);return}
   if(!ST.onboarded&&!ST.introSeen){showIntro(()=>decideProfile());return}
   if(!ST.onboarded){oLang=ST.lang;oAge=ST.age;$("oName").value=ST.first||ST.name||"";$("oLast").value=ST.last||"";openOnb()}
   else if(ST.last&&ST.user&&ST.user.replace(/\d+$/,"")!==slugPart(ST.first||"").slice(0,16)+"."+slugPart(ST.last).slice(0,1)){ST.user=makeUser(ST.first,ST.last,isKids());lsSet();needSync=true}
@@ -1284,5 +1379,123 @@ const orig=openOnb;openOnb=function(){orig.apply(this,arguments);const t=T[oLang
   $("oSaved").innerHTML='<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'+esc(t.s);
   document.querySelectorAll("#oAges .oat").forEach(e=>{const m=e.textContent.match(/^(.*?)\s*\((.+)\)\s*$/);if(m)e.innerHTML=esc(m[1])+"<small>"+esc(m[2])+"</small>"});
   document.dispatchEvent(new Event("onb-open"))};})();
+</script>
+<script>
+/* first-visit onboarding wizard: 3 intro screens, then name / who plays / notifications, then "ready". Saves through the existing #oGo handler. */
+(function(){
+const WT={
+es:{skip:"Saltar",next:"Siguiente",start:"Empezar",back:"Atrás",lang:"Idioma",
+ i1h:"Un poco de parashá cada día",i1p:"La parashá de la semana se divide en 7 partes, una por día. Cada día te esperan preguntas nuevas sobre esa parte: el texto, Rashí, los comentaristas y el Midrash.",i1c:["Versículos","Rashí","Comentaristas","Midrash"],
+ i2h:"Responde, aprende y suma puntos",i2p:"Elige tu nivel: fácil, medio o difícil. Cada respuesta trae una explicación con su fuente, aciertes o no. Termina la parashá y ganas 20 puntos de bono.",i2l:["Fácil · 5","Medio · 10","Difícil · 15"],i2q:"¿A quién mandó Yaakov mensajeros?",i2o:["A Laván","A Esav","A Yosef","A Rivká"],
+ i3h:"Para toda la familia",i3p:"Cada persona tiene su perfil, nivel y progreso. Los niños juegan con preguntas cortas y dibujos. Lo que aprendes abre misiones en 3D, y puedes ver tu lugar en el ranking.",i3a:"Un perfil para cada uno",i3m:"Misiones en 3D",i3r:"Ranking",i3k:"Modo niños: dibujos y stickers",
+ eye:"Para empezar",nh:"¿Cómo te llamas?",np:"Escribe tu nombre y tu apellido.",fl:"Nombre",ll:"Apellido",fph:"Ej.: David",lph:"Ej.: Majowka",pvl:"Así te verán en el ranking",pvE:"Tu nombre",cont:"Continuar",needName:"Escribe tu nombre para seguir",
+ wh:n=>`¿Quién va a jugar, ${n}?`,wp:"Así elegimos las preguntas que te tocan.",ad:"Yo, un adulto",ads:"13 años o más · Rashí, comentaristas y Midrash en 3 niveles",kd:"Un niño o una niña",kds:"Menos de 13 · preguntas cortas, dibujos y stickers",wn:"Puedes cambiarlo después en Ajustes.",pick:"Elige una opción",
+ ah:"¿Te avisamos cuando haya preguntas nuevas?",ap:"Es opcional. Puedes cambiarlo cuando quieras en Ajustes.",a1:"Avisarme cada semana",a1s:"Un aviso cuando sale la nueva parashá",a2:"Guardar mi progreso",a2s:"Para no perder tus puntos y jugar en otro teléfono",g:"Continuar con Google",fin:"Terminar",no:"Ahora no",
+ rh:n=>`¡Listo, ${n}!`,rp:"Tus preguntas de hoy ya te esperan.",rk:"Tus dibujos y stickers te esperan.",today:d=>`Hoy · ${d}`,al:n=>`aliyá ${n}`,rs:"10 preguntas · empiezas en nivel fácil",go:"Empezar el quiz de hoy",gok:"¡A jugar!"},
+en:{skip:"Skip",next:"Next",start:"Get started",back:"Back",lang:"Language",
+ i1h:"A little parsha every day",i1p:"The weekly parsha is split into 7 parts, one for each day. Every day brings new questions on that part: the text, Rashi, the commentators and the Midrash.",i1c:["Verses","Rashi","Commentators","Midrash"],
+ i2h:"Answer, learn and score points",i2p:"Pick your level: easy, medium or hard. Every answer comes with an explanation and its source, right or wrong. Finish the parsha and earn a 20-point bonus.",i2l:["Easy · 5","Medium · 10","Hard · 15"],i2q:"Whom did Yaakov send messengers to?",i2o:["To Lavan","To Esav","To Yosef","To Rivka"],
+ i3h:"For the whole family",i3p:"Everyone gets their own profile, level and progress. Kids play with short questions and drawings. What you learn unlocks 3D missions, and you can see your place on the leaderboard.",i3a:"A profile for everyone",i3m:"3D missions",i3r:"Leaderboard",i3k:"Kids mode: drawings and stickers",
+ eye:"To get started",nh:"What's your name?",np:"Type your first and last name.",fl:"First name",ll:"Last name",fph:"e.g. David",lph:"e.g. Levy",pvl:"This is how you'll appear on the leaderboard",pvE:"Your name",cont:"Continue",needName:"Type your name to continue",
+ wh:n=>`Who's playing, ${n}?`,wp:"So we pick the questions that fit you.",ad:"Me, an adult",ads:"13 or older · Rashi, commentators and Midrash on 3 levels",kd:"A boy or a girl",kds:"Under 13 · short questions, drawings and stickers",wn:"You can change this later in Settings.",pick:"Choose an option",
+ ah:"Shall we tell you when there are new questions?",ap:"It's optional. You can change it any time in Settings.",a1:"Notify me every week",a1s:"One alert when the new parsha is out",a2:"Save my progress",a2s:"Keep your points and play on another phone",g:"Continue with Google",fin:"Finish",no:"Not now",
+ rh:n=>`All set, ${n}!`,rp:"Today's questions are waiting for you.",rk:"Your drawings and stickers are waiting.",today:d=>`Today · ${d}`,al:n=>`aliyah ${n}`,rs:"10 questions · you start on the easy level",go:"Start today's quiz",gok:"Let's play!"},
+he:{skip:"דלגו",next:"הבא",start:"מתחילים",back:"חזרה",lang:"שפה",
+ i1h:"קצת פרשה בכל יום",i1p:"פרשת השבוע מתחלקת ל-7 חלקים, אחד לכל יום. בכל יום מחכות לכם שאלות חדשות על אותו חלק: הפסוקים, רש״י, המפרשים והמדרש.",i1c:["פסוקים","רש״י","מפרשים","מדרש"],
+ i2h:"עונים, לומדים וצוברים נקודות",i2p:"בחרו רמה: קל, בינוני או קשה. לכל תשובה יש הסבר ומקור, גם אם טעיתם. מסיימים את הפרשה וזוכים ב-20 נקודות בונוס.",i2l:["קל · 5","בינוני · 10","קשה · 15"],i2q:"אל מי שלח יעקב מלאכים?",i2o:["אל לבן","אל עשו","אל יוסף","אל רבקה"],
+ i3h:"לכל המשפחה",i3p:"לכל אחד יש פרופיל, רמה והתקדמות משלו. ילדים משחקים עם שאלות קצרות וציורים. מה שלומדים פותח משימות בתלת־ממד, ואפשר לראות את המקום שלכם בטבלה.",i3a:"פרופיל לכל אחד",i3m:"משימות בתלת־ממד",i3r:"טבלת דירוג",i3k:"מצב ילדים: ציורים ומדבקות",
+ eye:"כדי להתחיל",nh:"איך קוראים לך?",np:"כתבו שם פרטי ושם משפחה.",fl:"שם פרטי",ll:"שם משפחה",fph:"למשל: דוד",lph:"למשל: כהן",pvl:"כך תופיעו בטבלה",pvE:"השם שלך",cont:"המשך",needName:"כתבו את שמכם כדי להמשיך",
+ wh:n=>`מי משחק, ${n}?`,wp:"כך נבחר את השאלות שמתאימות לך.",ad:"אני, מבוגר/ת",ads:"גיל 13 ומעלה · רש״י, מפרשים ומדרש בשלוש רמות",kd:"ילד או ילדה",kds:"מתחת לגיל 13 · שאלות קצרות, ציורים ומדבקות",wn:"אפשר לשנות את זה אחר כך בהגדרות.",pick:"בחרו אפשרות",
+ ah:"לעדכן אתכם כשיש שאלות חדשות?",ap:"זה לא חובה. אפשר לשנות בכל רגע בהגדרות.",a1:"עדכון כל שבוע",a1s:"התראה כשיוצאת פרשה חדשה",a2:"שמירת ההתקדמות",a2s:"כדי לא לאבד נקודות ולשחק בטלפון אחר",g:"המשך עם Google",fin:"סיום",no:"לא עכשיו",
+ rh:n=>`מוכנים, ${n}!`,rp:"השאלות של היום כבר מחכות לכם.",rk:"הציורים והמדבקות שלכם מחכים.",today:d=>`היום · ${d}`,al:n=>`עלייה ${n}`,rs:"10 שאלות · מתחילים ברמה קלה",go:"מתחילים את חידון היום",gok:"בואו נשחק!"}};
+const T=()=>WT[ST.lang]||WT.es;
+const S={step:0,dir:1,start:0,first:"",last:"",age:null,committed:false,notify:false,menu:false};
+const el=$("wz");
+const CHK='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const BACK='<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
+const GLOBE='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+const CHEV='<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+const LN={es:"ES",en:"EN",he:"עב"},LNAME={es:"Español",en:"English",he:"עברית"};
+const hasPush=()=>{const c=window.QUIZ_CFG||{};return !!(c.vapidPublic&&"serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window)};
+const hasGoogle=()=>!!(window.QUIZ_CFG&&window.QUIZ_CFG.firebase);
+function nameOk(){const f=S.first.trim(),l=S.last.trim();return slugPart(f).length>=2&&slugPart(l).length>=1&&!badName(f)&&!badName(l)&&!badName(f+l)}
+const shown=()=>{const f=cap(S.first.trim()),l=cap(S.last.trim());return f?(l?f+" "+[...l][0]+".":f):T().pvE};
+const ini=()=>(([...S.first.trim()][0]||"?")+([...S.last.trim()][0]||"")).toUpperCase();
+function head(){const T_=T(),s=S.step,bar=n=>`<div class="wz-bar" role="img" aria-label="${n} / 3">${[1,2,3].map(i=>`<i class="${i<n?"d":i===n?"c":""}"></i>`).join("")}</div>`;
+ const back=`<button class="wzbk" data-a="back" aria-label="${esc(T_.back)}">${BACK}</button>`;
+ const chip=`<button class="wzchip" data-a="menu" aria-haspopup="true" aria-expanded="${S.menu}" aria-label="${esc(T_.lang)}">${GLOBE}${LN[ST.lang]}${CHEV}</button><div class="wzmenu" id="wzMenu" ${S.menu?"":"hidden"}>${["es","en","he"].map(l=>`<button data-a="lang" data-l="${l}" class="${l===ST.lang?"on":""}" lang="${l}">${LNAME[l]}</button>`).join("")}</div>`;
+ const skip=`<button class="wzskip" data-a="skip">${esc(T_.skip)}</button>`;
+ if(s===0)return skip+'<span class="sp"></span>'+chip;
+ if(s===1)return back+'<span class="sp"></span>'+skip;
+ if(s===2)return back;
+ if(s===3)return (S.start===3?"":back)+bar(1)+chip;
+ if(s===4)return back+bar(2)+'<span class="wz-cnt">2 / 3</span>';
+ if(s===5)return (S.committed?"":back)+bar(3)+'<span class="wz-cnt">3 / 3</span>';
+ return ""}
+const dots=n=>`<div class="wz-dots" role="img" aria-label="${n} / 3">${[1,2,3].map(i=>`<i class="${i===n?"on":""}"></i>`).join("")}</div>`;
+const nextBtn=(n,lbl)=>`<div class="wz-ft">${dots(n)}<button class="wz-pri" data-a="next">${esc(lbl)}</button></div>`;
+function i1(){const T_=T(),names=DAYN[ST.lang]||DAYN.es;
+ const days=names.map((d,i)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:4px"><span class="${i===2?"wz-today":"wz-pop"}" style="animation-delay:${(.1+i*.06).toFixed(2)}s;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;${i<2?"background:#4f6b3a;color:#fff":i===2?"background:#b5562f;color:#fff":"background:#fff;color:#5a4e3c"}">${i<2?"✓":i+1}</span><span style="font-size:11px;font-weight:500;color:#5a4e3c">${esc(d)}</span></div>`).join("");
+ return `<div class="wzart" aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;gap:18px"><span class="wz-flt" lang="he" dir="rtl" style="font-family:'Frank Ruhl Libre',serif;font-size:30px;font-weight:700;color:#b5562f">פָּרָשַׁת הַשָּׁבוּעַ</span><div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;width:100%">${days}</div><div class="wz-rise" style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;animation-delay:.7s">${T_.i1c.map(c=>`<span style="background:#fff;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:500">${esc(c)}</span>`).join("")}</div></div>
+ <div class="wz-t1 wz-rise" style="animation-delay:.15s"><h1 class="sm">${esc(T_.i1h)}</h1><p>${esc(T_.i1p)}</p></div>${nextBtn(1,T_.next)}`}
+function i2(){const T_=T(),pill=(t,on)=>`<span style="background:${on?"#e3ecd9":"#fff"};color:${on?"#4f6b3a":"#5a4e3c"};border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600">${esc(t)}</span>`;
+ const opts=T_.i2o.map((o,i)=>`<span class="${i===1?"wz-right":"wz-rise"}" style="animation-delay:${(.15+i*.08).toFixed(2)}s${i===1?",1s":""};background:#fff;border:1.5px solid #e2d1b1;border-radius:12px;min-height:38px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500"><span>${esc(o)}</span>${i===1?`<span class="rchk" style="width:24px;height:24px;border-radius:50%;background:#4f6b3a;display:flex;align-items:center;justify-content:center">${CHK}</span>`:""}</span>`).join("");
+ return `<div class="wzart" aria-hidden="true" style="display:flex;flex-direction:column;gap:10px;position:relative;padding:20px 16px"><div class="wz-rise" style="display:flex;gap:6px;flex-wrap:wrap">${T_.i2l.map((t,i)=>pill(t,i===0)).join("")}</div><span class="wz-rise" style="font-size:16px;font-weight:600;line-height:1.35;animation-delay:.1s">${esc(T_.i2q)}</span>${opts}<span class="wz-plus" style="position:absolute;inset-inline-end:22px;top:96px;background:#4f6b3a;color:#fff;border-radius:999px;padding:4px 12px;font:800 18px 'Baloo 2',sans-serif">+5</span></div>
+ <div class="wz-t1 wz-rise" style="animation-delay:.15s"><h1 class="sm">${esc(T_.i2h)}</h1><p>${esc(T_.i2p)}</p></div>${nextBtn(2,T_.next)}`}
+function i3(){const T_=T(),av=(bg,t,d)=>`<span class="wz-pop" style="width:40px;height:40px;border-radius:50%;background:${bg};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;animation-delay:${d}s">${t}</span>`;
+ const bx='background:#fff;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:6px';
+ return `<div class="wzart" aria-hidden="true" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:18px 16px"><div style="grid-column:span 2;background:#fff;border-radius:18px;padding:12px;display:flex;align-items:center;gap:10px">${av("#4f6b3a","A",.1)}${av("#b5562f","B",.2)}${av("#0f766e","C",.3)}<span class="wz-rise" style="font-size:13px;font-weight:500;color:#5a4e3c;animation-delay:.4s">${esc(T_.i3a)}</span></div>
+ <div style="${bx}"><svg width="100%" height="64" viewBox="0 0 140 64" fill="none"><path class="wz-draw" d="M10 54 C40 54 30 14 70 22 S110 50 130 12" stroke="#b5562f" stroke-width="3" stroke-linecap="round"/><circle class="wz-pop" cx="10" cy="54" r="6" fill="#4f6b3a" style="animation-delay:.2s"/><circle class="wz-pop" cx="70" cy="22" r="6" fill="#4f6b3a" style="animation-delay:.6s"/><circle class="wz-pop" cx="130" cy="12" r="6" fill="#fdf6ea" stroke="#b5562f" stroke-width="3" style="animation-delay:1s"/></svg><span style="font-size:13px;font-weight:600">${esc(T_.i3m)}</span></div>
+ <div style="${bx}"><div style="height:64px;display:flex;align-items:flex-end;justify-content:center;gap:6px"><span class="wz-grow" style="width:26px;height:40px;border-radius:6px 6px 0 0;background:#d4c09c;animation-delay:.3s"></span><span class="wz-grow" style="width:26px;height:60px;border-radius:6px 6px 0 0;background:#b5562f;animation-delay:.15s"></span><span class="wz-grow" style="width:26px;height:30px;border-radius:6px 6px 0 0;background:#e9dcc4;animation-delay:.45s"></span></div><span style="font-size:13px;font-weight:600">${esc(T_.i3r)}</span></div>
+ <div style="grid-column:span 2;background:#fff4dc;border:2px solid #e6cf9f;border-radius:18px;padding:10px 12px;display:flex;align-items:center;gap:10px"><svg class="wz-tw" width="30" height="30" viewBox="0 0 24 24" fill="#f5b82e" stroke="#c2410c" stroke-width="1.5" stroke-linejoin="round" style="animation-delay:.5s,1s"><path d="M12 3l2.7 5.6 6.1.8-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.8z"/></svg><span class="wz-rise" style="font:700 16px 'Baloo 2',sans-serif;color:#2b1d0e;animation-delay:.6s">${esc(T_.i3k)}</span></div></div>
+ <div class="wz-t1 wz-rise" style="animation-delay:.15s"><h1 class="sm">${esc(T_.i3h)}</h1><p>${esc(T_.i3p)}</p></div>${nextBtn(3,T_.start)}`}
+function nameScr(){const T_=T(),ok=nameOk();
+ return `<div class="wz-hd"><span class="wz-eyb">${esc(T_.eye)}</span><h1 id="wzT" tabindex="-1">${esc(T_.nh)}</h1><p class="wz-sub">${esc(T_.np)}</p></div>
+ <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px"><label class="wz-fld">${esc(T_.fl)}<input id="wzF" maxlength="30" autocomplete="given-name" placeholder="${esc(T_.fph)}" value="${esc(S.first)}"></label><label class="wz-fld">${esc(T_.ll)}<input id="wzL" maxlength="30" autocomplete="family-name" placeholder="${esc(T_.lph)}" value="${esc(S.last)}"></label></div>
+ <div class="wz-pv"><span class="wz-av" id="wzIni">${esc(ini())}</span><span><small>${esc(T_.pvl)}</small><b id="wzPv">${esc(shown())}</b></span></div>
+ <div class="wz-ft"><button class="wz-pri" id="wzGo" data-a="next" aria-disabled="${!ok}">${esc(ok?T_.cont:T_.needName)}</button></div>`}
+function whoScr(){const T_=T(),P='<path d="M24 6a6 6 0 1 1 0 12a6 6 0 1 1 0-12M12 42V32a12 12 0 0 1 24 0v10"/>',K='<path d="M24 12a6 6 0 1 1 0 12a6 6 0 1 1 0-12M15 42v-6a9 9 0 0 1 18 0v6"/>';
+ const c=(age,t,s,ic)=>`<button class="wz-card ${S.age===age?"on":""}" role="radio" aria-checked="${S.age===age}" data-a="pick" data-age="${age}"><svg aria-hidden="true" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#b5562f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none">${ic}</svg><span class="wz-tx"><b>${esc(t)}</b><span>${esc(s)}</span></span><span class="wz-rd">${CHK}</span></button>`;
+ return `<div class="wz-hd"><h1 id="wzT" tabindex="-1">${esc(T_.wh(cap(S.first.trim())))}</h1><p class="wz-sub">${esc(T_.wp)}</p></div>
+ <div role="radiogroup" aria-label="${esc(T_.wh(""))}" style="display:flex;flex-direction:column;gap:12px;margin-top:28px">${c(13,T_.ad,T_.ads,P)}${c(8,T_.kd,T_.kds,K)}</div><p class="wz-sub" style="font-size:13px;margin-top:14px">${esc(T_.wn)}</p>
+ <div class="wz-ft"><button class="wz-pri" id="wzGo" data-a="next" aria-disabled="${S.age==null}">${esc(S.age==null?T_.pick:T_.cont)}</button></div>`}
+function avScr(){const T_=T(),push=hasPush(),g=hasGoogle();
+ return `<div class="wz-hd" style="gap:10px"><svg class="wz-ring" aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#b5562f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><h1 id="wzT" tabindex="-1" class="sm">${esc(T_.ah)}</h1><p class="wz-sub">${esc(T_.ap)}</p></div>
+ <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px">${push?`<div class="wz-opt"><span class="wz-tx"><b>${esc(T_.a1)}</b><span>${esc(T_.a1s)}</span></span><button class="wz-sw" id="wzSw" role="switch" aria-checked="${S.notify}" aria-label="${esc(T_.a1)}" data-a="push"><i></i></button></div>`:""}${g?`<div class="wz-opt" style="flex-direction:column;align-items:stretch;gap:10px"><span class="wz-tx"><b>${esc(T_.a2)}</b><span>${esc(T_.a2s)}</span></span><button class="wz-gbt" data-a="google">${esc(T_.g)}</button></div>`:""}</div>
+ <div class="wz-ft"><button class="wz-pri" data-a="fin">${esc(T_.fin)}</button><button class="wz-ghost" data-a="fin">${esc(T_.no)}</button></div>`}
+function todayInfo(){try{const T_=T(),w=typeof W!=="undefined"?W:null,d=new Date().toLocaleDateString(ST.lang==="he"?"he-IL":ST.lang==="en"?"en-US":"es-MX",{weekday:"long"});let nm="";if(w){nm=wName(w);if(hasDays(w)){const n=curDay(w);if(n)nm+=" · "+T_.al(n)}}return {d,nm}}catch(e){return {d:"",nm:""}}}
+function doneScr(){const T_=T(),kid=S.age<13,ti=todayInfo(),cols=["#b5562f","#4f6b3a","#f5b82e","#0f766e","#d4c09c"];
+ const conf=Array.from({length:16},(_,i)=>`<span class="wz-conf" style="left:${(i*23+11)%100}%;background:${cols[i%5]};animation-delay:${(.1+(i%6)*.1).toFixed(2)}s"></span>`).join("");
+ return `<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">${conf}</div>
+ <div class="wz-pop" style="margin:90px auto 0;width:112px;height:112px;border-radius:50%;background:#4f6b3a;display:flex;align-items:center;justify-content:center;flex:none"><svg aria-hidden="true" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path class="wz-dk" d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+ <div class="wz-rise" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:28px;text-align:center;animation-delay:.3s"><h1 id="wzT" tabindex="-1" style="font-size:34px">${esc(T_.rh(cap(S.first.trim())))}</h1><p class="wz-sub" style="font-size:16px">${esc(kid?T_.rk:T_.rp)}</p></div>
+ ${kid?"":`<div class="wz-rise" style="margin-top:28px;background:#fff;border:1px solid #e2d1b1;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:4px;animation-delay:.5s"><span style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5a4e3c">${esc(T_.today(ti.d))}</span>${ti.nm?`<span style="font:800 24px/1.15 'Baloo 2',sans-serif">${esc(ti.nm)}</span>`:""}<span style="font-size:14px;color:#5a4e3c">${esc(T_.rs)}</span></div>`}
+ <div class="wz-ft"><button class="wz-pri wz-rise" data-a="done" style="animation-delay:.6s">${esc(kid?T_.gok:T_.go)}</button></div>`}
+function render(focus){el.setAttribute("dir",ST.lang==="he"?"rtl":"ltr");el.lang=ST.lang;
+ const body=[i1,i2,i3,nameScr,whoScr,avScr,doneScr][S.step]();
+ el.innerHTML=`<div class="wzin"><div class="wzh" id="wzH">${head()}</div><div class="wzb ${S.dir<0?"bk":"fw"}" id="wzB" role="group" aria-live="polite">${body}</div></div>`;
+ if(focus){const t=$("wzT");if(t)t.focus({preventScroll:true})}}
+function go(n,dir){S.step=n;S.dir=dir;S.menu=false;render(true)}
+function upName(){S.first=$("wzF").value;S.last=$("wzL").value;const ok=nameOk(),b=$("wzGo");$("wzPv").textContent=shown();$("wzIni").textContent=ini();b.setAttribute("aria-disabled",String(!ok));b.textContent=ok?T().cont:T().needName}
+function commit(){if(S.committed)return true;$("oName").value=S.first.trim();$("oLast").value=S.last.trim();oAge=S.age;oLang=ST.lang;ST.introSeen=true;$("oGo").click();if(ST.onboarded){S.committed=true;return true}return false}
+function shim(google){return [...document.querySelectorAll("#oAcctC button")].find(b=>google?/^G\s·/.test(b.textContent):!/^G\s·/.test(b.textContent)&&!/^(Cerrar|Sign out|התנתק)/.test(b.textContent))}
+function watchPerm(){let n=0;const iv=setInterval(()=>{n++;const p=window.Notification&&Notification.permission,sw=$("wzSw");if(p==="granted"){S.notify=true}else if(p==="denied"||n>60){S.notify=false;clearInterval(iv)}else return;clearInterval(iv);if(sw)sw.setAttribute("aria-checked",String(S.notify))},500)}
+el.addEventListener("click",e=>{const a=e.target.closest("[data-a]");if(!a){if(S.menu&&!e.target.closest(".wzmenu")){S.menu=false;$("wzMenu").hidden=true}return}
+ const k=a.dataset.a,s=S.step;
+ if(k==="menu"){S.menu=!S.menu;$("wzMenu").hidden=!S.menu;a.setAttribute("aria-expanded",String(S.menu))}
+ else if(k==="lang"){ST.lang=a.dataset.l;oLang=ST.lang;lsSet();S.menu=false;S.dir=1;render(false);const c=el.querySelector(".wzchip");if(c)c.focus();try{renderAll()}catch(_){}}
+ else if(k==="skip")go(3,1);
+ else if(k==="back"){if(s>0)go(s-1,-1)}
+ else if(k==="pick"){S.age=+a.dataset.age;el.querySelectorAll(".wz-card").forEach(c=>{const on=c===a;c.classList.remove("on");c.setAttribute("aria-checked",String(on));if(on){void c.offsetWidth;c.classList.add("on")}});const b=$("wzGo");b.setAttribute("aria-disabled","false");b.textContent=T().cont;sfx("tap")}
+ else if(k==="next"){if(s<=2)go(s+1,1);else if(s===3){if(nameOk())go(4,1);else $("wzF").focus()}
+  else if(s===4){if(S.age==null)return;if(S.age<13){if(commit())go(6,1)}else go(5,1)}}
+ else if(k==="push"){if(!commit())return;const b=shim(false);if(S.notify){S.notify=false;a.setAttribute("aria-checked","false");return}if(window.Notification&&Notification.permission==="denied")return;if(b)b.click();S.notify=true;a.setAttribute("aria-checked","true");watchPerm()}
+ else if(k==="google"){if(!commit())return;const b=shim(true);if(b)b.click()}
+ else if(k==="fin"){if(commit())go(6,1)}
+ else if(k==="done"){el.classList.remove("on");el.innerHTML="";window.scrollTo({top:0})}});
+el.addEventListener("input",e=>{if(e.target.id==="wzF"||e.target.id==="wzL")upName()});
+el.addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.id==="wzF"||e.target.id==="wzL")){e.preventDefault();if(e.target.id==="wzF")$("wzL").focus();else if(nameOk())go(4,1)}else if(e.key==="Escape"&&S.menu){S.menu=false;$("wzMenu").hidden=true}});
+window.startWizard=function(from){S.step=from||0;S.start=S.step;S.dir=1;S.first=ST.first||(ST.name||"").split(" ")[0]||"";S.last=ST.last||"";S.age=null;S.committed=false;S.menu=false;el.classList.add("on");render(false)};
+})();
 </script>
 </body></html>
