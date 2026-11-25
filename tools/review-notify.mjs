@@ -16,7 +16,7 @@ const MSG = {
   en: { title: "Content review", body: `${name.en || id} draft ready to review` },
   he: { title: "סקירת תוכן", body: `טיוטת ${name.he || id} מוכנה לסקירה` },
 };
-const url = new URL("review.html#" + encodeURIComponent(id), process.env.SITE_URL).href;
+const url = new URL("review#" + encodeURIComponent(id), process.env.SITE_URL).href;
 webpush.setVapidDetails("mailto:noreply@example.com", process.env.VAPID_PUBLIC, process.env.VAPID_PRIVATE);
 
 const roles = new Set((await d.collection("roles").get()).docs.map(r => r.id));

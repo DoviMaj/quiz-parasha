@@ -109,7 +109,7 @@
   };
   function reviewRow(g) {
     var a = document.createElement("a");
-    a.id = "rvRow"; a.href = "review.html";
+    a.id = "rvRow"; a.href = "review";
     a.style.cssText = "color:var(--terra,#b5562f);font-weight:600;text-decoration:none";
     a.innerHTML = "<span></span><span class='rvn' style='font-weight:500;color:var(--muted)'></span>";
     a.firstChild.textContent = g.rev + " ›";

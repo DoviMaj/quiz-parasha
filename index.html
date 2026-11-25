@@ -1552,7 +1552,7 @@ function paint(){
   b.dataset.sig=sig;b.dir=l==="he"?"rtl":"ltr";b.innerHTML="";
   var d=document.createElement("div");d.className="t";var s1=document.createElement("b"),s2=document.createElement("span");
   s1.textContent=t.b.replace("{n}",nm);s2.textContent=t.p.replace("{c}",R.pending)+" · "+t.d;d.append(s1,s2);
-  var a=document.createElement("a");a.href="review.html#"+encodeURIComponent(R.weekId);a.textContent=t.go;
+  var a=document.createElement("a");a.href="review#"+encodeURIComponent(R.weekId);a.textContent=t.go;
   var x=document.createElement("button");x.setAttribute("aria-label",t.x);x.textContent="✕";x.onclick=function(){try{localStorage.setItem("rv-dismiss",today())}catch(e){}b.remove()};
   b.append(d,a,x);
 }
